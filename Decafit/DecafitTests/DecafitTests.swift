@@ -22,7 +22,9 @@ class DecafitTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         let name = "dev"
+        let age = 18
         XCTAssert(name=="dev", "Your name is wrong!")
+        XCTAssert(age==18, "You must be underage")
     }
 
 }
