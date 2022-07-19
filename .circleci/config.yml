@@ -9,7 +9,7 @@ jobs:
       FASTLANE_LANE: test
     steps:
       - checkout
-      - run: bundle install
+      - run: bundle install --path vendor/bundle 
       - run:
           name: Fastlane
           command: bundle exec fastlane $FASTLANE_LANE
@@ -31,7 +31,7 @@ jobs:
           name: Fastlane
           command: bundle exec fastlane $FASTLANE_LANE
       - store_artifacts:
-          path: output
+          path: output/Decafit.ipa
 
 workflows:
   build-test-adhoc:
