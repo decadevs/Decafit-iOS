@@ -9,8 +9,8 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     macos:
       xcode: 12.5.1 
-    # environment:
-      # FL_OUTPUT_DIR: output
+    environment:
+      FL_OUTPUT_DIR: output
       
     steps:
       - checkout
