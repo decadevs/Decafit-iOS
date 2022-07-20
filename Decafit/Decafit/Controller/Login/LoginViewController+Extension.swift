@@ -12,11 +12,11 @@ extension LoginViewController {
     func setUpSubviews() {
 //        [topImageView, textViewStack, signInWithLabel, socialStack, redirectToSignupStack].forEach {view.addSubview($0)}
         
-        let parentStack = UIStackView(arrangedSubviews: [topImageView, textViewStack, signInWithLabel, socialStack, redirectToSignupStack])
+        let parentStack = UIStackView(arrangedSubviews: [topImageView, signInStack, textViewStack, lineStack, socialStack, redirectToSignupStack])
         parentStack.axis = .vertical
         parentStack.alignment = .center
         parentStack.distribution = .fill
-        parentStack.spacing = 30
+        parentStack.spacing = 20
         parentStack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(parentStack)
         
@@ -29,13 +29,15 @@ extension LoginViewController {
             parentStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             parentStack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-//            parentStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            parentStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-
+            emailTextField.heightAnchor.constraint(equalToConstant: 56),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 56),
+            loginButton.heightAnchor.constraint(equalToConstant: 64),
+            titleField.heightAnchor.constraint(equalToConstant: 45),
             
-//            parentStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-//            parentStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-//            parentStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            emailTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            passwordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            titleField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.80),
         ])
     }
     
