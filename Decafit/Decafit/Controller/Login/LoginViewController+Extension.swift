@@ -9,6 +9,14 @@ import Foundation
 import UIKit
 
 extension LoginViewController {
+    @objc func toggleSignup() {
+        let screen = SignupViewController()
+        screen.modalPresentationStyle = .fullScreen
+        present(screen, animated: true)
+    }
+}
+
+extension LoginViewController {
     func setUpSubviews() {
 //        [topImageView, textViewStack, signInWithLabel, socialStack, redirectToSignupStack].forEach {view.addSubview($0)}
         

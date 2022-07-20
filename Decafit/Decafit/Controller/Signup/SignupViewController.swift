@@ -186,15 +186,15 @@ class SignupViewController: UIViewController {
         return button
     }()
     
-    // MARK: - Sign In CTA Button Link
-    lazy var signInButton: UIButton = {
+    // MARK: - Sign in orange CTA Button
+    lazy var orangeSignInLink: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Sign in", for: .normal)
         button.titleLabel?.font = customFont(size: 16, font: .poppinsRegular)
         button.setTitleColor( CustomColor.decafitOrange.color , for: .normal)
         button.backgroundColor = .clear
-//        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+        button.addTarget(self, action: #selector(toggleLogin), for: .touchUpInside)
         return button
     }()
     
@@ -269,7 +269,7 @@ class SignupViewController: UIViewController {
         stackview.axis = .horizontal
         stackview.distribution = .fillProportionally
         stackview.addArrangedSubview(alreadyHaveAnAccountLabel)
-        stackview.addArrangedSubview(signInButton)
+        stackview.addArrangedSubview(orangeSignInLink)
        return stackview
     }()
     

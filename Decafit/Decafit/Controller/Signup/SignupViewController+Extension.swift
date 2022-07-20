@@ -8,6 +8,14 @@
 import UIKit
 
 extension SignupViewController {
+    @objc func toggleLogin() {
+        let screen = LoginViewController()
+        screen.modalPresentationStyle = .fullScreen
+        present(screen, animated: true)
+    }
+}
+
+extension SignupViewController {
     func setUpSubviews() {
         let scrollView = UIScrollView()
         view.addSubview(scrollView)
@@ -35,7 +43,7 @@ extension SignupViewController {
             emailTextField.heightAnchor.constraint(equalToConstant: 56),
             passwordTextField.heightAnchor.constraint(equalToConstant: 56),
             confirmPasswordTextField.heightAnchor.constraint(equalToConstant: 56),
-            signInButton.heightAnchor.constraint(equalToConstant: 64),
+            signUpButton.heightAnchor.constraint(equalToConstant: 64),
             titleField.heightAnchor.constraint(equalToConstant: 45),
             
             fullNameTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
@@ -43,7 +51,7 @@ extension SignupViewController {
             emailTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             passwordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             confirmPasswordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-            signInButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            signUpButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             titleField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.80),
             
             createPlanLabel.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 35),
