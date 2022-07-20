@@ -3,7 +3,6 @@
 //  Decafit
 //
 //  Created by Decagon on 20/07/2022.
-//
 
 import UIKit
 
@@ -21,7 +20,6 @@ class SignupViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "signup-img")
         imageView.contentMode = .scaleAspectFill
-        imageView.tintColor = .white
         imageView.addSubview(createPlanLabel)
         return imageView
     }()
@@ -31,7 +29,7 @@ class SignupViewController: UIViewController {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = .clear
-        textField.text = "Sign in"
+        textField.text = "Sign up"
         textField.font = customFont(size: 24, font: .poppinsMedium)
         textField.textAlignment = .left
         textField.tintColor = CustomColor.decafitBlack.color
@@ -155,7 +153,7 @@ class SignupViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.borderWidth = 1
         button.layer.borderColor = CustomColor.decafitGray.color.cgColor
-        button.contentEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        button.contentEdgeInsets = UIEdgeInsets(top: 14, left: 16, bottom: 14, right: 16)
         button.setImage(UIImage(named: "google-logo"), for: .normal)
         button.layer.cornerRadius = 3
 //        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
@@ -166,7 +164,7 @@ class SignupViewController: UIViewController {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "fb-img"), for: .normal)
-        button.contentEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        button.contentEdgeInsets = UIEdgeInsets(top: 14, left: 16, bottom: 14, right: 16)
         button.layer.borderWidth = 1
         button.layer.borderColor = CustomColor.decafitGray.color.cgColor
         button.layer.cornerRadius = 3
@@ -177,7 +175,7 @@ class SignupViewController: UIViewController {
     lazy var appleButton: UIButton = {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.contentEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        button.contentEdgeInsets = UIEdgeInsets(top: 14, left: 16, bottom: 14, right: 16)
         button.setImage(UIImage(named: "apple-img"), for: .normal)
         button.layer.borderWidth = 1
         button.layer.borderColor = CustomColor.decafitGray.color.cgColor
@@ -228,6 +226,14 @@ class SignupViewController: UIViewController {
     }()
     
     // MARK: - Stack Views
+    lazy var topViewStack: UIStackView = {
+       let stackview = UIStackView()
+        stackview.alignment = .fill
+        stackview.axis = .horizontal
+        stackview.addArrangedSubview(topImageView)
+       return stackview
+    }()
+    
     lazy var signInStack: UIStackView = {
        let stackview = UIStackView()
         stackview.alignment = .leading

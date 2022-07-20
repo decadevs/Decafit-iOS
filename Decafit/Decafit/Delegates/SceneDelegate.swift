@@ -16,8 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
              return
          }
         let initialViewController: UIViewController
-        let navigationViewController: UINavigationController = UINavigationController(rootViewController: LoginViewController())
-        navigationViewController.navigationBar.isHidden = true
+//        let navigationViewController: UINavigationController = UINavigationController(rootViewController: LoginViewController())
+//        navigationViewController.navigationBar.isHidden = true
 
         
         let authManager = AuthManager.shared
@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         case true:
             initialViewController = HomeViewController()
         case false:
-            initialViewController = navigationViewController
+            initialViewController = LoginViewController()
         }
 
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)

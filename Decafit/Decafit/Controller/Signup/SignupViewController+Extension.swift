@@ -11,42 +11,31 @@ extension SignupViewController {
     @objc func toggleLogin() {
         let screen = LoginViewController()
         screen.modalPresentationStyle = .fullScreen
-        navigationController?.pushViewController(screen, animated: true)
-//        navigationController?.present(screen, animated: true)
-//        present(screen, animated: true)
+        present(screen, animated: true)
     }
 }
 
 extension SignupViewController {
+    
     func setUpSubviews() {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-//        scrollView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.width*2)
-//        scrollView.contentSize = CGSize(width: scrollView.frame.width*2, height: scrollView.frame.width)
-        scrollView.isScrollEnabled = true
-        scrollView.showsVerticalScrollIndicator = true
-        view.addSubview(scrollView)
-//        [topImageView, signInStack, textViewStack, lineStack, socialStack, redirectToSigninStack].forEach {scrollView.addSubview($0)}
+        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height+50)
+        let scrollView = UIScrollView(frame: view.bounds)
         
-        let parentStack = UIStackView(arrangedSubviews: [topImageView, signInStack, textViewStack, lineStack, socialStack, redirectToSigninStack])
+        let parentStack = UIStackView(arrangedSubviews: [topViewStack, signInStack, textViewStack, lineStack, socialStack, redirectToSigninStack])
+        parentStack.frame.size = contentViewSize
         parentStack.axis = .vertical
         parentStack.alignment = .center
         parentStack.distribution = .fill
         parentStack.spacing = 20
-        parentStack.translatesAutoresizingMaskIntoConstraints = false
+
+        scrollView.contentSize = contentViewSize
+        scrollView.showsHorizontalScrollIndicator = true
+        view.addSubview(scrollView)
         scrollView.addSubview(parentStack)
         
         NSLayoutConstraint.activate([
-//            topImageView.heightAnchor.constraint(equalToConstant: 120),
-
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            parentStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            parentStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            parentStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            topImageView.heightAnchor.constraint(equalToConstant: 120),
+            topViewStack.bottomAnchor.constraint(equalTo: signInStack.topAnchor, constant: -130),
             
 //            [fullNameTextField, phoneNumberTextField, emailTextField, passwordTextField, confirmPasswordTextField, signInButton, titleField].forEach {$0.heightAnchor.constraint(equalToConstant: 56)}
             
@@ -64,11 +53,18 @@ extension SignupViewController {
             passwordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             confirmPasswordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             signUpButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-            titleField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.80),
+            titleField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             
-            createPlanLabel.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 35),
+//            googleButton.widthAnchor.constraint(equalToConstant: 56),
+//            facebookButton.widthAnchor.constraint(equalToConstant: 56),
+//            appleButton.widthAnchor.constraint(equalToConstant: 56),
+//            googleButton.heightAnchor.constraint(equalToConstant: 56),
+//            facebookButton.heightAnchor.constraint(equalToConstant: 56),
+//            appleButton.heightAnchor.constraint(equalToConstant: 56),
+            
+            createPlanLabel.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 30),
             createPlanLabel.trailingAnchor.constraint(equalTo: topImageView.trailingAnchor, constant: -40),
-            createPlanLabel.bottomAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: -50),
+            createPlanLabel.bottomAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: 60),
 
 
         ])

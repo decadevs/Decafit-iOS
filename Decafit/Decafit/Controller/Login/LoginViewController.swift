@@ -100,7 +100,7 @@ class LoginViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.borderWidth = 1
         button.layer.borderColor = CustomColor.decafitGray.color.cgColor
-        button.contentEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        button.contentEdgeInsets = UIEdgeInsets(top: 14, left: 16, bottom: 14, right: 16)
         button.setImage(UIImage(named: "google-logo"), for: .normal)
         button.layer.cornerRadius = 3
 //        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
@@ -111,7 +111,7 @@ class LoginViewController: UIViewController {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "fb-img"), for: .normal)
-        button.contentEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        button.contentEdgeInsets = UIEdgeInsets(top: 14, left: 16, bottom: 14, right: 16)
         button.layer.borderWidth = 1
         button.layer.borderColor = CustomColor.decafitGray.color.cgColor
         button.layer.cornerRadius = 3
@@ -122,7 +122,7 @@ class LoginViewController: UIViewController {
     lazy var appleButton: UIButton = {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.contentEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        button.contentEdgeInsets = UIEdgeInsets(top: 14, left: 16, bottom: 14, right: 16)
         button.setImage(UIImage(named: "apple-img"), for: .normal)
         button.layer.borderWidth = 1
         button.layer.borderColor = CustomColor.decafitGray.color.cgColor
@@ -198,7 +198,7 @@ class LoginViewController: UIViewController {
         stackview.alignment = .center
         stackview.axis = .horizontal
         stackview.distribution = .fillEqually
-        stackview.spacing = 35
+        stackview.spacing = 40
         stackview.addArrangedSubview(googleButton)
         stackview.addArrangedSubview(facebookButton)
         stackview.addArrangedSubview(appleButton)
