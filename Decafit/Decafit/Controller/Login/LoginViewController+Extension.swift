@@ -38,6 +38,12 @@ extension LoginViewController {
             passwordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             titleField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.80),
+            
+            trackFitnessLabel.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 35),
+            trackFitnessLabel.trailingAnchor.constraint(equalTo: topImageView.trailingAnchor, constant: -40),
+            trackFitnessLabel.bottomAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: -50),
+
+
         ])
     }
     
