@@ -11,8 +11,11 @@ import UIKit
 extension LoginViewController {
     @objc func toggleSignup() {
         let screen = SignupViewController()
+
         screen.modalPresentationStyle = .fullScreen
-        present(screen, animated: true)
+//        present(screen, animated: true)
+//        navigationController?.pushViewController(screen, animated: true)
+        navigationController?.present(screen, animated: true)
     }
 }
 

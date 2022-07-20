@@ -263,7 +263,7 @@ class SignupViewController: UIViewController {
        return stackview
     }()
     
-    lazy var redirectToSignupStack: UIStackView = {
+    lazy var redirectToSigninStack: UIStackView = {
        let stackview = UIStackView()
         stackview.alignment = .center
         stackview.axis = .horizontal

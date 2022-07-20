@@ -11,15 +11,24 @@ extension SignupViewController {
     @objc func toggleLogin() {
         let screen = LoginViewController()
         screen.modalPresentationStyle = .fullScreen
-        present(screen, animated: true)
+        navigationController?.pushViewController(screen, animated: true)
+//        navigationController?.present(screen, animated: true)
+//        present(screen, animated: true)
     }
 }
 
 extension SignupViewController {
     func setUpSubviews() {
         let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+//        scrollView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.width*2)
+//        scrollView.contentSize = CGSize(width: scrollView.frame.width*2, height: scrollView.frame.width)
+        scrollView.isScrollEnabled = true
+        scrollView.showsVerticalScrollIndicator = true
         view.addSubview(scrollView)
-        let parentStack = UIStackView(arrangedSubviews: [topImageView, signInStack, textViewStack, lineStack, socialStack, redirectToSignupStack])
+//        [topImageView, signInStack, textViewStack, lineStack, socialStack, redirectToSigninStack].forEach {scrollView.addSubview($0)}
+        
+        let parentStack = UIStackView(arrangedSubviews: [topImageView, signInStack, textViewStack, lineStack, socialStack, redirectToSigninStack])
         parentStack.axis = .vertical
         parentStack.alignment = .center
         parentStack.distribution = .fill
@@ -30,11 +39,14 @@ extension SignupViewController {
         NSLayoutConstraint.activate([
 //            topImageView.heightAnchor.constraint(equalToConstant: 120),
 
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
             parentStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             parentStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             parentStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-//            parentStack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
 //            [fullNameTextField, phoneNumberTextField, emailTextField, passwordTextField, confirmPasswordTextField, signInButton, titleField].forEach {$0.heightAnchor.constraint(equalToConstant: 56)}
             
