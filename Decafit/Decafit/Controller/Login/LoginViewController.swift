@@ -147,7 +147,7 @@ class LoginViewController: UIViewController {
     var trackFitnessLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Track \n your fitness"
+        label.set(text: "Track \n your fitness", withKerning: 1.3)
         label.font = customFont(size: 32, font: .poppinsMedium)
         label.textColor = .white
         label.numberOfLines = 2

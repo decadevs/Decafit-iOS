@@ -41,6 +41,7 @@
 		B40AFB242887BD3600249820 /* CustomUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB232887BD3600249820 /* CustomUIColor.swift */; };
 		B40AFB272888142100249820 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB262888142100249820 /* SignupViewController.swift */; };
 		B40AFB292888143C00249820 /* SignupViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB282888143C00249820 /* SignupViewController+Extension.swift */; };
+		B40AFB2B288861A300249820 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB2A288861A300249820 /* Extensions.swift */; };
 		B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B12287C147000EEC900 /* AppDelegate.swift */; };
 		B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B14287C147000EEC900 /* SceneDelegate.swift */; };
 		B47B5B17287C147000EEC900 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B16287C147000EEC900 /* HomeViewController.swift */; };
@@ -104,6 +105,7 @@
 		B40AFB232887BD3600249820 /* CustomUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIColor.swift; sourceTree = "<group>"; };
 		B40AFB262888142100249820 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		B40AFB282888143C00249820 /* SignupViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignupViewController+Extension.swift"; sourceTree = "<group>"; };
+		B40AFB2A288861A300249820 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B47B5B0F287C147000EEC900 /* Decafit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Decafit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B47B5B12287C147000EEC900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B47B5B14287C147000EEC900 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			children = (
 				B40AFB1F2887990000249820 /* CustomUIFont.swift */,
 				B40AFB232887BD3600249820 /* CustomUIColor.swift */,
+				B40AFB2A288861A300249820 /* Extensions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				B40AFB222887A2FA00249820 /* LoginViewController+Extension.swift in Sources */,
 				B40AFACA28878D0A00249820 /* CustonViews.swift in Sources */,
 				B47B5B17287C147000EEC900 /* HomeViewController.swift in Sources */,
+				B40AFB2B288861A300249820 /* Extensions.swift in Sources */,
 				B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */,
 				B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */,
 				B40AFB202887990000249820 /* CustomUIFont.swift in Sources */,

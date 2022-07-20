@@ -200,8 +200,8 @@ class SignupViewController: UIViewController {
     var createPlanLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Create a \nfitness/nutrition plan"
-        label.font = customFont(size: 32, font: .poppinsMedium)
+        label.set(text: "Create a \nfitness/nutrition plan", withKerning: 1.7)
+        label.font = customFont(size: 32, font: .poppinsMedium).bold()
         label.textColor = .white
         label.numberOfLines = 2
         return label
