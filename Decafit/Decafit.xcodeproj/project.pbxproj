@@ -7,6 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B40AFACA28878D0A00249820 /* CustonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFAC928878D0A00249820 /* CustonViews.swift */; };
+		B40AFAE02887974200249820 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFACD2887974200249820 /* Poppins-ExtraLight.ttf */; };
+		B40AFAE12887974200249820 /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFACE2887974200249820 /* Poppins-ThinItalic.ttf */; };
+		B40AFAE22887974200249820 /* Poppins-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFACF2887974200249820 /* Poppins-ExtraLightItalic.ttf */; };
+		B40AFAE32887974200249820 /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFAD02887974200249820 /* Poppins-BoldItalic.ttf */; };
+		B40AFAE42887974200249820 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFAD12887974200249820 /* Poppins-Light.ttf */; };
+		B40AFAE52887974200249820 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFAD22887974200249820 /* Poppins-Medium.ttf */; };
+		B40AFAE62887974200249820 /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFAD32887974200249820 /* Poppins-SemiBoldItalic.ttf */; };
+		B40AFAE72887974200249820 /* Poppins-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFAD42887974200249820 /* Poppins-ExtraBoldItalic.ttf */; };
+		B40AFAE82887974200249820 /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFAD52887974200249820 /* Poppins-ExtraBold.ttf */; };
+		B40AFAE92887974200249820 /* Poppins-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFAD62887974200249820 /* Poppins-BlackItalic.ttf */; };
+		B40AFAEA2887974200249820 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = B40AFAD72887974200249820 /* OFL.txt */; };
+		B40AFAEB2887974200249820 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFAD82887974200249820 /* Poppins-Regular.ttf */; };
+		B40AFAEC2887974200249820 /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFAD92887974200249820 /* Poppins-LightItalic.ttf */; };
+		B40AFAED2887974200249820 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFADA2887974200249820 /* Poppins-Bold.ttf */; };
+		B40AFAEE2887974200249820 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFADB2887974200249820 /* Poppins-Black.ttf */; };
+		B40AFAEF2887974200249820 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFADC2887974200249820 /* Poppins-Thin.ttf */; };
+		B40AFAF02887974200249820 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFADD2887974200249820 /* Poppins-SemiBold.ttf */; };
+		B40AFAF12887974200249820 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFADE2887974200249820 /* Poppins-Italic.ttf */; };
+		B40AFAF22887974200249820 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFADF2887974200249820 /* Poppins-MediumItalic.ttf */; };
+		B40AFB152887983C00249820 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFB0C2887983C00249820 /* Ubuntu-Medium.ttf */; };
+		B40AFB162887983C00249820 /* Ubuntu-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFB0D2887983C00249820 /* Ubuntu-LightItalic.ttf */; };
+		B40AFB172887983C00249820 /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFB0E2887983C00249820 /* Ubuntu-Regular.ttf */; };
+		B40AFB182887983C00249820 /* Ubuntu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFB0F2887983C00249820 /* Ubuntu-Bold.ttf */; };
+		B40AFB192887983C00249820 /* Ubuntu-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFB102887983C00249820 /* Ubuntu-MediumItalic.ttf */; };
+		B40AFB1A2887983C00249820 /* Ubuntu-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFB112887983C00249820 /* Ubuntu-BoldItalic.ttf */; };
+		B40AFB1B2887983C00249820 /* Ubuntu-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFB122887983C00249820 /* Ubuntu-Italic.ttf */; };
+		B40AFB1C2887983C00249820 /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFB132887983C00249820 /* Ubuntu-Light.ttf */; };
+		B40AFB1D2887983C00249820 /* UFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = B40AFB142887983C00249820 /* UFL.txt */; };
+		B40AFB202887990000249820 /* CustomUIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB1F2887990000249820 /* CustomUIFont.swift */; };
+		B40AFB222887A2FA00249820 /* LoginViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB212887A2FA00249820 /* LoginViewController+Extension.swift */; };
+		B40AFB242887BD3600249820 /* CustomUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB232887BD3600249820 /* CustomUIColor.swift */; };
 		B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B12287C147000EEC900 /* AppDelegate.swift */; };
 		B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B14287C147000EEC900 /* SceneDelegate.swift */; };
 		B47B5B17287C147000EEC900 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B16287C147000EEC900 /* ViewController.swift */; };
@@ -37,6 +69,38 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B40AFAC928878D0A00249820 /* CustonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustonViews.swift; sourceTree = "<group>"; };
+		B40AFACD2887974200249820 /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
+		B40AFACE2887974200249820 /* Poppins-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ThinItalic.ttf"; sourceTree = "<group>"; };
+		B40AFACF2887974200249820 /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		B40AFAD02887974200249820 /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
+		B40AFAD12887974200249820 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
+		B40AFAD22887974200249820 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		B40AFAD32887974200249820 /* Poppins-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		B40AFAD42887974200249820 /* Poppins-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		B40AFAD52887974200249820 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
+		B40AFAD62887974200249820 /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
+		B40AFAD72887974200249820 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		B40AFAD82887974200249820 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		B40AFAD92887974200249820 /* Poppins-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-LightItalic.ttf"; sourceTree = "<group>"; };
+		B40AFADA2887974200249820 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		B40AFADB2887974200249820 /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Black.ttf"; sourceTree = "<group>"; };
+		B40AFADC2887974200249820 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
+		B40AFADD2887974200249820 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		B40AFADE2887974200249820 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
+		B40AFADF2887974200249820 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
+		B40AFB0C2887983C00249820 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
+		B40AFB0D2887983C00249820 /* Ubuntu-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-LightItalic.ttf"; sourceTree = "<group>"; };
+		B40AFB0E2887983C00249820 /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
+		B40AFB0F2887983C00249820 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
+		B40AFB102887983C00249820 /* Ubuntu-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-MediumItalic.ttf"; sourceTree = "<group>"; };
+		B40AFB112887983C00249820 /* Ubuntu-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-BoldItalic.ttf"; sourceTree = "<group>"; };
+		B40AFB122887983C00249820 /* Ubuntu-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Italic.ttf"; sourceTree = "<group>"; };
+		B40AFB132887983C00249820 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Light.ttf"; sourceTree = "<group>"; };
+		B40AFB142887983C00249820 /* UFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UFL.txt; sourceTree = "<group>"; };
+		B40AFB1F2887990000249820 /* CustomUIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIFont.swift; sourceTree = "<group>"; };
+		B40AFB212887A2FA00249820 /* LoginViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Extension.swift"; sourceTree = "<group>"; };
+		B40AFB232887BD3600249820 /* CustomUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIColor.swift; sourceTree = "<group>"; };
 		B47B5B0F287C147000EEC900 /* Decafit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Decafit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B47B5B12287C147000EEC900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B47B5B14287C147000EEC900 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +144,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B40AFAC828878CD700249820 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B48A59092886D684004D1BEA /* LoginViewController.swift */,
+				B40AFB212887A2FA00249820 /* LoginViewController+Extension.swift */,
+				B40AFAC928878D0A00249820 /* CustonViews.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B40AFACB2887970700249820 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B40AFB0B2887983C00249820 /* Ubuntu */,
+				B40AFACC2887974200249820 /* Poppins */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B40AFACC2887974200249820 /* Poppins */ = {
+			isa = PBXGroup;
+			children = (
+				B40AFACD2887974200249820 /* Poppins-ExtraLight.ttf */,
+				B40AFACE2887974200249820 /* Poppins-ThinItalic.ttf */,
+				B40AFACF2887974200249820 /* Poppins-ExtraLightItalic.ttf */,
+				B40AFAD02887974200249820 /* Poppins-BoldItalic.ttf */,
+				B40AFAD12887974200249820 /* Poppins-Light.ttf */,
+				B40AFAD22887974200249820 /* Poppins-Medium.ttf */,
+				B40AFAD32887974200249820 /* Poppins-SemiBoldItalic.ttf */,
+				B40AFAD42887974200249820 /* Poppins-ExtraBoldItalic.ttf */,
+				B40AFAD52887974200249820 /* Poppins-ExtraBold.ttf */,
+				B40AFAD62887974200249820 /* Poppins-BlackItalic.ttf */,
+				B40AFAD72887974200249820 /* OFL.txt */,
+				B40AFAD82887974200249820 /* Poppins-Regular.ttf */,
+				B40AFAD92887974200249820 /* Poppins-LightItalic.ttf */,
+				B40AFADA2887974200249820 /* Poppins-Bold.ttf */,
+				B40AFADB2887974200249820 /* Poppins-Black.ttf */,
+				B40AFADC2887974200249820 /* Poppins-Thin.ttf */,
+				B40AFADD2887974200249820 /* Poppins-SemiBold.ttf */,
+				B40AFADE2887974200249820 /* Poppins-Italic.ttf */,
+				B40AFADF2887974200249820 /* Poppins-MediumItalic.ttf */,
+			);
+			path = Poppins;
+			sourceTree = "<group>";
+		};
+		B40AFB0B2887983C00249820 /* Ubuntu */ = {
+			isa = PBXGroup;
+			children = (
+				B40AFB0C2887983C00249820 /* Ubuntu-Medium.ttf */,
+				B40AFB0D2887983C00249820 /* Ubuntu-LightItalic.ttf */,
+				B40AFB0E2887983C00249820 /* Ubuntu-Regular.ttf */,
+				B40AFB0F2887983C00249820 /* Ubuntu-Bold.ttf */,
+				B40AFB102887983C00249820 /* Ubuntu-MediumItalic.ttf */,
+				B40AFB112887983C00249820 /* Ubuntu-BoldItalic.ttf */,
+				B40AFB122887983C00249820 /* Ubuntu-Italic.ttf */,
+				B40AFB132887983C00249820 /* Ubuntu-Light.ttf */,
+				B40AFB142887983C00249820 /* UFL.txt */,
+			);
+			path = Ubuntu;
+			sourceTree = "<group>";
+		};
+		B40AFB1E288798E200249820 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B40AFB1F2887990000249820 /* CustomUIFont.swift */,
+				B40AFB232887BD3600249820 /* CustomUIColor.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		B47B5B06287C147000EEC900 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +237,7 @@
 		B47B5B11287C147000EEC900 /* Decafit */ = {
 			isa = PBXGroup;
 			children = (
+				B40AFB1E288798E200249820 /* Common */,
 				B48A59042886D4AD004D1BEA /* Resources */,
 				B48A59032886D492004D1BEA /* Storyboards */,
 				B48A59022886D48A004D1BEA /* Delegates */,
@@ -142,9 +277,9 @@
 		B48A59012886D481004D1BEA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B40AFAC828878CD700249820 /* Login */,
 				B47B5B16287C147000EEC900 /* ViewController.swift */,
 				B48A59052886D523004D1BEA /* HomeViewController.swift */,
-				B48A59092886D684004D1BEA /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -169,6 +304,7 @@
 		B48A59042886D4AD004D1BEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B40AFACB2887970700249820 /* Fonts */,
 				B47B5B1B287C147300EEC900 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -277,7 +413,35 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B40AFB172887983C00249820 /* Ubuntu-Regular.ttf in Resources */,
+				B40AFAE42887974200249820 /* Poppins-Light.ttf in Resources */,
+				B40AFAEE2887974200249820 /* Poppins-Black.ttf in Resources */,
+				B40AFB1C2887983C00249820 /* Ubuntu-Light.ttf in Resources */,
+				B40AFB1B2887983C00249820 /* Ubuntu-Italic.ttf in Resources */,
+				B40AFAEC2887974200249820 /* Poppins-LightItalic.ttf in Resources */,
+				B40AFB1D2887983C00249820 /* UFL.txt in Resources */,
+				B40AFB192887983C00249820 /* Ubuntu-MediumItalic.ttf in Resources */,
+				B40AFAEF2887974200249820 /* Poppins-Thin.ttf in Resources */,
+				B40AFB162887983C00249820 /* Ubuntu-LightItalic.ttf in Resources */,
+				B40AFAE02887974200249820 /* Poppins-ExtraLight.ttf in Resources */,
+				B40AFAF02887974200249820 /* Poppins-SemiBold.ttf in Resources */,
+				B40AFAED2887974200249820 /* Poppins-Bold.ttf in Resources */,
+				B40AFAE12887974200249820 /* Poppins-ThinItalic.ttf in Resources */,
+				B40AFB182887983C00249820 /* Ubuntu-Bold.ttf in Resources */,
+				B40AFAE22887974200249820 /* Poppins-ExtraLightItalic.ttf in Resources */,
+				B40AFAE92887974200249820 /* Poppins-BlackItalic.ttf in Resources */,
+				B40AFB152887983C00249820 /* Ubuntu-Medium.ttf in Resources */,
+				B40AFAE72887974200249820 /* Poppins-ExtraBoldItalic.ttf in Resources */,
+				B40AFAE32887974200249820 /* Poppins-BoldItalic.ttf in Resources */,
+				B40AFAE62887974200249820 /* Poppins-SemiBoldItalic.ttf in Resources */,
+				B40AFAEA2887974200249820 /* OFL.txt in Resources */,
+				B40AFAEB2887974200249820 /* Poppins-Regular.ttf in Resources */,
+				B40AFB1A2887983C00249820 /* Ubuntu-BoldItalic.ttf in Resources */,
+				B40AFAE82887974200249820 /* Poppins-ExtraBold.ttf in Resources */,
+				B40AFAE52887974200249820 /* Poppins-Medium.ttf in Resources */,
 				B47B5B1F287C147300EEC900 /* LaunchScreen.storyboard in Resources */,
+				B40AFAF12887974200249820 /* Poppins-Italic.ttf in Resources */,
+				B40AFAF22887974200249820 /* Poppins-MediumItalic.ttf in Resources */,
 				B47B5B1C287C147300EEC900 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,10 +467,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B40AFB242887BD3600249820 /* CustomUIColor.swift in Sources */,
 				B48A590A2886D684004D1BEA /* LoginViewController.swift in Sources */,
+				B40AFB222887A2FA00249820 /* LoginViewController+Extension.swift in Sources */,
+				B40AFACA28878D0A00249820 /* CustonViews.swift in Sources */,
 				B47B5B17287C147000EEC900 /* ViewController.swift in Sources */,
 				B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */,
 				B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */,
+				B40AFB202887990000249820 /* CustomUIFont.swift in Sources */,
 				B48A59062886D523004D1BEA /* HomeViewController.swift in Sources */,
 				B48A59082886D583004D1BEA /* AuthManager.swift in Sources */,
 			);
