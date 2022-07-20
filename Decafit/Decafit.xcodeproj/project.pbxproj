@@ -39,14 +39,15 @@
 		B40AFB202887990000249820 /* CustomUIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB1F2887990000249820 /* CustomUIFont.swift */; };
 		B40AFB222887A2FA00249820 /* LoginViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB212887A2FA00249820 /* LoginViewController+Extension.swift */; };
 		B40AFB242887BD3600249820 /* CustomUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB232887BD3600249820 /* CustomUIColor.swift */; };
+		B40AFB272888142100249820 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB262888142100249820 /* SignupViewController.swift */; };
+		B40AFB292888143C00249820 /* SignupViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB282888143C00249820 /* SignupViewController+Extension.swift */; };
 		B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B12287C147000EEC900 /* AppDelegate.swift */; };
 		B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B14287C147000EEC900 /* SceneDelegate.swift */; };
-		B47B5B17287C147000EEC900 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B16287C147000EEC900 /* ViewController.swift */; };
+		B47B5B17287C147000EEC900 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B16287C147000EEC900 /* HomeViewController.swift */; };
 		B47B5B1C287C147300EEC900 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B47B5B1B287C147300EEC900 /* Assets.xcassets */; };
 		B47B5B1F287C147300EEC900 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B47B5B1D287C147300EEC900 /* LaunchScreen.storyboard */; };
 		B47B5B2A287C147300EEC900 /* DecafitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B29287C147300EEC900 /* DecafitTests.swift */; };
 		B47B5B35287C147300EEC900 /* DecafitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B34287C147300EEC900 /* DecafitUITests.swift */; };
-		B48A59062886D523004D1BEA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48A59052886D523004D1BEA /* HomeViewController.swift */; };
 		B48A59082886D583004D1BEA /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48A59072886D583004D1BEA /* AuthManager.swift */; };
 		B48A590A2886D684004D1BEA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48A59092886D684004D1BEA /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
@@ -101,10 +102,12 @@
 		B40AFB1F2887990000249820 /* CustomUIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIFont.swift; sourceTree = "<group>"; };
 		B40AFB212887A2FA00249820 /* LoginViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Extension.swift"; sourceTree = "<group>"; };
 		B40AFB232887BD3600249820 /* CustomUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIColor.swift; sourceTree = "<group>"; };
+		B40AFB262888142100249820 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		B40AFB282888143C00249820 /* SignupViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignupViewController+Extension.swift"; sourceTree = "<group>"; };
 		B47B5B0F287C147000EEC900 /* Decafit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Decafit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B47B5B12287C147000EEC900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B47B5B14287C147000EEC900 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B47B5B16287C147000EEC900 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B47B5B16287C147000EEC900 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B47B5B1B287C147300EEC900 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B47B5B1E287C147300EEC900 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B47B5B20287C147300EEC900 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -114,7 +117,6 @@
 		B47B5B30287C147300EEC900 /* DecafitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DecafitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B47B5B34287C147300EEC900 /* DecafitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecafitUITests.swift; sourceTree = "<group>"; };
 		B47B5B36287C147300EEC900 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B48A59052886D523004D1BEA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B48A59072886D583004D1BEA /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		B48A59092886D684004D1BEA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -214,6 +216,15 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		B40AFB25288813F500249820 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				B40AFB262888142100249820 /* SignupViewController.swift */,
+				B40AFB282888143C00249820 /* SignupViewController+Extension.swift */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
 		B47B5B06287C147000EEC900 = {
 			isa = PBXGroup;
 			children = (
@@ -277,9 +288,9 @@
 		B48A59012886D481004D1BEA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B40AFB25288813F500249820 /* Signup */,
 				B40AFAC828878CD700249820 /* Login */,
-				B47B5B16287C147000EEC900 /* ViewController.swift */,
-				B48A59052886D523004D1BEA /* HomeViewController.swift */,
+				B47B5B16287C147000EEC900 /* HomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -468,14 +479,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B40AFB242887BD3600249820 /* CustomUIColor.swift in Sources */,
+				B40AFB292888143C00249820 /* SignupViewController+Extension.swift in Sources */,
 				B48A590A2886D684004D1BEA /* LoginViewController.swift in Sources */,
+				B40AFB272888142100249820 /* SignupViewController.swift in Sources */,
 				B40AFB222887A2FA00249820 /* LoginViewController+Extension.swift in Sources */,
 				B40AFACA28878D0A00249820 /* CustonViews.swift in Sources */,
-				B47B5B17287C147000EEC900 /* ViewController.swift in Sources */,
+				B47B5B17287C147000EEC900 /* HomeViewController.swift in Sources */,
 				B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */,
 				B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */,
 				B40AFB202887990000249820 /* CustomUIFont.swift in Sources */,
-				B48A59062886D523004D1BEA /* HomeViewController.swift in Sources */,
 				B48A59082886D583004D1BEA /* AuthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

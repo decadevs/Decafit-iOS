@@ -1,8 +1,8 @@
 //
-//  HomeViewController.swift
+//  ViewController.swift
 //  Decafit
 //
-//  Created by Decagon on 19/07/2022.
+//  Created by Decagon on 11/07/2022.
 //
 
 import UIKit
@@ -13,6 +13,9 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Welcome to Decafit"
+
     }
 
+
 }
+
