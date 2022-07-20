@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white 
         title = "Sign in"
+        
         setUpSubviews()
     }
     
@@ -80,13 +81,14 @@ class LoginViewController: UIViewController {
     
     lazy var textViewStack: UIStackView = {
        let stackview = UIStackView()
-        stackview.alignment = .center
+        stackview.alignment = .leading
         stackview.axis = .vertical
         stackview.distribution = .equalSpacing
         stackview.spacing = 30
         stackview.addArrangedSubview(emailTextField)
         stackview.addArrangedSubview(passwordTextField)
         stackview.addArrangedSubview(loginButton)
+        stackview.backgroundColor = .green
        return stackview
     }()
     
@@ -94,8 +96,10 @@ class LoginViewController: UIViewController {
     lazy var googleButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("G", for: .normal)
-        button.setImage(UIImage(named: "google-img"), for: .normal)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = #colorLiteral(red: 0.7126122117, green: 0.74427706, blue: 0.7983196378, alpha: 1)
+        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        button.setImage(UIImage(named: "google-logo"), for: .normal)
 //        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return button
     }()
@@ -104,8 +108,10 @@ class LoginViewController: UIViewController {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "fb-img"), for: .normal)
-        button.isEnabled = false
-        button.backgroundColor = .blue
+        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = #colorLiteral(red: 0.7126122117, green: 0.74427706, blue: 0.7983196378, alpha: 1)
+//        button.isEnabled = true
 //        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return button
     }()
@@ -113,9 +119,10 @@ class LoginViewController: UIViewController {
     lazy var appleButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         button.setImage(UIImage(named: "apple-img"), for: .normal)
-        button.isEnabled = true
-        button.backgroundColor = .black
+        button.layer.borderWidth = 1
+        button.layer.borderColor = #colorLiteral(red: 0.7126122117, green: 0.74427706, blue: 0.7983196378, alpha: 1)
 //        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return button
     }()
@@ -168,25 +175,12 @@ class LoginViewController: UIViewController {
         stackview.alignment = .center
         stackview.axis = .horizontal
         stackview.distribution = .fillProportionally
-        stackview.spacing = 30
+        stackview.spacing = 10
         stackview.addArrangedSubview(dontHaveAnAccountLabel)
         stackview.addArrangedSubview(signUpButton)
        return stackview
     }()
     
-}
-
-extension LoginViewController {
-    func setUpSubviews() {
-        [topImageView, textViewStack, signInWithLabel, socialStack, redirectToSignupStack].forEach {view.addSubview($0)}
-    }
     
-}
-
-extension LoginViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        emailTextField.resignFirstResponder()
-        passwordTextField.resignFirstResponder()
-        return true
-    }
+    
 }

@@ -37,6 +37,7 @@
 		B40AFB1C2887983C00249820 /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFB132887983C00249820 /* Ubuntu-Light.ttf */; };
 		B40AFB1D2887983C00249820 /* UFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = B40AFB142887983C00249820 /* UFL.txt */; };
 		B40AFB202887990000249820 /* CustomUIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB1F2887990000249820 /* CustomUIFont.swift */; };
+		B40AFB222887A2FA00249820 /* LoginViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB212887A2FA00249820 /* LoginViewController+Extension.swift */; };
 		B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B12287C147000EEC900 /* AppDelegate.swift */; };
 		B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B14287C147000EEC900 /* SceneDelegate.swift */; };
 		B47B5B17287C147000EEC900 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B16287C147000EEC900 /* ViewController.swift */; };
@@ -97,6 +98,7 @@
 		B40AFB132887983C00249820 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Light.ttf"; sourceTree = "<group>"; };
 		B40AFB142887983C00249820 /* UFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UFL.txt; sourceTree = "<group>"; };
 		B40AFB1F2887990000249820 /* CustomUIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIFont.swift; sourceTree = "<group>"; };
+		B40AFB212887A2FA00249820 /* LoginViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Extension.swift"; sourceTree = "<group>"; };
 		B47B5B0F287C147000EEC900 /* Decafit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Decafit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B47B5B12287C147000EEC900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B47B5B14287C147000EEC900 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				B48A59092886D684004D1BEA /* LoginViewController.swift */,
+				B40AFB212887A2FA00249820 /* LoginViewController+Extension.swift */,
 				B40AFAC928878D0A00249820 /* CustonViews.swift */,
 			);
 			path = Login;
@@ -462,6 +465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B48A590A2886D684004D1BEA /* LoginViewController.swift in Sources */,
+				B40AFB222887A2FA00249820 /* LoginViewController+Extension.swift in Sources */,
 				B40AFACA28878D0A00249820 /* CustonViews.swift in Sources */,
 				B47B5B17287C147000EEC900 /* ViewController.swift in Sources */,
 				B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */,
