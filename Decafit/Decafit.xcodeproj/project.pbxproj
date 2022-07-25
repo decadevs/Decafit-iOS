@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B40AFACA28878D0A00249820 /* CustonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFAC928878D0A00249820 /* CustonViews.swift */; };
+		419A1309040F7FA7D834953B /* Pods_Decafit_DecafitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5A45F2515A01D1403BDB39F /* Pods_Decafit_DecafitUITests.framework */; };
+		840ABECD6FA397DC0E32DC90 /* Pods_DecafitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0834CB1C9C2E67D6107EFC02 /* Pods_DecafitTests.framework */; };
 		B40AFAE02887974200249820 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFACD2887974200249820 /* Poppins-ExtraLight.ttf */; };
 		B40AFAE12887974200249820 /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFACE2887974200249820 /* Poppins-ThinItalic.ttf */; };
 		B40AFAE22887974200249820 /* Poppins-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40AFACF2887974200249820 /* Poppins-ExtraLightItalic.ttf */; };
@@ -42,6 +43,9 @@
 		B40AFB272888142100249820 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB262888142100249820 /* SignupViewController.swift */; };
 		B40AFB292888143C00249820 /* SignupViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB282888143C00249820 /* SignupViewController+Extension.swift */; };
 		B40AFB2B288861A300249820 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB2A288861A300249820 /* Extensions.swift */; };
+		B40AFB322889AB1C00249820 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40AFB312889AB1C00249820 /* AudioToolbox.framework */; };
+		B40AFB38288ACE1D00249820 /* DecaTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB37288ACE1D00249820 /* DecaTextField.swift */; };
+		B40AFB3A288ACE3F00249820 /* DecaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB39288ACE3F00249820 /* DecaButton.swift */; };
 		B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B12287C147000EEC900 /* AppDelegate.swift */; };
 		B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B14287C147000EEC900 /* SceneDelegate.swift */; };
 		B47B5B17287C147000EEC900 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B16287C147000EEC900 /* HomeViewController.swift */; };
@@ -51,6 +55,10 @@
 		B47B5B35287C147300EEC900 /* DecafitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B34287C147300EEC900 /* DecafitUITests.swift */; };
 		B48A59082886D583004D1BEA /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48A59072886D583004D1BEA /* AuthManager.swift */; };
 		B48A590A2886D684004D1BEA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48A59092886D684004D1BEA /* LoginViewController.swift */; };
+		B4AB95B5288E932F00FE9C96 /* DecaStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95B4288E932F00FE9C96 /* DecaStack.swift */; };
+		B4AB95B7288E934E00FE9C96 /* DecaLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95B6288E934E00FE9C96 /* DecaLabel.swift */; };
+		B4AB95B9288EB0F600FE9C96 /* DecaImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95B8288EB0F600FE9C96 /* DecaImageView.swift */; };
+		E9EDA8C619805CC18DD608E6 /* Pods_Decafit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48853A80EF7AD9413CD9484E /* Pods_Decafit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +79,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B40AFAC928878D0A00249820 /* CustonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustonViews.swift; sourceTree = "<group>"; };
+		082D8533D4AEC9F1714D2BD8 /* Pods-Decafit-DecafitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Decafit-DecafitUITests.release.xcconfig"; path = "Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests.release.xcconfig"; sourceTree = "<group>"; };
+		0834CB1C9C2E67D6107EFC02 /* Pods_DecafitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DecafitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		383967186BA0F75FB298D45B /* Pods-Decafit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Decafit.release.xcconfig"; path = "Target Support Files/Pods-Decafit/Pods-Decafit.release.xcconfig"; sourceTree = "<group>"; };
+		3E725D2D26D9A221628F8E76 /* Pods-Decafit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Decafit.debug.xcconfig"; path = "Target Support Files/Pods-Decafit/Pods-Decafit.debug.xcconfig"; sourceTree = "<group>"; };
+		48853A80EF7AD9413CD9484E /* Pods_Decafit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Decafit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58EA5AC3021255C4F91480EA /* Pods-DecafitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecafitTests.debug.xcconfig"; path = "Target Support Files/Pods-DecafitTests/Pods-DecafitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B009CDFF4FF56B73D8484BAE /* Pods-DecafitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecafitTests.release.xcconfig"; path = "Target Support Files/Pods-DecafitTests/Pods-DecafitTests.release.xcconfig"; sourceTree = "<group>"; };
 		B40AFACD2887974200249820 /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
 		B40AFACE2887974200249820 /* Poppins-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ThinItalic.ttf"; sourceTree = "<group>"; };
 		B40AFACF2887974200249820 /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
@@ -106,6 +120,9 @@
 		B40AFB262888142100249820 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		B40AFB282888143C00249820 /* SignupViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignupViewController+Extension.swift"; sourceTree = "<group>"; };
 		B40AFB2A288861A300249820 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B40AFB312889AB1C00249820 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B40AFB37288ACE1D00249820 /* DecaTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaTextField.swift; sourceTree = "<group>"; };
+		B40AFB39288ACE3F00249820 /* DecaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaButton.swift; sourceTree = "<group>"; };
 		B47B5B0F287C147000EEC900 /* Decafit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Decafit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B47B5B12287C147000EEC900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B47B5B14287C147000EEC900 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +138,11 @@
 		B47B5B36287C147300EEC900 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B48A59072886D583004D1BEA /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		B48A59092886D684004D1BEA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B4AB95B4288E932F00FE9C96 /* DecaStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaStack.swift; sourceTree = "<group>"; };
+		B4AB95B6288E934E00FE9C96 /* DecaLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaLabel.swift; sourceTree = "<group>"; };
+		B4AB95B8288EB0F600FE9C96 /* DecaImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaImageView.swift; sourceTree = "<group>"; };
+		E09F5AB25E31C6DF910AF630 /* Pods-Decafit-DecafitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Decafit-DecafitUITests.debug.xcconfig"; path = "Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F5A45F2515A01D1403BDB39F /* Pods_Decafit_DecafitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Decafit_DecafitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +150,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B40AFB322889AB1C00249820 /* AudioToolbox.framework in Frameworks */,
+				E9EDA8C619805CC18DD608E6 /* Pods_Decafit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				840ABECD6FA397DC0E32DC90 /* Pods_DecafitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,18 +167,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				419A1309040F7FA7D834953B /* Pods_Decafit_DecafitUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		71DF92A12D10BA8E43157B2E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3E725D2D26D9A221628F8E76 /* Pods-Decafit.debug.xcconfig */,
+				383967186BA0F75FB298D45B /* Pods-Decafit.release.xcconfig */,
+				E09F5AB25E31C6DF910AF630 /* Pods-Decafit-DecafitUITests.debug.xcconfig */,
+				082D8533D4AEC9F1714D2BD8 /* Pods-Decafit-DecafitUITests.release.xcconfig */,
+				58EA5AC3021255C4F91480EA /* Pods-DecafitTests.debug.xcconfig */,
+				B009CDFF4FF56B73D8484BAE /* Pods-DecafitTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		B40AFAC828878CD700249820 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				B48A59092886D684004D1BEA /* LoginViewController.swift */,
 				B40AFB212887A2FA00249820 /* LoginViewController+Extension.swift */,
-				B40AFAC928878D0A00249820 /* CustonViews.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -228,6 +266,29 @@
 			path = Signup;
 			sourceTree = "<group>";
 		};
+		B40AFB302889AB1C00249820 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B40AFB312889AB1C00249820 /* AudioToolbox.framework */,
+				48853A80EF7AD9413CD9484E /* Pods_Decafit.framework */,
+				F5A45F2515A01D1403BDB39F /* Pods_Decafit_DecafitUITests.framework */,
+				0834CB1C9C2E67D6107EFC02 /* Pods_DecafitTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B40AFB36288ACB4F00249820 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				B40AFB37288ACE1D00249820 /* DecaTextField.swift */,
+				B40AFB39288ACE3F00249820 /* DecaButton.swift */,
+				B4AB95B4288E932F00FE9C96 /* DecaStack.swift */,
+				B4AB95B6288E934E00FE9C96 /* DecaLabel.swift */,
+				B4AB95B8288EB0F600FE9C96 /* DecaImageView.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
 		B47B5B06287C147000EEC900 = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +296,8 @@
 				B47B5B28287C147300EEC900 /* DecafitTests */,
 				B47B5B33287C147300EEC900 /* DecafitUITests */,
 				B47B5B10287C147000EEC900 /* Products */,
+				B40AFB302889AB1C00249820 /* Frameworks */,
+				71DF92A12D10BA8E43157B2E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -251,6 +314,7 @@
 		B47B5B11287C147000EEC900 /* Decafit */ = {
 			isa = PBXGroup;
 			children = (
+				B40AFB36288ACB4F00249820 /* CustomViews */,
 				B40AFB1E288798E200249820 /* Common */,
 				B48A59042886D4AD004D1BEA /* Resources */,
 				B48A59032886D492004D1BEA /* Storyboards */,
@@ -331,9 +395,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B47B5B39287C147300EEC900 /* Build configuration list for PBXNativeTarget "Decafit" */;
 			buildPhases = (
+				021FFC32A5965D03C74C850E /* [CP] Check Pods Manifest.lock */,
 				B47B5B0B287C147000EEC900 /* Sources */,
 				B47B5B0C287C147000EEC900 /* Frameworks */,
 				B47B5B0D287C147000EEC900 /* Resources */,
+				B40AFB35288AC77300249820 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -348,6 +414,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B47B5B3C287C147300EEC900 /* Build configuration list for PBXNativeTarget "DecafitTests" */;
 			buildPhases = (
+				6E0FA6C6983B449678D3987C /* [CP] Check Pods Manifest.lock */,
 				B47B5B21287C147300EEC900 /* Sources */,
 				B47B5B22287C147300EEC900 /* Frameworks */,
 				B47B5B23287C147300EEC900 /* Resources */,
@@ -366,6 +433,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B47B5B3F287C147300EEC900 /* Build configuration list for PBXNativeTarget "DecafitUITests" */;
 			buildPhases = (
+				B9FEB3C0B65013E93BE9E646 /* [CP] Check Pods Manifest.lock */,
 				B47B5B2C287C147300EEC900 /* Sources */,
 				B47B5B2D287C147300EEC900 /* Frameworks */,
 				B47B5B2E287C147300EEC900 /* Resources */,
@@ -476,19 +544,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		021FFC32A5965D03C74C850E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Decafit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6E0FA6C6983B449678D3987C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DecafitTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B40AFB35288AC77300249820 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		B9FEB3C0B65013E93BE9E646 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Decafit-DecafitUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B47B5B0B287C147000EEC900 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4AB95B5288E932F00FE9C96 /* DecaStack.swift in Sources */,
 				B40AFB242887BD3600249820 /* CustomUIColor.swift in Sources */,
 				B40AFB292888143C00249820 /* SignupViewController+Extension.swift in Sources */,
 				B48A590A2886D684004D1BEA /* LoginViewController.swift in Sources */,
 				B40AFB272888142100249820 /* SignupViewController.swift in Sources */,
 				B40AFB222887A2FA00249820 /* LoginViewController+Extension.swift in Sources */,
-				B40AFACA28878D0A00249820 /* CustonViews.swift in Sources */,
+				B4AB95B7288E934E00FE9C96 /* DecaLabel.swift in Sources */,
 				B47B5B17287C147000EEC900 /* HomeViewController.swift in Sources */,
 				B40AFB2B288861A300249820 /* Extensions.swift in Sources */,
+				B4AB95B9288EB0F600FE9C96 /* DecaImageView.swift in Sources */,
+				B40AFB3A288ACE3F00249820 /* DecaButton.swift in Sources */,
+				B40AFB38288ACE1D00249820 /* DecaTextField.swift in Sources */,
 				B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */,
 				B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */,
 				B40AFB202887990000249820 /* CustomUIFont.swift in Sources */,
@@ -657,11 +815,14 @@
 		};
 		B47B5B3A287C147300EEC900 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E725D2D26D9A221628F8E76 /* Pods-Decafit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Decafit/Decafit.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6MQ6RYJ3C2;
+				DEVELOPMENT_TEAM = K5US6PZPYZ;
 				INFOPLIST_FILE = Decafit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -669,6 +830,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ucwealth.Decafit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -676,11 +838,14 @@
 		};
 		B47B5B3B287C147300EEC900 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 383967186BA0F75FB298D45B /* Pods-Decafit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Decafit/Decafit.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6MQ6RYJ3C2;
+				DEVELOPMENT_TEAM = K5US6PZPYZ;
 				INFOPLIST_FILE = Decafit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -688,6 +853,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ucwealth.Decafit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -695,6 +861,7 @@
 		};
 		B47B5B3D287C147300EEC900 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58EA5AC3021255C4F91480EA /* Pods-DecafitTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -717,6 +884,7 @@
 		};
 		B47B5B3E287C147300EEC900 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B009CDFF4FF56B73D8484BAE /* Pods-DecafitTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -739,6 +907,7 @@
 		};
 		B47B5B40287C147300EEC900 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E09F5AB25E31C6DF910AF630 /* Pods-Decafit-DecafitUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -759,6 +928,7 @@
 		};
 		B47B5B41287C147300EEC900 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 082D8533D4AEC9F1714D2BD8 /* Pods-Decafit-DecafitUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

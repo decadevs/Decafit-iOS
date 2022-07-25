@@ -14,7 +14,7 @@ enum CustomFontFamily: String {
     case poppinsRegular = "Poppins-Regular"
 }
 
-func customFont(size: CGFloat, font: CustomFontFamily) -> UIFont {
+func decaFont(size: CGFloat, font: CustomFontFamily) -> UIFont {
     guard let customFont = UIFont(name: font.rawValue, size: size) else {
     return UIFont.systemFont(ofSize: size)
   }

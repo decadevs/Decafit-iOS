@@ -14,213 +14,188 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .white
         setUpSubviews()
     }
-    
     // MARK: - Image View
-    
-    lazy var topImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "fitness-img")
-        imageView.contentMode = .scaleAspectFill
-        imageView.largeContentTitle = "Track your fitness"
-        imageView.tintColor = .white
+    lazy var topImageView: DecaImageView = {
+        let imageView = DecaImageView(frame: .zero)
+        imageView.configure(with: DecaImageViewModel(
+                                image: "fitness-img", contentMode: .scaleAspectFill,
+                                tintColor: .white))
         imageView.addSubview(trackFitnessLabel)
         return imageView
     }()
-    
     // MARK: - Title field
-    lazy var titleField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = .clear
+    lazy var titleField: DecaTextField = {
+        let textField = DecaTextField()
+        textField.configure(with: DecaTextFieldViewModel(
+                                placeholder: nil, delegate: self,
+                                font: decaFont(size: 24, font: .poppinsMedium),
+                                backgroundColor: .clear,
+                                tintColor: DecaColor.decafitBlack.color, borderWidth: nil, cornerRadius: nil,
+                                borderColor: nil, isSecureEntry: false,
+                                isEnabled: false, tarmic: false, leftView: nil,
+                                rightView: nil, leftViewMode: nil,
+                                rightViewMode: nil))
         textField.text = "Sign in"
-        textField.font = customFont(size: 24, font: .poppinsMedium)
-        textField.textAlignment = .left
-        textField.tintColor = CustomColor.decafitBlack.color
-        textField.isEnabled = false
         return textField
     }()
-    
     // MARK: - EmailTextField
-    lazy var emailTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.autocapitalizationType = .none
-        textField.backgroundColor = .clear
-        textField.delegate = self
-        textField.placeholder = "Email address"
-        textField.font = customFont(size: 16, font: .poppinsRegular)
-        textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = 5
-        textField.layer.borderColor = CustomColor.decafitGray.color.cgColor
-        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
-        textField.leftViewMode = .always
-//        textField.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
+    lazy var emailTextField: DecaTextField = {
+        let textField = DecaTextField()
+        textField.configure(with: DecaTextFieldViewModel(
+                                placeholder: "  Email address", delegate: self,
+                                font: decaFont(size: 16, font: .poppinsRegular),
+                                backgroundColor: .clear,
+                                tintColor: DecaColor.decafitBlack.color, borderWidth: 1, cornerRadius: 5,
+                                borderColor: DecaColor.decafitGray.color.cgColor, isSecureEntry: false,
+                                isEnabled: true, tarmic: false,
+                                leftView: UIView(frame:
+                                                    CGRect(x: 0, y: 0, width: 10, height: textField.frame.height)),
+                                rightView: nil, leftViewMode: .always,
+                                rightViewMode: nil))
         return textField
     }()
-    
     // MARK: - PasswordTextField
-    lazy var passwordTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.autocapitalizationType = .none
-        textField.isSecureTextEntry = true
-        textField.backgroundColor = .clear
-        textField.delegate = self
-        textField.placeholder = "Password"
-        textField.font = customFont(size: 16, font: .poppinsRegular)
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = CustomColor.decafitGray.color.cgColor
-        textField.layer.cornerRadius = 5
-        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
-        textField.leftViewMode = .always
-        textField.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: textField.frame.height))
-        textField.rightViewMode = .always
-//        textField.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
+    lazy var passwordTextField: DecaTextField = {
+        let textField = DecaTextField()
+        textField.configure(with: DecaTextFieldViewModel(
+                                placeholder: "  Password", delegate: self,
+                                font: decaFont(size: 16, font: .poppinsRegular),
+                                backgroundColor: .clear,
+                                tintColor: nil, borderWidth: 1, cornerRadius: 5,
+                                borderColor: DecaColor.decafitGray.color.cgColor, isSecureEntry: true,
+                                isEnabled: true, tarmic: false,
+                                leftView: UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height)),
+                                rightView: UIView(frame: CGRect(x: 0, y: 0, width: 50,
+                                                                height: textField.frame.height)), leftViewMode: .always,
+                                rightViewMode: .always))
         return textField
     }()
-    
     // MARK: - LoginButton
-    lazy var loginButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Sign In", for: .normal)
-        button.titleLabel?.font = customFont(size: 24, font: .ubuntuMedium)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.isEnabled = false
-        button.backgroundColor = CustomColor.decafitPurple.color
-        button.layer.cornerRadius = 5
-//        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+    lazy var loginButton: DecaButton = {
+        let button = DecaButton()
+        button.configure(with: DecaButtonViewModel(
+                            title: "Sign In",
+                            font: decaFont(size: 24, font: .ubuntuMedium),
+                            backgroundColor: DecaColor.decafitPurple.color,
+                            titleColor: .white, image: nil, borderWidth: nil,
+                            cornerRadius: 5, borderColor: nil,
+                            contentEdgeInsets: nil, isEnabled: true, tarmic: false))
+        button.addTarget(self, action: #selector(AuthManager.shared.handleUserLogin), for: .touchUpInside)
         return button
     }()
-    
     // MARK: - Social Login Buttons
-    lazy var googleButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.borderWidth = 1
-        button.layer.borderColor = CustomColor.decafitGray.color.cgColor
-        button.contentEdgeInsets = UIEdgeInsets(top: 14, left: 16, bottom: 14, right: 16)
-        button.setImage(UIImage(named: "google-logo"), for: .normal)
-        button.layer.cornerRadius = 3
-//        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+    lazy var googleButton: DecaButton = {
+        let button = DecaButton()
+        button.configure(with: DecaButtonViewModel(
+                            title: nil, font: nil, backgroundColor: nil,
+                            titleColor: nil, image: UIImage(named: "google-logo"),
+                            borderWidth: 1, cornerRadius: 3,
+                            borderColor: DecaColor.decafitGray.color.cgColor,
+                            contentEdgeInsets: UIEdgeInsets(
+                                top: 14, left: 16, bottom: 14, right: 16),
+                            isEnabled: true, tarmic: false))
+        button.addTarget(self, action: #selector(AuthManager.shared.handleGoogleLogin), for: .touchUpInside)
         return button
     }()
-    
-    lazy var facebookButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "fb-img"), for: .normal)
-        button.contentEdgeInsets = UIEdgeInsets(top: 14, left: 16, bottom: 14, right: 16)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = CustomColor.decafitGray.color.cgColor
-        button.layer.cornerRadius = 3
-//        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+    lazy var facebookButton: DecaButton = {
+        let button = DecaButton()
+        button.configure(with: DecaButtonViewModel(
+                            title: nil, font: nil, backgroundColor: nil,
+                            titleColor: nil, image: UIImage(named: "fb-img"),
+                            borderWidth: 1, cornerRadius: 3,
+                            borderColor: DecaColor.decafitGray.color.cgColor,
+                            contentEdgeInsets: UIEdgeInsets(
+                                top: 14, left: 16, bottom: 14, right: 16),
+                            isEnabled: true, tarmic: false))
+        button.addTarget(self, action: #selector(AuthManager.shared.handleFBLogin), for: .touchUpInside)
         return button
     }()
-    
-    lazy var appleButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.contentEdgeInsets = UIEdgeInsets(top: 14, left: 16, bottom: 14, right: 16)
-        button.setImage(UIImage(named: "apple-img"), for: .normal)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = CustomColor.decafitGray.color.cgColor
-        button.layer.cornerRadius = 3
-//        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+    lazy var appleButton: DecaButton = {
+        let button = DecaButton()
+        button.configure(with: DecaButtonViewModel(
+                            title: nil, font: nil, backgroundColor: nil,
+                            titleColor: nil, image: UIImage(named: "apple-img"),
+                            borderWidth: 1, cornerRadius: 3,
+                            borderColor: DecaColor.decafitGray.color.cgColor,
+                            contentEdgeInsets: UIEdgeInsets(
+                                top: 14, left: 16, bottom: 14, right: 16),
+                            isEnabled: true, tarmic: false))
+        button.addTarget(self, action: #selector(AuthManager.shared.handleAppleLogin), for: .touchUpInside)
         return button
     }()
-    
     // MARK: - Sign Up orange CTA Button
-    lazy var orangeSignUpLink: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Sign up", for: .normal)
-        button.titleLabel?.font = customFont(size: 16, font: .poppinsRegular)
-        button.setTitleColor( CustomColor.decafitOrange.color , for: .normal)
-        button.backgroundColor = .clear
+    lazy var orangeSignUpLink: DecaButton = {
+        let button = DecaButton()
+        button.configure(with: DecaButtonViewModel(
+                            title: "Sign up", font: decaFont(size: 16, font: .poppinsRegular),
+                            backgroundColor: .clear,
+                            titleColor: DecaColor.decafitOrange.color,
+                            image: nil,
+                            borderWidth: nil, cornerRadius: nil,
+                            borderColor: DecaColor.decafitGray.color.cgColor,
+                            contentEdgeInsets: nil,
+                            isEnabled: true, tarmic: false))
         button.addTarget(self, action: #selector(toggleSignup), for: .touchUpInside)
         return button
     }()
-    
     // MARK: - LABELS
-    var trackFitnessLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.set(text: "Track \n your fitness", withKerning: 1.3)
-        label.font = customFont(size: 32, font: .poppinsMedium)
-        label.textColor = .white
-        label.numberOfLines = 2
+    lazy var trackFitnessLabel: DecaLabel = {
+        let label = DecaLabel()
+        label.configure(with: DecaLabelViewModel(
+                            font: decaFont(size: 32, font: .poppinsMedium), textColor: .white,
+                            numberOfLines: 2, text: "Track \n your fitness", kerning: 1.3))
         return label
     }()
-    
-    var signInWithLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "  Or sign in with  "
-        label.font = customFont(size: 13, font: .poppinsMedium)
-        label.textColor = CustomColor.decafitGray.color
+    lazy var signInWithLabel: DecaLabel = {
+        let label = DecaLabel()
+        label.configure(with: DecaLabelViewModel(
+                            font: decaFont(size: 13, font: .poppinsMedium),
+                            textColor: DecaColor.decafitGray.color, numberOfLines: 1,
+                            text: "  Or sign in with  ", kerning: nil))
         return label
     }()
-    
-    var dontHaveAnAccountLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Don't have an account? "
-        label.font = customFont(size: 16, font: .poppinsMedium)
-        label.textColor = CustomColor.decafitBlack.color
+    lazy var dontHaveAnAccountLabel: DecaLabel = {
+        let label = DecaLabel()
+        label.configure(with: DecaLabelViewModel(
+                            font: decaFont(size: 16, font: .poppinsMedium),
+                            textColor: DecaColor.decafitBlack.color, numberOfLines: 1,
+                            text: "Don't have an account? ", kerning: nil))
         return label
     }()
-    
     // MARK: - Stack Views
-    lazy var signInStack: UIStackView = {
-       let stackview = UIStackView()
-        stackview.alignment = .leading
-        stackview.axis = .horizontal
-        stackview.addArrangedSubview(titleField)
+    lazy var signInStack: DecaStack = {
+       let stackview = DecaStack(arrangedSubviews: [titleField])
+        stackview.configure(with: DecaStackViewModel(
+                                axis: .horizontal, alignment: .leading,
+                                spacing: nil, distribution: nil))
        return stackview
     }()
-    
-    lazy var textViewStack: UIStackView = {
-       let stackview = UIStackView()
-        stackview.alignment = .leading
-        stackview.axis = .vertical
-        stackview.distribution = .equalSpacing
-        stackview.spacing = 20
-        stackview.addArrangedSubview(emailTextField)
-        stackview.addArrangedSubview(passwordTextField)
-        stackview.addArrangedSubview(loginButton)
+    lazy var textViewStack: DecaStack = {
+       let stackview = DecaStack(arrangedSubviews: [emailTextField, passwordTextField, loginButton])
+        stackview.configure(with: DecaStackViewModel(
+                                axis: .vertical, alignment: .leading,
+                                spacing: 20, distribution: .equalSpacing))
        return stackview
     }()
-    
-    lazy var socialStack: UIStackView = {
-       let stackview = UIStackView()
-        stackview.alignment = .center
-        stackview.axis = .horizontal
-        stackview.distribution = .fillEqually
-        stackview.spacing = 40
-        stackview.addArrangedSubview(googleButton)
-        stackview.addArrangedSubview(facebookButton)
-        stackview.addArrangedSubview(appleButton)
+    lazy var socialStack: DecaStack = {
+        let stackview = DecaStack(arrangedSubviews: [googleButton, facebookButton, appleButton])
+        stackview.configure(with: DecaStackViewModel(
+                                axis: .horizontal, alignment: .center,
+                                spacing: 40, distribution: .fillEqually))
        return stackview
     }()
-    
-    lazy var redirectToSignupStack: UIStackView = {
-       let stackview = UIStackView()
-        stackview.alignment = .center
-        stackview.axis = .horizontal
-        stackview.distribution = .fillProportionally
-        stackview.addArrangedSubview(dontHaveAnAccountLabel)
-        stackview.addArrangedSubview(orangeSignUpLink)
+    lazy var redirectToSignupStack: DecaStack = {
+        let stackview = DecaStack(arrangedSubviews: [dontHaveAnAccountLabel, orangeSignUpLink])
+        stackview.configure(with: DecaStackViewModel(
+                                axis: .horizontal, alignment: .center,
+                                spacing: nil, distribution: .fillProportionally))
        return stackview
     }()
-    
-    lazy var lineStack: UIStackView = {
-       let stackview = UIStackView()
-        stackview.alignment = .center
-        stackview.axis = .horizontal
-        stackview.distribution = .fillEqually
-        stackview.spacing = 20
+    lazy var lineStack: DecaStack = {
+        let stackview = DecaStack()
+        stackview.configure(with: DecaStackViewModel(
+                                axis: .horizontal, alignment: .center,
+                                spacing: 20, distribution: .fillEqually))
         let line = UIProgressView()
         line.heightAnchor.constraint(equalToConstant: 1.2).isActive = true
         let line2 = UIProgressView()
@@ -230,5 +205,4 @@ class LoginViewController: UIViewController {
         stackview.addArrangedSubview(line2)
        return stackview
     }()
-    
 }

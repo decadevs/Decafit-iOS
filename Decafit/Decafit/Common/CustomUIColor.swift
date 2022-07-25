@@ -6,12 +6,11 @@
 //
 
 import UIKit
-enum CustomColor {
+enum DecaColor {
     case decafitGray
     case decafitBlack
     case decafitOrange
     case decafitPurple
-    
     var color: UIColor {
         switch self {
         case .decafitGray:
@@ -22,7 +21,6 @@ enum CustomColor {
             return #colorLiteral(red: 0.9505439401, green: 0.394153595, blue: 0.1895760596, alpha: 1)
         case .decafitPurple:
             return #colorLiteral(red: 0.4031648636, green: 0.3810556829, blue: 0.658888042, alpha: 1)
-        
         }
     }
 }
