@@ -8,12 +8,16 @@
 import UIKit
 
 extension SignupViewController {
-    @objc func toggleSignup() {
+    @objc func toggleToLogin() {
         let screen = LoginViewController()
         screen.modalPresentationStyle = .fullScreen
         present(screen, animated: true)
     }
-    func displayAlertMessage(_ message: String) {
+    func displayAlert(_ message: String) {
+        let alertMessage = UIAlertController(title: "Error!", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertMessage.addAction(okAction)
+        present(alertMessage, animated: true, completion: nil)
     }
     @objc func handleUserRegistration() {
         let fullName = fullNameTextField.text ?? ""
@@ -21,15 +25,63 @@ extension SignupViewController {
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         let confirmPassword = confirmPasswordTextField.text ?? ""
-        // Check for empty fields
         if fullName.isEmpty || phoneNumber.isEmpty || email.isEmpty || password.isEmpty || confirmPassword.isEmpty {
-            displayAlertMessage("All fields are required!")
+            displayAlert("All fields are required!")
             return
         }
         if password != confirmPassword {
-            displayAlertMessage("Passwords do not match!")
+            displayAlert("Passwords do not match!")
             return
         }
+        // Start activity indicator
+        let signupActivityIndicator = UIActivityIndicatorView(style: .medium)
+        signupActivityIndicator.center = view.center
+        signupActivityIndicator.hidesWhenStopped = false
+        signupActivityIndicator.startAnimating()
+        view.addSubview(signupActivityIndicator)
+        // send http request
+        guard let url = URL(string: "") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "content-type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        let postString = ["fullName": fullName, "phoneNumber": phoneNumber,
+                          "email": email, "password": password] as [String: String]
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: postString, options: .prettyPrinted)
+        } catch let error {
+            print(error.localizedDescription)
+            displayAlert("Something went wrong! try again.")
+            return
+        }
+        let task = URLSession.shared.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+            removeActivityIndicator(activityIndicator: signupActivityIndicator)
+            if error != nil {
+                self.displayAlert("Could not successfully register user. Please try again later.")
+                print("Error=\(String(describing: error))")
+                return
+            }
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+                if let parseJSON = json {
+                    let userId = parseJSON["id"] as? String
+                    let accessToken = parseJSON["token"] as? String
+                    if(((userId?.isEmpty) != nil) || ((accessToken?.isEmpty) != nil)) {
+                        self.displayAlert("Could not successfully register user. Please try again later.")
+                        print("Error=\(String(describing: error))")
+                        return
+                    } else {
+                        self.displayAlert("Successfully registered user. Check your email for the verification link.")
+                        self.present(LoginViewController(), animated: true, completion: nil)
+                    }
+                } else {
+                    self.displayAlert("Could not successfully register user. Please try again later.")
+                }
+            } catch {
+                self.displayAlert("Could not successfully register user. Please try again later.")
+            }
+        }
+        task.resume()
     }
 }
 

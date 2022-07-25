@@ -40,7 +40,7 @@ class SignupViewController: UIViewController {
     lazy var fullNameTextField: DecaTextField = {
         let textField = DecaTextField()
         textField.configure(with: DecaTextFieldViewModel(
-                                placeholder: "  Full name", delegate: self,
+                                placeholder: "Full name", delegate: self,
                                 font: decaFont(size: 16, font: .poppinsRegular),
                                 backgroundColor: .clear,
                                 tintColor: DecaColor.decafitBlack.color, borderWidth: 1, cornerRadius: 5,
@@ -56,7 +56,7 @@ class SignupViewController: UIViewController {
     lazy var phoneNumberTextField: DecaTextField = {
         let textField = DecaTextField()
         textField.configure(with: DecaTextFieldViewModel(
-                                placeholder: "  Phone number", delegate: self,
+                                placeholder: "Phone number", delegate: self,
                                 font: decaFont(size: 16, font: .poppinsRegular),
                                 backgroundColor: .clear,
                                 tintColor: DecaColor.decafitBlack.color, borderWidth: 1, cornerRadius: 5,
@@ -72,7 +72,7 @@ class SignupViewController: UIViewController {
     lazy var emailTextField: DecaTextField = {
         let textField = DecaTextField()
         textField.configure(with: DecaTextFieldViewModel(
-                                placeholder: "  Email address", delegate: self,
+                                placeholder: "Email address", delegate: self,
                                 font: decaFont(size: 16, font: .poppinsRegular),
                                 backgroundColor: .clear,
                                 tintColor: DecaColor.decafitBlack.color, borderWidth: 1, cornerRadius: 5,
@@ -88,7 +88,7 @@ class SignupViewController: UIViewController {
     lazy var passwordTextField: DecaTextField = {
         let textField = DecaTextField()
         textField.configure(with: DecaTextFieldViewModel(
-                                placeholder: "  Password", delegate: self,
+                                placeholder: "Password", delegate: self,
                                 font: decaFont(size: 16, font: .poppinsRegular),
                                 backgroundColor: .clear,
                                 tintColor: nil, borderWidth: 1, cornerRadius: 5,
@@ -104,7 +104,7 @@ class SignupViewController: UIViewController {
     lazy var confirmPasswordTextField: DecaTextField = {
         let textField = DecaTextField()
         textField.configure(with: DecaTextFieldViewModel(
-                                placeholder: "  Confirm password", delegate: self,
+                                placeholder: "Confirm password", delegate: self,
                                 font: decaFont(size: 16, font: .poppinsRegular),
                                 backgroundColor: .clear,
                                 tintColor: nil, borderWidth: 1, cornerRadius: 5,
@@ -126,7 +126,7 @@ class SignupViewController: UIViewController {
                             titleColor: .white, image: nil, borderWidth: nil,
                             cornerRadius: 5, borderColor: nil,
                             contentEdgeInsets: nil, isEnabled: true, tarmic: false))
-        button.addTarget(self, action: #selector(AuthManager.shared.signUp), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleUserRegistration), for: .touchUpInside)
         return button
     }()
     // MARK: - Social Login Buttons
@@ -181,7 +181,7 @@ class SignupViewController: UIViewController {
                             borderColor: nil,
                             contentEdgeInsets: nil,
                             isEnabled: true, tarmic: false))
-        button.addTarget(self, action: #selector(toggleSignup), for: .touchUpInside)
+        button.addTarget(self, action: #selector(toggleToLogin), for: .touchUpInside)
         return button
     }()
     // MARK: - LABELS

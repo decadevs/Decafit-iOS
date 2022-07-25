@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
     lazy var emailTextField: DecaTextField = {
         let textField = DecaTextField()
         textField.configure(with: DecaTextFieldViewModel(
-                                placeholder: "  Email address", delegate: self,
+                                placeholder: "Email address", delegate: self,
                                 font: decaFont(size: 16, font: .poppinsRegular),
                                 backgroundColor: .clear,
                                 tintColor: DecaColor.decafitBlack.color, borderWidth: 1, cornerRadius: 5,
@@ -58,7 +58,7 @@ class LoginViewController: UIViewController {
     lazy var passwordTextField: DecaTextField = {
         let textField = DecaTextField()
         textField.configure(with: DecaTextFieldViewModel(
-                                placeholder: "  Password", delegate: self,
+                                placeholder: "Password", delegate: self,
                                 font: decaFont(size: 16, font: .poppinsRegular),
                                 backgroundColor: .clear,
                                 tintColor: nil, borderWidth: 1, cornerRadius: 5,
@@ -80,7 +80,7 @@ class LoginViewController: UIViewController {
                             titleColor: .white, image: nil, borderWidth: nil,
                             cornerRadius: 5, borderColor: nil,
                             contentEdgeInsets: nil, isEnabled: true, tarmic: false))
-        button.addTarget(self, action: #selector(AuthManager.shared.handleUserLogin), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return button
     }()
     // MARK: - Social Login Buttons
@@ -135,7 +135,7 @@ class LoginViewController: UIViewController {
                             borderColor: DecaColor.decafitGray.color.cgColor,
                             contentEdgeInsets: nil,
                             isEnabled: true, tarmic: false))
-        button.addTarget(self, action: #selector(toggleSignup), for: .touchUpInside)
+        button.addTarget(self, action: #selector(toggleToSignup), for: .touchUpInside)
         return button
     }()
     // MARK: - LABELS

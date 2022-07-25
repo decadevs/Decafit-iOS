@@ -20,11 +20,20 @@ struct DecaTextFieldViewModel {
 }
 
 final class DecaTextField: UITextField {
+    let paddingLeft: CGFloat = 10
+    var paddingRight: CGFloat = 0
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     required init?(coder: NSCoder) {
         fatalError()
+    }
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(x: bounds.origin.x + paddingLeft, y: bounds.origin.y,
+                      width: bounds.size.width - paddingLeft - paddingRight, height: bounds.size.height)
+    }
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return textRect(forBounds: bounds)
     }
     func configure(with viewModel: DecaTextFieldViewModel) {
         delegate = viewModel.delegate

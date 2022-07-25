@@ -58,6 +58,7 @@
 		B4AB95B5288E932F00FE9C96 /* DecaStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95B4288E932F00FE9C96 /* DecaStack.swift */; };
 		B4AB95B7288E934E00FE9C96 /* DecaLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95B6288E934E00FE9C96 /* DecaLabel.swift */; };
 		B4AB95B9288EB0F600FE9C96 /* DecaImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95B8288EB0F600FE9C96 /* DecaImageView.swift */; };
+		B4AB95BB288ED41800FE9C96 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95BA288ED41800FE9C96 /* ActivityIndicator.swift */; };
 		E9EDA8C619805CC18DD608E6 /* Pods_Decafit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48853A80EF7AD9413CD9484E /* Pods_Decafit.framework */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +142,7 @@
 		B4AB95B4288E932F00FE9C96 /* DecaStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaStack.swift; sourceTree = "<group>"; };
 		B4AB95B6288E934E00FE9C96 /* DecaLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaLabel.swift; sourceTree = "<group>"; };
 		B4AB95B8288EB0F600FE9C96 /* DecaImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaImageView.swift; sourceTree = "<group>"; };
+		B4AB95BA288ED41800FE9C96 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		E09F5AB25E31C6DF910AF630 /* Pods-Decafit-DecafitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Decafit-DecafitUITests.debug.xcconfig"; path = "Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F5A45F2515A01D1403BDB39F /* Pods_Decafit_DecafitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Decafit_DecafitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -253,6 +255,7 @@
 				B40AFB1F2887990000249820 /* CustomUIFont.swift */,
 				B40AFB232887BD3600249820 /* CustomUIColor.swift */,
 				B40AFB2A288861A300249820 /* Extensions.swift */,
+				B4AB95BA288ED41800FE9C96 /* ActivityIndicator.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */,
 				B40AFB202887990000249820 /* CustomUIFont.swift in Sources */,
 				B48A59082886D583004D1BEA /* AuthManager.swift in Sources */,
+				B4AB95BB288ED41800FE9C96 /* ActivityIndicator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
