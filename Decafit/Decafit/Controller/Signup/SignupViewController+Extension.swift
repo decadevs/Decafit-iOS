@@ -6,31 +6,36 @@
 //
 
 import UIKit
-
+extension SignupViewController: AuthManagerDelegate {
+    func didShowAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok!", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+}
 extension SignupViewController {
     @objc func toggleToLogin() {
         let screen = LoginViewController()
         screen.modalPresentationStyle = .fullScreen
         present(screen, animated: true)
     }
-    func displayAlert(_ message: String) {
-        let alertMessage = UIAlertController(title: "Error!", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alertMessage.addAction(okAction)
-        present(alertMessage, animated: true, completion: nil)
-    }
-    @objc func handleUserRegistration() {
-        let fullName = fullNameTextField.text ?? ""
-        let phoneNumber = phoneNumberTextField.text ?? ""
-        let email = emailTextField.text ?? ""
-        let password = passwordTextField.text ?? ""
-        let confirmPassword = confirmPasswordTextField.text ?? ""
-        if fullName.isEmpty || phoneNumber.isEmpty || email.isEmpty || password.isEmpty || confirmPassword.isEmpty {
-            displayAlert("All fields are required!")
+//    func displayAlert(alertTitle: String, alertMessage: String) {
+//        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "Ok!", style: .default, handler: nil))
+//        present(alert, animated: true, completion: nil)
+//    }
+    @objc func handleSignup() {
+        guard let fullName = fullNameTextField.text,
+              let phoneNumber = phoneNumberTextField.text,
+              let email = emailTextField.text,
+              let password = passwordTextField.text,
+              let confirmPassword = confirmPasswordTextField.text
+        else {
+            didShowAlert(title: "Error!", message: "All fields are required!")
             return
         }
         if password != confirmPassword {
-            displayAlert("Passwords do not match!")
+            didShowAlert(title: "Error!", message: "Passwords do not match!")
             return
         }
         // Start activity indicator
@@ -39,52 +44,27 @@ extension SignupViewController {
         signupActivityIndicator.hidesWhenStopped = false
         signupActivityIndicator.startAnimating()
         view.addSubview(signupActivityIndicator)
-        // send http request
-        guard let url = URL(string: "") else { return }
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "content-type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        let postString = ["fullName": fullName, "phoneNumber": phoneNumber,
-                          "email": email, "password": password] as [String: String]
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: postString, options: .prettyPrinted)
-        } catch let error {
-            print(error.localizedDescription)
-            displayAlert("Something went wrong! try again.")
-            return
-        }
-        let task = URLSession.shared.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+        AuthManager.shared.register(email: email, password: password,
+                                    fullName: fullName, phoneNumber: phoneNumber) { [weak self] _ in
             removeActivityIndicator(activityIndicator: signupActivityIndicator)
-            if error != nil {
-                self.displayAlert("Could not successfully register user. Please try again later.")
-                print("Error=\(String(describing: error))")
-                return
+            DispatchQueue.main.async {
+                let nextView = LoginViewController()
+                nextView.modalPresentationStyle = .fullScreen
+                self?.present(nextView, animated: true)
             }
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
-                if let parseJSON = json {
-                    let userId = parseJSON["id"] as? String
-                    let accessToken = parseJSON["token"] as? String
-                    if(((userId?.isEmpty) != nil) || ((accessToken?.isEmpty) != nil)) {
-                        self.displayAlert("Could not successfully register user. Please try again later.")
-                        print("Error=\(String(describing: error))")
-                        return
-                    } else {
-                        self.displayAlert("Successfully registered user. Check your email for the verification link.")
-                        self.present(LoginViewController(), animated: true, completion: nil)
-                    }
-                } else {
-                    self.displayAlert("Could not successfully register user. Please try again later.")
-                }
-            } catch {
-                self.displayAlert("Could not successfully register user. Please try again later.")
-            }
+//            switch result {
+//            case success:
+//                DispatchQueue.main.async {
+//                    let nextView = LoginViewController()
+//                    nextView.modalPresentationStyle = .fullScreen
+//                    self?.present(nextView, animated: true)
+//                }
+//            case failure:
+//                print("There was an error signin in...")
+//            }
         }
-        task.resume()
     }
 }
-
 extension SignupViewController {
     func setUpSubviews() {
         let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height+50)

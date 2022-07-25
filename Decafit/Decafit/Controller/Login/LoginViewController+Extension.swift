@@ -14,27 +14,13 @@ extension LoginViewController {
         screen.modalPresentationStyle = .fullScreen
         present(screen, animated: true)
     }
-    
     @objc func handleLogin() {
         guard let email = emailTextField.text,
               let password = passwordTextField.text
         else { return}
-//
-//        AuthManager.shared.signIn(email: email, password: password) { [weak self] success in
-//            switch success {
-//            case true:
-//                DispatchQueue.main.async {
-//                    let nextView = TabBarController()
-//                    nextView.modalPresentationStyle = .fullScreen
-//                    self?.present(nextView, animated: true)
-//                }
-//            case false:
-//                print("There was an error signin in...")
-//            }
-//        }
+        print(email, password)
     }
 }
-
 extension LoginViewController {
     func setUpSubviews() {
         let parentStack: DecaStack = {

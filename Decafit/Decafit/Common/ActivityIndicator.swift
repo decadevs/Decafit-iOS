@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 func removeActivityIndicator(activityIndicator: UIActivityIndicatorView) {
     DispatchQueue.main.async {
         activityIndicator.stopAnimating()

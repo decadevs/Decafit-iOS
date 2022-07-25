@@ -126,7 +126,7 @@ class SignupViewController: UIViewController {
                             titleColor: .white, image: nil, borderWidth: nil,
                             cornerRadius: 5, borderColor: nil,
                             contentEdgeInsets: nil, isEnabled: true, tarmic: false))
-        button.addTarget(self, action: #selector(handleUserRegistration), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleSignup), for: .touchUpInside)
         return button
     }()
     // MARK: - Social Login Buttons
