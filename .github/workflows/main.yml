@@ -20,7 +20,7 @@ jobs:
     - name: CocoaPod Install
       run: pod install
     - name: Build
-      run: xcodebuild -workspace Decafit/Decafit.xcworkspace -scheme Decafit -configuration Release -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12'
+      run: xcodebuild clean build -workspace Decafit/Decafit.xcworkspace -scheme Decafit -configuration Release -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12'
     - name: Test
-      run: xcodebuild -workspace Decafit/Decafit.xcworkspace -scheme Decafit -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12' test
+      run: xcodebuild clean test -workspace Decafit/Decafit.xcworkspace -scheme DecafitTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12' test
          
