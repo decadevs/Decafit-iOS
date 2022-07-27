@@ -58,6 +58,11 @@
 		B4AB95B5288E932F00FE9C96 /* DecaStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95B4288E932F00FE9C96 /* DecaStack.swift */; };
 		B4AB95B7288E934E00FE9C96 /* DecaLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95B6288E934E00FE9C96 /* DecaLabel.swift */; };
 		B4AB95B9288EB0F600FE9C96 /* DecaImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95B8288EB0F600FE9C96 /* DecaImageView.swift */; };
+		B4AB95C12891A70C00FE9C96 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95C02891A70C00FE9C96 /* TabBarController.swift */; };
+		B4AB95C32891A85600FE9C96 /* WindowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95C22891A85600FE9C96 /* WindowsViewController.swift */; };
+		B4AB95C52891A87100FE9C96 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95C42891A87100FE9C96 /* CalenderViewController.swift */; };
+		B4AB95C72891A88300FE9C96 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95C62891A88300FE9C96 /* SearchViewController.swift */; };
+		B4AB95CA2891A92F00FE9C96 /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95C92891A92F00FE9C96 /* LogsViewController.swift */; };
 		E9EDA8C619805CC18DD608E6 /* Pods_Decafit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48853A80EF7AD9413CD9484E /* Pods_Decafit.framework */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +146,11 @@
 		B4AB95B4288E932F00FE9C96 /* DecaStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaStack.swift; sourceTree = "<group>"; };
 		B4AB95B6288E934E00FE9C96 /* DecaLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaLabel.swift; sourceTree = "<group>"; };
 		B4AB95B8288EB0F600FE9C96 /* DecaImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaImageView.swift; sourceTree = "<group>"; };
+		B4AB95C02891A70C00FE9C96 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		B4AB95C22891A85600FE9C96 /* WindowsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsViewController.swift; sourceTree = "<group>"; };
+		B4AB95C42891A87100FE9C96 /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
+		B4AB95C62891A88300FE9C96 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		B4AB95C92891A92F00FE9C96 /* LogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsViewController.swift; sourceTree = "<group>"; };
 		E09F5AB25E31C6DF910AF630 /* Pods-Decafit-DecafitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Decafit-DecafitUITests.debug.xcconfig"; path = "Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F5A45F2515A01D1403BDB39F /* Pods_Decafit_DecafitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Decafit_DecafitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -355,9 +365,9 @@
 		B48A59012886D481004D1BEA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B4AB95C82891A8C400FE9C96 /* Dashboard */,
 				B40AFB25288813F500249820 /* Signup */,
 				B40AFAC828878CD700249820 /* Login */,
-				B47B5B16287C147000EEC900 /* HomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -386,6 +396,19 @@
 				B47B5B1B287C147300EEC900 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		B4AB95C82891A8C400FE9C96 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				B47B5B16287C147000EEC900 /* HomeViewController.swift */,
+				B4AB95C02891A70C00FE9C96 /* TabBarController.swift */,
+				B4AB95C22891A85600FE9C96 /* WindowsViewController.swift */,
+				B4AB95C42891A87100FE9C96 /* CalenderViewController.swift */,
+				B4AB95C62891A88300FE9C96 /* SearchViewController.swift */,
+				B4AB95C92891A92F00FE9C96 /* LogsViewController.swift */,
+			);
+			path = Dashboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -636,14 +659,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4AB95B5288E932F00FE9C96 /* DecaStack.swift in Sources */,
+				B4AB95C52891A87100FE9C96 /* CalenderViewController.swift in Sources */,
 				B40AFB242887BD3600249820 /* CustomUIColor.swift in Sources */,
 				B40AFB292888143C00249820 /* SignupViewController+Extension.swift in Sources */,
 				B48A590A2886D684004D1BEA /* LoginViewController.swift in Sources */,
 				B40AFB272888142100249820 /* SignupViewController.swift in Sources */,
 				B40AFB222887A2FA00249820 /* LoginViewController+Extension.swift in Sources */,
+				B4AB95C12891A70C00FE9C96 /* TabBarController.swift in Sources */,
 				B4AB95B7288E934E00FE9C96 /* DecaLabel.swift in Sources */,
 				B47B5B17287C147000EEC900 /* HomeViewController.swift in Sources */,
+				B4AB95C72891A88300FE9C96 /* SearchViewController.swift in Sources */,
+				B4AB95CA2891A92F00FE9C96 /* LogsViewController.swift in Sources */,
 				B40AFB2B288861A300249820 /* Extensions.swift in Sources */,
+				B4AB95C32891A85600FE9C96 /* WindowsViewController.swift in Sources */,
 				B4AB95B9288EB0F600FE9C96 /* DecaImageView.swift in Sources */,
 				B40AFB3A288ACE3F00249820 /* DecaButton.swift in Sources */,
 				B40AFB38288ACE1D00249820 /* DecaTextField.swift in Sources */,
