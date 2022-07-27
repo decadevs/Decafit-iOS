@@ -16,25 +16,20 @@ class SignupViewController: UIViewController {
     lazy var topImageView: DecaImageView = {
         let imageView = DecaImageView(frame: .zero)
         imageView.configure(with: DecaImageViewModel(
-                                image: "signup-img", contentMode: .scaleAspectFill,
+                                image: "signup-img", contentMode: .scaleAspectFit,
                                 tintColor: .white))
         imageView.addSubview(createPlanLabel)
         return imageView
     }()
     // MARK: - Title field
-    lazy var titleField: DecaTextField = {
-        let textField = DecaTextField()
-        textField.configure(with: DecaTextFieldViewModel(
-                                placeholder: nil, delegate: self,
-                                font: decaFont(size: 24, font: .poppinsMedium),
-                                backgroundColor: .clear,
-                                tintColor: DecaColor.decafitBlack.color, borderWidth: nil, cornerRadius: nil,
-                                borderColor: nil, isSecureEntry: false,
-                                isEnabled: false, tarmic: false, leftView: nil,
-                                rightView: nil, leftViewMode: nil,
-                                rightViewMode: nil))
-        textField.text = "Sign up"
-        return textField
+    var titleLabel: DecaLabel = {
+        let label = DecaLabel()
+        label.configure(with: DecaLabelViewModel(
+                            font: decaFont(size: 29, font: .poppinsMedium),
+                            textColor: DecaColor.decafitBlack.color,
+                            numberOfLines: 1, text: "Sign up", kerning: 0.5))
+        label.textAlignment = .left
+        return label
     }()
     // MARK: - FullnameTextField
     lazy var fullNameTextField: DecaTextField = {
@@ -138,7 +133,7 @@ class SignupViewController: UIViewController {
                             borderWidth: 1, cornerRadius: 3,
                             borderColor: DecaColor.decafitGray.color.cgColor,
                             contentEdgeInsets: UIEdgeInsets(
-                                top: 14, left: 16, bottom: 14, right: 16),
+                                top: 10, left: 12, bottom: 10, right: 12),
                             isEnabled: true, tarmic: false))
         button.addTarget(self, action: #selector(AuthManager.shared.handleGoogleLogin), for: .touchUpInside)
         return button
@@ -151,7 +146,7 @@ class SignupViewController: UIViewController {
                             borderWidth: 1, cornerRadius: 3,
                             borderColor: DecaColor.decafitGray.color.cgColor,
                             contentEdgeInsets: UIEdgeInsets(
-                                top: 14, left: 16, bottom: 14, right: 16),
+                                top: 10, left: 12, bottom: 10, right: 12),
                             isEnabled: true, tarmic: false))
         button.addTarget(self, action: #selector(AuthManager.shared.handleFBLogin), for: .touchUpInside)
         return button
@@ -164,7 +159,7 @@ class SignupViewController: UIViewController {
                             borderWidth: 1, cornerRadius: 3,
                             borderColor: DecaColor.decafitGray.color.cgColor,
                             contentEdgeInsets: UIEdgeInsets(
-                                top: 14, left: 16, bottom: 14, right: 16),
+                                top: 10, left: 12, bottom: 10, right: 12),
                             isEnabled: true, tarmic: false))
         button.addTarget(self, action: #selector(AuthManager.shared.handleAppleLogin), for: .touchUpInside)
         return button
@@ -209,26 +204,12 @@ class SignupViewController: UIViewController {
         return label
     }()
     // MARK: - Stack Views
-    lazy var topViewStack: DecaStack = {
-       let stackview = DecaStack(arrangedSubviews: [topImageView])
-        stackview.configure(with: DecaStackViewModel(
-                                axis: .horizontal, alignment: .fill,
-                                spacing: nil, distribution: nil))
-       return stackview
-    }()
-    lazy var signInStack: DecaStack = {
-       let stackview = DecaStack(arrangedSubviews: [titleField])
-        stackview.configure(with: DecaStackViewModel(
-                                axis: .horizontal, alignment: .leading,
-                                spacing: nil, distribution: nil))
-       return stackview
-    }()
     lazy var textViewStack: DecaStack = {
-       let stackview = DecaStack(arrangedSubviews: [fullNameTextField, phoneNumberTextField, emailTextField,
+       let stackview = DecaStack(arrangedSubviews: [titleLabel, fullNameTextField, phoneNumberTextField, emailTextField,
                                                     passwordTextField, confirmPasswordTextField, signUpButton])
         stackview.configure(with: DecaStackViewModel(
-                                axis: .vertical, alignment: .leading,
-                                spacing: 20, distribution: .equalSpacing))
+                                axis: .vertical, alignment: .leading ,
+                                spacing: 0.1, distribution: .equalSpacing ))
        return stackview
     }()
     lazy var socialStack: DecaStack = {
@@ -249,7 +230,7 @@ class SignupViewController: UIViewController {
         let stackview = DecaStack()
         stackview.configure(with: DecaStackViewModel(
                                 axis: .horizontal, alignment: .center,
-                                spacing: 20, distribution: .fillEqually))
+                                spacing: 15, distribution: .fillEqually))
         let line = UIProgressView()
         line.heightAnchor.constraint(equalToConstant: 1.2).isActive = true
         let line2 = UIProgressView()

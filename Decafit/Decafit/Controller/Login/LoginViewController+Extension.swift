@@ -18,33 +18,30 @@ extension LoginViewController {
 
 extension LoginViewController {
     func setUpSubviews() {
+        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height-30)
         let parentStack: DecaStack = {
-            let stackView = DecaStack(arrangedSubviews: [topImageView, signInStack,
+            let stackView = DecaStack(arrangedSubviews: [topImageView,
                                                          textViewStack, lineStack,
                                                          socialStack, redirectToSignupStack])
             stackView.configure(with: DecaStackViewModel(
                                     axis: .vertical, alignment: .center,
-                                    spacing: 20, distribution: .fill))
-            stackView.translatesAutoresizingMaskIntoConstraints = false
+                                    spacing: 15, distribution: .fill))
+            stackView.frame.size = contentViewSize
             return stackView
         }()
         view.addSubview(parentStack)
         NSLayoutConstraint.activate([
-            parentStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            parentStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            parentStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            parentStack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            topImageView.widthAnchor.constraint(equalTo: parentStack.widthAnchor),
+            topImageView.topAnchor.constraint(equalTo: parentStack.topAnchor, constant: -20),
             emailTextField.heightAnchor.constraint(equalToConstant: 56),
             passwordTextField.heightAnchor.constraint(equalToConstant: 56),
             loginButton.heightAnchor.constraint(equalToConstant: 64),
-            titleField.heightAnchor.constraint(equalToConstant: 45),
             emailTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             passwordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-            titleField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.80),
-            trackFitnessLabel.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 35),
+            trackFitnessLabel.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 30),
             trackFitnessLabel.trailingAnchor.constraint(equalTo: topImageView.trailingAnchor, constant: -40),
-            trackFitnessLabel.bottomAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: -50)
+            trackFitnessLabel.bottomAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: -35)
         ])
     }
 }

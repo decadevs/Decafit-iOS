@@ -18,25 +18,21 @@ class LoginViewController: UIViewController {
     lazy var topImageView: DecaImageView = {
         let imageView = DecaImageView(frame: .zero)
         imageView.configure(with: DecaImageViewModel(
-                                image: "fitness-img", contentMode: .scaleAspectFill,
+                                image: "fitness-img", contentMode: .scaleAspectFit,
                                 tintColor: .white))
         imageView.addSubview(trackFitnessLabel)
+        imageView.backgroundColor = .red 
         return imageView
     }()
     // MARK: - Title field
-    lazy var titleField: DecaTextField = {
-        let textField = DecaTextField()
-        textField.configure(with: DecaTextFieldViewModel(
-                                placeholder: nil, delegate: self,
-                                font: decaFont(size: 24, font: .poppinsMedium),
-                                backgroundColor: .clear,
-                                tintColor: DecaColor.decafitBlack.color, borderWidth: nil, cornerRadius: nil,
-                                borderColor: nil, isSecureEntry: false,
-                                isEnabled: false, tarmic: false, leftView: nil,
-                                rightView: nil, leftViewMode: nil,
-                                rightViewMode: nil))
-        textField.text = "Sign in"
-        return textField
+    var titleLabel: DecaLabel = {
+        let label = DecaLabel()
+        label.configure(with: DecaLabelViewModel(
+                            font: decaFont(size: 29, font: .poppinsMedium),
+                            textColor: DecaColor.decafitBlack.color,
+                            numberOfLines: 1, text: "Sign in", kerning: 0.5))
+        label.textAlignment = .left
+        return label
     }()
     // MARK: - EmailTextField
     lazy var emailTextField: DecaTextField = {
@@ -142,16 +138,16 @@ class LoginViewController: UIViewController {
     lazy var trackFitnessLabel: DecaLabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
-                            font: decaFont(size: 32, font: .poppinsMedium), textColor: .white,
+                            font: decaFont(size: 38, font: .poppinsMedium), textColor: .white,
                             numberOfLines: 2, text: "Track \n your fitness", kerning: 1.3))
         return label
     }()
     lazy var signInWithLabel: DecaLabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
-                            font: decaFont(size: 13, font: .poppinsMedium),
+                            font: decaFont(size: 15, font: .poppinsMedium),
                             textColor: DecaColor.decafitGray.color, numberOfLines: 1,
-                            text: "  Or sign in with  ", kerning: nil))
+                            text: " Or sign in with ", kerning: nil))
         return label
     }()
     lazy var dontHaveAnAccountLabel: DecaLabel = {
@@ -163,18 +159,11 @@ class LoginViewController: UIViewController {
         return label
     }()
     // MARK: - Stack Views
-    lazy var signInStack: DecaStack = {
-       let stackview = DecaStack(arrangedSubviews: [titleField])
-        stackview.configure(with: DecaStackViewModel(
-                                axis: .horizontal, alignment: .leading,
-                                spacing: nil, distribution: nil))
-       return stackview
-    }()
     lazy var textViewStack: DecaStack = {
-       let stackview = DecaStack(arrangedSubviews: [emailTextField, passwordTextField, loginButton])
+       let stackview = DecaStack(arrangedSubviews: [titleLabel, emailTextField, passwordTextField, loginButton])
         stackview.configure(with: DecaStackViewModel(
                                 axis: .vertical, alignment: .leading,
-                                spacing: 20, distribution: .equalSpacing))
+                                spacing: 15, distribution: .equalSpacing))
        return stackview
     }()
     lazy var socialStack: DecaStack = {
@@ -195,7 +184,7 @@ class LoginViewController: UIViewController {
         let stackview = DecaStack()
         stackview.configure(with: DecaStackViewModel(
                                 axis: .horizontal, alignment: .center,
-                                spacing: 20, distribution: .fillEqually))
+                                spacing: 15, distribution: .fillEqually))
         let line = UIProgressView()
         line.heightAnchor.constraint(equalToConstant: 1.2).isActive = true
         let line2 = UIProgressView()

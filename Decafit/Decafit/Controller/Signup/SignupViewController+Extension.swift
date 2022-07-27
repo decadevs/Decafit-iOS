@@ -35,42 +35,39 @@ extension SignupViewController {
 
 extension SignupViewController {
     func setUpSubviews() {
-        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height+50)
+        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height-25)
         let parentStack: DecaStack = {
             let stackView = DecaStack(arrangedSubviews:
-                                        [topViewStack, signInStack, textViewStack,
+                                        [topImageView, textViewStack,
                                          lineStack, socialStack, redirectToSigninStack])
             stackView.configure(with: DecaStackViewModel(
                                     axis: .vertical, alignment: .center,
-                                    spacing: 20, distribution: .fill))
+                                    spacing: 10, distribution: .fill))
             stackView.frame.size = contentViewSize
             return stackView
         }()
+        view.addSubview(parentStack)
         let scrollView = UIScrollView(frame: view.bounds)
         scrollView.contentSize = contentViewSize
         scrollView.showsHorizontalScrollIndicator = true
-        view.addSubview(scrollView)
-        scrollView.addSubview(parentStack)
         NSLayoutConstraint.activate([
-            topImageView.heightAnchor.constraint(equalToConstant: 120),
-            topViewStack.bottomAnchor.constraint(equalTo: signInStack.topAnchor, constant: -130),
-            fullNameTextField.heightAnchor.constraint(equalToConstant: 56),
-            phoneNumberTextField.heightAnchor.constraint(equalToConstant: 56),
-            emailTextField.heightAnchor.constraint(equalToConstant: 56),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 56),
-            confirmPasswordTextField.heightAnchor.constraint(equalToConstant: 56),
-            signUpButton.heightAnchor.constraint(equalToConstant: 64),
-            titleField.heightAnchor.constraint(equalToConstant: 45),
+            topImageView.widthAnchor.constraint(equalTo: parentStack.widthAnchor),
+            topImageView.topAnchor.constraint(equalTo: parentStack.topAnchor, constant: -20),
+            fullNameTextField.heightAnchor.constraint(equalToConstant: 53),
+            phoneNumberTextField.heightAnchor.constraint(equalToConstant: 53),
+            emailTextField.heightAnchor.constraint(equalToConstant: 53),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 53),
+            confirmPasswordTextField.heightAnchor.constraint(equalToConstant: 53),
+            signUpButton.heightAnchor.constraint(equalToConstant: 58),
             fullNameTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             phoneNumberTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             emailTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             passwordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             confirmPasswordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             signUpButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-            titleField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             createPlanLabel.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 30),
             createPlanLabel.trailingAnchor.constraint(equalTo: topImageView.trailingAnchor, constant: -40),
-            createPlanLabel.bottomAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: 60)
+            createPlanLabel.bottomAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: -30)
         ])
     }
 }
