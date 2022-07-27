@@ -21,7 +21,6 @@ class LoginViewController: UIViewController {
                                 image: "fitness-img", contentMode: .scaleAspectFit,
                                 tintColor: .white))
         imageView.addSubview(trackFitnessLabel)
-        imageView.backgroundColor = .red 
         return imageView
     }()
     // MARK: - Title field

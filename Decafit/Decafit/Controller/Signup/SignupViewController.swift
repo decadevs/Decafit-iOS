@@ -183,8 +183,8 @@ class SignupViewController: UIViewController {
     lazy var createPlanLabel: DecaLabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
-                            font: decaFont(size: 32, font: .poppinsMedium).bold(), textColor: .white,
-                            numberOfLines: 2, text: "Create a \nfitness/nutrition plan", kerning: 1.7))
+                            font: decaFont(size: 28, font: .poppinsMedium).bold(), textColor: .white,
+                            numberOfLines: 2, text: "Create a \nfitness/nutrition plan", kerning: 1.4))
         return label
     }()
     lazy var signInWithLabel: DecaLabel = {
