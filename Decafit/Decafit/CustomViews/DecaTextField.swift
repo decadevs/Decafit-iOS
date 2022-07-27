@@ -42,3 +42,19 @@ final class DecaTextField: UITextField {
         rightView = viewModel.rightView
     }
 }
+func createTextField(text: String, font: UIFont) -> UITextField {
+    let textField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.autocapitalizationType = .none
+        textField.backgroundColor = .clear
+        textField.text = text
+        textField.font = font
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = DecaColor.decafitGray.color.cgColor
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: textField.frame.height))
+        textField.leftViewMode = .always
+        return textField
+    }()
+    return textField
+}
