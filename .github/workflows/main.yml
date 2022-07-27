@@ -1,26 +1,26 @@
 # main.yml
 name: CI-Test
 
-on: [push]
-
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 jobs:
-  test:
-    name: Test
+  buildAndTest:
     runs-on: macos-latest
-    strategy:
-        matrix:
-          destination: ['platform=iOS Simulator,OS=15.2,name=iPhone 11 Pro Max']
     steps:
-      - name: Checkout
-        uses: actions/checkout@master
-      - name: Build
-        run: |
-          xcodebuild clean build -project Decafit/Decafit.xcodeproj -scheme Decafit -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
-        env: 
-         destination: ${{ matrix.destination }}
-      - name: Test
-        run: |
-         xcodebuild clean test -project Decafit/Decafit.xcodeproj -scheme DecafitTests -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
-        env: 
-         destination: ${{ matrix.destination }}
+    - uses: actions/checkout@master
+    - uses: actions/cache@master
+      with:
+        path: Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-pods-
+    - name: CocoaPod Install
+      run: pod install
+    - name: Build
+      run: xcodebuild clean build -workspace Decafit/Decafit.xcworkspace -scheme Decafit -configuration Release -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12'
+    - name: Test
+      run: xcodebuild clean test -workspace Decafit/Decafit.xcworkspace -scheme DecafitTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12' test
          
