@@ -36,7 +36,7 @@ final class AuthManager {
             return
         }
         // send http request
-        guard let url = URL(string: "") else { return }
+        guard let url = URL(string: "www.google.com") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "content-type")

@@ -19,7 +19,7 @@ struct DecaTextFieldViewModel {
     let leftViewMode, rightViewMode: UITextField.ViewMode?
 }
 
-final class DecaTextField: UITextField {
+class DecaTextField: UITextField {
     let paddingLeft: CGFloat = 10
     var paddingRight: CGFloat = 0
     override init(frame: CGRect) {
@@ -51,3 +51,4 @@ final class DecaTextField: UITextField {
         rightView = viewModel.rightView
     }
 }
+

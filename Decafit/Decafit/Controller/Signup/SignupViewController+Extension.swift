@@ -19,11 +19,6 @@ extension SignupViewController {
         screen.modalPresentationStyle = .fullScreen
         present(screen, animated: true)
     }
-//    func displayAlert(alertTitle: String, alertMessage: String) {
-//        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "Ok!", style: .default, handler: nil))
-//        present(alert, animated: true, completion: nil)
-//    }
     @objc func handleSignup() {
         guard let fullName = fullNameTextField.text,
               let phoneNumber = phoneNumberTextField.text,

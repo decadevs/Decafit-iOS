@@ -84,44 +84,20 @@ class LoginViewController: UIViewController {
         return button
     }()
     // MARK: - Social Login Buttons
-    lazy var googleButton: DecaButton = {
-        let button = DecaButton()
-        button.configure(with: DecaButtonViewModel(
-                            title: nil, font: nil, backgroundColor: nil,
-                            titleColor: nil, image: UIImage(named: "google-logo"),
-                            borderWidth: 1, cornerRadius: 3,
-                            borderColor: DecaColor.decafitGray.color.cgColor,
-                            contentEdgeInsets: UIEdgeInsets(
-                                top: 14, left: 16, bottom: 14, right: 16),
-                            isEnabled: true, tarmic: false))
-        button.addTarget(self, action: #selector(AuthManager.shared.handleGoogleLogin), for: .touchUpInside)
-        return button
+    var googleButton: SocialButton = {
+    let button = SocialButton(image: UIImage(named: "google-logo")!)
+    button.addTarget(self, action: #selector(AuthManager.shared.handleGoogleLogin), for: .touchUpInside)
+    return button
     }()
-    lazy var facebookButton: DecaButton = {
-        let button = DecaButton()
-        button.configure(with: DecaButtonViewModel(
-                            title: nil, font: nil, backgroundColor: nil,
-                            titleColor: nil, image: UIImage(named: "fb-img"),
-                            borderWidth: 1, cornerRadius: 3,
-                            borderColor: DecaColor.decafitGray.color.cgColor,
-                            contentEdgeInsets: UIEdgeInsets(
-                                top: 14, left: 16, bottom: 14, right: 16),
-                            isEnabled: true, tarmic: false))
-        button.addTarget(self, action: #selector(AuthManager.shared.handleFBLogin), for: .touchUpInside)
-        return button
+    var facebookButton: SocialButton = {
+    let button = SocialButton(image: UIImage(named: "fb-img")!)
+    button.addTarget(self, action: #selector(AuthManager.shared.handleFBLogin), for: .touchUpInside)
+    return button
     }()
-    lazy var appleButton: DecaButton = {
-        let button = DecaButton()
-        button.configure(with: DecaButtonViewModel(
-                            title: nil, font: nil, backgroundColor: nil,
-                            titleColor: nil, image: UIImage(named: "apple-img"),
-                            borderWidth: 1, cornerRadius: 3,
-                            borderColor: DecaColor.decafitGray.color.cgColor,
-                            contentEdgeInsets: UIEdgeInsets(
-                                top: 14, left: 16, bottom: 14, right: 16),
-                            isEnabled: true, tarmic: false))
-        button.addTarget(self, action: #selector(AuthManager.shared.handleAppleLogin), for: .touchUpInside)
-        return button
+    var appleButton: SocialButton = {
+    let button = SocialButton(image: UIImage(named: "apple-img")!)
+    button.addTarget(self, action: #selector(AuthManager.shared.handleFBLogin), for: .touchUpInside)
+    return button
     }()
     // MARK: - Sign Up orange CTA Button
     lazy var orangeSignUpLink: DecaButton = {

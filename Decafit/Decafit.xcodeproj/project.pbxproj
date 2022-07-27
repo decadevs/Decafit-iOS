@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -59,6 +59,7 @@
 		B4AB95B7288E934E00FE9C96 /* DecaLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95B6288E934E00FE9C96 /* DecaLabel.swift */; };
 		B4AB95B9288EB0F600FE9C96 /* DecaImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95B8288EB0F600FE9C96 /* DecaImageView.swift */; };
 		B4AB95BB288ED41800FE9C96 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95BA288ED41800FE9C96 /* ActivityIndicator.swift */; };
+		B4AB95BE288FF68000FE9C96 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = B4AB95BD288FF68000FE9C96 /* Apollo */; };
 		E9EDA8C619805CC18DD608E6 /* Pods_Decafit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48853A80EF7AD9413CD9484E /* Pods_Decafit.framework */; };
 /* End PBXBuildFile section */
 
@@ -153,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B40AFB322889AB1C00249820 /* AudioToolbox.framework in Frameworks */,
+				B4AB95BE288FF68000FE9C96 /* Apollo in Frameworks */,
 				E9EDA8C619805CC18DD608E6 /* Pods_Decafit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +411,9 @@
 			dependencies = (
 			);
 			name = Decafit;
+			packageProductDependencies = (
+				B4AB95BD288FF68000FE9C96 /* Apollo */,
+			);
 			productName = Decafit;
 			productReference = B47B5B0F287C147000EEC900 /* Decafit.app */;
 			productType = "com.apple.product-type.application";
@@ -482,6 +487,9 @@
 				Base,
 			);
 			mainGroup = B47B5B06287C147000EEC900;
+			packageReferences = (
+				B4AB95BC288FF68000FE9C96 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+			);
 			productRefGroup = B47B5B10287C147000EEC900 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -991,6 +999,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B4AB95BC288FF68000FE9C96 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.52.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B4AB95BD288FF68000FE9C96 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B4AB95BC288FF68000FE9C96 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B47B5B07287C147000EEC900 /* Project object */;
 }
