@@ -30,3 +30,5 @@ extension UIFont {
         return withTraits(traits: .traitItalic)
     }
 }
+func displayAlertMessage(title: String, message: String) {
+}

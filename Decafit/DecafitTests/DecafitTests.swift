@@ -26,5 +26,8 @@ class DecafitTests: XCTestCase {
         XCTAssert(name=="dev", "Your name is wrong!")
         XCTAssert(age==18, "You must be underage")
     }
+    func textToggleSignup() throws {
+        
+    }
 
 }

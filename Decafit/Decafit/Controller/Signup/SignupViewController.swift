@@ -6,11 +6,12 @@
 
 import UIKit
 
-class SignupViewController: UIViewController {
+final class SignupViewController: UIViewController {
     static let shared = SignupViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        setupKeyboardDismissRecognizer()
         setUpSubviews()
     }
     // MARK: - Image View
@@ -52,7 +53,7 @@ class SignupViewController: UIViewController {
     lazy var phoneNumberTextField: DecaTextField = {
         let textField = DecaTextField()
         textField.configure(with: DecaTextFieldViewModel(
-                                placeholder: "  Phone number", delegate: self,
+                                placeholder: "Phone number", delegate: self,
                                 font: decaFont(size: 16, font: .poppinsRegular),
                                 backgroundColor: .clear,
                                 tintColor: DecaColor.decafitBlack.color, borderWidth: 1, cornerRadius: 5,
@@ -153,7 +154,7 @@ class SignupViewController: UIViewController {
                             borderColor: nil,
                             contentEdgeInsets: nil,
                             isEnabled: true, tarmic: false))
-        button.addTarget(self, action: #selector(toggleSignup), for: .touchUpInside)
+        button.addTarget(self, action: #selector(toggleLogin), for: .touchUpInside)
         return button
     }()
     // MARK: - LABELS
