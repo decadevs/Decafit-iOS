@@ -16,20 +16,12 @@ class TabBarController: UITabBarController {
     func setupTabBar() {
         tabBar.tintColor = DecaColor.decafitPurple.color
         tabBar.unselectedItemTintColor = DecaColor.decafitGray.color
-//        tabBar.layer.shadowColor = DecaColor.decafitGray.color.cgColor
-//        tabBar.layer.shadowOpacity = 0.2
-//        tabBar.layer.shadowRadius = 5
+        tabBar.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 300)
         tabBar.clipsToBounds = false
         tabBar.backgroundColor = .white
-        home.title = "Home"
-        windows.title = "Profile"
-        calenderView.title = "Check Workout Date"
-        searchView.title = "Search"
-        pieView.title = "Past Workouts"
         setViewControllers([windows, calenderView, home, searchView, pieView], animated: false)
         guard let items = tabBar.items else { return }
-        let tabBarIcons = ["calendar", "plus", "", ""]
-        //Change to image names
+        let tabBarIcons = ["window", "calender", "plus", "search", "pie"]
         for icon in 0 ..< items.count {
             items[icon].image = UIImage(named: tabBarIcons[icon])
         }
@@ -37,5 +29,6 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabBar()
+        selectedIndex = 2
     }
 }
