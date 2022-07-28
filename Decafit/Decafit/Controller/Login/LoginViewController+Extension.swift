@@ -10,7 +10,7 @@ import UIKit
 
 extension LoginViewController {
     @objc func toggleSignup() {
-        let screen = SignupViewController()
+        let screen = LoginViewController.shared
         screen.modalPresentationStyle = .fullScreen
         present(screen, animated: true)
     }

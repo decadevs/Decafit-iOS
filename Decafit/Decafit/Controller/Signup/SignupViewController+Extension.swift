@@ -9,7 +9,7 @@ import UIKit
 
 extension SignupViewController {
     @objc func toggleSignup() {
-        let screen = LoginViewController()
+        let screen = SignupViewController.shared
         screen.modalPresentationStyle = .fullScreen
         present(screen, animated: true)
     }
@@ -21,7 +21,6 @@ extension SignupViewController {
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         let confirmPassword = confirmPasswordTextField.text ?? ""
-        // Check for empty fields
         if fullName.isEmpty || phoneNumber.isEmpty || email.isEmpty || password.isEmpty || confirmPassword.isEmpty {
             displayAlertMessage("All fields are required!")
             return
