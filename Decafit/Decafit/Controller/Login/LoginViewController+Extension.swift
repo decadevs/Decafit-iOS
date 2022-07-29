@@ -9,50 +9,76 @@ import Foundation
 import UIKit
 
 extension LoginViewController {
-    func setUpSubviews() {
-//        [topImageView, textViewStack, signInWithLabel, socialStack, redirectToSignupStack].forEach {view.addSubview($0)}
-        
-        let parentStack = UIStackView(arrangedSubviews: [topImageView, signInStack, textViewStack, lineStack, socialStack, redirectToSignupStack])
-        parentStack.axis = .vertical
-        parentStack.alignment = .center
-        parentStack.distribution = .fill
-        parentStack.spacing = 20
-        parentStack.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(parentStack)
-        
-        NSLayoutConstraint.activate([
-//            topImageView.heightAnchor.constraint(equalToConstant: 120),
+    @objc func toggleSignup() {
+        let screen = SignupViewController.getSignupView()
+        screen.modalPresentationStyle = .fullScreen
+        present(screen, animated: true)
+    }
+    @objc func handleLogin() {
+        guard let email = emailTextField.text, let password = passwordTextField.text
+        else {
+            displayAlertMessage(title: "Error!", message: "All fields are required!")
+            return
+        }
+        if password.count < 8 || !email.contains("@") {
+            displayAlertMessage(title: "Error!", message: "Incorrect input")
+            return
+        }
+        let home = HomeViewController.shared
+        home.modalPresentationStyle = .fullScreen
+        present(home, animated: true, completion: nil)
+    }
+}
 
-            
-            parentStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            parentStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            parentStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            parentStack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
+extension LoginViewController {
+    func setUpSubviews() {
+        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height-30)
+        let parentStack: DecaStack = {
+            let stackView = DecaStack(arrangedSubviews: [topImageView,
+                                                         textViewStack, lineStack,
+                                                         socialStack, redirectToSignupStack])
+            stackView.configure(with: DecaStackViewModel(
+                                    axis: .vertical, alignment: .center,
+                                    spacing: 15, distribution: .fill))
+            stackView.frame.size = contentViewSize
+            return stackView
+        }()
+        view.addSubview(parentStack)
+        NSLayoutConstraint.activate([
+            topImageView.widthAnchor.constraint(equalTo: parentStack.widthAnchor),
+            topImageView.topAnchor.constraint(equalTo: parentStack.topAnchor, constant: -20),
             emailTextField.heightAnchor.constraint(equalToConstant: 56),
             passwordTextField.heightAnchor.constraint(equalToConstant: 56),
             loginButton.heightAnchor.constraint(equalToConstant: 64),
-            titleField.heightAnchor.constraint(equalToConstant: 45),
-            
             emailTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             passwordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-            titleField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.80),
-            
-            trackFitnessLabel.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 35),
+            trackFitnessLabel.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 30),
             trackFitnessLabel.trailingAnchor.constraint(equalTo: topImageView.trailingAnchor, constant: -40),
-            trackFitnessLabel.bottomAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: -50),
-
-
+            trackFitnessLabel.bottomAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: -35)
         ])
     }
-    
 }
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        emailTextField.resignFirstResponder()
-        passwordTextField.resignFirstResponder()
+        var textFields: [UITextField] {
+            return [emailTextField, passwordTextField]
+        }
+        if let selectedTextFieldIndex =
+            textFields.firstIndex(of: textField), selectedTextFieldIndex < textFields.count - 1 {
+            textFields[selectedTextFieldIndex + 1].becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
         return true
+    }
+    func setupKeyboardDismissRecognizer() {
+            let tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(
+                target: self, action: #selector(self.dismissKeyboard))
+            self.view.addGestureRecognizer(tapRecognizer)
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

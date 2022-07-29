@@ -1,0 +1,6 @@
+framework module Pods_Decafit_DecafitUITests {
+  umbrella header "Pods-Decafit-DecafitUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
