@@ -7,7 +7,10 @@
 import UIKit
 
 final class SignupViewController: UIViewController {
-    static let shared = SignupViewController()
+    static var shared: SignupViewController?
+    static func getSignupView() -> SignupViewController {
+        return shared ?? SignupViewController()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

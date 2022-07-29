@@ -8,7 +8,10 @@
 import UIKit
 
 final class LoginViewController: UIViewController {
-    static let shared = LoginViewController()
+    static var shared: LoginViewController?
+    static func getLoginView() -> LoginViewController {
+        return shared ?? LoginViewController()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
