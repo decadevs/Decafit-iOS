@@ -15,7 +15,6 @@ extension LoginViewController {
         present(screen, animated: true)
     }
 }
-
 extension LoginViewController {
     func setUpSubviews() {
         let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height-30)
@@ -45,7 +44,6 @@ extension LoginViewController {
         ])
     }
 }
-
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         emailTextField.resignFirstResponder()

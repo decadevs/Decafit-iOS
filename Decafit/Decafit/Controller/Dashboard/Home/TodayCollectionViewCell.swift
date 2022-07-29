@@ -13,8 +13,10 @@ class TodayCollectionViewCell: UICollectionViewCell {
                 return
             }
             imageView.image = UIImage(named: todayCell?.image ?? "")
-            firstLabel.text = todayCell?.bodyPart ?? ""
-            secondLabel.text = todayCell?.duration
+            firstLabel.text = todayCell?.title ?? ""
+            secondLabel.text = todayCell?.name
+            timeButton.setTitle(todayCell?.time, for: .normal)
+            calorieButton.setTitle(todayCell?.calorie, for: .normal)
         }
     }
     lazy var firstLabel: UILabel = {
@@ -35,35 +37,63 @@ class TodayCollectionViewCell: UICollectionViewCell {
         let button = DecaButton()
         button.configure(with: DecaButtonViewModel(
                             title: "24 min", font: decaFont(size: 12, font: .poppinsRegular),
-                            backgroundColor: .gray, titleColor: .white, image: <#T##UIImage?#>, borderWidth: <#T##CGFloat?#>, cornerRadius: <#T##CGFloat?#>, borderColor: <#T##CGColor?#>, contentEdgeInsets: <#T##UIEdgeInsets?#>, isEnabled: <#T##Bool#>, tarmic: <#T##Bool#>))
+                            backgroundColor: .gray, titleColor: .white,
+                            image: UIImage(systemName: "clock"), borderWidth: 1,
+                            cornerRadius: 7, borderColor: nil, contentEdgeInsets: nil,
+                            isEnabled: false, tarmic: true))
         return button
+    }()
+    lazy var calorieButton: DecaButton = {
+        let button = DecaButton()
+        button.configure(with: DecaButtonViewModel(
+                            title: "24 Kcal", font: decaFont(size: 12, font: .poppinsRegular),
+                            backgroundColor: .gray, titleColor: .white,
+                            image: UIImage(systemName: "flame.fill"), borderWidth: 1,
+                            cornerRadius: 7, borderColor: nil, contentEdgeInsets: nil,
+                            isEnabled: false, tarmic: true))
+        return button
+    }()
+    lazy var buttonStack: DecaStack = {
+        let stack = DecaStack(arrangedSubviews: [timeButton, calorieButton])
+        stack.configure(with: DecaStackViewModel(
+                            axis: .horizontal, alignment: .center,
+                            spacing: 5, distribution: .equalSpacing))
+        return stack
+    }()
+    lazy var allStack: DecaStack = {
+        let stack = DecaStack(arrangedSubviews: [firstLabel, secondLabel, buttonStack])
+        stack.configure(with: DecaStackViewModel(
+                            axis: .vertical, alignment: .leading,
+                            spacing: 10, distribution: .equalSpacing))
+        return stack
     }()
     lazy var imageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
-        image.layer.cornerRadius = 4
-        image.backgroundColor = .red
+        image.layer.cornerRadius = 10
+        image.addSubview(allStack)
         return image
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
-        self.layer.masksToBounds = false
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     func setupViews() {
-        backgroundColor = .white
-        [imageView, firstLabel, secondLabel].forEach { addSubview($0)}
+        self.addSubview(imageView)
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 3),
-            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 4),
-            imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -4),
-            imageView.heightAnchor.constraint(equalToConstant: 106),
-            imageView.widthAnchor.constraint(equalToConstant: 154)
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: -10),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            allStack.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 5),
+            allStack.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -10),
+            allStack.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -10),
+            imageView.heightAnchor.constraint(equalToConstant: 180),
+            imageView.widthAnchor.constraint(equalTo: self.widthAnchor)
         ])
     }
 }

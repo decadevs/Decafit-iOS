@@ -13,22 +13,22 @@ class FocusAreaCollectionViewCell: UICollectionViewCell {
             guard focusAreaCell != nil else {
                 return
             }
-            imageView.image = UIImage(named: focusAreaCell?.image ?? "")
-            bodyFocusAreaLabel.text = focusAreaCell?.bodyPart ?? ""
+            imageView.image = UIImage(named: focusAreaCell?.image ?? "nnn")
+            bodyFocusAreaLabel.text = focusAreaCell?.bodyPart ?? "ttt"
             durationLabel.text = focusAreaCell?.duration
         }
     }
     var bodyFocusAreaLabel: UILabel = {
         let label = DecaLabel()
-        label.configure(with: DecaLabelViewModel(font: decaFont(size: 14, font: .poppinsMedium).bold(),
-                                                 textColor: DecaColor.decafitBlack.color, numberOfLines: 1,
+        label.configure(with: DecaLabelViewModel(font: decaFont(size: 18, font: .poppinsMedium).bold(),
+                                                 textColor: .white, numberOfLines: 1,
                                                  text: "First", kerning: 0.5))
         return label
     }()
     var durationLabel: UILabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(font: decaFont(size: 14, font: .poppinsMedium).bold(),
-                                                 textColor: DecaColor.decafitBlack.color, numberOfLines: 1,
+                                                 textColor: .white, numberOfLines: 1,
                                                  text: "Second", kerning: 0.5))
         return label
     }()
@@ -44,32 +44,28 @@ class FocusAreaCollectionViewCell: UICollectionViewCell {
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
-        image.layer.cornerRadius = 4
-        image.backgroundColor = .red
+        image.layer.cornerRadius = 10
         image.addSubview(labelStack)
         return image
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
-        self.layer.shadowOffset = CGSize(width: 0, height: 1)
-        self.layer.shadowOpacity = 0.1
-        self.layer.masksToBounds = false
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     func setupViews() {
-        backgroundColor = .white
         [imageView].forEach { addSubview($0)}
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
-            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
-            imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5),
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
             imageView.heightAnchor.constraint(equalToConstant: 106),
             imageView.widthAnchor.constraint(equalToConstant: 154),
-            labelStack.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -10),
-            labelStack.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 10)
+            labelStack.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -10),
+            labelStack.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 10),
+            labelStack.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -10)
         ])
     }
 }

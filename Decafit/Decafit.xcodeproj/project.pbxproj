@@ -49,7 +49,6 @@
 		B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B12287C147000EEC900 /* AppDelegate.swift */; };
 		B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B14287C147000EEC900 /* SceneDelegate.swift */; };
 		B47B5B17287C147000EEC900 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B16287C147000EEC900 /* HomeViewController.swift */; };
-		B47B5B1C287C147300EEC900 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B47B5B1B287C147300EEC900 /* Assets.xcassets */; };
 		B47B5B1F287C147300EEC900 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B47B5B1D287C147300EEC900 /* LaunchScreen.storyboard */; };
 		B47B5B2A287C147300EEC900 /* DecafitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B29287C147300EEC900 /* DecafitTests.swift */; };
 		B47B5B35287C147300EEC900 /* DecafitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B34287C147300EEC900 /* DecafitUITests.swift */; };
@@ -67,6 +66,8 @@
 		B4AB95CF2891D3B000FE9C96 /* FocusAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95CE2891D3B000FE9C96 /* FocusAreaView.swift */; };
 		B4B96E9F2892696200E22B33 /* TodaySessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B96E9E2892696200E22B33 /* TodaySessionView.swift */; };
 		B4B96EA12892697F00E22B33 /* TodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B96EA02892697F00E22B33 /* TodayCollectionViewCell.swift */; };
+		B4B96EA728936A2800E22B33 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B96EA628936A2800E22B33 /* InputViewController.swift */; };
+		B4B96EA92893CCA500E22B33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4B96EA82893CCA500E22B33 /* Assets.xcassets */; };
 		E9EDA8C619805CC18DD608E6 /* Pods_Decafit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48853A80EF7AD9413CD9484E /* Pods_Decafit.framework */; };
 /* End PBXBuildFile section */
 
@@ -136,7 +137,6 @@
 		B47B5B12287C147000EEC900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B47B5B14287C147000EEC900 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B47B5B16287C147000EEC900 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		B47B5B1B287C147300EEC900 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B47B5B1E287C147300EEC900 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B47B5B20287C147300EEC900 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B47B5B25287C147300EEC900 /* DecafitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DecafitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +159,8 @@
 		B4AB95CE2891D3B000FE9C96 /* FocusAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusAreaView.swift; sourceTree = "<group>"; };
 		B4B96E9E2892696200E22B33 /* TodaySessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionView.swift; sourceTree = "<group>"; };
 		B4B96EA02892697F00E22B33 /* TodayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCollectionViewCell.swift; sourceTree = "<group>"; };
+		B4B96EA628936A2800E22B33 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
+		B4B96EA82893CCA500E22B33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E09F5AB25E31C6DF910AF630 /* Pods-Decafit-DecafitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Decafit-DecafitUITests.debug.xcconfig"; path = "Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F5A45F2515A01D1403BDB39F /* Pods_Decafit_DecafitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Decafit_DecafitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -400,8 +402,8 @@
 		B48A59042886D4AD004D1BEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B4B96EA82893CCA500E22B33 /* Assets.xcassets */,
 				B40AFACB2887970700249820 /* Fonts */,
-				B47B5B1B287C147300EEC900 /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -427,6 +429,7 @@
 				B4AB95CE2891D3B000FE9C96 /* FocusAreaView.swift */,
 				B4B96E9E2892696200E22B33 /* TodaySessionView.swift */,
 				B4B96EA02892697F00E22B33 /* TodayCollectionViewCell.swift */,
+				B4B96EA628936A2800E22B33 /* InputViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				B40AFAE42887974200249820 /* Poppins-Light.ttf in Resources */,
 				B40AFAEE2887974200249820 /* Poppins-Black.ttf in Resources */,
 				B40AFB1C2887983C00249820 /* Ubuntu-Light.ttf in Resources */,
+				B4B96EA92893CCA500E22B33 /* Assets.xcassets in Resources */,
 				B40AFB1B2887983C00249820 /* Ubuntu-Italic.ttf in Resources */,
 				B40AFAEC2887974200249820 /* Poppins-LightItalic.ttf in Resources */,
 				B40AFB1D2887983C00249820 /* UFL.txt in Resources */,
@@ -567,7 +571,6 @@
 				B47B5B1F287C147300EEC900 /* LaunchScreen.storyboard in Resources */,
 				B40AFAF12887974200249820 /* Poppins-Italic.ttf in Resources */,
 				B40AFAF22887974200249820 /* Poppins-MediumItalic.ttf in Resources */,
-				B47B5B1C287C147300EEC900 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,6 +682,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4AB95B5288E932F00FE9C96 /* DecaStack.swift in Sources */,
+				B4B96EA728936A2800E22B33 /* InputViewController.swift in Sources */,
 				B4AB95C52891A87100FE9C96 /* CalenderViewController.swift in Sources */,
 				B4B96E9F2892696200E22B33 /* TodaySessionView.swift in Sources */,
 				B40AFB242887BD3600249820 /* CustomUIColor.swift in Sources */,

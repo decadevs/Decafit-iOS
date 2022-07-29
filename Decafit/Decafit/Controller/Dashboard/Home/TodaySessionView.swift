@@ -5,62 +5,66 @@
 //  Created by Decagon on 28/07/2022.
 //
 import UIKit
-struct TodaySessionModel {
-let image, bodyPart, duration: String?
+protocol TodaySessionViewDelegate: AnyObject {
+    func didDisplayInputScreen(_ screen: InputViewController)
 }
-class TodaySessionView: UIView, UICollectionViewDelegate,
-                 UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    let data: [TodaySessionModel] = [
-        TodaySessionModel(image: "fitness-img", bodyPart: "Back", duration: "20 days"),
-        TodaySessionModel(image: "signup-img", bodyPart: "Abs", duration: "30 days")
-    ]
+struct TodaySessionModel {
+let image, title, name, time, calorie: String
+}
+class TodaySessionView: UIView {
+    weak var delegate: TodaySessionViewDelegate?
+    let data: [TodaySessionModel] = {
+        let first = TodaySessionModel(image: "fitness-img", title: "Full Body",
+                          name: "Cersei Lan", time: "24 min", calorie: "24 Kcal")
+        let second = TodaySessionModel(image: "fitness-img", title: "Biceps",
+                          name: "Karl Drogo", time: "30 min", calorie: "15 Kcal")
+        return [first, second]
+    }()
     // MARK: - TitleLabel
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Today's session"
-        label.font = decaFont(size: 14, font: .poppinsMedium).bold()
+        label.font = decaFont(size: 16, font: .poppinsMedium).bold()
         label.textColor = DecaColor.decafitBlack.color
         return label
     }()
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-//        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        layout.sectionInset = UIEdgeInsets(top: 11, left: 0, bottom: -10, right: 0)
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 0
+        layout.scrollDirection = .horizontal
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentInset = UIEdgeInsets(top: 3, left: 16, bottom: 0, right: 16)
-        view.collectionViewLayout = layout
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
         view.dataSource = self
         view.delegate = self
+        view.register(TodayCollectionViewCell.self,
+                             forCellWithReuseIdentifier: TodayCollectionViewCell.identifier)
         return view
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupSubviews()
         backgroundColor = .clear
+        setupSubviews()
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     func setupSubviews() {
-        [titleLabel, collectionView].forEach { self.addSubview($0) }
-        collectionView.register(TodayCollectionViewCell.self,
-                             forCellWithReuseIdentifier: TodayCollectionViewCell.identifier)
+        [titleLabel, collectionView].forEach { addSubview($0) }
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
 
-            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
-            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
         ])
     }
+}
+extension TodaySessionView: UICollectionViewDelegate,
+                            UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
@@ -77,6 +81,10 @@ class TodaySessionView: UIView, UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.frame.size.width/3, height: 50)
+        return CGSize(width: self.frame.size.width, height: 150)
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let screen = InputViewController.shared
+        delegate?.didDisplayInputScreen(screen)
     }
 }

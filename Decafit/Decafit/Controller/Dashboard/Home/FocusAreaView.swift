@@ -6,13 +6,19 @@
 //
 
 import UIKit
-struct FocusAreaModel {
-    let image, bodyPart, duration: String?
+protocol FocusAreaViewDelegate: AnyObject {
+    func didDisplayInputScreen(_ screen: InputViewController)
 }
-class FocusAreaView: UIView, UICollectionViewDelegate,
-                     UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+struct FocusAreaModel {
+    let image, bodyPart, duration: String
+}
+class FocusAreaView: UIView, UICollectionViewDataSource,
+                     UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    weak var delegate: TodaySessionViewDelegate?
     let data: [FocusAreaModel] = [
         FocusAreaModel(image: "fitness-img", bodyPart: "Back", duration: "20 days"),
+        FocusAreaModel(image: "fitness-img", bodyPart: "Abs", duration: "30 days"),
+        FocusAreaModel(image: "fitness-img", bodyPart: "Thigh", duration: "10 days"),
         FocusAreaModel(image: "fitness-img", bodyPart: "Abs", duration: "30 days"),
         FocusAreaModel(image: "fitness-img", bodyPart: "Thigh", duration: "10 days"),
         FocusAreaModel(image: "fitness-img", bodyPart: "Butt", duration: "30 days")
@@ -22,21 +28,15 @@ class FocusAreaView: UIView, UICollectionViewDelegate,
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Other Focus Areas"
-        label.font = decaFont(size: 14, font: .poppinsMedium).bold()
+        label.font = decaFont(size: 16, font: .poppinsMedium).bold()
         label.textColor = DecaColor.decafitBlack.color
         return label
     }()
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-//        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: -10, right: 0)
-        layout.minimumLineSpacing = 16
-        layout.minimumInteritemSpacing = 0
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentInset = UIEdgeInsets(top: 3, left: 10, bottom: 0, right: 10)
-        view.collectionViewLayout = layout
-        view.backgroundColor = .red 
+        view.backgroundColor = .white
         view.dataSource = self
         view.delegate = self
         return view
@@ -56,16 +56,15 @@ class FocusAreaView: UIView, UICollectionViewDelegate,
         [titleLabel, collectionView].forEach { self.addSubview($0) }
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
-
-            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
-            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            titleLabel.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: -20),
+            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(data.count)
         return data.count
     }
     func collectionView(_ collectionView: UICollectionView,
@@ -74,13 +73,17 @@ class FocusAreaView: UIView, UICollectionViewDelegate,
                                                         withReuseIdentifier: FocusAreaCollectionViewCell.identifier,
                                                         for: indexPath) as?
                 FocusAreaCollectionViewCell else { return UICollectionViewCell() }
-        cell.backgroundColor = .red
         let workouts = data[indexPath.item]
         cell.focusAreaCell = workouts
-        print(cell)
         return cell
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.frame.size.width/3 , height: 50)
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.frame.size.width/2.3, height: 120)
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let screen = InputViewController.shared
+        delegate?.didDisplayInputScreen(screen)
     }
 }
