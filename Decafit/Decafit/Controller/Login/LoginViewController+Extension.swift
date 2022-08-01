@@ -10,14 +10,25 @@ import UIKit
 
 extension LoginViewController {
     @objc func toggleSignup() {
-        let screen = SignupViewController()
+        let screen = SignupViewController.getSignupView()
         screen.modalPresentationStyle = .fullScreen
         present(screen, animated: true)
     }
     @objc func handleLogin() {
-        let screen = TabBarController()
-        screen.modalPresentationStyle = .fullScreen
-        present(screen, animated: true)
+        guard let email = emailTextField.text, let password = passwordTextField.text
+        else {
+            displayAlertMessage(title: "Error!", message: "All fields are required!")
+            return
+        }
+        if password.count < 8 || !email.contains("@") {
+            displayAlertMessage(title: "Error!", message: "Incorrect input")
+            return
+        }
+        // Call auth login here
+        let home = HomeViewController.getHomeView()
+        home.modalPresentationStyle = .fullScreen
+        present(home, animated: true, completion: nil)
+
     }
 }
 extension LoginViewController {
@@ -51,8 +62,23 @@ extension LoginViewController {
 }
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        emailTextField.resignFirstResponder()
-        passwordTextField.resignFirstResponder()
+        var textFields: [UITextField] {
+            return [emailTextField, passwordTextField]
+        }
+        if let selectedTextFieldIndex =
+            textFields.firstIndex(of: textField), selectedTextFieldIndex < textFields.count - 1 {
+            textFields[selectedTextFieldIndex + 1].becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
         return true
+    }
+    func setupKeyboardDismissRecognizer() {
+            let tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(
+                target: self, action: #selector(self.dismissKeyboard))
+            self.view.addGestureRecognizer(tapRecognizer)
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

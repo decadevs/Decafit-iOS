@@ -15,7 +15,6 @@ extension UINavigationBar {
         }
     }
 }
-
 extension UILabel {
     func set(text: String, withKerning kerning: CGFloat) {
         let attributedString = NSMutableAttributedString(string: text)
@@ -26,7 +25,6 @@ extension UILabel {
     }
 
 }
-
 extension UIFont {
     func withTraits(traits: UIFontDescriptor.SymbolicTraits) -> UIFont {
         let descriptor = fontDescriptor.withSymbolicTraits(traits)
@@ -39,16 +37,5 @@ extension UIFont {
         return withTraits(traits: .traitItalic)
     }
 }
-
-open class CustomLabel: UILabel {
-    @IBInspectable open var characterSpacing: CGFloat = 1 {
-        didSet {
-            let attributedString = NSMutableAttributedString(string: self.text!)
-            attributedString.addAttribute(
-                NSAttributedString.Key.kern, value: self.characterSpacing,
-                range: NSRange(location: 0, length: attributedString.length))
-            self.attributedText = attributedString
-        }
-
-    }
+func displayAlertMessage(title: String, message: String) {
 }

@@ -7,7 +7,11 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, TodaySessionViewDelegate {
+final class HomeViewController: UIViewController, TodaySessionViewDelegate {
+    static var shared: HomeViewController?
+    static func getHomeView() -> HomeViewController {
+        return shared ?? HomeViewController()
+    }
     lazy var firstLabel: UILabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(

@@ -18,7 +18,7 @@ struct DecaButtonViewModel {
     let isEnabled, tarmic: Bool
 }
 
-final class DecaButton: UIButton {
+class DecaButton: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,4 +41,27 @@ final class DecaButton: UIButton {
         contentEdgeInsets = viewModel.contentEdgeInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 
+}
+class SocialButton: DecaButton {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setTitle(nil, for: .normal)
+        titleLabel?.font = nil
+        setTitleColor(nil, for: .normal)
+        backgroundColor = nil
+        layer.cornerRadius = 3
+        layer.borderWidth = 1
+        translatesAutoresizingMaskIntoConstraints = false
+        isEnabled = true
+        layer.borderColor =  DecaColor.decafitGray.color.cgColor
+        contentEdgeInsets = UIEdgeInsets(
+            top: 14, left: 16, bottom: 14, right: 16)
+    }
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    convenience init(image: UIImage) {
+        self.init(frame: .zero)
+        setImage(image, for: .normal)
+    }
 }

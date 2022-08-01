@@ -8,28 +8,26 @@
 import UIKit
 
 extension SignupViewController {
-    @objc func toggleSignup() {
-        let screen = LoginViewController()
+    @objc func toggleLogin() {
+        let screen = LoginViewController.getLoginView()
         screen.modalPresentationStyle = .fullScreen
         present(screen, animated: true)
     }
-    func displayAlertMessage(_ message: String) {
-    }
     @objc func handleUserRegistration() {
-        let fullName = fullNameTextField.text ?? ""
-        let phoneNumber = phoneNumberTextField.text ?? ""
-        let email = emailTextField.text ?? ""
-        let password = passwordTextField.text ?? ""
-        let confirmPassword = confirmPasswordTextField.text ?? ""
-        // Check for empty fields
-        if fullName.isEmpty || phoneNumber.isEmpty || email.isEmpty || password.isEmpty || confirmPassword.isEmpty {
-            displayAlertMessage("All fields are required!")
+        guard let fullName = fullNameTextField.text,
+              let phoneNumber = phoneNumberTextField.text,
+              let email = emailTextField.text,
+              let password = passwordTextField.text,
+              let confirmPassword = confirmPasswordTextField.text
+        else {
+            displayAlertMessage(title: "Error!", message: "All fields are required!")
             return
         }
         if password != confirmPassword {
-            displayAlertMessage("Passwords do not match!")
+            displayAlertMessage(title: "Error!", message: "Passwords do not match!")
             return
         }
+        print(fullName, phoneNumber, email)
     }
 }
 
@@ -74,8 +72,22 @@ extension SignupViewController {
 
 extension SignupViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        emailTextField.resignFirstResponder()
-        passwordTextField.resignFirstResponder()
+        var textFields: [UITextField] {
+            return [fullNameTextField, phoneNumberTextField, emailTextField, passwordTextField, confirmPasswordTextField]
+        }
+        if let selectedTextFieldIndex = textFields.firstIndex(of: textField), selectedTextFieldIndex < textFields.count - 1 {
+            textFields[selectedTextFieldIndex + 1].becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
         return true
+    }
+    func setupKeyboardDismissRecognizer(){
+            let tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(
+                target: self, action: #selector(self.dismissKeyboard))
+            self.view.addGestureRecognizer(tapRecognizer)
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
