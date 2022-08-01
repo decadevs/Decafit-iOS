@@ -31,13 +31,28 @@ class HomeViewController: UIViewController, TodaySessionViewDelegate {
     func didDisplayInputScreen(_ screen: InputViewController) {
         self.navigationController?.pushViewController(screen, animated: true)
     }
+//    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+//        hidesBottomBarWhenPushed = true
+//    }
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.shouldRemoveShadow(true)
+//        hidesBottomBarWhenPushed = false
+    }
 }
 extension HomeViewController {
     func setupNavigation() {
-        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.backgroundColor = .clear
+        self.navigationController?.navigationBar.isTranslucent = true
         let profileIcon = UIBarButtonItem(
-            image: UIImage(named: "bell-icon"),
+            image: UIImage(named: "profile"),
             style: .plain, target: self, action: nil)
+        profileIcon.setBackgroundImage(UIImage(named: "profile"), for: .normal, barMetrics: .default)
+        profileIcon.tintColor = .clear
         let profileGreeting = UIBarButtonItem(title: "Good Morning",
                                               style: .plain, target: self, action: nil)
         profileGreeting.tintColor = DecaColor.decafitGray.color
@@ -47,11 +62,12 @@ extension HomeViewController {
             style: .plain, target: self, action: nil)
         notificationIcon.tintColor = DecaColor.decafitPurple.color
         navigationItem.rightBarButtonItem = notificationIcon
-        let backImage = UIImage(named: "back-arrow")
-        navigationController?.navigationBar.backIndicatorImage = backImage
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+        let backImage = UIImage(named: "back-arrow")?.withTintColor(.black)
+//        backImage?.withTintColor(.black)
+        navigationController?.navigationBar.backIndicatorImage = UIImage()
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage()
         navigationController?.navigationBar.topItem?.backBarButtonItem =
-            UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+            UIBarButtonItem(image: backImage, style: .plain, target: self, action: nil)
     }
     func setupSubviews() {
         [firstLabel, todayView, focusAreaView].forEach { view.addSubview($0)}

@@ -20,7 +20,7 @@ struct DecaTextFieldViewModel {
 }
 
 final class DecaTextField: UITextField {
-    let paddingLeft: CGFloat = 20
+    let paddingLeft: CGFloat = 10
     var paddingRight: CGFloat = 0
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -60,6 +60,7 @@ func createTextField(text: String, font: UIFont) -> UITextField {
         textField.placeholder = text
         textField.font = font
         textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 5
         textField.layer.borderColor = DecaColor.decafitGray.color.cgColor
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: textField.frame.height))
         textField.leftViewMode = .always

@@ -10,7 +10,7 @@ import Foundation
 final class AuthManager {
     static let shared = AuthManager()
     public var isSignedIn: Bool {
-        return true
+        return false
     }
     @objc public func signUp() {
     }

@@ -14,6 +14,11 @@ extension LoginViewController {
         screen.modalPresentationStyle = .fullScreen
         present(screen, animated: true)
     }
+    @objc func handleLogin() {
+        let screen = TabBarController()
+        screen.modalPresentationStyle = .fullScreen
+        present(screen, animated: true)
+    }
 }
 extension LoginViewController {
     func setUpSubviews() {

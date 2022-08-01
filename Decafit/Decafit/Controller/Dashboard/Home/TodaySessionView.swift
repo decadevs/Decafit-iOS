@@ -14,7 +14,7 @@ let image, title, name, time, calorie: String
 class TodaySessionView: UIView {
     weak var delegate: TodaySessionViewDelegate?
     let data: [TodaySessionModel] = {
-        let first = TodaySessionModel(image: "fitness-img", title: "Full Body",
+        let first = TodaySessionModel(image: "weightlift", title: "Full Body",
                           name: "Cersei Lan", time: "24 min", calorie: "24 Kcal")
         let second = TodaySessionModel(image: "fitness-img", title: "Biceps",
                           name: "Karl Drogo", time: "30 min", calorie: "15 Kcal")

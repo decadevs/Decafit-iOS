@@ -13,37 +13,31 @@ class InputViewController: UIViewController {
     lazy var topImageView: DecaImageView = {
         let imageView = DecaImageView(frame: .zero)
         imageView.configure(with: DecaImageViewModel(
-                                image: "fitness-img", contentMode: .scaleAspectFit,
+                                image: "weightlift", contentMode: .scaleToFill,
                                 tintColor: .white))
-//        imageView.addSubview()
+        imageView.layer.cornerRadius = 50
         return imageView
     }()
     // MARK: - Title field
     var titleLabel: DecaLabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
-                            font: decaFont(size: 29, font: .poppinsMedium),
+                            font: decaFont(size: 20, font: .poppinsMedium).bold(),
                             textColor: DecaColor.decafitBlack.color,
                             numberOfLines: 1, text: "Set your limit", kerning: 1))
         label.textAlignment = .left
+        label.sizeToFit()
         return label
     }()
     var subTitleLabel: DecaLabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 12, font: .poppinsRegular),
-                            textColor: DecaColor.decafitBlack.color,
+                            textColor: DecaColor.decafitGray.color,
                             numberOfLines: 1, text: "Enter the number of sets and reps for your workout",
-                            kerning: 0.5))
+                            kerning: 0.1))
         label.textAlignment = .left
         return label
-    }()
-    lazy var titleStack: DecaStack = {
-       let stack = DecaStack(arrangedSubviews: [titleLabel, subTitleLabel])
-        stack.configure(with: DecaStackViewModel(
-                            axis: .vertical, alignment: .leading,
-                            spacing: 10, distribution: .fillProportionally))
-       return stack
     }()
     // MARK: - Sets TextField
     var setsTextField: UITextField = createTextField(text: "Number of sets",
@@ -63,17 +57,24 @@ class InputViewController: UIViewController {
 //        button.addTarget(self, action: #selector(), for: .touchUpInside)
         return button
     }()
-    lazy var titleStack: DecaStack = {
-       let stack = DecaStack(arrangedSubviews: [titleLabel, subTitleLabel])
+    lazy var fieldStack: DecaStack = {
+       let stack = DecaStack(arrangedSubviews: [setsTextField, repsTextField, nextButton])
         stack.configure(with: DecaStackViewModel(
-                            axis: .vertical, alignment: .leading,
-                            spacing: 10, distribution: .fillProportionally))
+                            axis: .vertical, alignment: .center,
+                            spacing: 20, distribution: .fillEqually))
        return stack
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupSubviews()
+    }
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        hidesBottomBarWhenPushed = true
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 extension InputViewController: UITextFieldDelegate {
@@ -83,25 +84,35 @@ extension InputViewController: UITextFieldDelegate {
 }
 extension InputViewController {
     func setupSubviews() {
-        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height-30)
+        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height/1.5)
         let parentStack: DecaStack = {
             let stackView = DecaStack(arrangedSubviews: [topImageView,
-                                                         titleStack,
-                                                         setsTextField, repsTextField, nextButton])
+                                                         titleLabel, subTitleLabel,
+                                                         fieldStack])
             stackView.configure(with: DecaStackViewModel(
                                     axis: .vertical, alignment: .center,
-                                    spacing: 10, distribution: .fillEqually))
+                                    spacing: 20, distribution: .fillProportionally))
             stackView.frame.size = contentViewSize
             return stackView
         }()
         view.addSubview(parentStack)
         NSLayoutConstraint.activate([
-            topImageView.widthAnchor.constraint(equalToConstant: view.frame.width-20),
-            topImageView.heightAnchor.constraint(equalToConstant: 180),
-            topImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
-            setsTextField.heightAnchor.constraint(equalToConstant: 56),
-            repsTextField.heightAnchor.constraint(equalToConstant: 56),
-            nextButton.heightAnchor.constraint(equalToConstant: 64),
+            topImageView.widthAnchor.constraint(equalToConstant: view.frame.width-60),
+            topImageView.heightAnchor.constraint(equalToConstant: 150),
+            topImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            titleLabel.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: 200),
+            titleLabel.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 0),
+            titleLabel.heightAnchor.constraint(equalToConstant: 30),
+            subTitleLabel.heightAnchor.constraint(equalToConstant: 30),
+            subTitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: 0),
+            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
+            fieldStack.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 10),
+            fieldStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            fieldStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            fieldStack.heightAnchor.constraint(equalToConstant: 150),
+            setsTextField.heightAnchor.constraint(equalToConstant: 45),
+            repsTextField.heightAnchor.constraint(equalToConstant: 45),
+            nextButton.heightAnchor.constraint(equalToConstant: 50),
             setsTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             repsTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             nextButton.widthAnchor

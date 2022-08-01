@@ -16,10 +16,10 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
                      UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     weak var delegate: TodaySessionViewDelegate?
     let data: [FocusAreaModel] = [
-        FocusAreaModel(image: "fitness-img", bodyPart: "Back", duration: "20 days"),
+        FocusAreaModel(image: "back", bodyPart: "Back", duration: "20 days"),
         FocusAreaModel(image: "fitness-img", bodyPart: "Abs", duration: "30 days"),
-        FocusAreaModel(image: "fitness-img", bodyPart: "Thigh", duration: "10 days"),
-        FocusAreaModel(image: "fitness-img", bodyPart: "Abs", duration: "30 days"),
+        FocusAreaModel(image: "meditate", bodyPart: "Thigh", duration: "10 days"),
+        FocusAreaModel(image: "stretch", bodyPart: "Abs", duration: "30 days"),
         FocusAreaModel(image: "fitness-img", bodyPart: "Thigh", duration: "10 days"),
         FocusAreaModel(image: "fitness-img", bodyPart: "Butt", duration: "30 days")
     ]
