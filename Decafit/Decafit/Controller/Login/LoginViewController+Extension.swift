@@ -14,6 +14,11 @@ extension LoginViewController {
         screen.modalPresentationStyle = .fullScreen
         present(screen, animated: true)
     }
+    func displayAlertMessage(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok!", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
     @objc func handleLogin() {
         guard let email = emailTextField.text, let password = passwordTextField.text
         else {
@@ -33,7 +38,7 @@ extension LoginViewController {
 }
 extension LoginViewController {
     func setUpSubviews() {
-        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height-30)
+        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height)
         let parentStack: DecaStack = {
             let stackView = DecaStack(arrangedSubviews: [topImageView,
                                                          textViewStack, lineStack,

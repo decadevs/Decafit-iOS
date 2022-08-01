@@ -54,7 +54,7 @@ class InputViewController: UIViewController {
                             titleColor: .white, image: nil, borderWidth: nil,
                             cornerRadius: 5, borderColor: nil,
                             contentEdgeInsets: nil, isEnabled: true, tarmic: false))
-//        button.addTarget(self, action: #selector(), for: .touchUpInside)
+        button.addTarget(self, action: #selector(gotoStartWorkout), for: .touchUpInside)
         return button
     }()
     lazy var fieldStack: DecaStack = {
@@ -69,13 +69,13 @@ class InputViewController: UIViewController {
         view.backgroundColor = .white
         setupSubviews()
     }
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        hidesBottomBarWhenPushed = true
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+//        hidesBottomBarWhenPushed = true
+//    }
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
 }
 extension InputViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -83,6 +83,12 @@ extension InputViewController: UITextFieldDelegate {
     }
 }
 extension InputViewController {
+    @objc func gotoStartWorkout() {
+        let screen = StartWorkoutViewController.getWorkoutView()
+        self.navigationController?.pushViewController(screen, animated: true)
+//        screen.modalPresentationStyle = .fullScreen
+//        present(screen, animated: true)
+    }
     func setupSubviews() {
         let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height/1.5)
         let parentStack: DecaStack = {

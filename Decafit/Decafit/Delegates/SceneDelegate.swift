@@ -15,10 +15,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
              return
          }
         let initialViewController: UIViewController
+        let home = UINavigationController(rootViewController: HomeViewController())
         let authManager = AuthManager.shared
         switch authManager.isSignedIn {
         case true:
-            initialViewController = TabBarController()
+            initialViewController = home
         case false:
             initialViewController = LoginViewController()
         }
