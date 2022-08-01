@@ -56,7 +56,7 @@ class TodaySessionView: UIView {
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
 
-            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)

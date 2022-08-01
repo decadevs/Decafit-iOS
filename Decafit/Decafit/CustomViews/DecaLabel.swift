@@ -30,4 +30,18 @@ final class DecaLabel: UILabel {
         textColor = viewModel.textColor
         set(text: viewModel.text, withKerning: viewModel.kerning ?? 0)
     }
+    func setAttributedText(image: String, textAfterIcon: String) -> NSMutableAttributedString {
+        let imageAttachment = NSTextAttachment()
+        imageAttachment.image = UIImage(systemName: image)
+        imageAttachment.image = imageAttachment.image?.withTintColor(.white)
+        let imageOffsetY: CGFloat = -5.0
+        imageAttachment.bounds = CGRect(x: 0, y: imageOffsetY, width: imageAttachment.image!.size.width, height: imageAttachment.image!.size.height)
+
+        let attachmentString = NSAttributedString(attachment: imageAttachment)
+        let completeText = NSMutableAttributedString(string: "")
+        completeText.append(attachmentString)
+        let textAfterIcon = NSAttributedString(string: textAfterIcon)
+        completeText.append(textAfterIcon)
+        return completeText
+    }
 }

@@ -35,7 +35,6 @@ class StartWorkoutCell: UITableViewCell {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
-//        image.clipsToBounds = true
         image.layer.cornerRadius = 10
         return image
     }()
@@ -50,15 +49,12 @@ class StartWorkoutCell: UITableViewCell {
             exerciseImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             exerciseImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: -100),
             exerciseImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
-            // Label 1
             exerciseLabel.leadingAnchor.constraint(equalTo: exerciseImage.trailingAnchor, constant: -40),
             exerciseLabel.topAnchor.constraint(equalTo: exerciseImage.topAnchor, constant: 5),
             exerciseLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -100),
-            // Label 2
             durationLabel.topAnchor.constraint(equalTo: exerciseLabel.bottomAnchor, constant: 5),
             durationLabel.leadingAnchor.constraint(equalTo: exerciseImage.trailingAnchor, constant: 0),
             durationLabel.bottomAnchor.constraint(equalTo: exerciseImage.bottomAnchor, constant: 5)
-
         ])
     }
 }

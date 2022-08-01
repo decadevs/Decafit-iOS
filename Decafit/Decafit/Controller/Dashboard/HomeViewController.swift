@@ -12,14 +12,6 @@ final class HomeViewController: UIViewController, TodaySessionViewDelegate {
     static func getHomeView() -> HomeViewController {
         return shared ?? HomeViewController()
     }
-    lazy var firstLabel: UILabel = {
-        let label = DecaLabel()
-        label.configure(with: DecaLabelViewModel(
-                            font: decaFont(size: 24, font: .poppinsMedium).bold(),
-                            textColor: DecaColor.decafitBlack.color, numberOfLines: 1,
-                            text: "Your daily tracker", kerning: 1.2))
-        return label
-    }()
     lazy var todayView: TodaySessionView = {
         let view = TodaySessionView()
         view.delegate = self
@@ -48,11 +40,9 @@ extension HomeViewController {
         self.navigationController?.navigationBar.isTranslucent = false
     }
     func setupSubviews() {
-        [firstLabel, todayView, focusAreaView].forEach { view.addSubview($0)}
+        [todayView, focusAreaView].forEach { view.addSubview($0)}
         NSLayoutConstraint.activate([
-            firstLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
-            firstLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            todayView.topAnchor.constraint(equalTo: firstLabel.bottomAnchor, constant: 15),
+            todayView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
             todayView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             todayView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             todayView.heightAnchor.constraint(equalToConstant: CGFloat(view.frame.height * 0.3)),

@@ -17,8 +17,8 @@ class CustomNavbar: UIView {
     }
     var titleLabel: UILabel = {
         let label = DecaLabel()
-        label.configure(with: DecaLabelViewModel(font: decaFont(size: 18, font: .poppinsMedium),
-                                                 textColor: DecaColor.decafitGray.color, numberOfLines: 1,
+        label.configure(with: DecaLabelViewModel(font: decaFont(size: 20, font: .poppinsRegular),
+                                                 textColor: DecaColor.decafitDarkGray.color, numberOfLines: 1,
                                                  text: "Good Morning", kerning: nil))
         return label
     }()
@@ -31,27 +31,27 @@ class CustomNavbar: UIView {
         imageView.layer.cornerRadius = 10
         return imageView
     }()
-    var notificationButton: SocialButton = {
-        let button = SocialButton(image: UIImage(named: "bell-icon")!)
-        button.backgroundColor = DecaColor.decafitLightGray.color
-        button.layer.cornerRadius = 10
-//        button.layer.borderWidth = 0.1
-        button.contentEdgeInsets = UIEdgeInsets(
+    var calenderButton: UIButton = {
+       let btn = UIButton()
+        btn.setImage(UIImage(named: "calender")!, for: .normal)
+        btn.imageView?.addoverlay(color: DecaColor.decafitPalePurple.color)
+        btn.backgroundColor = DecaColor.decafitLightGray.color
+        btn.layer.cornerRadius = 10
+        btn.layer.borderWidth = 0
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.contentEdgeInsets = UIEdgeInsets(
             top: 10, left: 12, bottom: 10, right: 12)
-        return button
+        return btn
     }()
     func setupSubviews() {
-        [profileImage, titleLabel, notificationButton].forEach { self.addSubview($0)}
+        [profileImage, titleLabel, calenderButton].forEach { self.addSubview($0)}
         NSLayoutConstraint.activate([
             profileImage.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             profileImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            // title
             titleLabel.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 20),
             titleLabel.topAnchor.constraint(equalTo: profileImage.topAnchor, constant: 15),
-            // bell icon
-            notificationButton.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 100),
-            notificationButton.topAnchor.constraint(equalTo: profileImage.topAnchor, constant: 5)
-//            notificationButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 10)
+            calenderButton.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 100),
+            calenderButton.topAnchor.constraint(equalTo: profileImage.topAnchor, constant: 2)
         ])
     }
 }
