@@ -61,7 +61,6 @@ extension SignupViewController {
             emailTextField.heightAnchor.constraint(equalToConstant: 53),
             passwordTextField.heightAnchor.constraint(equalToConstant: 53),
             confirmPasswordTextField.heightAnchor.constraint(equalToConstant: 53),
-            signUpButton.heightAnchor.constraint(equalToConstant: 58),
             fullNameTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             phoneNumberTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             emailTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),

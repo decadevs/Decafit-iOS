@@ -47,15 +47,8 @@ class InputViewController: UIViewController, UIGestureRecognizerDelegate {
     var repsTextField: UITextField = createTextField(text: "Number of reps",
                                                 font: decaFont(size: 16, font: .poppinsRegular))
     // MARK: - Next Button
-    lazy var nextButton: DecaButton = {
-        let button = DecaButton()
-        button.configure(with: DecaButtonViewModel(
-                            title: "Next",
-                            font: decaFont(size: 24, font: .ubuntuMedium),
-                            backgroundColor: DecaColor.decafitPurple.color,
-                            titleColor: .white, image: nil, borderWidth: nil,
-                            cornerRadius: 5, borderColor: nil,
-                            contentEdgeInsets: nil, isEnabled: true, tarmic: false))
+    var nextButton: DecaButton = {
+        let button = createPurpleButton(title: "Next")
         button.addTarget(self, action: #selector(gotoStartWorkout), for: .touchUpInside)
         return button
     }()
@@ -127,7 +120,6 @@ extension InputViewController {
             labelStack.leadingAnchor.constraint(equalTo: setsTextField.leadingAnchor, constant: 0),
             setsTextField.heightAnchor.constraint(equalToConstant: 56),
             repsTextField.heightAnchor.constraint(equalToConstant: 56),
-            nextButton.heightAnchor.constraint(equalToConstant: 64),
             setsTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             repsTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             nextButton.widthAnchor

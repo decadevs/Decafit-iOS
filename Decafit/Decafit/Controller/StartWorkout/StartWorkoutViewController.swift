@@ -15,13 +15,13 @@ class StartWorkoutViewController: UIViewController {
         return shared ?? StartWorkoutViewController()
     }
     var data: [StartWorkoutModel] = [
+        StartWorkoutModel(exerciseName: "Jumping jacks", duration: "00:20", image: "profile"),
         StartWorkoutModel(exerciseName: "Push ups", duration: "X10", image: "window"),
+        StartWorkoutModel(exerciseName: "Knee Push-ups", duration: "X10", image: "profile"),
+        StartWorkoutModel(exerciseName: "Incline Push-ups", duration: "X10", image: "window"),
+        StartWorkoutModel(exerciseName: "Planks", duration: "X10", image: "profile"),
         StartWorkoutModel(exerciseName: "Push ups", duration: "X10", image: "window"),
-        StartWorkoutModel(exerciseName: "Push ups", duration: "X10", image: "window"),
-        StartWorkoutModel(exerciseName: "Push ups", duration: "X10", image: "window"),
-        StartWorkoutModel(exerciseName: "Push ups", duration: "X10", image: "window"),
-        StartWorkoutModel(exerciseName: "Push ups", duration: "X10", image: "window"),
-        StartWorkoutModel(exerciseName: "Push ups", duration: "X10", image: "window"),
+        StartWorkoutModel(exerciseName: "Push ups", duration: "X10", image: "profile"),
         StartWorkoutModel(exerciseName: "Push ups", duration: "X10", image: "window")
     ]
     lazy var tableView: UITableView = {
@@ -31,6 +31,11 @@ class StartWorkoutViewController: UIViewController {
         view.delegate = self
         view.register(StartWorkoutCell.self, forCellReuseIdentifier: StartWorkoutCell.identifier)
         return view
+    }()
+    var startWorkoutButton: DecaButton = {
+        let button = createPurpleButton(title: "Next")
+//        button.addTarget(self, action: #selector(gotoStartWorkout), for: .touchUpInside)
+        return button
     }()
     override func viewDidLoad() {
         super.viewDidLoad()

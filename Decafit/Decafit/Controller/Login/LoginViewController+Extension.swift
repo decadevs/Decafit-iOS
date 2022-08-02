@@ -55,7 +55,6 @@ extension LoginViewController {
             topImageView.topAnchor.constraint(equalTo: parentStack.topAnchor, constant: -20),
             emailTextField.heightAnchor.constraint(equalToConstant: 56),
             passwordTextField.heightAnchor.constraint(equalToConstant: 56),
-            loginButton.heightAnchor.constraint(equalToConstant: 64),
             emailTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             passwordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),

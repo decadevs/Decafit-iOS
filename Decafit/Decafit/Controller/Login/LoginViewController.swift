@@ -70,15 +70,8 @@ final class LoginViewController: UIViewController {
         return textField
     }()
     // MARK: - LoginButton
-    lazy var loginButton: DecaButton = {
-        let button = DecaButton()
-        button.configure(with: DecaButtonViewModel(
-                            title: "Sign In",
-                            font: decaFont(size: 24, font: .ubuntuMedium),
-                            backgroundColor: DecaColor.decafitPurple.color,
-                            titleColor: .white, image: nil, borderWidth: nil,
-                            cornerRadius: 5, borderColor: nil,
-                            contentEdgeInsets: nil, isEnabled: true, tarmic: false))
+    var loginButton: DecaButton = {
+        let button = createPurpleButton(title: "Sign In")
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return button
     }()

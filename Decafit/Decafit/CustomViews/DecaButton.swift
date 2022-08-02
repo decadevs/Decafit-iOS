@@ -65,3 +65,15 @@ class SocialButton: DecaButton {
         setImage(image, for: .normal)
     }
 }
+func createPurpleButton(title: String) -> DecaButton {
+    let button = DecaButton()
+    button.configure(with: DecaButtonViewModel(
+                        title: title,
+                        font: decaFont(size: 24, font: .ubuntuMedium),
+                        backgroundColor: DecaColor.decafitPurple.color,
+                        titleColor: .white, image: nil, borderWidth: nil,
+                        cornerRadius: 5, borderColor: nil,
+                        contentEdgeInsets: nil, isEnabled: true, tarmic: false))
+    button.heightAnchor.constraint(equalToConstant: 64).isActive = true
+    return button
+}

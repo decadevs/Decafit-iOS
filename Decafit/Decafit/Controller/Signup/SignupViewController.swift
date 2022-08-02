@@ -117,16 +117,9 @@ final class SignupViewController: UIViewController {
         return textField
     }()
     // MARK: - SignupButton
-    lazy var signUpButton: DecaButton = {
-        let button = DecaButton()
-        button.configure(with: DecaButtonViewModel(
-                            title: "Sign up",
-                            font: decaFont(size: 24, font: .ubuntuMedium),
-                            backgroundColor: DecaColor.decafitPurple.color,
-                            titleColor: .white, image: nil, borderWidth: nil,
-                            cornerRadius: 5, borderColor: nil,
-                            contentEdgeInsets: nil, isEnabled: true, tarmic: false))
-        button.addTarget(self, action: #selector(AuthManager.shared.signUp), for: .touchUpInside)
+    var signUpButton: DecaButton = {
+        let button = createPurpleButton(title: "Sign up")
+        button.addTarget(self, action: #selector(handleUserRegistration), for: .touchUpInside)
         return button
     }()
     // MARK: - Social Login Buttons

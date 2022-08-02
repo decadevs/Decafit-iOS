@@ -401,6 +401,7 @@
 		B48A59012886D481004D1BEA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B44B3C032897C898000C94D7 /* StartWorkout */,
 				B4AB95C82891A8C400FE9C96 /* Dashboard */,
 				B40AFB25288813F500249820 /* Signup */,
 				B40AFAC828878CD700249820 /* Login */,
@@ -438,7 +439,6 @@
 			isa = PBXGroup;
 			children = (
 				B4AB95CD2891D37A00FE9C96 /* Home */,
-				B47B5B16287C147000EEC900 /* HomeViewController.swift */,
 				B4AB95C42891A87100FE9C96 /* CalenderViewController.swift */,
 			);
 			path = Dashboard;
@@ -447,10 +447,10 @@
 		B4AB95CD2891D37A00FE9C96 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B47B5B16287C147000EEC900 /* HomeViewController.swift */,
+				B4B96EA628936A2800E22B33 /* InputViewController.swift */,
 				B44B3C012897C879000C94D7 /* Focus */,
 				B44B3C022897C886000C94D7 /* Today */,
-				B4B96EA628936A2800E22B33 /* InputViewController.swift */,
-				B44B3C032897C898000C94D7 /* StartWorkout */,
 			);
 			path = Home;
 			sourceTree = "<group>";

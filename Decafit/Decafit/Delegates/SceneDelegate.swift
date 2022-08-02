@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let authManager = AuthManager.shared
         switch authManager.isSignedIn {
         case true:
-            initialViewController = home
+            initialViewController = StartWorkoutViewController()
         case false:
             initialViewController = LoginViewController()
         }
