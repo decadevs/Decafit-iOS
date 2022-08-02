@@ -38,7 +38,14 @@ class StartWorkoutViewController: UIViewController, UIGestureRecognizerDelegate 
         button.layer.shadowOpacity = 0.1
         return button
     }()
-    lazy var topView = WorkoutPageTopview()
+    lazy var topView: WorkoutPageTopview = {
+       let view = WorkoutPageTopview()
+        view.backButton.addTarget(self, action: #selector(clickNavBackButton), for: .touchUpInside)
+        return view
+    }()
+    @objc func clickNavBackButton(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -72,7 +79,7 @@ extension StartWorkoutViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.heightAnchor.constraint(equalToConstant: CGFloat(view.frame.height*0.65)),
-            startWorkoutButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            startWorkoutButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.86),
             startWorkoutButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
             startWorkoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])

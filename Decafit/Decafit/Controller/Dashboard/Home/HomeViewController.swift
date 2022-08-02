@@ -29,8 +29,6 @@ final class HomeViewController: UIViewController, FocusAreaViewDelegate {
         setupSubviews()
     }
     func didDisplayInputScreen(_ screen: InputViewController, image: UIImage?, title: String) {
-        screen.titleLabel.text = title
-//        screen.topImageView.collectionView(todayView)
         self.navigationController?.pushViewController(screen, animated: true)
     }
     override func viewWillAppear(_ animated: Bool) {

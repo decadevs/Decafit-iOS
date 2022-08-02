@@ -38,6 +38,15 @@ class WorkoutPageTopview: UIView {
         image.addoverlay(color: DecaColor.decafitPurple.color)
         return image
     }()
+    let backButton: SocialButton = {
+        let btn = SocialButton(image: UIImage(named: "back-arrow")!)
+        btn.backgroundColor = .white
+        btn.layer.cornerRadius = 10
+        btn.layer.borderWidth = 0
+        btn.contentEdgeInsets = UIEdgeInsets(
+            top: 12, left: 12, bottom: 12, right: 12)
+        return btn
+    }()
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -48,15 +57,17 @@ class WorkoutPageTopview: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     func initialize() {
-        [topImage, titleLabel, timeLabel, calorieLabel].forEach { addSubview($0)}
+        [topImage, backButton, titleLabel, timeLabel, calorieLabel].forEach { addSubview($0)}
         NSLayoutConstraint.activate([
             topImage.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             topImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             topImage.trailingAnchor.constraint(equalTo: trailingAnchor),
             topImage.bottomAnchor.constraint(equalTo: bottomAnchor),
+            backButton.topAnchor.constraint(equalTo: topImage.topAnchor, constant: 55),
+            backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
             
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -80),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
 
             timeLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
             timeLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: 0),

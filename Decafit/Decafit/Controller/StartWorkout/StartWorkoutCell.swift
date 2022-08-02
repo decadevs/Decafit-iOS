@@ -48,7 +48,7 @@ class StartWorkoutCell: UITableViewCell {
             contentView.heightAnchor.constraint(equalToConstant: 110),
             
             exerciseImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 0),
-            exerciseImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 32),
+            exerciseImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
             exerciseImage.heightAnchor.constraint(equalToConstant: 56),
             exerciseImage.widthAnchor.constraint(equalToConstant: 64),
 
