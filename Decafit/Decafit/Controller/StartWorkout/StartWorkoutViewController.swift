@@ -29,21 +29,22 @@ class StartWorkoutViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.dataSource = self
         view.delegate = self
+        view.backgroundColor = .red
         view.register(StartWorkoutCell.self, forCellReuseIdentifier: StartWorkoutCell.identifier)
         return view
     }()
     var startWorkoutButton: DecaButton = {
-        let button = createPurpleButton(title: "Next")
+        let button = createPurpleButton(title: "Start Workout")
 //        button.addTarget(self, action: #selector(gotoStartWorkout), for: .touchUpInside)
         return button
     }()
-    // create top image view with height 288pts
-    var topView = WorkoutPageTopview()
+    lazy var topView = WorkoutPageTopview()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         [topView, tableView, startWorkoutButton].forEach { view.addSubview($0)}
         setupSubviews()
+        print(startWorkoutButton.titleLabel?.font )
     }
 
 }
@@ -63,8 +64,17 @@ extension StartWorkoutViewController {
     func setupSubviews() {
         NSLayoutConstraint.activate([
             // topview
+            topView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            topView.heightAnchor.constraint(equalToConstant: 288),
+            topView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            topView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             // tableview
-            // button
+            tableView.topAnchor.constraint(equalTo: topView.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            startWorkoutButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            startWorkoutButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
+            startWorkoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
 }

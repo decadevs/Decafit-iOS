@@ -25,18 +25,18 @@ extension UILabel {
     }
 
 }
-extension UIFont {
-    func withTraits(traits: UIFontDescriptor.SymbolicTraits) -> UIFont {
-        let descriptor = fontDescriptor.withSymbolicTraits(traits)
-        return UIFont(descriptor: descriptor!, size: 0)
-    }
-    func bold() -> UIFont {
-        return withTraits(traits: .traitBold)
-    }
-    func italic() -> UIFont {
-        return withTraits(traits: .traitItalic)
-    }
-}
+//extension UIFont {
+//    func withTraits(traits: UIFontDescriptor.SymbolicTraits) -> UIFont {
+//        let descriptor = fontDescriptor.withSymbolicTraits(traits)
+//        return UIFont(descriptor: descriptor!, size: 0)
+//    }
+//    func bold() -> UIFont {
+//        return withTraits(traits: .traitBold)
+//    }
+//    func italic() -> UIFont {
+//        return withTraits(traits: .traitItalic)
+//    }
+//}
 extension UIView {
 func addoverlay(color: UIColor = .black, alpha: CGFloat = 0.5) {
     let overlay = UIView()

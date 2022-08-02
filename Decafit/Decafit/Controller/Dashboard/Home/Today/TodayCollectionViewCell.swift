@@ -20,7 +20,7 @@ class TodayCollectionViewCell: UICollectionViewCell {
     lazy var firstLabel: UILabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
-                            font: decaFont(size: 24, font: .poppinsMedium).bold(),
+                            font: decaFont(size: 24, font: .poppinsBold),
                             textColor: .white, numberOfLines: 1,
                             text: "First", kerning: 1.0))
         return label

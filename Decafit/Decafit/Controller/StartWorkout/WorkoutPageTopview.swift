@@ -10,9 +10,9 @@ class WorkoutPageTopview: UIView {
     lazy var titleLabel: UILabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
-                            font: decaFont(size: 24, font: .poppinsMedium).bold(),
+                            font: decaFont(size: 24, font: .poppinsBold),
                             textColor: .white, numberOfLines: 1,
-                            text: "First", kerning: 1.0))
+                            text: "10 Workouts", kerning: 1.0))
         return label
     }()
     lazy var timeLabel: UILabel = {
@@ -28,7 +28,7 @@ class WorkoutPageTopview: UIView {
         label.configure(with: DecaLabelViewModel(font: decaFont(size: 14, font: .poppinsRegular),
                                                  textColor: .white, numberOfLines: 1,
                                                  text: "Fourth", kerning: 0.5))
-        label.attributedText = label.setAttributedText(image: "flame.fill", textAfterIcon: " 24 Kcal")
+        label.attributedText = label.setAttributedText(image: "flame.fill", textAfterIcon: " 240 Kcal")
         return label
     }()
     lazy var topImage: UIImageView = {
@@ -42,6 +42,8 @@ class WorkoutPageTopview: UIView {
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
+        translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = .brown
         initialize()
     }
     required init?(coder: NSCoder) {
@@ -52,12 +54,11 @@ class WorkoutPageTopview: UIView {
         NSLayoutConstraint.activate([
             topImage.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             topImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-                                        
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 80),
+            
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -40),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
 
-                                        
-            timeLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
+            timeLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
             timeLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: 0),
             calorieLabel.topAnchor.constraint(equalTo: timeLabel.topAnchor, constant: 0),
             calorieLabel.leadingAnchor.constraint(equalTo: timeLabel.trailingAnchor, constant: 10)

@@ -25,7 +25,7 @@ class TodaySessionView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Today's session"
-        label.font = decaFont(size: 16, font: .poppinsMedium).bold()
+        label.font = decaFont(size: 16, font: .poppinsMedium)
         label.textColor = DecaColor.decafitBlack.color
         return label
     }()

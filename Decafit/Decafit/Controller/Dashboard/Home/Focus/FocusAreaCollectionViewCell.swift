@@ -20,7 +20,7 @@ class FocusAreaCollectionViewCell: UICollectionViewCell {
     }
     var bodyFocusAreaLabel: UILabel = {
         let label = DecaLabel()
-        label.configure(with: DecaLabelViewModel(font: decaFont(size: 16, font: .poppinsMedium).bold(),
+        label.configure(with: DecaLabelViewModel(font: decaFont(size: 16, font: .poppinsMedium),
                                                  textColor: .white, numberOfLines: 1,
                                                  text: "First", kerning: 0.5))
         return label
