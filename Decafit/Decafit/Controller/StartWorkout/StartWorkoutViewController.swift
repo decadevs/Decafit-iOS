@@ -9,7 +9,7 @@ import UIKit
 struct StartWorkoutModel {
     let exerciseName, duration, image: String
 }
-class StartWorkoutViewController: UIViewController {
+class StartWorkoutViewController: UIViewController, UIGestureRecognizerDelegate {
     static var shared: StartWorkoutViewController?
     static func getWorkoutView() -> StartWorkoutViewController {
         return shared ?? StartWorkoutViewController()
@@ -29,13 +29,11 @@ class StartWorkoutViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.dataSource = self
         view.delegate = self
-        view.backgroundColor = .red
         view.register(StartWorkoutCell.self, forCellReuseIdentifier: StartWorkoutCell.identifier)
         return view
     }()
     var startWorkoutButton: DecaButton = {
         let button = createPurpleButton(title: "Start Workout")
-//        button.addTarget(self, action: #selector(gotoStartWorkout), for: .touchUpInside)
         button.layer.shadowOffset = CGSize(width: 0, height: 8)
         button.layer.shadowOpacity = 0.1
         return button
@@ -46,7 +44,7 @@ class StartWorkoutViewController: UIViewController {
         view.backgroundColor = .white
         [topView, tableView, startWorkoutButton].forEach { view.addSubview($0)}
         setupSubviews()
-        print(tableView)
+        navigationController?.navigationBar.isHidden = true 
     }
 }
 extension StartWorkoutViewController: UITableViewDelegate, UITableViewDataSource {

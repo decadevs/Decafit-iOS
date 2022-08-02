@@ -50,6 +50,7 @@
 		B44B3C052897C8CB000C94D7 /* StartWorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C042897C8CB000C94D7 /* StartWorkoutCell.swift */; };
 		B44B3C0728982687000C94D7 /* CustomNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C0628982687000C94D7 /* CustomNavbar.swift */; };
 		B44B3C0B28994CD3000C94D7 /* WorkoutPageTopview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C0A28994CD3000C94D7 /* WorkoutPageTopview.swift */; };
+		B44B3C0D2899CD90000C94D7 /* CustomTopImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C0C2899CD90000C94D7 /* CustomTopImageView.swift */; };
 		B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B12287C147000EEC900 /* AppDelegate.swift */; };
 		B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B14287C147000EEC900 /* SceneDelegate.swift */; };
 		B47B5B17287C147000EEC900 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B16287C147000EEC900 /* HomeViewController.swift */; };
@@ -137,6 +138,7 @@
 		B44B3C042897C8CB000C94D7 /* StartWorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutCell.swift; sourceTree = "<group>"; };
 		B44B3C0628982687000C94D7 /* CustomNavbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavbar.swift; sourceTree = "<group>"; };
 		B44B3C0A28994CD3000C94D7 /* WorkoutPageTopview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPageTopview.swift; sourceTree = "<group>"; };
+		B44B3C0C2899CD90000C94D7 /* CustomTopImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTopImageView.swift; sourceTree = "<group>"; };
 		B47B5B0F287C147000EEC900 /* Decafit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Decafit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B47B5B12287C147000EEC900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B47B5B14287C147000EEC900 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 				B4AB95C82891A8C400FE9C96 /* Dashboard */,
 				B40AFB25288813F500249820 /* Signup */,
 				B40AFAC828878CD700249820 /* Login */,
+				B44B3C0C2899CD90000C94D7 /* CustomTopImageView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				B4AB95B5288E932F00FE9C96 /* DecaStack.swift in Sources */,
 				B4B96EA728936A2800E22B33 /* InputViewController.swift in Sources */,
 				B4AB95C52891A87100FE9C96 /* CalenderViewController.swift in Sources */,
+				B44B3C0D2899CD90000C94D7 /* CustomTopImageView.swift in Sources */,
 				B4B96E9F2892696200E22B33 /* TodaySessionView.swift in Sources */,
 				B40AFB242887BD3600249820 /* CustomUIColor.swift in Sources */,
 				B4AB95CF2891D3B000FE9C96 /* FocusAreaView.swift in Sources */,

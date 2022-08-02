@@ -45,7 +45,7 @@ class StartWorkoutCell: UITableViewCell {
     }
     func setupSubviews() {
         NSLayoutConstraint.activate([
-            contentView.heightAnchor.constraint(equalToConstant: 120),
+            contentView.heightAnchor.constraint(equalToConstant: 110),
             
             exerciseImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 0),
             exerciseImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 32),

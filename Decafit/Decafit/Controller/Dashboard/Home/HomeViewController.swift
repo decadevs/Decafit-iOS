@@ -7,24 +7,30 @@
 
 import UIKit
 
-final class HomeViewController: UIViewController, TodaySessionViewDelegate {
+final class HomeViewController: UIViewController, FocusAreaViewDelegate {
+    
     static var shared: HomeViewController?
     static func getHomeView() -> HomeViewController {
         return shared ?? HomeViewController()
     }
     lazy var todayView: TodaySessionView = {
         let view = TodaySessionView()
+        return view
+    }()
+    lazy var focusAreaView: FocusAreaView = {
+        let view = FocusAreaView()
         view.delegate = self
         return view
     }()
-    lazy var focusAreaView = FocusAreaView()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupNavigation()
         setupSubviews()
     }
-    func didDisplayInputScreen(_ screen: InputViewController) {
+    func didDisplayInputScreen(_ screen: InputViewController, image: UIImage?, title: String) {
+        screen.titleLabel.text = title
+//        screen.topImageView.collectionView(todayView)
         self.navigationController?.pushViewController(screen, animated: true)
     }
     override func viewWillAppear(_ animated: Bool) {

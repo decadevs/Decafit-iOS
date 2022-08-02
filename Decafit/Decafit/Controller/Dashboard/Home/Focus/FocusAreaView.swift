@@ -7,14 +7,14 @@
 
 import UIKit
 protocol FocusAreaViewDelegate: AnyObject {
-    func didDisplayInputScreen(_ screen: InputViewController)
+    func didDisplayInputScreen(_ screen: InputViewController, image: UIImage?, title: String)
 }
 struct FocusAreaModel {
     let image, bodyPart, duration: String
 }
 class FocusAreaView: UIView, UICollectionViewDataSource,
                      UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    weak var delegate: TodaySessionViewDelegate?
+    weak var delegate: FocusAreaViewDelegate?
     let data: [FocusAreaModel] = [
         FocusAreaModel(image: "back", bodyPart: "Back", duration: "20 days"),
         FocusAreaModel(image: "meditate", bodyPart: "Abs", duration: "30 days"),
@@ -84,6 +84,9 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let screen = InputViewController.shared
-        delegate?.didDisplayInputScreen(screen)
+        let selectedCell = collectionView.cellForItem(at: indexPath) as? FocusAreaCollectionViewCell
+        let image = selectedCell?.focusImage.image
+        let title = selectedCell?.bodyFocusAreaLabel.text ?? "Full Body"
+        delegate?.didDisplayInputScreen(screen, image: image, title: title)
     }
 }

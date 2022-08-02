@@ -32,18 +32,16 @@ class WorkoutPageTopview: UIView {
         return label
     }()
     lazy var topImage: UIImageView = {
-        let image = UIImageView()
+        let image = UIImageView(image: UIImage(named: "weightlift"))
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
-        image.clipsToBounds = true
-        image.layer.cornerRadius = 10
         image.addoverlay(color: DecaColor.decafitPurple.color)
         return image
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .brown
+        backgroundColor = .green
         initialize()
     }
     required init?(coder: NSCoder) {
@@ -54,6 +52,8 @@ class WorkoutPageTopview: UIView {
         NSLayoutConstraint.activate([
             topImage.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             topImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            topImage.trailingAnchor.constraint(equalTo: trailingAnchor),
+            topImage.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -80),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
