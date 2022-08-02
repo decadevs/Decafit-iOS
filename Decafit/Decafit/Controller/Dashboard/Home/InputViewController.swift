@@ -7,24 +7,18 @@
 
 import UIKit
 
-class InputViewController: UIViewController {
+class InputViewController: UIViewController, UIGestureRecognizerDelegate {
     static let shared =  InputViewController()
     // MARK: - Image View
-    lazy var topImageView: DecaImageView = {
-        let imageView = DecaImageView(frame: .zero)
-        imageView.configure(with: DecaImageViewModel(
-                                image: "weightlift", contentMode: .scaleToFill,
-                                tintColor: .white))
-        imageView.layer.cornerRadius = 50
-        return imageView
-    }()
+    lazy var topImageView = TodaySessionView(isHidden: true)
     // MARK: - Title field
     var titleLabel: DecaLabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
-                            font: decaFont(size: 20, font: .poppinsMedium).bold(),
+                            font: decaFont(size: 16, font: .poppinsMedium),
                             textColor: DecaColor.decafitBlack.color,
-                            numberOfLines: 1, text: "Set your limit", kerning: 1))
+                            numberOfLines: 1, text: "Set your limit", kerning: 0.2))
+//        label.backgroundColor = .green
         label.textAlignment = .left
         label.sizeToFit()
         return label
@@ -35,9 +29,18 @@ class InputViewController: UIViewController {
                             font: decaFont(size: 12, font: .poppinsRegular),
                             textColor: DecaColor.decafitGray.color,
                             numberOfLines: 1, text: "Enter the number of sets and reps for your workout",
-                            kerning: 0.1))
+                            kerning: 0))
         label.textAlignment = .left
         return label
+    }()
+    lazy var labelStack: UIStackView = {
+       let stack = UIStackView(arrangedSubviews: [titleLabel, subTitleLabel])
+        stack.axis = .vertical
+        stack.spacing = 15
+        stack.alignment = .leading
+        stack.distribution = .fillProportionally
+        stack.contentHuggingPriority(for: .vertical)
+        return stack
     }()
     // MARK: - Sets TextField
     var setsTextField: UITextField = createTextField(text: "Number of sets",
@@ -57,25 +60,15 @@ class InputViewController: UIViewController {
         button.addTarget(self, action: #selector(gotoStartWorkout), for: .touchUpInside)
         return button
     }()
-    lazy var fieldStack: DecaStack = {
-       let stack = DecaStack(arrangedSubviews: [setsTextField, repsTextField, nextButton])
-        stack.configure(with: DecaStackViewModel(
-                            axis: .vertical, alignment: .center,
-                            spacing: 20, distribution: .fillEqually))
-       return stack
-    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        setupNavigation()
         setupSubviews()
     }
-//    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-//        hidesBottomBarWhenPushed = true
-//    }
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    @objc func clickNavBackButton(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+    }
 }
 extension InputViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -86,15 +79,39 @@ extension InputViewController {
     @objc func gotoStartWorkout() {
         let screen = StartWorkoutViewController.getWorkoutView()
         self.navigationController?.pushViewController(screen, animated: true)
-//        screen.modalPresentationStyle = .fullScreen
-//        present(screen, animated: true)
+    }
+    func setupNavigation() {
+        let navbarFrame = CGRect(x: 20, y: 200, width: view.bounds.width-40, height: 150)
+        let backButton: SocialButton = {
+            let btn = SocialButton(image: UIImage(named: "back-arrow")!)
+            btn.backgroundColor = DecaColor.decafitLightGray.color
+            btn.layer.cornerRadius = 10
+            btn.layer.borderWidth = 0
+            btn.contentEdgeInsets = UIEdgeInsets(
+                top: 12, left: 12, bottom: 12, right: 12)
+            btn.addTarget(self,
+                          action: #selector(clickNavBackButton), for: .touchUpInside)
+            return btn
+        }()
+        let inputNav: UIView = {
+           let nav = UIView()
+            nav.frame = navbarFrame
+            nav.addSubview(backButton)
+            backButton.frame = CGRect(x: 30, y: 40, width: 40, height: 40)
+            return nav
+        }()
+        let navbar: UIBarButtonItem = UIBarButtonItem(customView: inputNav)
+        navigationItem.leftBarButtonItems = [navbar]
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.heightAnchor.constraint(equalToConstant: 150).isActive = true
     }
     func setupSubviews() {
-        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height/1.5)
+        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height/1.6)
         let parentStack: DecaStack = {
             let stackView = DecaStack(arrangedSubviews: [topImageView,
-                                                         titleLabel, subTitleLabel,
-                                                         fieldStack])
+                                                         labelStack,
+                                                         setsTextField, repsTextField, nextButton])
             stackView.configure(with: DecaStackViewModel(
                                     axis: .vertical, alignment: .center,
                                     spacing: 20, distribution: .fillProportionally))
@@ -103,22 +120,15 @@ extension InputViewController {
         }()
         view.addSubview(parentStack)
         NSLayoutConstraint.activate([
-            topImageView.widthAnchor.constraint(equalToConstant: view.frame.width-60),
-            topImageView.heightAnchor.constraint(equalToConstant: 150),
-            topImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            titleLabel.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: 200),
-            titleLabel.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 0),
-            titleLabel.heightAnchor.constraint(equalToConstant: 30),
-            subTitleLabel.heightAnchor.constraint(equalToConstant: 30),
-            subTitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: 0),
-            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
-            fieldStack.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 10),
-            fieldStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            fieldStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            fieldStack.heightAnchor.constraint(equalToConstant: 150),
-            setsTextField.heightAnchor.constraint(equalToConstant: 45),
-            repsTextField.heightAnchor.constraint(equalToConstant: 45),
-            nextButton.heightAnchor.constraint(equalToConstant: 50),
+            topImageView.widthAnchor.constraint(equalToConstant: view.frame.width-10),
+            topImageView.heightAnchor.constraint(equalToConstant: 170),
+            topImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -40),
+            labelStack.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: -20),
+            labelStack.heightAnchor.constraint(equalToConstant: 45),
+            labelStack.leadingAnchor.constraint(equalTo: setsTextField.leadingAnchor, constant: 0),
+            setsTextField.heightAnchor.constraint(equalToConstant: 56),
+            repsTextField.heightAnchor.constraint(equalToConstant: 56),
+            nextButton.heightAnchor.constraint(equalToConstant: 64),
             setsTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             repsTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             nextButton.widthAnchor

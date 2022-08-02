@@ -59,9 +59,10 @@ func createTextField(text: String, font: UIFont) -> UITextField {
         textField.backgroundColor = .clear
         textField.placeholder = text
         textField.font = font
-        textField.layer.borderWidth = 1
+        textField.layer.borderWidth = 0.5
+        textField.textColor = DecaColor.decafitDarkGray.color
         textField.layer.cornerRadius = 5
-        textField.layer.borderColor = DecaColor.decafitGray.color.cgColor
+        textField.layer.borderColor = DecaColor.decafitDarkGray.color.cgColor
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: textField.frame.height))
         textField.leftViewMode = .always
         return textField

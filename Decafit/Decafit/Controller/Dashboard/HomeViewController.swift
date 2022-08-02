@@ -30,6 +30,7 @@ final class HomeViewController: UIViewController, TodaySessionViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.shouldRemoveShadow(true)
+        setupNavigation()
     }
 }
 extension HomeViewController {

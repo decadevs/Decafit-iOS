@@ -23,7 +23,6 @@ class TodayCollectionViewCell: UICollectionViewCell {
                             font: decaFont(size: 24, font: .poppinsMedium).bold(),
                             textColor: .white, numberOfLines: 1,
                             text: "First", kerning: 1.0))
-        label.backgroundColor = .black
         return label
     }()
     lazy var secondLabel: UILabel = {
@@ -31,7 +30,6 @@ class TodayCollectionViewCell: UICollectionViewCell {
         label.configure(with: DecaLabelViewModel(font: decaFont(size: 12, font: .poppinsRegular),
                                                  textColor: .white, numberOfLines: 1,
                                                  text: "Second", kerning: 0.5))
-        label.backgroundColor = .black
         return label
     }()
     lazy var thirdLabel: UILabel = {
@@ -40,7 +38,6 @@ class TodayCollectionViewCell: UICollectionViewCell {
                                                  textColor: .white, numberOfLines: 1,
                                                  text: "Third", kerning: 0.5))
         label.attributedText = label.setAttributedText(image: "clock", textAfterIcon: " 24 min")
-        label.backgroundColor = .black
         return label
     }()
     lazy var fourthLabel: UILabel = {
@@ -49,7 +46,6 @@ class TodayCollectionViewCell: UICollectionViewCell {
                                                  textColor: .white, numberOfLines: 1,
                                                  text: "Fourth", kerning: 0.5))
         label.attributedText = label.setAttributedText(image: "flame.fill", textAfterIcon: " 24 Kcal")
-        label.backgroundColor = .black
         return label
     }()
     lazy var todayImage: UIImageView = {
@@ -58,6 +54,7 @@ class TodayCollectionViewCell: UICollectionViewCell {
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.layer.cornerRadius = 10
+        image.addoverlay(color: DecaColor.decafitPurple.color)
         return image
     }()
     var playButton: SocialButton = {

@@ -50,6 +50,10 @@ class TodaySessionView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    convenience init(isHidden: Bool) {
+        self.init()
+        titleLabel.isHidden = isHidden
+    }
     func setupSubviews() {
         [titleLabel, collectionView].forEach { addSubview($0) }
         NSLayoutConstraint.activate([
@@ -85,6 +89,6 @@ extension TodaySessionView: UICollectionViewDelegate,
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let screen = InputViewController.shared
-        delegate?.didDisplayInputScreen(screen)
+        (delegate?.didDisplayInputScreen(screen))
     }
 }
