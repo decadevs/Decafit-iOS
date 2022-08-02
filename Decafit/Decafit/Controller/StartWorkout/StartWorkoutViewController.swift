@@ -36,6 +36,8 @@ class StartWorkoutViewController: UIViewController {
     var startWorkoutButton: DecaButton = {
         let button = createPurpleButton(title: "Start Workout")
 //        button.addTarget(self, action: #selector(gotoStartWorkout), for: .touchUpInside)
+        button.layer.shadowOffset = CGSize(width: 0, height: 8)
+        button.layer.shadowOpacity = 0.1
         return button
     }()
     lazy var topView = WorkoutPageTopview()
@@ -44,9 +46,8 @@ class StartWorkoutViewController: UIViewController {
         view.backgroundColor = .white
         [topView, tableView, startWorkoutButton].forEach { view.addSubview($0)}
         setupSubviews()
-        print(startWorkoutButton.titleLabel?.font )
+        print(tableView)
     }
-
 }
 extension StartWorkoutViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,9 +70,10 @@ extension StartWorkoutViewController {
             topView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             topView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             // tableview
-            tableView.topAnchor.constraint(equalTo: topView.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: -20),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.heightAnchor.constraint(equalToConstant: CGFloat(view.frame.height*0.65)),
             startWorkoutButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             startWorkoutButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
             startWorkoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)

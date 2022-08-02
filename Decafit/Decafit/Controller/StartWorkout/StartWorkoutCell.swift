@@ -52,14 +52,10 @@ class StartWorkoutCell: UITableViewCell {
             exerciseImage.heightAnchor.constraint(equalToConstant: 56),
             exerciseImage.widthAnchor.constraint(equalToConstant: 64),
 
-            
             exerciseLabel.leadingAnchor.constraint(equalTo: exerciseImage.trailingAnchor, constant: 16),
             exerciseLabel.topAnchor.constraint(equalTo: exerciseImage.topAnchor, constant: 5),
-//            exerciseLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -100),
-            
             durationLabel.topAnchor.constraint(equalTo: exerciseLabel.bottomAnchor, constant: 5),
             durationLabel.leadingAnchor.constraint(equalTo: exerciseLabel.leadingAnchor, constant: 0)
-//            durationLabel.bottomAnchor.constraint(equalTo: exerciseImage.bottomAnchor, constant: 5)
         ])
     }
 }

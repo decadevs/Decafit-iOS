@@ -55,10 +55,10 @@ class WorkoutPageTopview: UIView {
             topImage.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             topImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -40),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -80),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
 
-            timeLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            timeLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
             timeLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: 0),
             calorieLabel.topAnchor.constraint(equalTo: timeLabel.topAnchor, constant: 0),
             calorieLabel.leadingAnchor.constraint(equalTo: timeLabel.trailingAnchor, constant: 10)
