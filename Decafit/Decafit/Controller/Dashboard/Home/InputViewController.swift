@@ -18,7 +18,6 @@ class InputViewController: UIViewController, UIGestureRecognizerDelegate {
                             font: decaFont(size: 16, font: .poppinsMedium),
                             textColor: DecaColor.decafitBlack.color,
                             numberOfLines: 1, text: "Set your limit", kerning: 0.2))
-//        label.backgroundColor = .green
         label.textAlignment = .left
         label.sizeToFit()
         return label
