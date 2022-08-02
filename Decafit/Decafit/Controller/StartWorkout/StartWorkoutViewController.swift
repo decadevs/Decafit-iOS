@@ -25,7 +25,7 @@ class StartWorkoutViewController: UIViewController {
         StartWorkoutModel(exerciseName: "Push ups", duration: "X10", image: "window")
     ]
     lazy var tableView: UITableView = {
-        let view = UITableView(frame: view.bounds)
+        let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.dataSource = self
         view.delegate = self
@@ -37,10 +37,13 @@ class StartWorkoutViewController: UIViewController {
 //        button.addTarget(self, action: #selector(gotoStartWorkout), for: .touchUpInside)
         return button
     }()
+    // create top image view with height 288pts
+    var topView = WorkoutPageTopview()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        view.addSubview(tableView)
+        [topView, tableView, startWorkoutButton].forEach { view.addSubview($0)}
+        setupSubviews()
     }
 
 }
@@ -54,5 +57,14 @@ extension StartWorkoutViewController: UITableViewDelegate, UITableViewDataSource
                 as? StartWorkoutCell else { return UITableViewCell()}
         cell.configure(with: data[indexPath.row])
         return cell
+    }
+}
+extension StartWorkoutViewController {
+    func setupSubviews() {
+        NSLayoutConstraint.activate([
+            // topview
+            // tableview
+            // button
+        ])
     }
 }
