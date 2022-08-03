@@ -82,6 +82,9 @@ extension StartWorkoutViewController {
         secondRow?.completeButton.setTitle("Incomplete", for: .normal)
         secondRow?.completeButton.setTitleColor(DecaColor.red.color, for: .normal)
         secondRow?.completeButton.backgroundColor = DecaColor.lightRed.color
+        secondRow?.progressbar.isHidden = false
+        secondRow?.progressbar.progress = 0.4
+//        secondRow?.backgroundView = secondRow?.progressbar
         secondRow?.completeButton.isHidden = false
     }
     func setupSubviews() {

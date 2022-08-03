@@ -11,9 +11,8 @@ class StartWorkoutCell: UITableViewCell {
     static let identifier = "StartWorkoutCell"
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        [exerciseImage, exerciseLabel, durationLabel, completeButton].forEach { contentView.addSubview($0)}
+        [exerciseImage, exerciseLabel, durationLabel, progressbar, completeButton].forEach { contentView.addSubview($0)}
         setupSubviews()
-        
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -48,9 +47,20 @@ class StartWorkoutCell: UITableViewCell {
         btn.backgroundColor = DecaColor.decafitLightGreen.color
         btn.layer.cornerRadius = 15
         btn.layer.borderWidth = 0
+        btn.isHidden = true
         btn.contentEdgeInsets = UIEdgeInsets(
             top: 13, left: 12, bottom: 13, right: 12)
         return btn
+    }()
+    var progressbar: UIProgressView = {
+        let bar = UIProgressView()
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.progressTintColor = DecaColor.decafitLightGreen.color
+        bar.trackTintColor = .white
+        bar.isHidden = true
+        bar.isOpaque = false
+        bar.alpha = 0.4
+        return bar
     }()
     func configure(with model: StartWorkoutModel) {
         exerciseLabel.text = model.exerciseName
@@ -58,20 +68,22 @@ class StartWorkoutCell: UITableViewCell {
         exerciseImage.image = UIImage(named: model.image)
     }
     func setupSubviews() {
-        completeButton.isHidden = true
-        
         NSLayoutConstraint.activate([
             contentView.heightAnchor.constraint(equalToConstant: 120),
+            progressbar.heightAnchor.constraint(equalTo: contentView.heightAnchor),
+            progressbar.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            progressbar.topAnchor.constraint(equalTo: contentView.topAnchor),
+            progressbar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
             
-            exerciseImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 0),
-            exerciseImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            exerciseImage.centerYAnchor.constraint(equalTo: progressbar.centerYAnchor, constant: 0),
+            exerciseImage.leadingAnchor.constraint(equalTo: progressbar.leadingAnchor, constant: 25),
             exerciseImage.heightAnchor.constraint(equalToConstant: 56),
             exerciseImage.widthAnchor.constraint(equalToConstant: 64),
 
             exerciseLabel.leadingAnchor.constraint(equalTo: exerciseImage.trailingAnchor, constant: 16),
             exerciseLabel.topAnchor.constraint(equalTo: exerciseImage.topAnchor, constant: 5),
             completeButton.topAnchor.constraint(equalTo: exerciseLabel.topAnchor, constant: 5),
-            completeButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            completeButton.trailingAnchor.constraint(equalTo: progressbar.trailingAnchor, constant: -20),
             completeButton.widthAnchor.constraint(equalToConstant: 95),
             completeButton.heightAnchor.constraint(equalToConstant: 33),
             durationLabel.topAnchor.constraint(equalTo: exerciseLabel.bottomAnchor, constant: 5),
