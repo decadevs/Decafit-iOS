@@ -55,6 +55,10 @@
 		B44B3C18289A893E000C94D7 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C17289A893E000C94D7 /* Labels.swift */; };
 		B44B3C1B289A8ABE000C94D7 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C1A289A8ABE000C94D7 /* Images.swift */; };
 		B44B3C1D289A957D000C94D7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C1C289A957D000C94D7 /* Alert.swift */; };
+		B44B3C21289B0093000C94D7 /* FocusAreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C20289B0093000C94D7 /* FocusAreaModel.swift */; };
+		B44B3C23289B0106000C94D7 /* TodaySessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C22289B0106000C94D7 /* TodaySessionModel.swift */; };
+		B44B3C25289B032D000C94D7 /* StartWorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C24289B032D000C94D7 /* StartWorkoutModel.swift */; };
+		B44B3C27289B064A000C94D7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C26289B064A000C94D7 /* DataManager.swift */; };
 		B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B12287C147000EEC900 /* AppDelegate.swift */; };
 		B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B14287C147000EEC900 /* SceneDelegate.swift */; };
 		B47B5B17287C147000EEC900 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B16287C147000EEC900 /* HomeViewController.swift */; };
@@ -146,6 +150,10 @@
 		B44B3C17289A893E000C94D7 /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
 		B44B3C1A289A8ABE000C94D7 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		B44B3C1C289A957D000C94D7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		B44B3C20289B0093000C94D7 /* FocusAreaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusAreaModel.swift; sourceTree = "<group>"; };
+		B44B3C22289B0106000C94D7 /* TodaySessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionModel.swift; sourceTree = "<group>"; };
+		B44B3C24289B032D000C94D7 /* StartWorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutModel.swift; sourceTree = "<group>"; };
+		B44B3C26289B064A000C94D7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		B47B5B0F287C147000EEC900 /* Decafit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Decafit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B47B5B12287C147000EEC900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B47B5B14287C147000EEC900 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -391,6 +399,16 @@
 			path = InputSetsAndReps;
 			sourceTree = "<group>";
 		};
+		B44B3C1F289B0076000C94D7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B44B3C20289B0093000C94D7 /* FocusAreaModel.swift */,
+				B44B3C22289B0106000C94D7 /* TodaySessionModel.swift */,
+				B44B3C24289B032D000C94D7 /* StartWorkoutModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		B47B5B06287C147000EEC900 = {
 			isa = PBXGroup;
 			children = (
@@ -416,6 +434,7 @@
 		B47B5B11287C147000EEC900 /* Decafit */ = {
 			isa = PBXGroup;
 			children = (
+				B44B3C1F289B0076000C94D7 /* Models */,
 				B40AFB36288ACB4F00249820 /* CustomViews */,
 				B40AFB1E288798E200249820 /* Common */,
 				B48A59042886D4AD004D1BEA /* Resources */,
@@ -450,6 +469,7 @@
 			isa = PBXGroup;
 			children = (
 				B48A59072886D583004D1BEA /* AuthManager.swift */,
+				B44B3C26289B064A000C94D7 /* DataManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -755,13 +775,17 @@
 				B40AFB242887BD3600249820 /* CustomUIColor.swift in Sources */,
 				B4AB95CF2891D3B000FE9C96 /* FocusAreaView.swift in Sources */,
 				B40AFB292888143C00249820 /* SignupViewController+Extension.swift in Sources */,
+				B44B3C21289B0093000C94D7 /* FocusAreaModel.swift in Sources */,
 				B44B3C1B289A8ABE000C94D7 /* Images.swift in Sources */,
+				B44B3C23289B0106000C94D7 /* TodaySessionModel.swift in Sources */,
+				B44B3C27289B064A000C94D7 /* DataManager.swift in Sources */,
 				B44B3C15289A879B000C94D7 /* Buttons.swift in Sources */,
 				B44B3C0F289A714A000C94D7 /* Constants.swift in Sources */,
 				B48A590A2886D684004D1BEA /* LoginViewController.swift in Sources */,
 				B44B3C11289A7F57000C94D7 /* TextFields.swift in Sources */,
 				B44B3C002897C7F0000C94D7 /* StartWorkoutViewController.swift in Sources */,
 				B40AFB272888142100249820 /* SignupViewController.swift in Sources */,
+				B44B3C25289B032D000C94D7 /* StartWorkoutModel.swift in Sources */,
 				B44B3C0728982687000C94D7 /* CustomNavbar.swift in Sources */,
 				B40AFB222887A2FA00249820 /* LoginViewController+Extension.swift in Sources */,
 				B4B96EA12892697F00E22B33 /* TodayCollectionViewCell.swift in Sources */,

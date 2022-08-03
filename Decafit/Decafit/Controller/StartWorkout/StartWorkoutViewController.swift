@@ -4,26 +4,13 @@
 //
 //  Created by Decagon on 01/08/2022.
 //
-
 import UIKit
-struct StartWorkoutModel {
-    let exerciseName, duration, image: String
-}
 class StartWorkoutViewController: UIViewController {
     static var shared: StartWorkoutViewController?
     static func getWorkoutView() -> StartWorkoutViewController {
         return shared ?? StartWorkoutViewController()
     }
-    var data: [StartWorkoutModel] = [
-        StartWorkoutModel(exerciseName: "Push ups", duration: "X10", image: "window"),
-        StartWorkoutModel(exerciseName: "Push ups", duration: "X10", image: "window"),
-        StartWorkoutModel(exerciseName: "Push ups", duration: "X10", image: "window"),
-        StartWorkoutModel(exerciseName: "Push ups", duration: "X10", image: "window"),
-        StartWorkoutModel(exerciseName: "Push ups", duration: "X10", image: "window"),
-        StartWorkoutModel(exerciseName: "Push ups", duration: "X10", image: "window"),
-        StartWorkoutModel(exerciseName: "Push ups", duration: "X10", image: "window"),
-        StartWorkoutModel(exerciseName: "Push ups", duration: "X10", image: "window")
-    ]
+    let data = DataManager.shared
     lazy var tableView: UITableView = {
         let view = UITableView(frame: view.bounds)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -38,17 +25,16 @@ class StartWorkoutViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(tableView)
     }
-
 }
 extension StartWorkoutViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        data.count
+        data.getWorkoutData().count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: StartWorkoutCell.identifier, for: indexPath)
                 as? StartWorkoutCell else { return UITableViewCell()}
-        cell.configure(with: data[indexPath.row])
+        cell.configure(with: data.getWorkoutData()[indexPath.row])
         return cell
     }
 }

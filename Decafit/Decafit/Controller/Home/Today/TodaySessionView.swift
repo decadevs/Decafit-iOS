@@ -8,18 +8,9 @@ import UIKit
 protocol TodaySessionViewDelegate: AnyObject {
     func didDisplayInputScreen(_ screen: FitConfigViewController)
 }
-struct TodaySessionModel {
-let image, title, name, time, calorie: String
-}
 class TodaySessionView: UIView {
+    let data = DataManager.shared
     weak var delegate: TodaySessionViewDelegate?
-    let data: [TodaySessionModel] = {
-        let first = TodaySessionModel(image: "weightlift", title: "Full Body",
-                          name: "Cersei Lan", time: "24 min", calorie: "24 Kcal")
-        let second = TodaySessionModel(image: "fitness-img", title: "Biceps",
-                          name: "Karl Drogo", time: "30 min", calorie: "15 Kcal")
-        return [first, second]
-    }()
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -61,7 +52,7 @@ class TodaySessionView: UIView {
 extension TodaySessionView: UICollectionViewDelegate,
                             UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return data.getTodayData().count
     }
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -69,7 +60,7 @@ extension TodaySessionView: UICollectionViewDelegate,
                                                         withReuseIdentifier: TodayCollectionViewCell.identifier,
                                                         for: indexPath) as?
                 TodayCollectionViewCell else { return UICollectionViewCell() }
-        let todayWorkouts = data[indexPath.item]
+        let todayWorkouts = data.getTodayData()[indexPath.item]
         cell.todayCell = todayWorkouts
         return cell
     }

@@ -9,20 +9,10 @@ import UIKit
 protocol FocusAreaViewDelegate: AnyObject {
     func didDisplayInputScreen(_ screen: FitConfigViewController)
 }
-struct FocusAreaModel {
-    let image, bodyPart, duration: String
-}
 class FocusAreaView: UIView, UICollectionViewDataSource,
                      UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     weak var delegate: TodaySessionViewDelegate?
-    let data: [FocusAreaModel] = [
-        FocusAreaModel(image: "back", bodyPart: "Back", duration: "20 days"),
-        FocusAreaModel(image: "meditate", bodyPart: "Abs", duration: "30 days"),
-        FocusAreaModel(image: "meditate", bodyPart: "Thigh", duration: "10 days"),
-        FocusAreaModel(image: "stretch", bodyPart: "Abs", duration: "30 days"),
-        FocusAreaModel(image: "stretch", bodyPart: "Thigh", duration: "10 days"),
-        FocusAreaModel(image: "back", bodyPart: "Butt", duration: "30 days")
-    ]
+    let data = DataManager.shared
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -39,7 +29,7 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(Constants.requiredInit)
     }
     func setupSubviews() {
         collectionView.register(FocusAreaCollectionViewCell.self,
@@ -56,7 +46,7 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
         ])
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return data.getFocusAreaData().count
     }
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -64,7 +54,7 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
                                                         withReuseIdentifier: FocusAreaCollectionViewCell.identifier,
                                                         for: indexPath) as?
                 FocusAreaCollectionViewCell else { return UICollectionViewCell() }
-        let workouts = data[indexPath.item]
+        let workouts = data.getFocusAreaData()[indexPath.item]
         cell.focusAreaCell = workouts
         return cell
     }
