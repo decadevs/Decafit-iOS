@@ -7,8 +7,8 @@
 
 import UIKit
 
-class InputViewController: UIViewController {
-    static let shared =  InputViewController()
+class FitConfigViewController: UIViewController {
+    static let shared =  FitConfigViewController()
     lazy var topImageView = TodaySessionView(isHidden: true)
     lazy var labelStack: UIStackView = {
        let stack = UIStackView(arrangedSubviews:
@@ -31,7 +31,7 @@ class InputViewController: UIViewController {
                              for: .touchUpInside)
     }
 }
-extension InputViewController: UITextFieldDelegate {
+extension FitConfigViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true
     }
@@ -43,7 +43,7 @@ extension InputViewController: UITextFieldDelegate {
         self.navigationController?.pushViewController(screen, animated: true)
     }
 }
-extension InputViewController: UIGestureRecognizerDelegate {
+extension FitConfigViewController: UIGestureRecognizerDelegate {
     func setupNavigation() {
         let navbarFrame = CGRect(x: 20, y: 200, width: view.bounds.width-40, height: 150)
         let inputNav: UIView = {
@@ -60,7 +60,7 @@ extension InputViewController: UIGestureRecognizerDelegate {
         self.navigationController?.navigationBar.heightAnchor.constraint(equalToConstant: 150).isActive = true
     }
 }
-extension InputViewController {
+extension FitConfigViewController {
     func setupSubviews() {
         let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height/1.6)
         let parentStack: DecaStack = {

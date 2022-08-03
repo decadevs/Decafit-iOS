@@ -6,7 +6,7 @@
 //
 import UIKit
 protocol TodaySessionViewDelegate: AnyObject {
-    func didDisplayInputScreen(_ screen: InputViewController)
+    func didDisplayInputScreen(_ screen: FitConfigViewController)
 }
 struct TodaySessionModel {
 let image, title, name, time, calorie: String
@@ -79,7 +79,7 @@ extension TodaySessionView: UICollectionViewDelegate,
         return CGSize(width: self.frame.size.width, height: 150)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let screen = InputViewController.shared
+        let screen = FitConfigViewController.shared
         (delegate?.didDisplayInputScreen(screen))
     }
 }

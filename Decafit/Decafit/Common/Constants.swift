@@ -22,7 +22,7 @@ enum Constants {
     static let signinWith = " Or sign in with "
     static let yesAccount = "Already have an account? "
     static let limit = "Set your limit"
-    static let inputvcSubt = "Enter the number of sets and reps for your workout"
+    static let inputvcSubt = "Enter the number of reps and sets for your workout"
     static let sets = "Number of sets"
     static let reps = "Number of reps"
     

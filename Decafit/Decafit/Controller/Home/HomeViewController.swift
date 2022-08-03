@@ -24,7 +24,7 @@ final class HomeViewController: UIViewController {
         setupNavigation()
         setupSubviews()
     }
-    func didDisplayInputScreen(_ screen: InputViewController) {
+    func didDisplayInputScreen(_ screen: FitConfigViewController) {
         self.navigationController?.pushViewController(screen, animated: true)
     }
     override func viewWillAppear(_ animated: Bool) {

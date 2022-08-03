@@ -7,7 +7,7 @@
 
 import UIKit
 protocol FocusAreaViewDelegate: AnyObject {
-    func didDisplayInputScreen(_ screen: InputViewController)
+    func didDisplayInputScreen(_ screen: FitConfigViewController)
 }
 struct FocusAreaModel {
     let image, bodyPart, duration: String
@@ -74,7 +74,7 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
         return CGSize(width: self.frame.size.width/2.3, height: 120)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let screen = InputViewController.shared
+        let screen = FitConfigViewController.shared
         delegate?.didDisplayInputScreen(screen)
     }
 }
