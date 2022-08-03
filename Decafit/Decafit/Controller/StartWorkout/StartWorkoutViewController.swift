@@ -14,7 +14,6 @@ class StartWorkoutViewController: UIViewController, UIGestureRecognizerDelegate 
     static func getWorkoutView() -> StartWorkoutViewController {
         return shared ?? StartWorkoutViewController()
     }
-    var workoutButtonTappedCompletion: (() -> Void)?
     var data: [StartWorkoutModel] = [
         StartWorkoutModel(exerciseName: "Jumping jacks", duration: "00:20", image: "profile"),
         StartWorkoutModel(exerciseName: "Push ups", duration: "X10", image: "window"),
@@ -45,13 +44,23 @@ class StartWorkoutViewController: UIViewController, UIGestureRecognizerDelegate 
         view.backButton.addTarget(self, action: #selector(clickNavBackButton), for: .touchUpInside)
         return view
     }()
+    lazy var modalView: WorkoutModalView = {
+        let popup = WorkoutModalView()
+        popup.layer.shadowOffset = CGSize(width: 5, height: 12)
+        popup.layer.shadowOpacity = 0.2
+        popup.workoutModalButton.addTarget(self, action: #selector(dismissModal), for: .touchUpInside)
+        return popup
+    }()
+    @objc func dismissModal() {
+        modalView.removeFromSuperview()
+    }
     @objc func clickNavBackButton(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        [topView, tableView, startWorkoutButton].forEach { view.addSubview($0)}
+        [topView, tableView, startWorkoutButton, modalView].forEach { view.addSubview($0)}
         setupSubviews()
         navigationController?.navigationBar.isHidden = true 
     }
@@ -69,9 +78,15 @@ extension StartWorkoutViewController: UITableViewDelegate, UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        displayModal()
     }
 }
 extension StartWorkoutViewController {
+    func displayModal() {
+        view.addoverlay(color: .black, alpha: 0.6)
+        view.addSubview(modalView)
+        modalView.isHidden = false
+    }
     @objc func workoutButtonTapped() {
         startWorkoutButton.setTitle("Continue Workout", for: .normal)
         let firstIndex = tableView.indexPathsForVisibleRows?.first
@@ -101,7 +116,17 @@ extension StartWorkoutViewController {
             tableView.heightAnchor.constraint(equalToConstant: CGFloat(view.frame.height*0.65)),
             startWorkoutButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.86),
             startWorkoutButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
-            startWorkoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            startWorkoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            modalView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            modalView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            modalView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75),
+            modalView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6)
+
         ])
+    }
+}
+extension StartWorkoutViewController {
+    func createModalView() {
     }
 }
