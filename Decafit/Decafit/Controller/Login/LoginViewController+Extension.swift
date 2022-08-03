@@ -12,11 +12,11 @@ extension LoginViewController {
     @objc func handleLogin() {
         guard let email = emailTextField.text, let password = passwordTextField.text
         else {
-            Alert.showAlert(self, title: "Error!", message: "All fields are required!")
+            Alert.showAlert(self, title: Constants.alertTitleError, message: Constants.blankTextFieldError)
             return
         }
         if password.count < 7 || !email.contains("@") {
-            Alert.showAlert(self, title: "Error!", message: "Incorrect input")
+            Alert.showAlert(self, title: Constants.alertTitleError, message: Constants.incorrectInputError)
             return
         }
         // Call auth login function here

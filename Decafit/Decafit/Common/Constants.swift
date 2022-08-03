@@ -52,4 +52,9 @@ enum Constants {
     static let todaySecondLabelText = "Second"
     static let todayThirdLabelTextAfterIcon = " 24 min"
     static let todayFourthLabelTextAfterIcon = " 24 Kcal"
+    
+    static let alertTitleError = "Error!"
+    static let passwordMismatchError = "Passwords do not match!"
+    static let blankTextFieldError = "All fields are required!"
+    static let incorrectInputError = "Incorrect input"
 }

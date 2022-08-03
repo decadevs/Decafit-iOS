@@ -18,4 +18,3 @@ let focusData: [FocusAreaModel] = {
     let sixth = FocusAreaModel(image: "back", bodyPart: "Butt", duration: "30 days")
     return [first, second, third, fourth, fifth, sixth]
 }()
-

@@ -18,13 +18,13 @@ extension SignupViewController {
               let password = passwordTextField.text,
               let confirmPassword = confirmPasswordTextField.text
         else {
-            Alert.showAlert(self, title: "Error!",
-                            message: "All fields are required!")
+            Alert.showAlert(self, title: Constants.alertTitleError,
+                            message: Constants.blankTextFieldError)
             return
         }
         if password != confirmPassword {
-            Alert.showAlert(self, title: "Error!",
-                            message: "Passwords do not match!")
+            Alert.showAlert(self, title: Constants.alertTitleError,
+                            message: Constants.passwordMismatchError)
             return
         }
         // Call auth sign in method here
