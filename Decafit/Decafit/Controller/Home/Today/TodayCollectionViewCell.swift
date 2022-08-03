@@ -6,73 +6,27 @@
 //
 import UIKit
 class TodayCollectionViewCell: UICollectionViewCell {
-    static let identifier = "TodayCell"
+    static let identifier = Constants.todayCellId
     var todayCell: TodaySessionModel? {
         didSet {
             guard todayCell != nil else {
                 return
             }
-            todayImage.image = UIImage(named: todayCell?.image ?? "")
-            firstLabel.text = todayCell?.title ?? "First Label"
-            secondLabel.text = todayCell?.name ?? "Second Label"
+            todayImage.image = UIImage(named: todayCell?.image ?? Constants.weightImg)
+            firstLabel.text = todayCell?.title ?? Constants.goodMorning
+            secondLabel.text = todayCell?.name ?? Constants.goodMorning
         }
     }
-    lazy var firstLabel: UILabel = {
-        let label = DecaLabel()
-        label.configure(with: DecaLabelViewModel(
-                            font: decaFont(size: 24, font: .poppinsMedium).bold(),
-                            textColor: .white, numberOfLines: 1,
-                            text: "First", kerning: 1.0))
-        return label
-    }()
-    lazy var secondLabel: UILabel = {
-        let label = DecaLabel()
-        label.configure(with: DecaLabelViewModel(font: decaFont(size: 12, font: .poppinsRegular),
-                                                 textColor: .white, numberOfLines: 1,
-                                                 text: "Second", kerning: 0.5))
-        return label
-    }()
-    lazy var thirdLabel: UILabel = {
-        let label = DecaLabel()
-        label.configure(with: DecaLabelViewModel(font: decaFont(size: 14, font: .poppinsRegular),
-                                                 textColor: .white, numberOfLines: 1,
-                                                 text: "Third", kerning: 0.5))
-        label.attributedText = label.setAttributedText(image: "clock", textAfterIcon: " 24 min")
-        return label
-    }()
-    lazy var fourthLabel: UILabel = {
-        let label = DecaLabel()
-        label.configure(with: DecaLabelViewModel(font: decaFont(size: 14, font: .poppinsRegular),
-                                                 textColor: .white, numberOfLines: 1,
-                                                 text: "Fourth", kerning: 0.5))
-        label.attributedText = label.setAttributedText(image: "flame.fill", textAfterIcon: " 24 Kcal")
-        return label
-    }()
-    lazy var todayImage: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleAspectFill
-        image.clipsToBounds = true
-        image.layer.cornerRadius = 10
-        image.addoverlay(color: DecaColor.decafitPurple.color)
-        return image
-    }()
-    var playButton: UIButton = {
-        let button = DecaButton.createSocialButton(image: "play")
-        button.backgroundColor = .white
-        button.layer.cornerRadius = 20
-        button.layer.borderWidth = 1
-        return button
-    }()
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
     }
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(Constants.requiredInit)
     }
     func setupViews() {
-        [todayImage, firstLabel, secondLabel, playButton, thirdLabel, fourthLabel].forEach { contentView.addSubview($0)}
+        [todayImage, firstLabel, secondLabel, playButton,
+         thirdLabel, fourthLabel].forEach { contentView.addSubview($0)}
         NSLayoutConstraint.activate([
             todayImage.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             todayImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),

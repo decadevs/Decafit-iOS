@@ -17,7 +17,7 @@ enum DecaColor {
     var color: UIColor {
         switch self {
         case .decafitGray:
-            return #colorLiteral(red: 0.7126122117, green: 0.74427706, blue: 0.7983196378, alpha: 1) 
+            return #colorLiteral(red: 0.7126122117, green: 0.74427706, blue: 0.7983196378, alpha: 1)
         case .decafitBlack:
             return #colorLiteral(red: 0.1642587185, green: 0.1759757698, blue: 0.2050507069, alpha: 1)
         case .decafitOrange:

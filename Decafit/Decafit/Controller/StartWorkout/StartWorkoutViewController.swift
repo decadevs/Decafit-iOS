@@ -29,7 +29,8 @@ class StartWorkoutViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.dataSource = self
         view.delegate = self
-        view.register(StartWorkoutCell.self, forCellReuseIdentifier: StartWorkoutCell.identifier)
+        view.register(StartWorkoutCell.self,
+                      forCellReuseIdentifier: StartWorkoutCell.identifier)
         return view
     }()
     override func viewDidLoad() {

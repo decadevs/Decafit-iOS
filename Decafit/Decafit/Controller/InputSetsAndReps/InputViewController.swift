@@ -7,33 +7,12 @@
 
 import UIKit
 
-class InputViewController: UIViewController, UIGestureRecognizerDelegate {
+class InputViewController: UIViewController {
     static let shared =  InputViewController()
-    // MARK: - Image View
     lazy var topImageView = TodaySessionView(isHidden: true)
-    // MARK: - Title field
-    var titleLabel: DecaLabel = {
-        let label = DecaLabel()
-        label.configure(with: DecaLabelViewModel(
-                            font: decaFont(size: 16, font: .poppinsMedium),
-                            textColor: DecaColor.decafitBlack.color,
-                            numberOfLines: 1, text: Constants.limit, kerning: 0.2))
-        label.textAlignment = .left
-        label.sizeToFit()
-        return label
-    }()
-    var subTitleLabel: DecaLabel = {
-        let label = DecaLabel()
-        label.configure(with: DecaLabelViewModel(
-                            font: decaFont(size: 12, font: .poppinsRegular),
-                            textColor: DecaColor.decafitGray.color,
-                            numberOfLines: 1, text: Constants.inputvcSubt,
-                            kerning: 0))
-        label.textAlignment = .left
-        return label
-    }()
     lazy var labelStack: UIStackView = {
-       let stack = UIStackView(arrangedSubviews: [titleLabel, subTitleLabel])
+       let stack = UIStackView(arrangedSubviews:
+                                [inputVCTitleLabel, inputVCSubTitleLabel])
         stack.axis = .vertical
         stack.spacing = 15
         stack.alignment = .leading
@@ -41,45 +20,32 @@ class InputViewController: UIViewController, UIGestureRecognizerDelegate {
         stack.contentHuggingPriority(for: .vertical)
         return stack
     }()
-    // MARK: - Next Button
-    var nextButton: UIButton = {
-        let button = DecaButton.createPurpleButton(title: Constants.next)
-        button.addTarget(self, action: #selector(gotoStartWorkout), for: .touchUpInside)
-        return button
-    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupNavigation()
         setupSubviews()
-    }
-    @objc func clickNavBackButton(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+        nextButton.addTarget(self, action: #selector(gotoStartWorkout),
+                             for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(clickNavBackButton),
+                             for: .touchUpInside)
     }
 }
 extension InputViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true
     }
-}
-extension InputViewController {
+    @objc func clickNavBackButton(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+    }
     @objc func gotoStartWorkout() {
         let screen = StartWorkoutViewController.getWorkoutView()
         self.navigationController?.pushViewController(screen, animated: true)
     }
+}
+extension InputViewController: UIGestureRecognizerDelegate {
     func setupNavigation() {
         let navbarFrame = CGRect(x: 20, y: 200, width: view.bounds.width-40, height: 150)
-        let backButton: UIButton = {
-            let button = DecaButton.createSocialButton(image: "back-arrow")
-            button.backgroundColor = DecaColor.decafitLightGray.color
-            button.layer.cornerRadius = 10
-            button.layer.borderWidth = 0
-            button.contentEdgeInsets = UIEdgeInsets(
-                top: 12, left: 12, bottom: 12, right: 12)
-            button.addTarget(self,
-                          action: #selector(clickNavBackButton), for: .touchUpInside)
-            return button
-        }()
         let inputNav: UIView = {
            let nav = UIView()
             nav.frame = navbarFrame
@@ -93,6 +59,8 @@ extension InputViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.heightAnchor.constraint(equalToConstant: 150).isActive = true
     }
+}
+extension InputViewController {
     func setupSubviews() {
         let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height/1.6)
         let parentStack: DecaStack = {

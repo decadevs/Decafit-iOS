@@ -73,3 +73,108 @@ var navbarTitleLabel: UILabel = {
                         text: Constants.goodMorning, kerning: nil))
     return label
 }()
+// Input View Controller 
+var inputVCTitleLabel: DecaLabel = {
+    let label = DecaLabel()
+    label.configure(with: DecaLabelViewModel(
+                        font: decaFont(size: 16, font: .poppinsMedium),
+                        textColor: DecaColor.decafitBlack.color,
+                        numberOfLines: 1, text: Constants.limit, kerning: 0.2))
+    label.textAlignment = .left
+    label.sizeToFit()
+    return label
+}()
+var inputVCSubTitleLabel: DecaLabel = {
+    let label = DecaLabel()
+    label.configure(with: DecaLabelViewModel(
+                        font: decaFont(size: 12, font: .poppinsRegular),
+                        textColor: DecaColor.decafitGray.color,
+                        numberOfLines: 1, text: Constants.inputvcSubt,
+                        kerning: 0))
+    label.textAlignment = .left
+    return label
+}()
+// Start Workout cell
+var exerciseLabel: DecaLabel = {
+    let label = DecaLabel()
+    label.configure(with: DecaLabelViewModel(font: decaFont(size: 14, font: .poppinsMedium).bold(),
+                                             textColor: DecaColor.decafitBlack.color, numberOfLines: 1,
+                                             text: Constants.exerciseLabelText, kerning: nil))
+    return label
+}()
+var workoutDurationLabel: UILabel = {
+    let label = DecaLabel()
+    label.configure(with: DecaLabelViewModel(font: decaFont(size: 14, font: .poppinsMedium),
+                                             textColor: DecaColor.decafitGray.color, numberOfLines: 1,
+                                             text: Constants.workoutDurationLabelText, kerning: nil))
+    return label
+}()
+// Focus Collection cell
+var bodyFocusAreaLabel: UILabel = {
+    let label = DecaLabel()
+    label.configure(with: DecaLabelViewModel(font: decaFont(size: 16, font: .poppinsMedium).bold(),
+                                             textColor: .white, numberOfLines: 1,
+                                             text: Constants.bodyFocusAreaText, kerning: 0.5))
+    return label
+}()
+var focusDurationLabel: UILabel = {
+    let label = DecaLabel()
+    label.configure(with: DecaLabelViewModel(font: decaFont(size: 12, font: .poppinsRegular),
+                                             textColor: .white, numberOfLines: 1,
+                                             text: Constants.focusDurationLabelText, kerning: 0.5))
+    return label
+}()
+// MARK: - Focus area view title 
+var focusAreaViewTitle: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = Constants.focusAreaViewTitleText
+    label.font = decaFont(size: 16, font: .poppinsMedium).bold()
+    label.textColor = DecaColor.decafitBlack.color
+    return label
+}()
+// MARK: - Today session view title
+let todaySessionViewTitle: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = Constants.todaySessionViewTitleText
+    label.font = decaFont(size: 16, font: .poppinsMedium).bold()
+    label.textColor = DecaColor.decafitBlack.color
+    return label
+}()
+// MARK: - Today collection cell
+let firstLabel: UILabel = {
+    let label = DecaLabel()
+    label.configure(with: DecaLabelViewModel(
+                        font: decaFont(size: 24, font: .poppinsMedium).bold(),
+                        textColor: .white, numberOfLines: 1,
+                        text: Constants.todayFirstLabelText, kerning: 1.0))
+    return label
+}()
+let secondLabel: UILabel = {
+    let label = DecaLabel()
+    label.configure(with: DecaLabelViewModel(font: decaFont(size: 12, font: .poppinsRegular),
+                                             textColor: .white, numberOfLines: 1,
+                                             text: Constants.todaySecondLabelText, kerning: 0.5))
+    return label
+}()
+let thirdLabel: UILabel = {
+    let label = DecaLabel()
+    label.configure(with: DecaLabelViewModel(font: decaFont(size: 14, font: .poppinsRegular),
+                                             textColor: .white, numberOfLines: 1,
+                                             text: "", kerning: 0.5))
+    label.attributedText = label.setAttributedText(
+        image: Constants.clockImg,
+        textAfterIcon: Constants.todayThirdLabelTextAfterIcon)
+    return label
+}()
+let fourthLabel: UILabel = {
+    let label = DecaLabel()
+    label.configure(with: DecaLabelViewModel(font: decaFont(size: 14, font: .poppinsRegular),
+                                             textColor: .white, numberOfLines: 1,
+                                             text: "", kerning: 0.5))
+    label.attributedText = label.setAttributedText(
+        image: Constants.flameImg,
+        textAfterIcon: Constants.todayFourthLabelTextAfterIcon)
+    return label
+}()

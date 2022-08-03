@@ -20,15 +20,6 @@ class TodaySessionView: UIView {
                           name: "Karl Drogo", time: "30 min", calorie: "15 Kcal")
         return [first, second]
     }()
-    // MARK: - TitleLabel
-    lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Today's session"
-        label.font = decaFont(size: 16, font: .poppinsMedium).bold()
-        label.textColor = DecaColor.decafitBlack.color
-        return label
-    }()
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -48,19 +39,19 @@ class TodaySessionView: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(Constants.requiredInit)
     }
     convenience init(isHidden: Bool) {
         self.init()
-        titleLabel.isHidden = isHidden
+        todaySessionViewTitle.isHidden = isHidden
     }
     func setupSubviews() {
-        [titleLabel, collectionView].forEach { addSubview($0) }
+        [todaySessionViewTitle, collectionView].forEach { addSubview($0) }
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            todaySessionViewTitle.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            todaySessionViewTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
 
-            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
+            collectionView.topAnchor.constraint(equalTo: todaySessionViewTitle.bottomAnchor, constant: 0),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)

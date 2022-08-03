@@ -23,15 +23,6 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
         FocusAreaModel(image: "stretch", bodyPart: "Thigh", duration: "10 days"),
         FocusAreaModel(image: "back", bodyPart: "Butt", duration: "30 days")
     ]
-    // MARK: - TitleLabel
-    var titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Other Focus Areas"
-        label.font = decaFont(size: 16, font: .poppinsMedium).bold()
-        label.textColor = DecaColor.decafitBlack.color
-        return label
-    }()
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -53,12 +44,12 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
     func setupSubviews() {
         collectionView.register(FocusAreaCollectionViewCell.self,
                              forCellWithReuseIdentifier: FocusAreaCollectionViewCell.identifier)
-        [titleLabel, collectionView].forEach { self.addSubview($0) }
+        [focusAreaViewTitle, collectionView].forEach { self.addSubview($0) }
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            titleLabel.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: -20),
-            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            focusAreaViewTitle.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+            focusAreaViewTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            focusAreaViewTitle.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: -20),
+            collectionView.topAnchor.constraint(equalTo: focusAreaViewTitle.bottomAnchor, constant: 20),
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
