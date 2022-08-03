@@ -7,7 +7,7 @@
 
 import UIKit
 extension UINavigationBar {
-    func shouldRemoveShadow(_ value: Bool) -> Void {
+    func shouldRemoveShadow(_ value: Bool) {
         if value {
             self.setValue(true, forKey: "hidesShadow")
         } else {
@@ -38,12 +38,23 @@ extension UIFont {
     }
 }
 extension UIView {
-func addoverlay(color: UIColor = .black, alpha: CGFloat = 0.5) {
-    let overlay = UIView()
-    overlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-    overlay.frame = bounds
-    overlay.backgroundColor = color
-    overlay.alpha = alpha
-    addSubview(overlay)
+    func addoverlay(color: UIColor = .black, alpha: CGFloat = 0.5) {
+        let overlay = UIView()
+        overlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        overlay.frame = bounds
+        overlay.backgroundColor = color
+        overlay.alpha = alpha
+        addSubview(overlay)
     }
+}
+
+func toggleLoginSignup(_ currentVC: UIViewController) {
+    var screen: UIViewController
+    if currentVC === SignupViewController.self {
+        screen = LoginViewController.getViewController()
+    } else {
+        screen = SignupViewController.getViewController()
+    }
+    screen.modalPresentationStyle = .fullScreen
+    currentVC.present(screen, animated: true)
 }

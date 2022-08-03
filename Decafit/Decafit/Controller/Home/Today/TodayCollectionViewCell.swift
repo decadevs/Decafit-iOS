@@ -57,8 +57,8 @@ class TodayCollectionViewCell: UICollectionViewCell {
         image.addoverlay(color: DecaColor.decafitPurple.color)
         return image
     }()
-    var playButton: SocialButton = {
-        let button = SocialButton(image: UIImage(named: "play")!)
+    var playButton: UIButton = {
+        let button = DecaButton.createSocialButton(image: "play")
         button.backgroundColor = .white
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 1

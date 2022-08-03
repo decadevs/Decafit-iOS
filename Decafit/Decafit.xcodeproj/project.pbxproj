@@ -49,6 +49,12 @@
 		B44B3C002897C7F0000C94D7 /* StartWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3BFF2897C7F0000C94D7 /* StartWorkoutViewController.swift */; };
 		B44B3C052897C8CB000C94D7 /* StartWorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C042897C8CB000C94D7 /* StartWorkoutCell.swift */; };
 		B44B3C0728982687000C94D7 /* CustomNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C0628982687000C94D7 /* CustomNavbar.swift */; };
+		B44B3C0F289A714A000C94D7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C0E289A714A000C94D7 /* Constants.swift */; };
+		B44B3C11289A7F57000C94D7 /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C10289A7F57000C94D7 /* TextFields.swift */; };
+		B44B3C15289A879B000C94D7 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C14289A879B000C94D7 /* Buttons.swift */; };
+		B44B3C18289A893E000C94D7 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C17289A893E000C94D7 /* Labels.swift */; };
+		B44B3C1B289A8ABE000C94D7 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C1A289A8ABE000C94D7 /* Images.swift */; };
+		B44B3C1D289A957D000C94D7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C1C289A957D000C94D7 /* Alert.swift */; };
 		B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B12287C147000EEC900 /* AppDelegate.swift */; };
 		B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B14287C147000EEC900 /* SceneDelegate.swift */; };
 		B47B5B17287C147000EEC900 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B16287C147000EEC900 /* HomeViewController.swift */; };
@@ -60,7 +66,6 @@
 		B4AB95B5288E932F00FE9C96 /* DecaStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95B4288E932F00FE9C96 /* DecaStack.swift */; };
 		B4AB95B7288E934E00FE9C96 /* DecaLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95B6288E934E00FE9C96 /* DecaLabel.swift */; };
 		B4AB95B9288EB0F600FE9C96 /* DecaImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95B8288EB0F600FE9C96 /* DecaImageView.swift */; };
-		B4AB95C52891A87100FE9C96 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95C42891A87100FE9C96 /* CalenderViewController.swift */; };
 		B4AB95CC2891D20D00FE9C96 /* FocusAreaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95CB2891D20D00FE9C96 /* FocusAreaCollectionViewCell.swift */; };
 		B4AB95CF2891D3B000FE9C96 /* FocusAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95CE2891D3B000FE9C96 /* FocusAreaView.swift */; };
 		B4B96E9F2892696200E22B33 /* TodaySessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B96E9E2892696200E22B33 /* TodaySessionView.swift */; };
@@ -135,6 +140,12 @@
 		B44B3BFF2897C7F0000C94D7 /* StartWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutViewController.swift; sourceTree = "<group>"; };
 		B44B3C042897C8CB000C94D7 /* StartWorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutCell.swift; sourceTree = "<group>"; };
 		B44B3C0628982687000C94D7 /* CustomNavbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavbar.swift; sourceTree = "<group>"; };
+		B44B3C0E289A714A000C94D7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B44B3C10289A7F57000C94D7 /* TextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFields.swift; sourceTree = "<group>"; };
+		B44B3C14289A879B000C94D7 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		B44B3C17289A893E000C94D7 /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
+		B44B3C1A289A8ABE000C94D7 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		B44B3C1C289A957D000C94D7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		B47B5B0F287C147000EEC900 /* Decafit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Decafit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B47B5B12287C147000EEC900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B47B5B14287C147000EEC900 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -152,7 +163,6 @@
 		B4AB95B4288E932F00FE9C96 /* DecaStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaStack.swift; sourceTree = "<group>"; };
 		B4AB95B6288E934E00FE9C96 /* DecaLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaLabel.swift; sourceTree = "<group>"; };
 		B4AB95B8288EB0F600FE9C96 /* DecaImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaImageView.swift; sourceTree = "<group>"; };
-		B4AB95C42891A87100FE9C96 /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
 		B4AB95CB2891D20D00FE9C96 /* FocusAreaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusAreaCollectionViewCell.swift; sourceTree = "<group>"; };
 		B4AB95CE2891D3B000FE9C96 /* FocusAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusAreaView.swift; sourceTree = "<group>"; };
 		B4B96E9E2892696200E22B33 /* TodaySessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionView.swift; sourceTree = "<group>"; };
@@ -271,7 +281,8 @@
 				B40AFB1F2887990000249820 /* CustomUIFont.swift */,
 				B40AFB232887BD3600249820 /* CustomUIColor.swift */,
 				B40AFB2A288861A300249820 /* Extensions.swift */,
-				B44B3C0628982687000C94D7 /* CustomNavbar.swift */,
+				B44B3C0E289A714A000C94D7 /* Constants.swift */,
+				B44B3C1C289A957D000C94D7 /* Alert.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -299,11 +310,12 @@
 		B40AFB36288ACB4F00249820 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				B40AFB37288ACE1D00249820 /* DecaTextField.swift */,
-				B40AFB39288ACE3F00249820 /* DecaButton.swift */,
+				B44B3C19289A8AA2000C94D7 /* ImageView */,
+				B44B3C13289A8780000C94D7 /* Button */,
+				B44B3C12289A8085000C94D7 /* TextField */,
+				B44B3C16289A889E000C94D7 /* Label */,
+				B44B3C0628982687000C94D7 /* CustomNavbar.swift */,
 				B4AB95B4288E932F00FE9C96 /* DecaStack.swift */,
-				B4AB95B6288E934E00FE9C96 /* DecaLabel.swift */,
-				B4AB95B8288EB0F600FE9C96 /* DecaImageView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -333,6 +345,50 @@
 				B44B3C042897C8CB000C94D7 /* StartWorkoutCell.swift */,
 			);
 			path = StartWorkout;
+			sourceTree = "<group>";
+		};
+		B44B3C12289A8085000C94D7 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				B40AFB37288ACE1D00249820 /* DecaTextField.swift */,
+				B44B3C10289A7F57000C94D7 /* TextFields.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		B44B3C13289A8780000C94D7 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				B40AFB39288ACE3F00249820 /* DecaButton.swift */,
+				B44B3C14289A879B000C94D7 /* Buttons.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		B44B3C16289A889E000C94D7 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				B4AB95B6288E934E00FE9C96 /* DecaLabel.swift */,
+				B44B3C17289A893E000C94D7 /* Labels.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
+		B44B3C19289A8AA2000C94D7 /* ImageView */ = {
+			isa = PBXGroup;
+			children = (
+				B4AB95B8288EB0F600FE9C96 /* DecaImageView.swift */,
+				B44B3C1A289A8ABE000C94D7 /* Images.swift */,
+			);
+			path = ImageView;
+			sourceTree = "<group>";
+		};
+		B44B3C1E289ABAC5000C94D7 /* InputSetsAndReps */ = {
+			isa = PBXGroup;
+			children = (
+				B4B96EA628936A2800E22B33 /* InputViewController.swift */,
+			);
+			path = InputSetsAndReps;
 			sourceTree = "<group>";
 		};
 		B47B5B06287C147000EEC900 = {
@@ -401,7 +457,9 @@
 		B48A59012886D481004D1BEA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B4AB95C82891A8C400FE9C96 /* Dashboard */,
+				B44B3C1E289ABAC5000C94D7 /* InputSetsAndReps */,
+				B44B3C032897C898000C94D7 /* StartWorkout */,
+				B4AB95CD2891D37A00FE9C96 /* Home */,
 				B40AFB25288813F500249820 /* Signup */,
 				B40AFAC828878CD700249820 /* Login */,
 			);
@@ -434,23 +492,12 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		B4AB95C82891A8C400FE9C96 /* Dashboard */ = {
-			isa = PBXGroup;
-			children = (
-				B4AB95CD2891D37A00FE9C96 /* Home */,
-				B47B5B16287C147000EEC900 /* HomeViewController.swift */,
-				B4AB95C42891A87100FE9C96 /* CalenderViewController.swift */,
-			);
-			path = Dashboard;
-			sourceTree = "<group>";
-		};
 		B4AB95CD2891D37A00FE9C96 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B47B5B16287C147000EEC900 /* HomeViewController.swift */,
 				B44B3C012897C879000C94D7 /* Focus */,
 				B44B3C022897C886000C94D7 /* Today */,
-				B4B96EA628936A2800E22B33 /* InputViewController.swift */,
-				B44B3C032897C898000C94D7 /* StartWorkout */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -704,12 +751,15 @@
 			files = (
 				B4AB95B5288E932F00FE9C96 /* DecaStack.swift in Sources */,
 				B4B96EA728936A2800E22B33 /* InputViewController.swift in Sources */,
-				B4AB95C52891A87100FE9C96 /* CalenderViewController.swift in Sources */,
 				B4B96E9F2892696200E22B33 /* TodaySessionView.swift in Sources */,
 				B40AFB242887BD3600249820 /* CustomUIColor.swift in Sources */,
 				B4AB95CF2891D3B000FE9C96 /* FocusAreaView.swift in Sources */,
 				B40AFB292888143C00249820 /* SignupViewController+Extension.swift in Sources */,
+				B44B3C1B289A8ABE000C94D7 /* Images.swift in Sources */,
+				B44B3C15289A879B000C94D7 /* Buttons.swift in Sources */,
+				B44B3C0F289A714A000C94D7 /* Constants.swift in Sources */,
 				B48A590A2886D684004D1BEA /* LoginViewController.swift in Sources */,
+				B44B3C11289A7F57000C94D7 /* TextFields.swift in Sources */,
 				B44B3C002897C7F0000C94D7 /* StartWorkoutViewController.swift in Sources */,
 				B40AFB272888142100249820 /* SignupViewController.swift in Sources */,
 				B44B3C0728982687000C94D7 /* CustomNavbar.swift in Sources */,
@@ -722,11 +772,13 @@
 				B4AB95B9288EB0F600FE9C96 /* DecaImageView.swift in Sources */,
 				B40AFB3A288ACE3F00249820 /* DecaButton.swift in Sources */,
 				B44B3C052897C8CB000C94D7 /* StartWorkoutCell.swift in Sources */,
+				B44B3C1D289A957D000C94D7 /* Alert.swift in Sources */,
 				B40AFB38288ACE1D00249820 /* DecaTextField.swift in Sources */,
 				B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */,
 				B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */,
 				B40AFB202887990000249820 /* CustomUIFont.swift in Sources */,
 				B48A59082886D583004D1BEA /* AuthManager.swift in Sources */,
+				B44B3C18289A893E000C94D7 /* Labels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

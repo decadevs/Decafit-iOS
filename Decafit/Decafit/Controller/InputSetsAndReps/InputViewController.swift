@@ -17,7 +17,7 @@ class InputViewController: UIViewController, UIGestureRecognizerDelegate {
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 16, font: .poppinsMedium),
                             textColor: DecaColor.decafitBlack.color,
-                            numberOfLines: 1, text: "Set your limit", kerning: 0.2))
+                            numberOfLines: 1, text: Constants.limit, kerning: 0.2))
         label.textAlignment = .left
         label.sizeToFit()
         return label
@@ -27,7 +27,7 @@ class InputViewController: UIViewController, UIGestureRecognizerDelegate {
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 12, font: .poppinsRegular),
                             textColor: DecaColor.decafitGray.color,
-                            numberOfLines: 1, text: "Enter the number of sets and reps for your workout",
+                            numberOfLines: 1, text: Constants.inputvcSubt,
                             kerning: 0))
         label.textAlignment = .left
         return label
@@ -41,21 +41,9 @@ class InputViewController: UIViewController, UIGestureRecognizerDelegate {
         stack.contentHuggingPriority(for: .vertical)
         return stack
     }()
-    // MARK: - Sets TextField
-    var setsTextField: UITextField = createTextField(text: "Number of sets",
-                                                font: decaFont(size: 16, font: .poppinsRegular))
-    var repsTextField: UITextField = createTextField(text: "Number of reps",
-                                                font: decaFont(size: 16, font: .poppinsRegular))
     // MARK: - Next Button
-    lazy var nextButton: DecaButton = {
-        let button = DecaButton()
-        button.configure(with: DecaButtonViewModel(
-                            title: "Next",
-                            font: decaFont(size: 24, font: .ubuntuMedium),
-                            backgroundColor: DecaColor.decafitPurple.color,
-                            titleColor: .white, image: nil, borderWidth: nil,
-                            cornerRadius: 5, borderColor: nil,
-                            contentEdgeInsets: nil, isEnabled: true, tarmic: false))
+    var nextButton: UIButton = {
+        let button = DecaButton.createPurpleButton(title: Constants.next)
         button.addTarget(self, action: #selector(gotoStartWorkout), for: .touchUpInside)
         return button
     }()
@@ -81,16 +69,16 @@ extension InputViewController {
     }
     func setupNavigation() {
         let navbarFrame = CGRect(x: 20, y: 200, width: view.bounds.width-40, height: 150)
-        let backButton: SocialButton = {
-            let btn = SocialButton(image: UIImage(named: "back-arrow")!)
-            btn.backgroundColor = DecaColor.decafitLightGray.color
-            btn.layer.cornerRadius = 10
-            btn.layer.borderWidth = 0
-            btn.contentEdgeInsets = UIEdgeInsets(
+        let backButton: UIButton = {
+            let button = DecaButton.createSocialButton(image: "back-arrow")
+            button.backgroundColor = DecaColor.decafitLightGray.color
+            button.layer.cornerRadius = 10
+            button.layer.borderWidth = 0
+            button.contentEdgeInsets = UIEdgeInsets(
                 top: 12, left: 12, bottom: 12, right: 12)
-            btn.addTarget(self,
+            button.addTarget(self,
                           action: #selector(clickNavBackButton), for: .touchUpInside)
-            return btn
+            return button
         }()
         let inputNav: UIView = {
            let nav = UIView()

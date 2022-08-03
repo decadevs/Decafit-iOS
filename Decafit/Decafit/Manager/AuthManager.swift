@@ -10,19 +10,14 @@ import Foundation
 final class AuthManager {
     static let shared = AuthManager()
     public var isSignedIn: Bool {
-        return true
+        return false
     }
     @objc public func signUp() {
     }
     public func signOut() {
     }
-    @objc func handleUserLogin() {
-    }
-    @objc func handleGoogleLogin() {
-    }
-    @objc func handleFBLogin() {
-    }
-    @objc func handleAppleLogin() {
+
+    @objc func handleSocialLogin() {
     }
     @objc func handleTextChange() {
     }

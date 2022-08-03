@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HomeViewController: UIViewController, TodaySessionViewDelegate {
+final class HomeViewController: UIViewController {
     static var shared: HomeViewController?
     static func getHomeView() -> HomeViewController {
         return shared ?? HomeViewController()
@@ -33,10 +33,11 @@ final class HomeViewController: UIViewController, TodaySessionViewDelegate {
         setupNavigation()
     }
 }
-extension HomeViewController {
+extension HomeViewController: TodaySessionViewDelegate {
     func setupNavigation() {
         let navbarFrame = CGRect(x: 5, y: 0, width: view.bounds.width, height: 100)
-        let navbar: UIBarButtonItem = UIBarButtonItem(customView: CustomNavbar(frame: navbarFrame))
+        let navbar: UIBarButtonItem = UIBarButtonItem(
+            customView: CustomNavbar(frame: navbarFrame))
         navigationItem.leftBarButtonItems = [navbar]
         self.navigationController?.navigationBar.isTranslucent = false
     }
