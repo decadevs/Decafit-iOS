@@ -29,7 +29,7 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Other Focus Areas"
         label.font = decaFont(size: 16, font: .poppinsMedium)
-        label.textColor = DecaColor.decafitBlack.color
+        label.textColor = DecaColor.black.color
         return label
     }()
     lazy var collectionView: UICollectionView = {

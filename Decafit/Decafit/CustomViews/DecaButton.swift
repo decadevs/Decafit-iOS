@@ -53,7 +53,7 @@ class SocialButton: DecaButton {
         layer.borderWidth = 1
         translatesAutoresizingMaskIntoConstraints = false
         isEnabled = true
-        layer.borderColor =  DecaColor.decafitGray.color.cgColor
+        layer.borderColor =  DecaColor.gray.color.cgColor
         contentEdgeInsets = UIEdgeInsets(
             top: 14, left: 16, bottom: 14, right: 16)
     }

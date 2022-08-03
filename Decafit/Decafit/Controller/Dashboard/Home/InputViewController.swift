@@ -16,7 +16,7 @@ class InputViewController: UIViewController, UIGestureRecognizerDelegate {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 16, font: .poppinsMedium),
-                            textColor: DecaColor.decafitBlack.color,
+                            textColor: DecaColor.black.color,
                             numberOfLines: 1, text: "Set your limit", kerning: 0.2))
         label.textAlignment = .left
         label.sizeToFit()
@@ -26,7 +26,7 @@ class InputViewController: UIViewController, UIGestureRecognizerDelegate {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 12, font: .poppinsRegular),
-                            textColor: DecaColor.decafitGray.color,
+                            textColor: DecaColor.gray.color,
                             numberOfLines: 1, text: "Enter the number of sets and reps for your workout",
                             kerning: 0))
         label.textAlignment = .left

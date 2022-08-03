@@ -14,6 +14,7 @@ class StartWorkoutViewController: UIViewController, UIGestureRecognizerDelegate 
     static func getWorkoutView() -> StartWorkoutViewController {
         return shared ?? StartWorkoutViewController()
     }
+    var workoutButtonTappedCompletion: (() -> Void)?
     var data: [StartWorkoutModel] = [
         StartWorkoutModel(exerciseName: "Jumping jacks", duration: "00:20", image: "profile"),
         StartWorkoutModel(exerciseName: "Push ups", duration: "X10", image: "window"),
@@ -36,6 +37,7 @@ class StartWorkoutViewController: UIViewController, UIGestureRecognizerDelegate 
         let button = createPurpleButton(title: "Start Workout")
         button.layer.shadowOffset = CGSize(width: 0, height: 8)
         button.layer.shadowOpacity = 0.1
+        button.addTarget(self, action: #selector(workoutButtonTapped), for: .touchUpInside)
         return button
     }()
     lazy var topView: WorkoutPageTopview = {
@@ -65,8 +67,23 @@ extension StartWorkoutViewController: UITableViewDelegate, UITableViewDataSource
         cell.configure(with: data[indexPath.row])
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 extension StartWorkoutViewController {
+    @objc func workoutButtonTapped() {
+        startWorkoutButton.setTitle("Continue Workout", for: .normal)
+        let firstIndex = tableView.indexPathsForVisibleRows?.first
+        let firstRow = tableView.cellForRow(at: firstIndex!) as? StartWorkoutCell
+        firstRow?.completeButton.isHidden = false
+        let secondIndex = tableView.indexPathsForVisibleRows?[1]
+        let secondRow = tableView.cellForRow(at: secondIndex!) as? StartWorkoutCell
+        secondRow?.completeButton.setTitle("Incomplete", for: .normal)
+        secondRow?.completeButton.setTitleColor(DecaColor.red.color, for: .normal)
+        secondRow?.completeButton.backgroundColor = DecaColor.lightRed.color
+        secondRow?.completeButton.isHidden = false
+    }
     func setupSubviews() {
         NSLayoutConstraint.activate([
             // topview

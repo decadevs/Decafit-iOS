@@ -31,7 +31,7 @@ final class SignupViewController: UIViewController {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 29, font: .poppinsMedium),
-                            textColor: DecaColor.decafitBlack.color,
+                            textColor: DecaColor.black.color,
                             numberOfLines: 1, text: "Sign up", kerning: 0.5))
         label.textAlignment = .left
         return label
@@ -43,8 +43,8 @@ final class SignupViewController: UIViewController {
                                 placeholder: "  Full name", delegate: self,
                                 font: decaFont(size: 16, font: .poppinsRegular),
                                 backgroundColor: .clear,
-                                tintColor: DecaColor.decafitBlack.color, borderWidth: 1, cornerRadius: 5,
-                                borderColor: DecaColor.decafitGray.color.cgColor, isSecureEntry: false,
+                                tintColor: DecaColor.black.color, borderWidth: 1, cornerRadius: 5,
+                                borderColor: DecaColor.gray.color.cgColor, isSecureEntry: false,
                                 isEnabled: true, tarmic: false,
                                 leftView: UIView(frame:
                                                     CGRect(x: 0, y: 0, width: 10, height: textField.frame.height)),
@@ -59,8 +59,8 @@ final class SignupViewController: UIViewController {
                                 placeholder: "Phone number", delegate: self,
                                 font: decaFont(size: 16, font: .poppinsRegular),
                                 backgroundColor: .clear,
-                                tintColor: DecaColor.decafitBlack.color, borderWidth: 1, cornerRadius: 5,
-                                borderColor: DecaColor.decafitGray.color.cgColor, isSecureEntry: false,
+                                tintColor: DecaColor.black.color, borderWidth: 1, cornerRadius: 5,
+                                borderColor: DecaColor.gray.color.cgColor, isSecureEntry: false,
                                 isEnabled: true, tarmic: false,
                                 leftView: UIView(frame:
                                                     CGRect(x: 0, y: 0, width: 10, height: textField.frame.height)),
@@ -75,8 +75,8 @@ final class SignupViewController: UIViewController {
                                 placeholder: "  Email address", delegate: self,
                                 font: decaFont(size: 16, font: .poppinsRegular),
                                 backgroundColor: .clear,
-                                tintColor: DecaColor.decafitBlack.color, borderWidth: 1, cornerRadius: 5,
-                                borderColor: DecaColor.decafitGray.color.cgColor, isSecureEntry: false,
+                                tintColor: DecaColor.black.color, borderWidth: 1, cornerRadius: 5,
+                                borderColor: DecaColor.gray.color.cgColor, isSecureEntry: false,
                                 isEnabled: true, tarmic: false,
                                 leftView: UIView(frame:
                                                     CGRect(x: 0, y: 0, width: 10, height: textField.frame.height)),
@@ -92,7 +92,7 @@ final class SignupViewController: UIViewController {
                                 font: decaFont(size: 16, font: .poppinsRegular),
                                 backgroundColor: .clear,
                                 tintColor: nil, borderWidth: 1, cornerRadius: 5,
-                                borderColor: DecaColor.decafitGray.color.cgColor, isSecureEntry: true,
+                                borderColor: DecaColor.gray.color.cgColor, isSecureEntry: true,
                                 isEnabled: true, tarmic: false,
                                 leftView: UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height)),
                                 rightView: UIView(frame: CGRect(x: 0, y: 0, width: 50,
@@ -108,7 +108,7 @@ final class SignupViewController: UIViewController {
                                 font: decaFont(size: 16, font: .poppinsRegular),
                                 backgroundColor: .clear,
                                 tintColor: nil, borderWidth: 1, cornerRadius: 5,
-                                borderColor: DecaColor.decafitGray.color.cgColor, isSecureEntry: true,
+                                borderColor: DecaColor.gray.color.cgColor, isSecureEntry: true,
                                 isEnabled: true, tarmic: false,
                                 leftView: UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height)),
                                 rightView: UIView(frame: CGRect(x: 0, y: 0, width: 50,
@@ -165,7 +165,7 @@ final class SignupViewController: UIViewController {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 13, font: .poppinsMedium),
-                            textColor: DecaColor.decafitGray.color, numberOfLines: 1,
+                            textColor: DecaColor.gray.color, numberOfLines: 1,
                             text: "  Or sign in with  ", kerning: nil))
         return label
     }()
@@ -173,7 +173,7 @@ final class SignupViewController: UIViewController {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 16, font: .poppinsMedium),
-                            textColor: DecaColor.decafitBlack.color, numberOfLines: 1,
+                            textColor: DecaColor.black.color, numberOfLines: 1,
                             text: "Already have an account? ", kerning: nil))
         return label
     }()

@@ -32,7 +32,7 @@ final class LoginViewController: UIViewController {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 29, font: .poppinsMedium),
-                            textColor: DecaColor.decafitBlack.color,
+                            textColor: DecaColor.black.color,
                             numberOfLines: 1, text: "Sign in", kerning: 0.5))
         label.textAlignment = .left
         return label
@@ -44,8 +44,8 @@ final class LoginViewController: UIViewController {
                                 placeholder: "Email address", delegate: self,
                                 font: decaFont(size: 16, font: .poppinsRegular),
                                 backgroundColor: .clear,
-                                tintColor: DecaColor.decafitBlack.color, borderWidth: 1, cornerRadius: 5,
-                                borderColor: DecaColor.decafitGray.color.cgColor, isSecureEntry: false,
+                                tintColor: DecaColor.black.color, borderWidth: 1, cornerRadius: 5,
+                                borderColor: DecaColor.gray.color.cgColor, isSecureEntry: false,
                                 isEnabled: true, tarmic: false,
                                 leftView: UIView(frame:
                                                     CGRect(x: 0, y: 0, width: 10, height: textField.frame.height)),
@@ -61,7 +61,7 @@ final class LoginViewController: UIViewController {
                                 font: decaFont(size: 16, font: .poppinsRegular),
                                 backgroundColor: .clear,
                                 tintColor: nil, borderWidth: 1, cornerRadius: 5,
-                                borderColor: DecaColor.decafitGray.color.cgColor, isSecureEntry: true,
+                                borderColor: DecaColor.gray.color.cgColor, isSecureEntry: true,
                                 isEnabled: true, tarmic: false,
                                 leftView: UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height)),
                                 rightView: UIView(frame: CGRect(x: 0, y: 0, width: 50,
@@ -100,7 +100,7 @@ final class LoginViewController: UIViewController {
                             titleColor: DecaColor.decafitOrange.color,
                             image: nil,
                             borderWidth: nil, cornerRadius: nil,
-                            borderColor: DecaColor.decafitGray.color.cgColor,
+                            borderColor: DecaColor.gray.color.cgColor,
                             contentEdgeInsets: nil,
                             isEnabled: true, tarmic: false))
         button.addTarget(self, action: #selector(toggleSignup), for: .touchUpInside)
@@ -118,7 +118,7 @@ final class LoginViewController: UIViewController {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 15, font: .poppinsMedium),
-                            textColor: DecaColor.decafitGray.color, numberOfLines: 1,
+                            textColor: DecaColor.gray.color, numberOfLines: 1,
                             text: " Or sign in with ", kerning: nil))
         return label
     }()
@@ -126,7 +126,7 @@ final class LoginViewController: UIViewController {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 16, font: .poppinsMedium),
-                            textColor: DecaColor.decafitBlack.color, numberOfLines: 1,
+                            textColor: DecaColor.black.color, numberOfLines: 1,
                             text: "Don't have an account? ", kerning: nil))
         return label
     }()
