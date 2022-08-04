@@ -4,35 +4,31 @@
 //
 //  Created by Decagon on 20/07/2022.
 //
-
-import Foundation
 import UIKit
-
 extension LoginViewController {
     @objc func toggleSignup() {
-        let screen = SignupViewController.getSignupView()
-        screen.modalPresentationStyle = .fullScreen
-        present(screen, animated: true)
+        toggleLoginSignup(self)
     }
     @objc func handleLogin() {
         guard let email = emailTextField.text, let password = passwordTextField.text
         else {
-            displayAlertMessage(title: "Error!", message: "All fields are required!")
+            Alert.showAlert(self, title: Constants.alertTitleError, message: Constants.blankTextFieldError)
             return
         }
-        if password.count < 8 || !email.contains("@") {
-            displayAlertMessage(title: "Error!", message: "Incorrect input")
+        if password.count < 7 || !email.contains("@") {
+            Alert.showAlert(self, title: Constants.alertTitleError, message: Constants.incorrectInputError)
             return
         }
-        let home = HomeViewController.shared
+        // Call auth login function here
+        let home = HomeViewController.getHomeView()
         home.modalPresentationStyle = .fullScreen
         present(home, animated: true, completion: nil)
+
     }
 }
-
 extension LoginViewController {
     func setUpSubviews() {
-        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height-30)
+        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height)
         let parentStack: DecaStack = {
             let stackView = DecaStack(arrangedSubviews: [topImageView,
                                                          textViewStack, lineStack,
@@ -59,12 +55,8 @@ extension LoginViewController {
         ])
     }
 }
-
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        var textFields: [UITextField] {
-            return [emailTextField, passwordTextField]
-        }
         if let selectedTextFieldIndex =
             textFields.firstIndex(of: textField), selectedTextFieldIndex < textFields.count - 1 {
             textFields[selectedTextFieldIndex + 1].becomeFirstResponder()

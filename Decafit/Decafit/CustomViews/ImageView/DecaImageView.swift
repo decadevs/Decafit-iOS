@@ -17,7 +17,7 @@ final class DecaImageView: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    required init(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError()
     }
     func configure(with viewModel: DecaImageViewModel) {

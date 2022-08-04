@@ -47,4 +47,23 @@ class DecafitUITests: XCTestCase {
         let text1 = app.staticTexts["Already have an account? "]
         XCTAssertTrue(text1.exists)
     }
+//    func testHomescreen() {
+//        let app = XCUIApplication()
+//        app.launch()
+//        
+//        let cellsQuery = app.collectionViews.cells
+//        let fullBodyElement = cellsQuery.otherElements.containing(.staticText, identifier:"Full Body").element
+//        fullBodyElement.tap()
+//        fullBodyElement.swipeLeft()
+//        cellsQuery.otherElements.containing(.staticText, identifier:"Biceps").element.swipeRight()
+//        fullBodyElement.swipeRight()
+//        app.staticTexts["Set your limit"].tap()
+//        element.children(matching: .other).element.children(matching: .other).element(boundBy: 1).tap()
+//        app.textFields["Number of sets"].tap()
+//        app.textFields["Number of reps"].tap()
+//        element.tap()
+//        app.buttons["Next"].tap()
+//        app.navigationBars["Decafit.StartWorkoutView"].buttons["Back"].tap()
+//        
+//    }
 }

@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "dane-wetton-t1NEMSm1rgI-unsplash.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "dane-wetton-t1NEMSm1rgI-unsplash@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "dane-wetton-t1NEMSm1rgI-unsplash@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

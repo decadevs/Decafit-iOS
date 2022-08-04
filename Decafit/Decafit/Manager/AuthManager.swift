@@ -16,14 +16,10 @@ final class AuthManager {
     }
     public func signOut() {
     }
-    @objc func handleUserLogin() {
-    }
-    @objc func handleGoogleLogin() {
-    }
-    @objc func handleFBLogin() {
-    }
-    @objc func handleAppleLogin() {
+
+    @objc func handleSocialLogin() {
     }
     @objc func handleTextChange() {
     }
+    
 }

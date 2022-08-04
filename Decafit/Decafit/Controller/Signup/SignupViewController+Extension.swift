@@ -9,9 +9,7 @@ import UIKit
 
 extension SignupViewController {
     @objc func toggleLogin() {
-        let screen = LoginViewController.getLoginView()
-        screen.modalPresentationStyle = .fullScreen
-        present(screen, animated: true)
+        toggleLoginSignup(self)
     }
     @objc func handleUserRegistration() {
         guard let fullName = fullNameTextField.text,
@@ -20,13 +18,16 @@ extension SignupViewController {
               let password = passwordTextField.text,
               let confirmPassword = confirmPasswordTextField.text
         else {
-            displayAlertMessage(title: "Error!", message: "All fields are required!")
+            Alert.showAlert(self, title: Constants.alertTitleError,
+                            message: Constants.blankTextFieldError)
             return
         }
         if password != confirmPassword {
-            displayAlertMessage(title: "Error!", message: "Passwords do not match!")
+            Alert.showAlert(self, title: Constants.alertTitleError,
+                            message: Constants.passwordMismatchError)
             return
         }
+        // Call auth sign in method here
         print(fullName, phoneNumber, email)
     }
 }
@@ -36,7 +37,7 @@ extension SignupViewController {
         let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height-25)
         let parentStack: DecaStack = {
             let stackView = DecaStack(arrangedSubviews:
-                                        [topImageView, textViewStack,
+                                        [signupTopImageView, textViewStack,
                                          lineStack, socialStack, redirectToSigninStack])
             stackView.configure(with: DecaStackViewModel(
                                     axis: .vertical, alignment: .center,
@@ -49,8 +50,8 @@ extension SignupViewController {
         scrollView.contentSize = contentViewSize
         scrollView.showsHorizontalScrollIndicator = true
         NSLayoutConstraint.activate([
-            topImageView.widthAnchor.constraint(equalTo: parentStack.widthAnchor),
-            topImageView.topAnchor.constraint(equalTo: parentStack.topAnchor, constant: -20),
+            signupTopImageView.widthAnchor.constraint(equalTo: parentStack.widthAnchor),
+            signupTopImageView.topAnchor.constraint(equalTo: parentStack.topAnchor, constant: -20),
             fullNameTextField.heightAnchor.constraint(equalToConstant: 53),
             phoneNumberTextField.heightAnchor.constraint(equalToConstant: 53),
             emailTextField.heightAnchor.constraint(equalToConstant: 53),
@@ -63,26 +64,24 @@ extension SignupViewController {
             passwordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             confirmPasswordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             signUpButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-            createPlanLabel.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 30),
-            createPlanLabel.trailingAnchor.constraint(equalTo: topImageView.trailingAnchor, constant: -40),
-            createPlanLabel.bottomAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: -30)
+            createPlanLabel.leadingAnchor.constraint(equalTo: signupTopImageView.leadingAnchor, constant: 30),
+            createPlanLabel.trailingAnchor.constraint(equalTo: signupTopImageView.trailingAnchor, constant: -40),
+            createPlanLabel.bottomAnchor.constraint(equalTo: signupTopImageView.bottomAnchor, constant: -30)
         ])
     }
 }
 
 extension SignupViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        var textFields: [UITextField] {
-            return [fullNameTextField, phoneNumberTextField, emailTextField, passwordTextField, confirmPasswordTextField]
-        }
-        if let selectedTextFieldIndex = textFields.firstIndex(of: textField), selectedTextFieldIndex < textFields.count - 1 {
+        if let selectedTextFieldIndex = textFields.firstIndex(of: textField),
+           selectedTextFieldIndex < textFields.count - 1 {
             textFields[selectedTextFieldIndex + 1].becomeFirstResponder()
         } else {
             textField.resignFirstResponder()
         }
         return true
     }
-    func setupKeyboardDismissRecognizer(){
+    func setupKeyboardDismissRecognizer() {
             let tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(
                 target: self, action: #selector(self.dismissKeyboard))
             self.view.addGestureRecognizer(tapRecognizer)

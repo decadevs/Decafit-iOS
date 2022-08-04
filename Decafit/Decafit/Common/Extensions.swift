@@ -6,18 +6,25 @@
 //
 
 import UIKit
-
+extension UINavigationBar {
+    func shouldRemoveShadow(_ value: Bool) {
+        if value {
+            self.setValue(true, forKey: "hidesShadow")
+        } else {
+            self.setValue(false, forKey: "hidesShadow")
+        }
+    }
+}
 extension UILabel {
     func set(text: String, withKerning kerning: CGFloat) {
         let attributedString = NSMutableAttributedString(string: text)
         attributedString.addAttribute(
             NSAttributedString.Key.kern, value: kerning,
-            range: NSMakeRange(0, text.count))
+            range: NSRange(location: 0, length: text.count))
         attributedText = attributedString
     }
 
 }
-
 extension UIFont {
     func withTraits(traits: UIFontDescriptor.SymbolicTraits) -> UIFont {
         let descriptor = fontDescriptor.withSymbolicTraits(traits)
@@ -30,5 +37,24 @@ extension UIFont {
         return withTraits(traits: .traitItalic)
     }
 }
-func displayAlertMessage(title: String, message: String) {
+extension UIView {
+    func addoverlay(color: UIColor = .black, alpha: CGFloat = 0.5) {
+        let overlay = UIView()
+        overlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        overlay.frame = bounds
+        overlay.backgroundColor = color
+        overlay.alpha = alpha
+        addSubview(overlay)
+    }
+}
+
+func toggleLoginSignup(_ currentVC: UIViewController) {
+    var screen: UIViewController
+    if currentVC === SignupViewController.self {
+        screen = LoginViewController.getViewController()
+    } else {
+        screen = SignupViewController.getViewController()
+    }
+    screen.modalPresentationStyle = .fullScreen
+    currentVC.present(screen, animated: true)
 }
