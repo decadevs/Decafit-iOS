@@ -16,6 +16,7 @@ enum Constants {
     static let signIn = "Sign In"
     static let signUp = "Sign up"
     static let next = "Next"
+    static let run = "Run"
     static let loginHeadertext = "Track \n your fitness"
     static let createPlan = "Create a \nfitness/nutrition plan"
     static let noAccounttext = "Don't have an account? "

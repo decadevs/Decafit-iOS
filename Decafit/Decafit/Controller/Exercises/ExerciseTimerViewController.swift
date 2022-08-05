@@ -14,6 +14,9 @@ class ExerciseTimerViewController: UIViewController {
     @objc func pauseResumeButtonTapped(_ sender: UIButton) {
         if sender.currentImage == UIImage(systemName: Constants.pauseImg) {
             exerciseTimerView.progressView.progress = 0.5 // pause progress
+            if exerciseLabel.text == Constants.run {
+                // replace progress view with 2 labels - Steps taken and time remaining
+            }
             sender.setImage(UIImage(systemName: Constants.playFillSystemImg), for: .normal)
         } else {
             exerciseTimerView.progressView.progress = 0.3 // resume progress

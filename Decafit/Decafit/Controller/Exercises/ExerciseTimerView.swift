@@ -29,6 +29,7 @@ class ExerciseTimerView: UIView {
        let progress = UIProgressView()
         return progress
     }()
+    var stepsTakenView = StepsTakenView()
     var pauseResumeButton: UIButton = {
         let button = DecaButton.createSocialButton(image: Constants.playImg)
         button.backgroundColor = .white
@@ -41,7 +42,7 @@ class ExerciseTimerView: UIView {
     }()
     lazy var nextWorkoutButton = DecaButton.createPurpleButton(title: Constants.exerciseTimerButtonText)
     func setupSubviews() {
-        [topImageView, exerciseName, progressView, pauseResumeButton, nextWorkoutButton,backButton].forEach { addSubview($0)}
+        [topImageView, exerciseName, progressView, stepsTakenView, pauseResumeButton, nextWorkoutButton, backButton].forEach { addSubview($0)}
         NSLayoutConstraint.activate([
             topImageView.topAnchor.constraint(equalTo: topAnchor),
             topImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -56,7 +57,8 @@ class ExerciseTimerView: UIView {
             
             progressView.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 20),
             progressView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            
+            // create a hidden view in the exact same place as progress view
+
             pauseResumeButton.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: 20),
             pauseResumeButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             
