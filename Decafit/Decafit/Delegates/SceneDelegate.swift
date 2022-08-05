@@ -1,9 +1,3 @@
-//
-//  SceneDelegate.swift
-//  Decafit
-//
-//  Created by Decagon on 11/07/2022.
-//
 
 import UIKit
 
@@ -19,7 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let authManager = AuthManager.shared
         switch authManager.isSignedIn {
         case true:
-            initialViewController = home
+            initialViewController = ExerciseTimerViewController()
         case false:
             initialViewController = LoginViewController()
         }

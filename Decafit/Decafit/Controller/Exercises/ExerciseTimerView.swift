@@ -4,6 +4,7 @@ import UIKit
 class ExerciseTimerView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .systemTeal
         setupSubviews()
     }
     required init?(coder: NSCoder) {
@@ -12,7 +13,7 @@ class ExerciseTimerView: UIView {
     lazy var topImageView: UIView = {
        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .gray
+        view.backgroundColor = DecaColor.decafitLightGray.color
         return view
     }()
     var exerciseName: DecaLabel = {
@@ -27,6 +28,7 @@ class ExerciseTimerView: UIView {
     }()
     var progressView: UIProgressView = {
        let progress = UIProgressView()
+        progress.translatesAutoresizingMaskIntoConstraints = false
         return progress
     }()
     var stepsTakenView = StepsTakenView()
@@ -37,6 +39,8 @@ class ExerciseTimerView: UIView {
         button.setTitle("Pause", for: .normal)
         button.setImage(UIImage(systemName: Constants.pauseImg), for: .normal)
         button.setImage(UIImage(systemName: Constants.playFillSystemImg), for: .selected)
+        button.tintColor = DecaColor.decafitPurple.color
+        button.titleLabel?.font = decaFont(size: 20, font: .poppinsMedium)
         button.setTitleColor(DecaColor.decafitPurple.color, for: .normal)
         return button
     }()
@@ -46,24 +50,33 @@ class ExerciseTimerView: UIView {
         NSLayoutConstraint.activate([
             topImageView.topAnchor.constraint(equalTo: topAnchor),
             topImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            topImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             topImageView.widthAnchor.constraint(equalTo: widthAnchor),
             topImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4),
 
             backButton.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 20),
-            backButton.topAnchor.constraint(equalTo: topImageView.topAnchor, constant: 20),
+            backButton.topAnchor.constraint(equalTo: topImageView.topAnchor, constant: 50),
             
             exerciseName.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: 10),
+            exerciseName.leadingAnchor.constraint(equalTo: leadingAnchor),
+            exerciseName.trailingAnchor.constraint(equalTo: trailingAnchor),
             exerciseName.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            progressView.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 20),
-            progressView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            // create a hidden view in the exact same place as progress view
-
-            pauseResumeButton.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: 20),
-            pauseResumeButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+//            progressView.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 20),
+//            progressView.centerXAnchor.constraint(equalTo: centerXAnchor),
+                        
+            stepsTakenView.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 0),
+            stepsTakenView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            stepsTakenView.bottomAnchor.constraint(equalTo: pauseResumeButton.topAnchor, constant: -10),
+            stepsTakenView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
+            stepsTakenView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2),
             
-            nextWorkoutButton.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 20),
-            topImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85),
+            pauseResumeButton.topAnchor.constraint(equalTo: stepsTakenView.bottomAnchor, constant: 20),
+            pauseResumeButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            pauseResumeButton.bottomAnchor.constraint(equalTo: nextWorkoutButton.topAnchor, constant: -25),
+
+            nextWorkoutButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -40),
+            nextWorkoutButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85),
             nextWorkoutButton.centerXAnchor.constraint(equalTo: centerXAnchor)
 
         ])

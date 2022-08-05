@@ -4,6 +4,9 @@ import UIKit
 class StepsTakenView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .systemPink
+        translatesAutoresizingMaskIntoConstraints = false
+//        isHidden = true
         setupSubviews()
     }
     required init?(coder: NSCoder) {
