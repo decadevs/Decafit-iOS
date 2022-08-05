@@ -9,7 +9,7 @@ class StepsTakenView: UIView {
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
     }
-    var stepsTaken: DecaLabel = {
+    lazy var stepsTaken: DecaLabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 16, font: .poppinsMedium),
@@ -19,7 +19,7 @@ class StepsTakenView: UIView {
         label.textAlignment = .center
         return label
     }()
-    var stepsData: DecaLabel = {
+    lazy var stepsData: DecaLabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 32, font: .poppinsMedium),
@@ -28,6 +28,15 @@ class StepsTakenView: UIView {
                             kerning: 0))
         label.textAlignment = .center
         return label
+    }()
+    lazy var stepStack: DecaStack = {
+        let stack = DecaStack(arrangedSubviews: [stepsTaken, stepsData])
+        stack.configure(with: DecaStackViewModel(
+                            axis: .vertical,
+                            alignment: .center,
+                            spacing: 5,
+                            distribution: .fillProportionally))
+        return stack
     }()
     var timeLeft: DecaLabel = {
         let label = DecaLabel()
@@ -50,9 +59,23 @@ class StepsTakenView: UIView {
         label.textAlignment = .center
         return label
     }()
+    lazy var timeStack: DecaStack = {
+        let stack = DecaStack(arrangedSubviews: [timeLeft, timeData])
+        stack.configure(with: DecaStackViewModel(
+                            axis: .vertical,
+                            alignment: .center,
+                            spacing: 5,
+                            distribution: .fillProportionally))
+        return stack
+    }()
     func setupSubviews() {
-        [stepsTaken, stepsData, timeLeft, timeData].forEach { addSubview($0)}
+        [stepStack, timeStack].forEach { addSubview($0)}
         NSLayoutConstraint.activate([
+            stepStack.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+            stepStack.centerXAnchor.constraint(equalTo: centerXAnchor),
+
+            timeStack.topAnchor.constraint(equalTo: stepStack.bottomAnchor, constant: 10),
+            timeStack.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
 }
