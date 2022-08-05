@@ -46,6 +46,7 @@
 		B40AFB322889AB1C00249820 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40AFB312889AB1C00249820 /* AudioToolbox.framework */; };
 		B40AFB38288ACE1D00249820 /* DecaTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB37288ACE1D00249820 /* DecaTextField.swift */; };
 		B40AFB3A288ACE3F00249820 /* DecaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB39288ACE3F00249820 /* DecaButton.swift */; };
+		B43631DC289D4BB30010976F /* ExerciseTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DB289D4BB30010976F /* ExerciseTimerViewController.swift */; };
 		B44B3C002897C7F0000C94D7 /* StartWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3BFF2897C7F0000C94D7 /* StartWorkoutViewController.swift */; };
 		B44B3C052897C8CB000C94D7 /* StartWorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C042897C8CB000C94D7 /* StartWorkoutCell.swift */; };
 		B44B3C0728982687000C94D7 /* CustomNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C0628982687000C94D7 /* CustomNavbar.swift */; };
@@ -141,6 +142,7 @@
 		B40AFB312889AB1C00249820 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B40AFB37288ACE1D00249820 /* DecaTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaTextField.swift; sourceTree = "<group>"; };
 		B40AFB39288ACE3F00249820 /* DecaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaButton.swift; sourceTree = "<group>"; };
+		B43631DB289D4BB30010976F /* ExerciseTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTimerViewController.swift; sourceTree = "<group>"; };
 		B44B3BFF2897C7F0000C94D7 /* StartWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutViewController.swift; sourceTree = "<group>"; };
 		B44B3C042897C8CB000C94D7 /* StartWorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutCell.swift; sourceTree = "<group>"; };
 		B44B3C0628982687000C94D7 /* CustomNavbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavbar.swift; sourceTree = "<group>"; };
@@ -328,6 +330,14 @@
 			path = CustomViews;
 			sourceTree = "<group>";
 		};
+		B43631DA289D4B830010976F /* Exercises */ = {
+			isa = PBXGroup;
+			children = (
+				B43631DB289D4BB30010976F /* ExerciseTimerViewController.swift */,
+			);
+			path = Exercises;
+			sourceTree = "<group>";
+		};
 		B44B3C012897C879000C94D7 /* Focus */ = {
 			isa = PBXGroup;
 			children = (
@@ -477,6 +487,7 @@
 		B48A59012886D481004D1BEA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B43631DA289D4B830010976F /* Exercises */,
 				B44B3C1E289ABAC5000C94D7 /* InputSetsAndReps */,
 				B44B3C032897C898000C94D7 /* StartWorkout */,
 				B4AB95CD2891D37A00FE9C96 /* Home */,
@@ -782,6 +793,7 @@
 				B44B3C15289A879B000C94D7 /* Buttons.swift in Sources */,
 				B44B3C0F289A714A000C94D7 /* Constants.swift in Sources */,
 				B48A590A2886D684004D1BEA /* LoginViewController.swift in Sources */,
+				B43631DC289D4BB30010976F /* ExerciseTimerViewController.swift in Sources */,
 				B44B3C11289A7F57000C94D7 /* TextFields.swift in Sources */,
 				B44B3C002897C7F0000C94D7 /* StartWorkoutViewController.swift in Sources */,
 				B40AFB272888142100249820 /* SignupViewController.swift in Sources */,
