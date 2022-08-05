@@ -7,11 +7,11 @@
 
 import UIKit
 protocol FocusAreaViewDelegate: AnyObject {
-    func didDisplayInputScreen(_ screen: FitConfigViewController)
+    func didDisplayFitConfigScreen(_ screen: FitConfigViewController, image: UIImage?, title: String)
 }
 class FocusAreaView: UIView, UICollectionViewDataSource,
                      UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    weak var delegate: TodaySessionViewDelegate?
+    weak var delegate: FocusAreaViewDelegate?
     let data = DataManager.shared
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -21,6 +21,14 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
         view.dataSource = self
         view.delegate = self
         return view
+    }()
+    var focusAreaViewTitle: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = Constants.focusAreaViewTitleText
+        label.font = decaFont(size: 16, font: .poppinsMedium).bold()
+        label.textColor = DecaColor.decafitBlack.color
+        return label
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -65,6 +73,9 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let screen = FitConfigViewController.shared
-        delegate?.didDisplayInputScreen(screen)
+        let selectedCell = collectionView.cellForItem(at: indexPath) as? FocusAreaCollectionViewCell
+        let image = selectedCell?.focusImage.image
+        let title = selectedCell?.bodyFocusAreaLabel.text ?? "Full Body"
+        delegate?.didDisplayFitConfigScreen(screen, image: image, title: title)
     }
 }

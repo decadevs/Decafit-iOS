@@ -23,6 +23,14 @@ class TodaySessionView: UIView {
                              forCellWithReuseIdentifier: TodayCollectionViewCell.identifier)
         return view
     }()
+    let todaySessionViewTitle: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = Constants.todaySessionViewTitleText
+        label.font = decaFont(size: 16, font: .poppinsMedium).bold()
+        label.textColor = DecaColor.decafitBlack.color
+        return label
+    }()
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear

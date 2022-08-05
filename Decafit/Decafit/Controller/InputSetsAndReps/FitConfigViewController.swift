@@ -30,6 +30,9 @@ class FitConfigViewController: UIViewController {
         backButton.addTarget(self, action: #selector(clickNavBackButton),
                              for: .touchUpInside)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+    }
 }
 extension FitConfigViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -45,19 +48,21 @@ extension FitConfigViewController: UITextFieldDelegate {
 }
 extension FitConfigViewController: UIGestureRecognizerDelegate {
     func setupNavigation() {
-        let navbarFrame = CGRect(x: 20, y: 200, width: view.bounds.width-40, height: 150)
-        let inputNav: UIView = {
-           let nav = UIView()
-            nav.frame = navbarFrame
-            nav.addSubview(backButton)
-            backButton.frame = CGRect(x: 30, y: 40, width: 40, height: 40)
-            return nav
-        }()
-        let navbar: UIBarButtonItem = UIBarButtonItem(customView: inputNav)
-        navigationItem.leftBarButtonItems = [navbar]
+        let navbar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 50))
+        navbar.backgroundColor = .white
+        backButton.frame = CGRect(x: 20, y: 20, width: 40, height: 40)
+        navbar.addSubview(backButton)
+        navigationController?.navigationBar.addSubview(navbar)
+
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.heightAnchor.constraint(equalToConstant: 150).isActive = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        navigationController?.navigationBar.isHidden = true
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        navigationItem.backButtonTitle = " "
+        navigationItem.backButtonDisplayMode = .minimal
     }
 }
 extension FitConfigViewController {
