@@ -4,6 +4,8 @@ import UIKit
 class ExerciseTimerView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .systemTeal
+
         setupSubviews()
     }
     required init?(coder: NSCoder) {
@@ -35,7 +37,7 @@ class ExerciseTimerView: UIView {
         let button = DecaButton.createSocialButton(image: Constants.playImg)
         button.backgroundColor = .white
         button.layer.borderWidth = 0
-        button.setTitle("Pause", for: .normal)
+        button.setTitle(" Pause", for: .normal)
         button.setImage(UIImage(systemName: Constants.pauseImg), for: .normal)
         button.setImage(UIImage(systemName: Constants.playFillSystemImg), for: .selected)
         button.tintColor = DecaColor.decafitPurple.color
@@ -57,27 +59,27 @@ class ExerciseTimerView: UIView {
 
             backButton.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 20),
             backButton.topAnchor.constraint(equalTo: topImageView.topAnchor, constant: 50),
-            
-            exerciseName.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: 10),
+            // title
+            exerciseName.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: 0),
             exerciseName.leadingAnchor.constraint(equalTo: leadingAnchor),
             exerciseName.trailingAnchor.constraint(equalTo: trailingAnchor),
             exerciseName.centerXAnchor.constraint(equalTo: centerXAnchor),
-            
-            progressBar.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 20),
+            // progress bar
+            progressBar.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 40),
             progressBar.centerXAnchor.constraint(equalTo: centerXAnchor),
             progressBar.bottomAnchor.constraint(equalTo: pauseResumeButton.topAnchor, constant: -10),
-
-            stepsTakenView.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 0),
+            // hidden view
+            stepsTakenView.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 20),
             stepsTakenView.centerXAnchor.constraint(equalTo: centerXAnchor),
             stepsTakenView.bottomAnchor.constraint(equalTo: pauseResumeButton.topAnchor, constant: -10),
             stepsTakenView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
             stepsTakenView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2),
-            
+            // pause btn
             pauseResumeButton.topAnchor.constraint(equalTo: stepsTakenView.bottomAnchor, constant: 20),
             pauseResumeButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             pauseResumeButton.bottomAnchor.constraint(equalTo: nextWorkoutButton.topAnchor, constant: -25),
 
-            nextWorkoutButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -40),
+            nextWorkoutButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50),
             nextWorkoutButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85),
             nextWorkoutButton.centerXAnchor.constraint(equalTo: centerXAnchor)
 

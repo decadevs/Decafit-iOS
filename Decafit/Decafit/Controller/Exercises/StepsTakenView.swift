@@ -6,7 +6,7 @@ class StepsTakenView: UIView {
         super.init(frame: frame)
         backgroundColor = .systemPink
         translatesAutoresizingMaskIntoConstraints = false
-        isHidden = true
+//        isHidden = true
         setupSubviews()
     }
     required init?(coder: NSCoder) {
@@ -74,10 +74,10 @@ class StepsTakenView: UIView {
     func setupSubviews() {
         [stepStack, timeStack].forEach { addSubview($0)}
         NSLayoutConstraint.activate([
-            stepStack.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+            stepStack.topAnchor.constraint(equalTo: topAnchor, constant: 3),
             stepStack.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            timeStack.topAnchor.constraint(equalTo: stepStack.bottomAnchor, constant: 10),
+            timeStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -3),
             timeStack.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }

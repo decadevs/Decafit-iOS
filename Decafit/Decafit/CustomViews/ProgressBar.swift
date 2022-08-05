@@ -5,6 +5,16 @@ class ProgressBar: UIView {
     let shapeLayer = CAShapeLayer()
     override init(frame: CGRect) {
         super.init(frame: frame)
+        let timer = CATextLayer()
+        timer.alignmentMode = .left
+        timer.font = decaFont(size: 20, font: .poppinsMedium)
+        timer.foregroundColor = DecaColor.decafitBlack.color.cgColor
+        timer.backgroundColor = DecaColor.decafitPalePurple.color.cgColor
+        timer.string = "00:02"
+        timer.contentsScale = UIScreen.main.scale
+        timer.frame = CGRect(x: 20, y: 50, width: 100, height: 35)
+        layer.addSublayer(timer)
+        
         let trackLayer = CAShapeLayer()
         let circularPath = UIBezierPath(
             arcCenter: self.center, radius: 65,
@@ -12,10 +22,9 @@ class ProgressBar: UIView {
             clockwise: true)
         // create track layer
         trackLayer.path = circularPath.cgPath
-        trackLayer.strokeColor = UIColor.gray.cgColor
+        trackLayer.strokeColor = DecaColor.decafitLightGray.color.cgColor
         trackLayer.lineWidth = 6
         trackLayer.fillColor = UIColor.clear.cgColor
-        trackLayer.strokeEnd = 0
         layer.addSublayer(trackLayer)
 
         shapeLayer.path = circularPath.cgPath
@@ -29,12 +38,16 @@ class ProgressBar: UIView {
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
     }
-    @objc func handleTap() {
+    fileprivate func animateCircle() {
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
         basicAnimation.toValue = 0.65
         basicAnimation.duration = 2
         basicAnimation.fillMode = CAMediaTimingFillMode.forwards
         basicAnimation.isRemovedOnCompletion = false
         shapeLayer.add(basicAnimation, forKey: "basic")
+    }
+    
+    @objc func handleTap() {
+        animateCircle()
     }
 }
