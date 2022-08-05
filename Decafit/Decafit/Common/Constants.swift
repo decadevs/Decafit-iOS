@@ -38,6 +38,8 @@ enum Constants {
     static let clockImg = "clock"
     static let flameImg = "flame.fill"
     static let playImg = "play"
+    static let playFillSystemImg = "play.fill"
+    static let pauseImg = "pause.fill"
 
     static let requiredInit = "init(coder:) has not been implemented"
     static let goodMorning = "Good Morning"

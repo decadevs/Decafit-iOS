@@ -34,8 +34,8 @@ class ExerciseTimerView: UIView {
         button.backgroundColor = .white
         button.layer.borderWidth = 0
         button.setTitle("Pause", for: .normal)
-        button.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-        button.setImage(UIImage(systemName: "play.fill"), for: .selected)
+        button.setImage(UIImage(systemName: Constants.pauseImg), for: .normal)
+        button.setImage(UIImage(systemName: Constants.playFillSystemImg), for: .selected)
         button.setTitleColor(DecaColor.decafitPurple.color, for: .normal)
         return button
     }()
