@@ -36,30 +36,3 @@ let navbarProfileImage: DecaImageView = {
     imageView.layer.cornerRadius = 10
     return imageView
 }()
-// MARK: - Start Workout cell image
-let exerciseImage: DecaImageView = {
-    let img = DecaImageView(frame: .zero)
-    img.contentMode = .scaleAspectFit
-    img.layer.cornerRadius = 10
-    return img
-}()
-// MARK: - Focus Cell Image
-let focusImage: UIImageView = {
-    let image = UIImageView()
-    image.translatesAutoresizingMaskIntoConstraints = false
-    image.contentMode = .scaleAspectFill
-    image.clipsToBounds = true
-    image.layer.cornerRadius = 10
-    image.addoverlay(color: DecaColor.decafitPurple.color)
-    return image
-}()
-// MARK: - Today Cell Image
-let todayImage: UIImageView = {
-    let image = UIImageView()
-    image.translatesAutoresizingMaskIntoConstraints = false
-    image.contentMode = .scaleAspectFill
-    image.clipsToBounds = true
-    image.layer.cornerRadius = 10
-    image.addoverlay(color: DecaColor.decafitPurple.color)
-    return image
-}()

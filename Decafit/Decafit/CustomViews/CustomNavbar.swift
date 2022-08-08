@@ -9,7 +9,7 @@ import UIKit
 class CustomNavbar: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .red
+        backgroundColor = .red 
         setupSubviews()
     }
     required init?(coder: NSCoder) {
@@ -18,12 +18,12 @@ class CustomNavbar: UIView {
     func setupSubviews() {
         [navbarProfileImage, navbarTitleLabel, navbarRightCalender].forEach { self.addSubview($0)}
         NSLayoutConstraint.activate([
-            navbarProfileImage.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            navbarProfileImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            navbarTitleLabel.leadingAnchor.constraint(equalTo: navbarProfileImage.trailingAnchor, constant: 20),
+            navbarProfileImage.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+            navbarProfileImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            navbarTitleLabel.leadingAnchor.constraint(equalTo: navbarProfileImage.trailingAnchor, constant: 25),
             navbarTitleLabel.topAnchor.constraint(equalTo: navbarProfileImage.topAnchor, constant: 15),
-            navbarRightCalender.leadingAnchor.constraint(equalTo: navbarTitleLabel.trailingAnchor, constant: 100),
-            navbarRightCalender.topAnchor.constraint(equalTo: navbarProfileImage.topAnchor, constant: 2)
+            navbarRightCalender.leadingAnchor.constraint(equalTo: navbarTitleLabel.trailingAnchor, constant: 85),
+            navbarRightCalender.topAnchor.constraint(equalTo: navbarProfileImage.topAnchor, constant: 5)
         ])
     }
 }

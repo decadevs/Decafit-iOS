@@ -10,9 +10,15 @@ struct TodaySessionModel {
     let image, title, name, time, calorie: String
 }
 let todayData: [TodaySessionModel] = {
-    let first = TodaySessionModel(image: "weightlift", title: "Full Body",
-                      name: "Cersei Lan", time: "24 min", calorie: "24 Kcal")
-    let second = TodaySessionModel(image: "fitness-img", title: "Biceps",
-                      name: "Karl Drogo", time: "30 min", calorie: "15 Kcal")
-    return [first, second]
+    let workoutData = [["weightlift", "Full Body", "Cersei Lanis", "24 min", "24 Kcal"],
+                       ["weightlift", "Biceps", "Thorin Oakin", "30 min", "15 Kcal"]]
+    var arr = [TodaySessionModel]()
+    for eachWorkout in workoutData {
+        var res = TodaySessionModel(image: "", title: "", name: "", time: "", calorie: "")
+        for _ in  0..<eachWorkout.count {
+            res = TodaySessionModel(image: eachWorkout[0], title: eachWorkout[1], name: eachWorkout[2], time: eachWorkout[3], calorie: eachWorkout[4])
+        }
+        arr.append(res)
+    }
+    return arr
 }()
