@@ -3,6 +3,7 @@ import UIKit
 class ExerciseTimerView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        accessibilityIdentifier = "ExerciseTimerView"
         setupSubviews()
     }
     required init?(coder: NSCoder) {

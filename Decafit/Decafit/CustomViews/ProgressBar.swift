@@ -4,6 +4,7 @@ class ProgressBar: UIView {
     let progressLayer = CAShapeLayer()
     override init(frame: CGRect) {
         super.init(frame: frame)
+        accessibilityIdentifier = "ProgressBar"
         createProgressView()
     }
     required init?(coder: NSCoder) {
