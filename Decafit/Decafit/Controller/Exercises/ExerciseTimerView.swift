@@ -1,11 +1,8 @@
-
 import UIKit
 
-class ExerciseTimerView: UIView {
+class ExerciseTimerView: UIView {    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .systemTeal
-
         setupSubviews()
     }
     required init?(coder: NSCoder) {
@@ -27,6 +24,16 @@ class ExerciseTimerView: UIView {
         label.textAlignment = .center
         return label
     }()
+    var timerLabel: DecaLabel = {
+        let label = DecaLabel()
+        label.configure(with: DecaLabelViewModel(
+                            font: decaFont(size: 22, font: .poppinsBold),
+                            textColor: DecaColor.decafitBlack.color,
+                            numberOfLines: 1, text: "00:02",
+                            kerning: 0.5))
+        label.textAlignment = .center
+        return label
+    }()
     var progressBar: ProgressBar = {
        let progress = ProgressBar()
         progress.translatesAutoresizingMaskIntoConstraints = false
@@ -39,7 +46,6 @@ class ExerciseTimerView: UIView {
         button.layer.borderWidth = 0
         button.setTitle(" Pause", for: .normal)
         button.setImage(UIImage(systemName: Constants.pauseImg), for: .normal)
-        button.setImage(UIImage(systemName: Constants.playFillSystemImg), for: .selected)
         button.tintColor = DecaColor.decafitPurple.color
         button.titleLabel?.font = decaFont(size: 20, font: .poppinsMedium)
         button.setTitleColor(DecaColor.decafitPurple.color, for: .normal)
@@ -47,7 +53,7 @@ class ExerciseTimerView: UIView {
     }()
     lazy var nextWorkoutButton = DecaButton.createPurpleButton(title: Constants.exerciseTimerButtonText)
     func setupSubviews() {
-        [topImageView, exerciseName, progressBar,
+        [topImageView, exerciseName, progressBar, timerLabel,
          stepsTakenView, pauseResumeButton,
          nextWorkoutButton, backButton].forEach { addSubview($0)}
         NSLayoutConstraint.activate([
@@ -65,9 +71,12 @@ class ExerciseTimerView: UIView {
             exerciseName.trailingAnchor.constraint(equalTo: trailingAnchor),
             exerciseName.centerXAnchor.constraint(equalTo: centerXAnchor),
             // progress bar
-            progressBar.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 40),
+            progressBar.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 70),
             progressBar.centerXAnchor.constraint(equalTo: centerXAnchor),
             progressBar.bottomAnchor.constraint(equalTo: pauseResumeButton.topAnchor, constant: -10),
+            // ticker 
+            timerLabel.centerXAnchor.constraint(equalTo: progressBar.centerXAnchor),
+            timerLabel.bottomAnchor.constraint(equalTo: progressBar.bottomAnchor, constant: -100),
             // hidden view
             stepsTakenView.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 20),
             stepsTakenView.centerXAnchor.constraint(equalTo: centerXAnchor),
