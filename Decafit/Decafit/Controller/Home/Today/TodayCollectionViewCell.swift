@@ -24,6 +24,57 @@ class TodayCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
     }
+    let todayImage: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFill
+        image.clipsToBounds = true
+        image.layer.cornerRadius = 10
+        image.addoverlay(color: DecaColor.decafitPurple.color)
+        return image
+    }()
+    let firstLabel: UILabel = {
+        let label = DecaLabel()
+        label.configure(with: DecaLabelViewModel(
+                            font: decaFont(size: 24, font: .poppinsMedium).bold(),
+                            textColor: .white, numberOfLines: 1,
+                            text: Constants.todayFirstLabelText, kerning: 1.0))
+        return label
+    }()
+    let secondLabel: UILabel = {
+        let label = DecaLabel()
+        label.configure(with: DecaLabelViewModel(font: decaFont(size: 12, font: .poppinsRegular),
+                                                 textColor: .white, numberOfLines: 1,
+                                                 text: Constants.todaySecondLabelText, kerning: 0.5))
+        return label
+    }()
+    let thirdLabel: UILabel = {
+        let label = DecaLabel()
+        label.configure(with: DecaLabelViewModel(font: decaFont(size: 14, font: .poppinsRegular),
+                                                 textColor: .white, numberOfLines: 1,
+                                                 text: "", kerning: 0.5))
+        label.attributedText = label.setAttributedText(
+            image: Constants.clockImg,
+            textAfterIcon: Constants.todayThirdLabelTextAfterIcon)
+        return label
+    }()
+    let fourthLabel: UILabel = {
+        let label = DecaLabel()
+        label.configure(with: DecaLabelViewModel(font: decaFont(size: 14, font: .poppinsRegular),
+                                                 textColor: .white, numberOfLines: 1,
+                                                 text: "", kerning: 0.5))
+        label.attributedText = label.setAttributedText(
+            image: Constants.flameImg,
+            textAfterIcon: Constants.todayFourthLabelTextAfterIcon)
+        return label
+    }()
+    var playButton: UIButton = {
+        let button = DecaButton.createSocialButton(image: Constants.playImg)
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 20
+        button.layer.borderWidth = 1
+        return button
+    }()
     func setupViews() {
         [todayImage, firstLabel, secondLabel, playButton,
          thirdLabel, fourthLabel].forEach { contentView.addSubview($0)}

@@ -51,7 +51,7 @@ class ExerciseTimerViewController: UIViewController {
             isTimerRunning = false
             self.resumeTapped = true
             exerciseTimerView.progressBar.pauseAnimation()
-            if exerciseLabel.text == Constants.run {
+            if exerciseTimerView.exerciseName.text == Constants.run {
                 // replace progress view with steps taken view
             }
             exerciseTimerView.pauseResumeButton.setTitle(" Resume", for: .normal)

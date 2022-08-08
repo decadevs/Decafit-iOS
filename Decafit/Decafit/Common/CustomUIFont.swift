@@ -10,9 +10,11 @@ import UIKit
 
 enum CustomFontFamily: String {
     case ubuntuMedium = "Ubuntu-Medium"
+    case ubuntuBold = "Ubuntu-Bold"
     case poppinsMedium = "Poppins-Medium"
     case poppinsRegular = "Poppins-Regular"
     case poppinsBold = "Poppins-Bold"
+    case poppinsLight = "Poppins-Light"
 }
 
 func decaFont(size: CGFloat, font: CustomFontFamily) -> UIFont {

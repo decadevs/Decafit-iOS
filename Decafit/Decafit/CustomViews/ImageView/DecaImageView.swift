@@ -16,6 +16,7 @@ struct DecaImageViewModel {
 final class DecaImageView: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        translatesAutoresizingMaskIntoConstraints = false
     }
     required init?(coder: NSCoder) {
         fatalError()

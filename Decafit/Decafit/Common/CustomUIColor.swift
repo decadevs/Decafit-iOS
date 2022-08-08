@@ -14,6 +14,10 @@ enum DecaColor {
     case decafitLightGray
     case decafitDarkGray
     case decafitPalePurple
+    case decafitLightGreen
+    case decafitGreen
+    case lightRed
+    case red
     var color: UIColor {
         switch self {
         case .decafitGray:
@@ -30,6 +34,14 @@ enum DecaColor {
             return #colorLiteral(red: 0.516553998, green: 0.548253119, blue: 0.5981615782, alpha: 1)
         case .decafitPalePurple:
             return #colorLiteral(red: 0.7604640722, green: 0.7548263669, blue: 0.8625454903, alpha: 1)
+        case .decafitLightGreen:
+            return #colorLiteral(red: 0.9002782106, green: 0.9613595605, blue: 0.9450122714, alpha: 1)
+        case .decafitGreen:
+            return #colorLiteral(red: 0, green: 0.6074795723, blue: 0.4437177181, alpha: 1)
+        case .lightRed:
+            return #colorLiteral(red: 0.9974444509, green: 0.9414363503, blue: 0.9158548713, alpha: 1)
+        case .red:
+            return #colorLiteral(red: 0.9471881986, green: 0.3105561137, blue: 0, alpha: 1)
         }
     }
 }

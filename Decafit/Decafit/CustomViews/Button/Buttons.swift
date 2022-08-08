@@ -29,7 +29,8 @@ var navbarRightCalender: UIButton = {
     return btn
 }()
 let backButton: UIButton = {
-    let button = DecaButton.createSocialButton(image: Constants.backArrow)
+    let button = UIButton()
+    button.setImage(UIImage(named: Constants.backArrow), for: .normal)
     button.backgroundColor = DecaColor.decafitLightGray.color
     button.layer.cornerRadius = 10
     button.layer.borderWidth = 0
@@ -37,10 +38,10 @@ let backButton: UIButton = {
         top: 12, left: 12, bottom: 12, right: 12)
     return button
 }()
-var playButton: UIButton = {
-    let button = DecaButton.createSocialButton(image: Constants.playImg)
-    button.backgroundColor = .white
-    button.layer.cornerRadius = 20
-    button.layer.borderWidth = 1
+// Start workout top view
+let startWorkoutButton: DecaButton = {
+    let button = DecaButton.createPurpleButton(title: "Start Workout")
+    button.layer.shadowOffset = CGSize(width: 0, height: 8)
+    button.layer.shadowOpacity = 0.1
     return button
 }()
