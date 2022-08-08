@@ -15,7 +15,6 @@ class ExerciseTimerViewController: UIViewController {
         exerciseTimerView.pauseResumeButton
             .addTarget(self, action: #selector(pauseButtonTapped),
                        for: .touchUpInside)
-//        exerciseTimerView.progressBar.progress = 0.8
         exerciseTimerView.progressBar.setProgress(duration: timeLeft )
     }
     lazy var exerciseTimerView = ExerciseTimerView()
@@ -46,17 +45,12 @@ class ExerciseTimerViewController: UIViewController {
             // Play sound to indicate time up
         }
     }
-    func timeString(time: TimeInterval) -> String {
-        let minutes = Int(time) / 60 % 60
-        let seconds = Int(time) % 60
-        return String(format: "%02i:%02i", minutes, seconds)
-    }
     @objc func pauseButtonTapped(_ sender: UIButton) {
         if self.resumeTapped == false {
             timer.invalidate()
             isTimerRunning = false
             self.resumeTapped = true
-            // exerciseTimerView.progressBar.progress = ?? // pause progress
+            exerciseTimerView.progressBar.pauseAnimation()
             if exerciseLabel.text == Constants.run {
                 // replace progress view with steps taken view
             }
@@ -67,7 +61,7 @@ class ExerciseTimerViewController: UIViewController {
             runTimer()
             self.resumeTapped = false
             isTimerRunning = true
-            // exerciseTimerView.progressBar.progress = ?? // resume progress
+             exerciseTimerView.progressBar.resumeAnimation()
             exerciseTimerView.pauseResumeButton.setTitle(" Pause", for: .normal)
             exerciseTimerView.pauseResumeButton.setImage(
                 UIImage(systemName: Constants.pauseImg), for: .normal)
