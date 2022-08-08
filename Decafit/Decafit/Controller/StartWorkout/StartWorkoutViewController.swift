@@ -6,7 +6,7 @@ class StartWorkoutViewController: UIViewController {
         return shared ?? StartWorkoutViewController()
     }
     let data = DataManager.shared
-    var pvc = PopoverViewController()
+    var pvc = ModalViewController()
 
     lazy var tableView: UITableView = {
         let view = UITableView(frame: view.bounds)

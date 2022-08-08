@@ -1,9 +1,4 @@
-//
-//  TodaySession.swift
-//  Decafit
-//
-//  Created by Decagon on 28/07/2022.
-//
+
 import UIKit
 protocol TodaySessionViewDelegate: AnyObject {
     func didDisplayInputScreen(_ screen: FitConfigViewController)

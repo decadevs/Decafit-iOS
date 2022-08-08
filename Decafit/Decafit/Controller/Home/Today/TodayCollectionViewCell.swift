@@ -1,9 +1,4 @@
-//
-//  TodayCollectionViewCell.swift
-//  Decafit
-//
-//  Created by Decagon on 28/07/2022.
-//
+
 import UIKit
 class TodayCollectionViewCell: UICollectionViewCell {
     static let identifier = Constants.todayCellId

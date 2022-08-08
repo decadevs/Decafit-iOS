@@ -1,9 +1,4 @@
-//
-//  WorkoutPageTopview.swift
-//  Decafit
-//
-//  Created by Decagon on 02/08/2022.
-//
+
 import UIKit
 class WorkoutPageTopview: UIView {
     lazy var titleLabel: UILabel = {

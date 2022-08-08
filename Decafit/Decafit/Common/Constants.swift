@@ -48,6 +48,7 @@ enum Constants {
     static let goodMorning = "Good Morning"
     static let todayCellId = "TodayCell"
     static let workoutCellId = "StartWorkoutCell"
+    static let workoutModalTopSwipeCell = "WorkoutModalTopSwipeCell"
     static let exerciseLabelText = "Jumping Jacks"
     static let workoutDurationLabelText = "X10"
     static let bodyFocusAreaText = "First"
