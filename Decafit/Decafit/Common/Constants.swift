@@ -68,7 +68,8 @@ enum Constants {
     static let completeText = "complete"
     static let incompleteText = "incomplete"
     static let continueWorkout = "Continue Workout"
-    
+    static let resume = " Resume"
+    static let pause = " Pause"
     static let loremText = modalText()
 }
 func modalText() -> String {

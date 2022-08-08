@@ -1,6 +1,6 @@
 import UIKit
 
-class ExerciseTimerView: UIView {    
+class ExerciseTimerView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubviews()
@@ -44,7 +44,7 @@ class ExerciseTimerView: UIView {
         let button = DecaButton.createSocialButton(image: Constants.playImg)
         button.backgroundColor = .white
         button.layer.borderWidth = 0
-        button.setTitle(" Pause", for: .normal)
+        button.setTitle(Constants.pause, for: .normal)
         button.setImage(UIImage(systemName: Constants.pauseImg), for: .normal)
         button.tintColor = DecaColor.decafitPurple.color
         button.titleLabel?.font = decaFont(size: 20, font: .poppinsMedium)
@@ -62,7 +62,7 @@ class ExerciseTimerView: UIView {
             topImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             topImageView.widthAnchor.constraint(equalTo: widthAnchor),
             topImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4),
-
+            // back
             backButton.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 20),
             backButton.topAnchor.constraint(equalTo: topImageView.topAnchor, constant: 50),
             // title
