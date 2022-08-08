@@ -1,16 +1,13 @@
-//
-//  StartWorkoutViewController.swift
-//  Decafit
-//
-//  Created by Decagon on 01/08/2022.
-//
 import UIKit
+
 class StartWorkoutViewController: UIViewController {
     static var shared: StartWorkoutViewController?
     static func getWorkoutView() -> StartWorkoutViewController {
         return shared ?? StartWorkoutViewController()
     }
     let data = DataManager.shared
+    var pvc = PopoverViewController()
+
     lazy var tableView: UITableView = {
         let view = UITableView(frame: view.bounds)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -28,23 +25,24 @@ class StartWorkoutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        [topView, tableView, startWorkoutButton, modalView].forEach { view.addSubview($0)}
+        [topView, tableView, startWorkoutButton].forEach { view.addSubview($0)}
         startWorkoutButton.addTarget(self, action: #selector(workoutButtonTapped), for: .touchUpInside)
         setupSubviews()
         navigationController?.navigationBar.topItem?.backBarButtonItem =
             UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.isHidden = true
     }
-    lazy var modalView: WorkoutModalView = {
-        let popup = WorkoutModalView()
-        popup.layer.shadowOffset = CGSize(width: 5, height: 12)
-        popup.layer.shadowOpacity = 0.2
-        popup.workoutModalButton.addTarget(self, action: #selector(dismissModal), for: .touchUpInside)
-        return popup
-    }()
-    @objc func dismissModal() {
-        modalView.removeFromSuperview()
-//        view.removeOverlay()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        pvc.dismissCompletion = {
+            self.view.removeOverlay()
+        }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        pvc.dismissCompletion = {
+            self.view.removeOverlay()
+        }
     }
 }
 extension StartWorkoutViewController: UITableViewDelegate, UITableViewDataSource {
@@ -97,17 +95,12 @@ extension StartWorkoutViewController: UIGestureRecognizerDelegate {
             tableView.heightAnchor.constraint(equalToConstant: CGFloat(view.frame.height*0.65)),
             startWorkoutButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.86),
             startWorkoutButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
-            startWorkoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            modalView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            modalView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            modalView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75),
-            modalView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6)
+            startWorkoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
     func displayModal() {
         view.addoverlay(color: .black, alpha: 0.6)
-        view.addSubview(modalView)
-        modalView.isHidden = false
+        self.modalPresentationStyle = .popover
+        self.present(pvc, animated: true, completion: nil)
     }
 }

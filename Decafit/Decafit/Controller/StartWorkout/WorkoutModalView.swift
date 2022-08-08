@@ -1,17 +1,10 @@
-//
-//  WorkoutModalView.swift
-//  Decafit
-//
-//  Created by Decagon on 05/08/2022.
 
 import UIKit
 
 class WorkoutModalView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .white
-        isHidden = true
         setupSubviews()
     }
     required init?(coder: NSCoder) {

@@ -8,11 +8,11 @@
 import UIKit
 extension TimeInterval {
     var time: String {
-        return String(format:"%02d:%02d", Int(self/60),  Int(ceil(truncatingRemainder(dividingBy: 60))) )
+        return String(format: "%02d:%02d", Int(self/60), Int(ceil(truncatingRemainder(dividingBy: 60))) )
     }
 }
 extension Int {
-    var degreesToRadians : CGFloat {
+    var degreesToRadians: CGFloat {
         return CGFloat(self) * .pi / 180
     }
 }
@@ -48,13 +48,19 @@ extension UIFont {
     }
 }
 extension UIView {
+    var overlay: UIView {
+        return UIView()
+    }
     func addoverlay(color: UIColor = .black, alpha: CGFloat = 0.5) {
-        let overlay = UIView()
         overlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         overlay.frame = bounds
         overlay.backgroundColor = color
         overlay.alpha = alpha
         addSubview(overlay)
+    }
+    func removeOverlay() {
+        overlay.frame = .zero
+        overlay.removeFromSuperview()
     }
 }
 

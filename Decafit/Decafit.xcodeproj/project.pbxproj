@@ -50,6 +50,7 @@
 		B43631DE289D4D770010976F /* ExerciseTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DD289D4D770010976F /* ExerciseTimerView.swift */; };
 		B43631E0289D5AC80010976F /* StepsTakenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DF289D5AC80010976F /* StepsTakenView.swift */; };
 		B43631E2289DB8650010976F /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631E1289DB8650010976F /* ProgressBar.swift */; };
+		B441658E28A17BDC00634408 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441658D28A17BDC00634408 /* PopoverViewController.swift */; };
 		B44B3C002897C7F0000C94D7 /* StartWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3BFF2897C7F0000C94D7 /* StartWorkoutViewController.swift */; };
 		B44B3C052897C8CB000C94D7 /* StartWorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C042897C8CB000C94D7 /* StartWorkoutCell.swift */; };
 		B44B3C0728982687000C94D7 /* CustomNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C0628982687000C94D7 /* CustomNavbar.swift */; };
@@ -151,6 +152,7 @@
 		B43631DD289D4D770010976F /* ExerciseTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTimerView.swift; sourceTree = "<group>"; };
 		B43631DF289D5AC80010976F /* StepsTakenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsTakenView.swift; sourceTree = "<group>"; };
 		B43631E1289DB8650010976F /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		B441658D28A17BDC00634408 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		B44B3BFF2897C7F0000C94D7 /* StartWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutViewController.swift; sourceTree = "<group>"; };
 		B44B3C042897C8CB000C94D7 /* StartWorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutCell.swift; sourceTree = "<group>"; };
 		B44B3C0628982687000C94D7 /* CustomNavbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavbar.swift; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 				B44B3C042897C8CB000C94D7 /* StartWorkoutCell.swift */,
 				B4E4C9C8289C4103008CD86D /* WorkoutPageTopview.swift */,
 				B4E4C9CA289CA166008CD86D /* WorkoutModalView.swift */,
+				B441658D28A17BDC00634408 /* PopoverViewController.swift */,
 			);
 			path = StartWorkout;
 			sourceTree = "<group>";
@@ -830,6 +833,7 @@
 				B44B3C1D289A957D000C94D7 /* Alert.swift in Sources */,
 				B40AFB38288ACE1D00249820 /* DecaTextField.swift in Sources */,
 				B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */,
+				B441658E28A17BDC00634408 /* PopoverViewController.swift in Sources */,
 				B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */,
 				B40AFB202887990000249820 /* CustomUIFont.swift in Sources */,
 				B48A59082886D583004D1BEA /* AuthManager.swift in Sources */,
