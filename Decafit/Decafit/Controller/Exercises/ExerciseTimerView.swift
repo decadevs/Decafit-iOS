@@ -52,7 +52,8 @@ class ExerciseTimerView: UIView {
         button.setTitleColor(DecaColor.decafitPurple.color, for: .normal)
         return button
     }()
-    lazy var nextWorkoutButton = DecaButton.createPurpleButton(title: Constants.exerciseTimerButtonText)
+    lazy var nextWorkoutButton = DecaButton.createPurpleButton(
+        title: Constants.exerciseTimerButtonText)
     func setupSubviews() {
         [topImageView, exerciseName, progressBar, timerLabel,
          stepsTakenView, pauseResumeButton,

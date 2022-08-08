@@ -1,13 +1,7 @@
-//
-//  DecafitUITests.swift
-//  DecafitUITests
-//
-//  Created by Decagon on 11/07/2022.
-//
-
 import XCTest
 
 class DecafitUITests: XCTestCase {
+    let app = XCUIApplication()
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
             measure(metrics: [XCTApplicationLaunchMetric()]) {
@@ -16,7 +10,6 @@ class DecafitUITests: XCTestCase {
         }
     }
     func testLogin() {
-        let app = XCUIApplication()
         app.launch()
         let emailField = app.textFields["Email address"]
         XCTAssertTrue(emailField.exists)
@@ -26,7 +19,8 @@ class DecafitUITests: XCTestCase {
         XCTAssertTrue(passwordSecureTextField.exists)
         passwordSecureTextField.tap()
         passwordSecureTextField.typeText("David123")
-        let pointBelowPassword = passwordSecureTextField.coordinate(withNormalizedOffset: CGVector(dx: 1.9, dy: 0.5))
+        let pointBelowPassword = passwordSecureTextField.coordinate(
+            withNormalizedOffset: CGVector(dx: 1.9, dy: 0.5))
         pointBelowPassword.press(forDuration: 0.3)
         let button = app.buttons["Sign In"]
         XCTAssertTrue(button.exists)
@@ -34,7 +28,6 @@ class DecafitUITests: XCTestCase {
         XCTAssertFalse(button.exists)
     }
     func testToggleSignup() {
-        let app = XCUIApplication()
         app.launch()
         let registerButton = app.buttons["Sign up"]
         XCTAssertTrue(registerButton.exists)
@@ -48,7 +41,6 @@ class DecafitUITests: XCTestCase {
         XCTAssertTrue(text1.exists)
     }
     func testExerciseTimer() {
-        let app = XCUIApplication()
         app.launch()
         let pauseButton = app.buttons[" Pause"]
         XCTAssertTrue(pauseButton.exists)
@@ -65,7 +57,6 @@ class DecafitUITests: XCTestCase {
         XCTAssertTrue(workoutBtn.exists)
     }
     func testHomescreen() {
-        let app = XCUIApplication()
         app.launch()
         let cellsQuery = app.collectionViews.cells
         let fullBodyElement = cellsQuery.otherElements.containing(.staticText, identifier:"Full Body").element
