@@ -16,6 +16,8 @@ enum Constants {
     static let signIn = "Sign In"
     static let signUp = "Sign up"
     static let next = "Next"
+
+    static let run = "Run"
     static let close = "Close"
     static let loginHeadertext = "Track \n your fitness"
     static let createPlan = "Create a \nfitness/nutrition plan"
@@ -39,6 +41,8 @@ enum Constants {
     static let clockImg = "clock"
     static let flameImg = "flame.fill"
     static let playImg = "play"
+    static let playFillSystemImg = "play.fill"
+    static let pauseImg = "pause.fill"
 
     static let requiredInit = "init(coder:) has not been implemented"
     static let goodMorning = "Good Morning"
@@ -59,12 +63,14 @@ enum Constants {
     static let passwordMismatchError = "Passwords do not match!"
     static let blankTextFieldError = "All fields are required!"
     static let incorrectInputError = "Incorrect input"
+    
+    static let exerciseTimerButtonText = "Next Workout"
     static let completeText = "complete"
     static let incompleteText = "incomplete"
     static let continueWorkout = "Continue Workout"
-    
+    static let resume = " Resume"
+    static let pause = " Pause"
     static let loremText = modalText()
-//    static let loremText =
 }
 func modalText() -> String {
     let text1 = "Lorem ipsum dolor sit amet, consetetur elitr, sed diam nonumy eirmod tempor invidunt labore etLorem ipsum dolor sit amet, consetetur elitr, sed diam nonumy eirmod tempor"

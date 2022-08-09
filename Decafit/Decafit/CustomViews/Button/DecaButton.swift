@@ -1,9 +1,3 @@
-//
-//  DecaButton.swift
-//  Decafit
-//
-//  Created by Decagon on 22/07/2022.
-//
 
 import UIKit
 struct DecaButtonViewModel {

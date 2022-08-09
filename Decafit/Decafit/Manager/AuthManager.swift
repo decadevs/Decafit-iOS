@@ -1,9 +1,3 @@
-//
-//  AuthManager.swift
-//  Decafit
-//
-//  Created by Decagon on 19/07/2022.
-//
 
 import Foundation
 
