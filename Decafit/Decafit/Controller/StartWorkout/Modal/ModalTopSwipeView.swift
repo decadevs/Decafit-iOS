@@ -2,7 +2,8 @@
 import UIKit
 
 class ModalTopSwipeView: UIView {
-    let data = DataManager.shared // the image here is coming from the workout table cell image
+    let data = DataManager.shared
+    var cellImage: String?
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -26,10 +27,9 @@ class ModalTopSwipeView: UIView {
         return view
     }()
 }
-extension ModalTopSwipeView: UICollectionViewDelegate,
-                            UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ModalTopSwipeView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -38,10 +38,12 @@ extension ModalTopSwipeView: UICollectionViewDelegate,
                                                         for: indexPath) as? ModalTopSwipeCell else {
             return UICollectionViewCell()
         }
-        let image = UIImage(named: "back")
-        cell.workoutModalImage.image = image
+        let image = UIImage(named: cellImage ?? "apple-img")
+        cell.workoutModalImage.image = image 
         return cell
     }
+}
+extension ModalTopSwipeView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {

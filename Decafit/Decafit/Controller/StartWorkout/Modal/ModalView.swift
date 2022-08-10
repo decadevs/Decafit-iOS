@@ -1,10 +1,8 @@
 
 import UIKit
-
 class ModalView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .yellow
         setupSubviews()
     }
     required init?(coder: NSCoder) {

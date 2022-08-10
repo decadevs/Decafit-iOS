@@ -1,10 +1,3 @@
-//
-//  InputViewController.swift
-//  Decafit
-//
-//  Created by Decagon on 29/07/2022.
-//
-
 import UIKit
 
 class FitConfigViewController: UIViewController {
@@ -42,7 +35,7 @@ extension FitConfigViewController: UITextFieldDelegate {
         navigationController?.popViewController(animated: true)
     }
     @objc func gotoStartWorkout() {
-        let screen = StartWorkoutViewController.getWorkoutView()
+        let screen = WorkoutViewController.getWorkoutView()
         self.navigationController?.pushViewController(screen, animated: true)
     }
 }
@@ -81,9 +74,9 @@ extension FitConfigViewController {
         view.addSubview(parentStack)
         NSLayoutConstraint.activate([
             topImageView.widthAnchor.constraint(equalToConstant: view.frame.width-10),
-            topImageView.heightAnchor.constraint(equalToConstant: 170),
-            topImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -40),
-            labelStack.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: -20),
+            topImageView.heightAnchor.constraint(equalToConstant: 240),
+            topImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            labelStack.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: 15),
             labelStack.heightAnchor.constraint(equalToConstant: 45),
             labelStack.leadingAnchor.constraint(equalTo: setsTextField.leadingAnchor, constant: 0),
             setsTextField.heightAnchor.constraint(equalToConstant: 56),

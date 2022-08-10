@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -46,15 +46,23 @@
 		B40AFB322889AB1C00249820 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40AFB312889AB1C00249820 /* AudioToolbox.framework */; };
 		B40AFB38288ACE1D00249820 /* DecaTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB37288ACE1D00249820 /* DecaTextField.swift */; };
 		B40AFB3A288ACE3F00249820 /* DecaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB39288ACE3F00249820 /* DecaButton.swift */; };
-		B43631DC289D4BB30010976F /* ExerciseTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DB289D4BB30010976F /* ExerciseTimerViewController.swift */; };
-		B43631DE289D4D770010976F /* ExerciseTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DD289D4D770010976F /* ExerciseTimerView.swift */; };
+		B43631DC289D4BB30010976F /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DB289D4BB30010976F /* ExerciseViewController.swift */; };
+		B43631DE289D4D770010976F /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DD289D4D770010976F /* ExerciseView.swift */; };
 		B43631E0289D5AC80010976F /* StepsTakenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DF289D5AC80010976F /* StepsTakenView.swift */; };
 		B43631E2289DB8650010976F /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631E1289DB8650010976F /* ProgressBar.swift */; };
 		B441658E28A17BDC00634408 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441658D28A17BDC00634408 /* ModalViewController.swift */; };
 		B441659128A18F8600634408 /* ModalTopSwipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441659028A18F8600634408 /* ModalTopSwipeCell.swift */; };
 		B441659328A192B400634408 /* ModalTopSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441659228A192B400634408 /* ModalTopSwipeView.swift */; };
-		B44B3C002897C7F0000C94D7 /* StartWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3BFF2897C7F0000C94D7 /* StartWorkoutViewController.swift */; };
-		B44B3C052897C8CB000C94D7 /* StartWorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C042897C8CB000C94D7 /* StartWorkoutCell.swift */; };
+		B441659528A26D5E00634408 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B441659428A26D5E00634408 /* HealthKit.framework */; };
+		B441659728A26D6800634408 /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B441659628A26D6800634408 /* GameController.framework */; };
+		B441659928A26D8100634408 /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B441659828A26D8100634408 /* HomeKit.framework */; };
+		B441659D28A2B18C00634408 /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B441659C28A2B18C00634408 /* ExerciseCell.swift */; };
+		B44165A428A300DC00634408 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = B44165A328A300DC00634408 /* Apollo */; };
+		B44165A628A300DC00634408 /* ApolloSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B44165A528A300DC00634408 /* ApolloSQLite */; };
+		B44165AB28A30AF100634408 /* Register.graphql in Resources */ = {isa = PBXBuildFile; fileRef = B44165AA28A30AF100634408 /* Register.graphql */; };
+		B44165AD28A30BC600634408 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44165AC28A30BC600634408 /* API.swift */; };
+		B44B3C002897C7F0000C94D7 /* WorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3BFF2897C7F0000C94D7 /* WorkoutViewController.swift */; };
+		B44B3C052897C8CB000C94D7 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C042897C8CB000C94D7 /* WorkoutCell.swift */; };
 		B44B3C0728982687000C94D7 /* CustomNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C0628982687000C94D7 /* CustomNavbar.swift */; };
 		B44B3C0F289A714A000C94D7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C0E289A714A000C94D7 /* Constants.swift */; };
 		B44B3C11289A7F57000C94D7 /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C10289A7F57000C94D7 /* TextFields.swift */; };
@@ -83,7 +91,7 @@
 		B4B96EA12892697F00E22B33 /* TodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B96EA02892697F00E22B33 /* TodayCollectionViewCell.swift */; };
 		B4B96EA728936A2800E22B33 /* FitConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B96EA628936A2800E22B33 /* FitConfigViewController.swift */; };
 		B4B96EA92893CCA500E22B33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4B96EA82893CCA500E22B33 /* Assets.xcassets */; };
-		B4E4C9C9289C4103008CD86D /* WorkoutPageTopview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E4C9C8289C4103008CD86D /* WorkoutPageTopview.swift */; };
+		B4E4C9C9289C4103008CD86D /* WorkoutTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E4C9C8289C4103008CD86D /* WorkoutTopView.swift */; };
 		B4E4C9CB289CA166008CD86D /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E4C9CA289CA166008CD86D /* ModalView.swift */; };
 		E9EDA8C619805CC18DD608E6 /* Pods_Decafit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48853A80EF7AD9413CD9484E /* Pods_Decafit.framework */; };
 /* End PBXBuildFile section */
@@ -150,15 +158,22 @@
 		B40AFB312889AB1C00249820 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B40AFB37288ACE1D00249820 /* DecaTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaTextField.swift; sourceTree = "<group>"; };
 		B40AFB39288ACE3F00249820 /* DecaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaButton.swift; sourceTree = "<group>"; };
-		B43631DB289D4BB30010976F /* ExerciseTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTimerViewController.swift; sourceTree = "<group>"; };
-		B43631DD289D4D770010976F /* ExerciseTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTimerView.swift; sourceTree = "<group>"; };
+		B43631DB289D4BB30010976F /* ExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
+		B43631DD289D4D770010976F /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
 		B43631DF289D5AC80010976F /* StepsTakenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsTakenView.swift; sourceTree = "<group>"; };
 		B43631E1289DB8650010976F /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		B441658D28A17BDC00634408 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		B441659028A18F8600634408 /* ModalTopSwipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTopSwipeCell.swift; sourceTree = "<group>"; };
 		B441659228A192B400634408 /* ModalTopSwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTopSwipeView.swift; sourceTree = "<group>"; };
-		B44B3BFF2897C7F0000C94D7 /* StartWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutViewController.swift; sourceTree = "<group>"; };
-		B44B3C042897C8CB000C94D7 /* StartWorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutCell.swift; sourceTree = "<group>"; };
+		B441659428A26D5E00634408 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		B441659628A26D6800634408 /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
+		B441659828A26D8100634408 /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
+		B441659C28A2B18C00634408 /* ExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
+		B44165A128A2FECF00634408 /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		B44165AA28A30AF100634408 /* Register.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Register.graphql; sourceTree = "<group>"; };
+		B44165AC28A30BC600634408 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		B44B3BFF2897C7F0000C94D7 /* WorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewController.swift; sourceTree = "<group>"; };
+		B44B3C042897C8CB000C94D7 /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
 		B44B3C0628982687000C94D7 /* CustomNavbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavbar.swift; sourceTree = "<group>"; };
 		B44B3C0E289A714A000C94D7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B44B3C10289A7F57000C94D7 /* TextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFields.swift; sourceTree = "<group>"; };
@@ -193,7 +208,7 @@
 		B4B96EA02892697F00E22B33 /* TodayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCollectionViewCell.swift; sourceTree = "<group>"; };
 		B4B96EA628936A2800E22B33 /* FitConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitConfigViewController.swift; sourceTree = "<group>"; };
 		B4B96EA82893CCA500E22B33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B4E4C9C8289C4103008CD86D /* WorkoutPageTopview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPageTopview.swift; sourceTree = "<group>"; };
+		B4E4C9C8289C4103008CD86D /* WorkoutTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTopView.swift; sourceTree = "<group>"; };
 		B4E4C9CA289CA166008CD86D /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		E09F5AB25E31C6DF910AF630 /* Pods-Decafit-DecafitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Decafit-DecafitUITests.debug.xcconfig"; path = "Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F5A45F2515A01D1403BDB39F /* Pods_Decafit_DecafitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Decafit_DecafitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,7 +219,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B441659528A26D5E00634408 /* HealthKit.framework in Frameworks */,
+				B44165A628A300DC00634408 /* ApolloSQLite in Frameworks */,
+				B44165A428A300DC00634408 /* Apollo in Frameworks */,
+				B441659928A26D8100634408 /* HomeKit.framework in Frameworks */,
 				B40AFB322889AB1C00249820 /* AudioToolbox.framework in Frameworks */,
+				B441659728A26D6800634408 /* GameController.framework in Frameworks */,
 				E9EDA8C619805CC18DD608E6 /* Pods_Decafit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +345,9 @@
 		B40AFB302889AB1C00249820 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B441659828A26D8100634408 /* HomeKit.framework */,
+				B441659628A26D6800634408 /* GameController.framework */,
+				B441659428A26D5E00634408 /* HealthKit.framework */,
 				B40AFB312889AB1C00249820 /* AudioToolbox.framework */,
 				48853A80EF7AD9413CD9484E /* Pods_Decafit.framework */,
 				F5A45F2515A01D1403BDB39F /* Pods_Decafit_DecafitUITests.framework */,
@@ -350,9 +373,10 @@
 		B43631DA289D4B830010976F /* Exercises */ = {
 			isa = PBXGroup;
 			children = (
-				B43631DB289D4BB30010976F /* ExerciseTimerViewController.swift */,
-				B43631DD289D4D770010976F /* ExerciseTimerView.swift */,
+				B43631DB289D4BB30010976F /* ExerciseViewController.swift */,
+				B43631DD289D4D770010976F /* ExerciseView.swift */,
 				B43631DF289D5AC80010976F /* StepsTakenView.swift */,
+				B441659C28A2B18C00634408 /* ExerciseCell.swift */,
 			);
 			path = Exercises;
 			sourceTree = "<group>";
@@ -389,9 +413,9 @@
 		B44B3C032897C898000C94D7 /* StartWorkout */ = {
 			isa = PBXGroup;
 			children = (
-				B44B3BFF2897C7F0000C94D7 /* StartWorkoutViewController.swift */,
-				B44B3C042897C8CB000C94D7 /* StartWorkoutCell.swift */,
-				B4E4C9C8289C4103008CD86D /* WorkoutPageTopview.swift */,
+				B44B3BFF2897C7F0000C94D7 /* WorkoutViewController.swift */,
+				B44B3C042897C8CB000C94D7 /* WorkoutCell.swift */,
+				B4E4C9C8289C4103008CD86D /* WorkoutTopView.swift */,
 				B441658F28A18F3200634408 /* Modal */,
 			);
 			path = StartWorkout;
@@ -476,6 +500,9 @@
 		B47B5B11287C147000EEC900 /* Decafit */ = {
 			isa = PBXGroup;
 			children = (
+				B44165AC28A30BC600634408 /* API.swift */,
+				B44165A128A2FECF00634408 /* schema.json */,
+				B44165AA28A30AF100634408 /* Register.graphql */,
 				B44B3C1F289B0076000C94D7 /* Models */,
 				B40AFB36288ACB4F00249820 /* CustomViews */,
 				B40AFB1E288798E200249820 /* Common */,
@@ -573,6 +600,7 @@
 			buildConfigurationList = B47B5B39287C147300EEC900 /* Build configuration list for PBXNativeTarget "Decafit" */;
 			buildPhases = (
 				021FFC32A5965D03C74C850E /* [CP] Check Pods Manifest.lock */,
+				B441659E28A2F72600634408 /* Apollo */,
 				B47B5B0B287C147000EEC900 /* Sources */,
 				B47B5B0C287C147000EEC900 /* Frameworks */,
 				B47B5B0D287C147000EEC900 /* Resources */,
@@ -583,6 +611,10 @@
 			dependencies = (
 			);
 			name = Decafit;
+			packageProductDependencies = (
+				B44165A328A300DC00634408 /* Apollo */,
+				B44165A528A300DC00634408 /* ApolloSQLite */,
+			);
 			productName = Decafit;
 			productReference = B47B5B0F287C147000EEC900 /* Decafit.app */;
 			productType = "com.apple.product-type.application";
@@ -656,6 +688,9 @@
 				Base,
 			);
 			mainGroup = B47B5B06287C147000EEC900;
+			packageReferences = (
+				B44165A228A300DC00634408 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+			);
 			productRefGroup = B47B5B10287C147000EEC900 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -692,6 +727,7 @@
 				B40AFAE92887974200249820 /* Poppins-BlackItalic.ttf in Resources */,
 				B40AFB152887983C00249820 /* Ubuntu-Medium.ttf in Resources */,
 				B40AFAE72887974200249820 /* Poppins-ExtraBoldItalic.ttf in Resources */,
+				B44165AB28A30AF100634408 /* Register.graphql in Resources */,
 				B40AFAE32887974200249820 /* Poppins-BoldItalic.ttf in Resources */,
 				B40AFAE62887974200249820 /* Poppins-SemiBoldItalic.ttf in Resources */,
 				B40AFAEA2887974200249820 /* OFL.txt in Resources */,
@@ -783,6 +819,24 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
+		B441659E28A2F72600634408 /* Apollo */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Apollo;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Don't run this during index builds\nif [ $ACTION = \"indexbuild\" ]; then exit 0; fi\n\n# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
+		};
 		B9FEB3C0B65013E93BE9E646 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -828,14 +882,14 @@
 				B43631E0289D5AC80010976F /* StepsTakenView.swift in Sources */,
 				B441659128A18F8600634408 /* ModalTopSwipeCell.swift in Sources */,
 				B48A590A2886D684004D1BEA /* LoginViewController.swift in Sources */,
-				B43631DC289D4BB30010976F /* ExerciseTimerViewController.swift in Sources */,
+				B43631DC289D4BB30010976F /* ExerciseViewController.swift in Sources */,
 				B44B3C11289A7F57000C94D7 /* TextFields.swift in Sources */,
-				B44B3C002897C7F0000C94D7 /* StartWorkoutViewController.swift in Sources */,
+				B44B3C002897C7F0000C94D7 /* WorkoutViewController.swift in Sources */,
 				B40AFB272888142100249820 /* SignupViewController.swift in Sources */,
 				B44B3C25289B032D000C94D7 /* StartWorkoutModel.swift in Sources */,
 				B44B3C0728982687000C94D7 /* CustomNavbar.swift in Sources */,
 				B43631E2289DB8650010976F /* ProgressBar.swift in Sources */,
-				B4E4C9C9289C4103008CD86D /* WorkoutPageTopview.swift in Sources */,
+				B4E4C9C9289C4103008CD86D /* WorkoutTopView.swift in Sources */,
 				B40AFB222887A2FA00249820 /* LoginViewController+Extension.swift in Sources */,
 				B4B96EA12892697F00E22B33 /* TodayCollectionViewCell.swift in Sources */,
 				B4AB95B7288E934E00FE9C96 /* DecaLabel.swift in Sources */,
@@ -845,15 +899,17 @@
 				B4AB95B9288EB0F600FE9C96 /* DecaImageView.swift in Sources */,
 				B441659328A192B400634408 /* ModalTopSwipeView.swift in Sources */,
 				B40AFB3A288ACE3F00249820 /* DecaButton.swift in Sources */,
-				B44B3C052897C8CB000C94D7 /* StartWorkoutCell.swift in Sources */,
+				B44B3C052897C8CB000C94D7 /* WorkoutCell.swift in Sources */,
 				B44B3C1D289A957D000C94D7 /* Alert.swift in Sources */,
 				B40AFB38288ACE1D00249820 /* DecaTextField.swift in Sources */,
 				B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */,
+				B44165AD28A30BC600634408 /* API.swift in Sources */,
+				B441659D28A2B18C00634408 /* ExerciseCell.swift in Sources */,
 				B441658E28A17BDC00634408 /* ModalViewController.swift in Sources */,
 				B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */,
 				B40AFB202887990000249820 /* CustomUIFont.swift in Sources */,
 				B48A59082886D583004D1BEA /* AuthManager.swift in Sources */,
-				B43631DE289D4D770010976F /* ExerciseTimerView.swift in Sources */,
+				B43631DE289D4D770010976F /* ExerciseView.swift in Sources */,
 				B44B3C18289A893E000C94D7 /* Labels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1191,6 +1247,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B44165A228A300DC00634408 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.53.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B44165A328A300DC00634408 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B44165A228A300DC00634408 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+		B44165A528A300DC00634408 /* ApolloSQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B44165A228A300DC00634408 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloSQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B47B5B07287C147000EEC900 /* Project object */;
 }

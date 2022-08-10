@@ -1,10 +1,3 @@
-//
-//  FocusAreaCollectionViewCell.swift
-//  Decafit
-//
-//  Created by Decagon on 27/07/2022.
-//
-
 import UIKit
 class FocusAreaCollectionViewCell: UICollectionViewCell {
     static let identifier = "WorkoutCell"

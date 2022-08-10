@@ -1,4 +1,3 @@
-
 import UIKit
 class TodayCollectionViewCell: UICollectionViewCell {
     static let identifier = Constants.todayCellId

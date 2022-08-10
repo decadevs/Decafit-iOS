@@ -1,6 +1,6 @@
 
 import UIKit
-class WorkoutPageTopview: UIView {
+class WorkoutTopView: UIView {
     lazy var titleLabel: UILabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(

@@ -1,28 +1,37 @@
-import UIKit
 
-class ExerciseTimerViewController: UIViewController {
-    var timeLeft: TimeInterval = 10 // parse this from the exercise cell duration
+import UIKit
+protocol ExerciseCellDelegate: AnyObject {
+    func refCellElements(exerciseView: ExerciseView)
+}
+class ExerciseCell: UICollectionViewCell {
+    static let identifier = "ExerciseCell"
+    weak var delegate: ExerciseCellDelegate?
+    var timeLeft: TimeInterval = 15 // parse this from the exercise cell duration
     var endTime: Date?
     var timer = Timer()
     var isTimerRunning = false
     var resumeTapped = false
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        view.addSubview(exerciseTimerView)
-        exerciseTimerView.frame = view.bounds
-        exerciseTimerView.timerLabel.text = timeLeft.time
-        exerciseTimerView.pauseResumeButton
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        contentView.addSubview(exerciseView)
+        contentView.frame = exerciseView.bounds
+        exerciseView.pauseResumeButton
             .addTarget(self, action: #selector(pauseButtonTapped),
                        for: .touchUpInside)
-        exerciseTimerView.progressBar.setProgress(duration: timeLeft )
-    }
-    lazy var exerciseTimerView = ExerciseTimerView()
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        exerciseView.timerLabel.text = timeLeft.time
+        exerciseView.progressBar.setProgress(duration: timeLeft )
         startWorkoutButtonTapped()
     }
+    required init?(coder: NSCoder) {
+        fatalError(Constants.requiredInit)
+    }
+    lazy var exerciseView = ExerciseView()
+    func configure(with model: StartWorkoutModel) {
+        exerciseView.exerciseName.text = model.exerciseName
+        exerciseView.topImageView.image = UIImage(named: model.image)
+    }
     func startWorkoutButtonTapped() {
+        delegate?.refCellElements(exerciseView: exerciseView)
         if isTimerRunning == false {
             runTimer()
         }
@@ -35,7 +44,7 @@ class ExerciseTimerViewController: UIViewController {
         isTimerRunning = true
     }
     @objc func updateTimer() {
-        let timeLabel = exerciseTimerView.timerLabel
+        let timeLabel = exerciseView.timerLabel
         if timeLeft > 0 {
             timeLeft = endTime?.timeIntervalSinceNow ?? 0
             timeLabel.text = timeLeft.time
@@ -50,20 +59,20 @@ class ExerciseTimerViewController: UIViewController {
             timer.invalidate()
             isTimerRunning = false
             self.resumeTapped = true
-            exerciseTimerView.progressBar.pauseAnimation()
-            if exerciseTimerView.exerciseName.text == Constants.run {
+            exerciseView.progressBar.pauseAnimation()
+            if exerciseView.exerciseName.text == Constants.run {
                 // replace progress view with steps taken view
             }
-            exerciseTimerView.pauseResumeButton.setTitle(Constants.resume, for: .normal)
-            exerciseTimerView.pauseResumeButton.setImage(
+            exerciseView.pauseResumeButton.setTitle(Constants.resume, for: .normal)
+            exerciseView.pauseResumeButton.setImage(
                 UIImage(systemName: Constants.playFillSystemImg), for: .selected)
         } else {
             runTimer()
             self.resumeTapped = false
             isTimerRunning = true
-             exerciseTimerView.progressBar.resumeAnimation()
-            exerciseTimerView.pauseResumeButton.setTitle(Constants.pause, for: .normal)
-            exerciseTimerView.pauseResumeButton.setImage(
+             exerciseView.progressBar.resumeAnimation()
+            exerciseView.pauseResumeButton.setTitle(Constants.pause, for: .normal)
+            exerciseView.pauseResumeButton.setImage(
                 UIImage(systemName: Constants.pauseImg), for: .normal)
         }
     }

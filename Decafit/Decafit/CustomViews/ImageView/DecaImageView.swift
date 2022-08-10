@@ -26,6 +26,5 @@ final class DecaImageView: UIImageView {
         image = UIImage(named: viewModel.image)
         contentMode = viewModel.contentMode
         tintColor = viewModel.tintColor
-
-    }
+    }    
 }
