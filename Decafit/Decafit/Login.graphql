@@ -1,0 +1,11 @@
+mutation Login($user: LoginInput) {
+  login(user: $user) {
+    id
+    fullName
+    email
+    phoneNumber
+    createdAt
+    message
+    token
+  }
+}

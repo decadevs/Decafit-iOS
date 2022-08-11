@@ -1,9 +1,3 @@
-//
-//  SignupViewController.swift
-//  Decafit
-//
-//  Created by Decagon on 20/07/2022.
-
 import UIKit
 
 final class SignupViewController: UIViewController {
@@ -19,7 +13,15 @@ final class SignupViewController: UIViewController {
     var socialButtons: [DecaButton] {
         return [googleButton, facebookButton, appleButton]
     }
-    // Button actions
+    let fullNameTextField: DecaTextField =
+        DecaTextField.createNormalTextField(text: Constants.fullname)
+    let phoneNumberTextField: DecaTextField =
+        DecaTextField.createNormalTextField(text: Constants.phone)
+    let confirmPasswordTextField: DecaTextField =
+        DecaTextField.createSecureTextField(text: Constants.confirmPsw)
+    let signUpButton = DecaButton.createPurpleButton(title: Constants.signUp)
+    let orangeSignInLink = DecaButton.createOrangeButtonLink(title: Constants.signIn)
+
     func addButtonTarget() {
         socialButtons.forEach { $0.addTarget(self, action: #selector(auth.handleSocialLogin),
                                              for: .touchUpInside) }
@@ -33,6 +35,7 @@ final class SignupViewController: UIViewController {
         setupKeyboardDismissRecognizer()
         setUpSubviews()
         addButtonTarget()
+        auth.delegate = self 
     }
     // MARK: - Stacked Views
     lazy var textViewStack: DecaStack = {

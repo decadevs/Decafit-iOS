@@ -12,8 +12,6 @@ let googleButton = DecaButton.createSocialButton(image: Constants.googleImg)
 let facebookButton = DecaButton.createSocialButton(image: Constants.fbImg)
 let appleButton = DecaButton.createSocialButton(image: Constants.appleImg)
 let orangeSignUpLink = DecaButton.createOrangeButtonLink(title: Constants.signUp)
-let signUpButton = DecaButton.createPurpleButton(title: Constants.signUp)
-let orangeSignInLink = DecaButton.createOrangeButtonLink(title: Constants.signIn)
 let nextButton = DecaButton.createPurpleButton(title: Constants.next)
 // MARK: - Custom navbar calender button
 var navbarRightCalender: UIButton = {

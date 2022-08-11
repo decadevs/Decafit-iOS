@@ -1,10 +1,3 @@
-//
-//  LoginViewController.swift
-//  Decafit
-//
-//  Created by Decagon on 19/07/2022.
-//
-
 import UIKit
 final class LoginViewController: UIViewController {
     let auth = AuthManager.shared
@@ -69,5 +62,17 @@ final class LoginViewController: UIViewController {
         setupKeyboardDismissRecognizer()
         setUpSubviews()
         addButtonTarget()
+        auth.delegate = self 
+    }
+    let act = ActivityIndicator()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        act.removeFromSuperview()
+        act.stopAnimating()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        act.removeFromSuperview()
+        act.stopAnimating()
     }
 }

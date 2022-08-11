@@ -1,13 +1,17 @@
-//
-//  LoginViewController+Extension.swift
-//  Decafit
-//
-//  Created by Decagon on 20/07/2022.
-//
 import UIKit
-extension LoginViewController {
+extension LoginViewController: AuthManagerDelegate {
+    func didDisplayIndicator() {
+        ActivityIndicator.removeActivityIndicator()
+        view.viewWithTag(200)?.frame = .zero
+        view.viewWithTag(200)?.isHidden = true
+    }
+    
     @objc func toggleSignup() {
         toggleLoginSignup(self)
+    }
+    func didShowAlert(title: String, message: String) {
+        Alert.showAlert(self, title: title,
+                        message: message)
     }
     @objc func handleLogin() {
         guard let email = emailTextField.text, let password = passwordTextField.text
@@ -19,11 +23,14 @@ extension LoginViewController {
             Alert.showAlert(self, title: Constants.alertTitleError, message: Constants.incorrectInputError)
             return
         }
-        // Call auth login function here
-        let home = HomeViewController.getHomeView()
-        home.modalPresentationStyle = .fullScreen
-        present(home, animated: true, completion: nil)
-
+        let user = LoginInput(email: email, password: password)
+        ActivityIndicator.addActivityIndicator(presenter: self)
+        auth.login(user: user)
+        auth.successcomplete = { _ in
+            let home = HomeViewController.getHomeView()
+            home.modalPresentationStyle = .fullScreen
+            self.present(home, animated: true, completion: nil)
+        }
     }
 }
 extension LoginViewController {

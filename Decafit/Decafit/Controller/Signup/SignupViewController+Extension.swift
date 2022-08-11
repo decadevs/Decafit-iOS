@@ -1,13 +1,29 @@
-//
-//  SignupViewController+Extension.swift
-//  Decafit
-//
-//  Created by Decagon on 20/07/2022.
-//
-
 import UIKit
 
-extension SignupViewController {
+extension SignupViewController: AuthManagerDelegate {
+    func didDisplayIndicator() {
+        ActivityIndicator.removeActivityIndicator()
+        view.viewWithTag(200)?.frame = .zero
+        view.viewWithTag(200)?.isHidden = true
+    }
+    
+    func didShowNextScreen() {
+        let title = "Success!"
+        let message = "You have been successfully registered. Check your email inbox for your verification token."
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            DispatchQueue.main.async {
+                let login = LoginViewController.getViewController()
+                login.modalPresentationStyle = .fullScreen
+                self.present(login, animated: true, completion: nil)
+            }
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    func didShowAlert(title: String, message: String) {
+        Alert.showAlert(self, title: title,
+                        message: message)
+    }
     @objc func toggleLogin() {
         toggleLoginSignup(self)
     }
@@ -27,8 +43,15 @@ extension SignupViewController {
                             message: Constants.passwordMismatchError)
             return
         }
-        // Call auth sign in method here
-        print(fullName, phoneNumber, email)
+        let user = User(fullName: fullName, email: email,
+                        phoneNumber: phoneNumber, password: password)
+        ActivityIndicator.addActivityIndicator(presenter: self)
+        auth.register(user: user)
+        auth.successcomplete = { [weak self] output in
+            if output {
+                self?.didShowNextScreen()
+            }
+        }
     }
 }
 

@@ -61,6 +61,10 @@
 		B44165A628A300DC00634408 /* ApolloSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B44165A528A300DC00634408 /* ApolloSQLite */; };
 		B44165AB28A30AF100634408 /* Register.graphql in Resources */ = {isa = PBXBuildFile; fileRef = B44165AA28A30AF100634408 /* Register.graphql */; };
 		B44165AD28A30BC600634408 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44165AC28A30BC600634408 /* API.swift */; };
+		B44165AF28A3C19500634408 /* Login.graphql in Resources */ = {isa = PBXBuildFile; fileRef = B44165AE28A3C19500634408 /* Login.graphql */; };
+		B44165B128A3CC9100634408 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44165B028A3CC9100634408 /* User.swift */; };
+		B44165B328A3CF9500634408 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44165B228A3CF9500634408 /* Network.swift */; };
+		B44165B528A456E500634408 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44165B428A456E500634408 /* ActivityIndicator.swift */; };
 		B44B3C002897C7F0000C94D7 /* WorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3BFF2897C7F0000C94D7 /* WorkoutViewController.swift */; };
 		B44B3C052897C8CB000C94D7 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C042897C8CB000C94D7 /* WorkoutCell.swift */; };
 		B44B3C0728982687000C94D7 /* CustomNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C0628982687000C94D7 /* CustomNavbar.swift */; };
@@ -172,6 +176,10 @@
 		B44165A128A2FECF00634408 /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		B44165AA28A30AF100634408 /* Register.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Register.graphql; sourceTree = "<group>"; };
 		B44165AC28A30BC600634408 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		B44165AE28A3C19500634408 /* Login.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Login.graphql; sourceTree = "<group>"; };
+		B44165B028A3CC9100634408 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B44165B228A3CF9500634408 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		B44165B428A456E500634408 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		B44B3BFF2897C7F0000C94D7 /* WorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewController.swift; sourceTree = "<group>"; };
 		B44B3C042897C8CB000C94D7 /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
 		B44B3C0628982687000C94D7 /* CustomNavbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavbar.swift; sourceTree = "<group>"; };
@@ -329,6 +337,7 @@
 				B40AFB2A288861A300249820 /* Extensions.swift */,
 				B44B3C0E289A714A000C94D7 /* Constants.swift */,
 				B44B3C1C289A957D000C94D7 /* Alert.swift */,
+				B44165B428A456E500634408 /* ActivityIndicator.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -471,6 +480,7 @@
 				B44B3C20289B0093000C94D7 /* FocusAreaModel.swift */,
 				B44B3C22289B0106000C94D7 /* TodaySessionModel.swift */,
 				B44B3C24289B032D000C94D7 /* StartWorkoutModel.swift */,
+				B44165B028A3CC9100634408 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -502,6 +512,7 @@
 			children = (
 				B44165AC28A30BC600634408 /* API.swift */,
 				B44165A128A2FECF00634408 /* schema.json */,
+				B44165AE28A3C19500634408 /* Login.graphql */,
 				B44165AA28A30AF100634408 /* Register.graphql */,
 				B44B3C1F289B0076000C94D7 /* Models */,
 				B40AFB36288ACB4F00249820 /* CustomViews */,
@@ -539,6 +550,7 @@
 			children = (
 				B48A59072886D583004D1BEA /* AuthManager.swift */,
 				B44B3C26289B064A000C94D7 /* DataManager.swift */,
+				B44165B228A3CF9500634408 /* Network.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -710,6 +722,7 @@
 				B40AFB172887983C00249820 /* Ubuntu-Regular.ttf in Resources */,
 				B40AFAE42887974200249820 /* Poppins-Light.ttf in Resources */,
 				B40AFAEE2887974200249820 /* Poppins-Black.ttf in Resources */,
+				B44165AF28A3C19500634408 /* Login.graphql in Resources */,
 				B40AFB1C2887983C00249820 /* Ubuntu-Light.ttf in Resources */,
 				B4B96EA92893CCA500E22B33 /* Assets.xcassets in Resources */,
 				B40AFB1B2887983C00249820 /* Ubuntu-Italic.ttf in Resources */,
@@ -880,6 +893,7 @@
 				B44B3C15289A879B000C94D7 /* Buttons.swift in Sources */,
 				B44B3C0F289A714A000C94D7 /* Constants.swift in Sources */,
 				B43631E0289D5AC80010976F /* StepsTakenView.swift in Sources */,
+				B44165B328A3CF9500634408 /* Network.swift in Sources */,
 				B441659128A18F8600634408 /* ModalTopSwipeCell.swift in Sources */,
 				B48A590A2886D684004D1BEA /* LoginViewController.swift in Sources */,
 				B43631DC289D4BB30010976F /* ExerciseViewController.swift in Sources */,
@@ -888,10 +902,12 @@
 				B40AFB272888142100249820 /* SignupViewController.swift in Sources */,
 				B44B3C25289B032D000C94D7 /* StartWorkoutModel.swift in Sources */,
 				B44B3C0728982687000C94D7 /* CustomNavbar.swift in Sources */,
+				B44165B128A3CC9100634408 /* User.swift in Sources */,
 				B43631E2289DB8650010976F /* ProgressBar.swift in Sources */,
 				B4E4C9C9289C4103008CD86D /* WorkoutTopView.swift in Sources */,
 				B40AFB222887A2FA00249820 /* LoginViewController+Extension.swift in Sources */,
 				B4B96EA12892697F00E22B33 /* TodayCollectionViewCell.swift in Sources */,
+				B44165B528A456E500634408 /* ActivityIndicator.swift in Sources */,
 				B4AB95B7288E934E00FE9C96 /* DecaLabel.swift in Sources */,
 				B47B5B17287C147000EEC900 /* HomeViewController.swift in Sources */,
 				B4AB95CC2891D20D00FE9C96 /* FocusAreaCollectionViewCell.swift in Sources */,
