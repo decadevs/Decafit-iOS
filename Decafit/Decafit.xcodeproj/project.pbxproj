@@ -48,11 +48,11 @@
 		B431E91A28A4FBFE009769CB /* ApolloSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B431E91928A4FBFE009769CB /* ApolloSQLite */; };
 		B431E92228A4FE76009769CB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431E92128A4FE76009769CB /* API.swift */; };
 		B431E92428A50569009769CB /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431E92328A50569009769CB /* Network.swift */; };
-		B431E92628A505B6009769CB /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431E92528A505B6009769CB /* ActivityIndicator.swift */; };
 		B431E92828A505FA009769CB /* LoginViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431E92728A505FA009769CB /* LoginViewController+Extension.swift */; };
 		B431E92A28A5063E009769CB /* SignupViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431E92928A5063E009769CB /* SignupViewController+Extension.swift */; };
 		B431E92C28A50687009769CB /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431E92B28A50687009769CB /* AuthManager.swift */; };
 		B431E92E28A506C5009769CB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431E92D28A506C5009769CB /* User.swift */; };
+		B431E93028A5106A009769CB /* Hud.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431E92F28A5106A009769CB /* Hud.swift */; };
 		B43631DC289D4BB30010976F /* ExerciseTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DB289D4BB30010976F /* ExerciseTimerViewController.swift */; };
 		B43631DE289D4D770010976F /* ExerciseTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DD289D4D770010976F /* ExerciseTimerView.swift */; };
 		B43631E0289D5AC80010976F /* StepsTakenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DF289D5AC80010976F /* StepsTakenView.swift */; };
@@ -156,11 +156,11 @@
 		B431E91D28A4FC54009769CB /* Register.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Register.graphql; sourceTree = "<group>"; };
 		B431E92128A4FE76009769CB /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		B431E92328A50569009769CB /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Network.swift; path = "../../../../Decafit-iOS-fix-popover-branch/Decafit/Decafit/Manager/Network.swift"; sourceTree = "<group>"; };
-		B431E92528A505B6009769CB /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityIndicator.swift; path = "../../../../Decafit-iOS-fix-popover-branch/Decafit/Decafit/Common/ActivityIndicator.swift"; sourceTree = "<group>"; };
 		B431E92728A505FA009769CB /* LoginViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "LoginViewController+Extension.swift"; path = "../../../../../Decafit-iOS-fix-popover-branch/Decafit/Decafit/Controller/Login/LoginViewController+Extension.swift"; sourceTree = "<group>"; };
 		B431E92928A5063E009769CB /* SignupViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SignupViewController+Extension.swift"; path = "../../../../../Decafit-iOS-fix-popover-branch/Decafit/Decafit/Controller/Signup/SignupViewController+Extension.swift"; sourceTree = "<group>"; };
 		B431E92B28A50687009769CB /* AuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthManager.swift; path = "../../../../Decafit-iOS-fix-popover-branch/Decafit/Decafit/Manager/AuthManager.swift"; sourceTree = "<group>"; };
 		B431E92D28A506C5009769CB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = "../../../../Decafit-iOS-fix-popover-branch/Decafit/Decafit/Models/User.swift"; sourceTree = "<group>"; };
+		B431E92F28A5106A009769CB /* Hud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hud.swift; sourceTree = "<group>"; };
 		B43631DB289D4BB30010976F /* ExerciseTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTimerViewController.swift; sourceTree = "<group>"; };
 		B43631DD289D4D770010976F /* ExerciseTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTimerView.swift; sourceTree = "<group>"; };
 		B43631DF289D5AC80010976F /* StepsTakenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsTakenView.swift; sourceTree = "<group>"; };
@@ -313,12 +313,12 @@
 		B40AFB1E288798E200249820 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				B431E92528A505B6009769CB /* ActivityIndicator.swift */,
 				B40AFB1F2887990000249820 /* CustomUIFont.swift */,
 				B40AFB232887BD3600249820 /* CustomUIColor.swift */,
 				B40AFB2A288861A300249820 /* Extensions.swift */,
 				B44B3C0E289A714A000C94D7 /* Constants.swift */,
 				B44B3C1C289A957D000C94D7 /* Alert.swift */,
+				B431E92F28A5106A009769CB /* Hud.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -583,6 +583,7 @@
 				B47B5B0C287C147000EEC900 /* Frameworks */,
 				B47B5B0D287C147000EEC900 /* Resources */,
 				B40AFB35288AC77300249820 /* ShellScript */,
+				0880C1A5D0BCBE7D82AC9764 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -624,6 +625,7 @@
 				B47B5B2C287C147300EEC900 /* Sources */,
 				B47B5B2D287C147300EEC900 /* Frameworks */,
 				B47B5B2E287C147300EEC900 /* Resources */,
+				E2FE7B79781AFDBFAE30AA42 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -757,6 +759,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		0880C1A5D0BCBE7D82AC9764 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Decafit/Pods-Decafit-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Decafit/Pods-Decafit-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Decafit/Pods-Decafit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6E0FA6C6983B449678D3987C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -836,6 +855,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E2FE7B79781AFDBFAE30AA42 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -863,7 +899,6 @@
 				B44B3C002897C7F0000C94D7 /* StartWorkoutViewController.swift in Sources */,
 				B40AFB272888142100249820 /* SignupViewController.swift in Sources */,
 				B44B3C25289B032D000C94D7 /* StartWorkoutModel.swift in Sources */,
-				B431E92628A505B6009769CB /* ActivityIndicator.swift in Sources */,
 				B44B3C0728982687000C94D7 /* CustomNavbar.swift in Sources */,
 				B43631E2289DB8650010976F /* ProgressBar.swift in Sources */,
 				B4E4C9C9289C4103008CD86D /* WorkoutPageTopview.swift in Sources */,
@@ -878,6 +913,7 @@
 				B431E92E28A506C5009769CB /* User.swift in Sources */,
 				B40AFB3A288ACE3F00249820 /* DecaButton.swift in Sources */,
 				B44B3C052897C8CB000C94D7 /* StartWorkoutCell.swift in Sources */,
+				B431E93028A5106A009769CB /* Hud.swift in Sources */,
 				B44B3C1D289A957D000C94D7 /* Alert.swift in Sources */,
 				B431E92228A4FE76009769CB /* API.swift in Sources */,
 				B40AFB38288ACE1D00249820 /* DecaTextField.swift in Sources */,

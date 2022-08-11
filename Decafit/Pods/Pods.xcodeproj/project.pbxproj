@@ -15,86 +15,149 @@
 			dependencies = (
 			);
 			name = SwiftLint;
-			productName = SwiftLint;
 		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		28947310C29A7DE1D2591095C3D7AD39 /* Pods-DecafitTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9C89404F4B03B0F64E917EADA771C9 /* Pods-DecafitTests-dummy.m */; };
-		65898B0C30488E9EB865783256157B68 /* Pods-Decafit-DecafitUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 897026F9E846304EEB0B673AE76986C4 /* Pods-Decafit-DecafitUITests-dummy.m */; };
-		7479A2C1F303E165A0178BBA793442D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		84A9D38A18D310E10E8DB0AFEABE6FE6 /* Pods-Decafit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 37D3D54207F7D706877997667DF63ADA /* Pods-Decafit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		84DC576C4BB1C9ED437230AC47D35492 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		AFB289E78E5DF3316DEB4CB6C09DEFD4 /* Pods-Decafit-DecafitUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F5F9C07FF5B0177BA0FDD6140A5C9FA /* Pods-Decafit-DecafitUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BBF4F9F75142630B7C432D2ED06A3FD2 /* Pods-DecafitTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0287BF3682283B74A1733332EA9B83C9 /* Pods-DecafitTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C09E66E7F7BE28927742275EDD9E09F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		F6F11C3A1405B3DC28B31B20B006326A /* Pods-Decafit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 340D9C28253999C49F0D72FDF43BAE79 /* Pods-Decafit-dummy.m */; };
+		1D325CFE11FE13A075C835E922BE1017 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 70738C003B1821154CE13ABD30519174 /* SVRadialGradientLayer.m */; };
+		1F4A13FD6675FCFCD9C19DF350348899 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E300CDD967AA07F0651E7468C474CB2 /* SVProgressAnimatedView.m */; };
+		28947310C29A7DE1D2591095C3D7AD39 /* Pods-DecafitTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BCB852831F2C59C6B456697F343C3F /* Pods-DecafitTests-dummy.m */; };
+		34CC1B637506C115D10CFD478B8BA894 /* Pods-Decafit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E20F62B6DC2BF693BB8AB9968083C6 /* Pods-Decafit-dummy.m */; };
+		3B7ACACC8299301E88B8EB3BC1042470 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31FE7C6ECA71C614A5A667C679B23874 /* Foundation.framework */; };
+		4C73A5D3D32CCE2CC8A9D50127A4BD3C /* Pods-Decafit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F240619A06810DC2AEBC5F3302471290 /* Pods-Decafit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DC032894868226AE220360BADB2C237 /* SVProgressHUD-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D4529D3F2EB84353FBE586A629408EF /* SVProgressHUD-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		52BCC3B2F8AE7F59556925DEC603C634 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7911097715A52978B2009FC4EA90D4 /* SVIndefiniteAnimatedView.m */; };
+		53BECA6AA55F80D63F104475EE6524CA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FEFE490E4A06D19E868B2B9014BB8BF /* QuartzCore.framework */; };
+		65273EF32A29C459BD936BC03C76D7CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31FE7C6ECA71C614A5A667C679B23874 /* Foundation.framework */; };
+		6C5BED8E9831177F4EE47BE41A169EE0 /* Pods-Decafit-DecafitUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 346A7761F6F1A79E8EAA166C86FE3062 /* Pods-Decafit-DecafitUITests-dummy.m */; };
+		6D1E33469FB8FBE812956B0076A7B28F /* SVRadialGradientLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BEE20B67EE187D76EF1B1B645745EED /* SVRadialGradientLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		798FA71F8CAE44D05016FFF767100375 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31FE7C6ECA71C614A5A667C679B23874 /* Foundation.framework */; };
+		89DF2D9C5EFB02A72EC0CE2138B77F35 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B433999627AADECE8714B73745D6781C /* SVProgressHUD.m */; };
+		943B0A1B436BAF4D419574466EF70FB3 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 51CF37DAFE10EC7C27909933F89E146F /* SVProgressHUD.bundle */; };
+		BBF4F9F75142630B7C432D2ED06A3FD2 /* Pods-DecafitTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F3DFE23C0066E0A002950F67DFE526C8 /* Pods-DecafitTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C09E66E7F7BE28927742275EDD9E09F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31FE7C6ECA71C614A5A667C679B23874 /* Foundation.framework */; };
+		C15B3F89E6F83DC9CCB14903FC5D80C5 /* SVProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = E1744246FBF1467670D4242483F032A5 /* SVProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E11C83FCD18C0D8CCDA17E45AA03C980 /* Pods-Decafit-DecafitUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F135277F0390AE1B5A5A51ED86832AB /* Pods-Decafit-DecafitUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E70EBA16751054574A227A6432CCE4B0 /* SVIndefiniteAnimatedView.h in Headers */ = {isa = PBXBuildFile; fileRef = 683EB2FD6C570606593F061A1069EA10 /* SVIndefiniteAnimatedView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F77280E74EB91678AA294E66DD6070E2 /* SVProgressAnimatedView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DD191BDC1F5F8902A5116A702DF38AC /* SVProgressAnimatedView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFD43D91BF1FA4ADF714D56E7A10B2A8 /* SVProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4190C85E1F7B44EF088CA12317F7F307 /* SVProgressHUD-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		11461A1BACE0B63F7443BF53B0511904 /* PBXContainerItemProxy */ = {
+		0CF747DDE41F80555D9C093B78FC2AB1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1C8D67D8B72D6BA42CCEDB648537A340;
+			remoteInfo = SVProgressHUD;
+		};
+		269090462AD2CCE36243B4695291DFD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
+			remoteInfo = SwiftLint;
+		};
+		7542395DA9D38708C2AB610C14E28C78 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
+			remoteInfo = SwiftLint;
+		};
+		797311F05BCE6C915CCA805CE026940F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 34C28AFEBD0BC6AD0728346C36646EA3;
 			remoteInfo = "Pods-Decafit";
 		};
-		891968773730B38D635C93EF3F471589 /* PBXContainerItemProxy */ = {
+		B664A2C30A61FC85F7C23634F21F7508 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
-			remoteInfo = SwiftLint;
-		};
-		B0D92719E102AB01DBE973FD30C8CCFE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
-			remoteInfo = SwiftLint;
+			remoteGlobalIDString = 1C8D67D8B72D6BA42CCEDB648537A340;
+			remoteInfo = SVProgressHUD;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0287BF3682283B74A1733332EA9B83C9 /* Pods-DecafitTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DecafitTests-umbrella.h"; sourceTree = "<group>"; };
-		041F277B3E139A7B231CDFF3BE2914E6 /* Pods-Decafit-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Decafit-acknowledgements.plist"; sourceTree = "<group>"; };
-		07B70F885CAEE481BBE0BD2AFFF35813 /* Pods-Decafit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Decafit.debug.xcconfig"; sourceTree = "<group>"; };
-		17A0BFC309DF28006E79DB32FD37DA95 /* Pods-Decafit-DecafitUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Decafit-DecafitUITests-Info.plist"; sourceTree = "<group>"; };
-		340D9C28253999C49F0D72FDF43BAE79 /* Pods-Decafit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Decafit-dummy.m"; sourceTree = "<group>"; };
-		37D3D54207F7D706877997667DF63ADA /* Pods-Decafit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Decafit-umbrella.h"; sourceTree = "<group>"; };
-		3A1BC94A627E8B642A3B0212FE00BAE9 /* Pods-Decafit-DecafitUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Decafit-DecafitUITests.modulemap"; sourceTree = "<group>"; };
-		3EC0124719FE8EF5FDDD72C26F8A2F57 /* SwiftLint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.debug.xcconfig; sourceTree = "<group>"; };
-		3F4F8B8A1160EDF291807E969A669973 /* Pods-Decafit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Decafit.release.xcconfig"; sourceTree = "<group>"; };
+		0F135277F0390AE1B5A5A51ED86832AB /* Pods-Decafit-DecafitUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Decafit-DecafitUITests-umbrella.h"; sourceTree = "<group>"; };
+		150B206E2D93C0E81A35F1F2EA50FBA2 /* Pods-Decafit-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Decafit-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1D28402A0E2835AA582D8165CA84FFAB /* Pods-Decafit-DecafitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Decafit-DecafitUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1DD191BDC1F5F8902A5116A702DF38AC /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVProgressAnimatedView.h; path = SVProgressHUD/SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		20FDBD94817E7A623E71B8C499AA892C /* SVProgressHUD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SVProgressHUD.debug.xcconfig; sourceTree = "<group>"; };
+		29369432C0476F3465E0CDF1A038AAD9 /* SVProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-prefix.pch"; sourceTree = "<group>"; };
+		2E0A5C42DF2687B822247BACE346FC14 /* Pods-DecafitTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DecafitTests-Info.plist"; sourceTree = "<group>"; };
+		2FEFE490E4A06D19E868B2B9014BB8BF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		31FE7C6ECA71C614A5A667C679B23874 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3428903950FF3AB6AACE65A1027213C6 /* SwiftLint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.debug.xcconfig; sourceTree = "<group>"; };
+		346A7761F6F1A79E8EAA166C86FE3062 /* Pods-Decafit-DecafitUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Decafit-DecafitUITests-dummy.m"; sourceTree = "<group>"; };
+		38E8CC9690E17EC3A9117C0900EA4432 /* Pods-Decafit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Decafit-Info.plist"; sourceTree = "<group>"; };
+		3AABCEBFEC6091E62399457A6D5AC96D /* Pods-Decafit-DecafitUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Decafit-DecafitUITests-Info.plist"; sourceTree = "<group>"; };
+		4190C85E1F7B44EF088CA12317F7F307 /* SVProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SVProgressHUD-dummy.m"; sourceTree = "<group>"; };
 		484A01BFEE114290223F41C74E7759F6 /* Pods-DecafitTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-DecafitTests"; path = Pods_DecafitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DF34C57451E41649AA005FE8C1B73E6 /* Pods-DecafitTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DecafitTests-Info.plist"; sourceTree = "<group>"; };
-		4F5F9C07FF5B0177BA0FDD6140A5C9FA /* Pods-Decafit-DecafitUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Decafit-DecafitUITests-umbrella.h"; sourceTree = "<group>"; };
-		6AC44C87922AA886497F6862845EDC52 /* Pods-Decafit-DecafitUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Decafit-DecafitUITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		6FBB95663FEE556562F702E874956074 /* Pods-DecafitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DecafitTests.release.xcconfig"; sourceTree = "<group>"; };
-		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		74BE94D0196964AC3326B54A82EC0680 /* Pods-Decafit-DecafitUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Decafit-DecafitUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		7EAB1DA481EDDC005A251D3A5E6BE4CD /* SwiftLint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.release.xcconfig; sourceTree = "<group>"; };
-		87454EACCC4775343409F5A5230B40AD /* Pods-Decafit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Decafit-Info.plist"; sourceTree = "<group>"; };
+		4BEE20B67EE187D76EF1B1B645745EED /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVRadialGradientLayer.h; path = SVProgressHUD/SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		4D4529D3F2EB84353FBE586A629408EF /* SVProgressHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-umbrella.h"; sourceTree = "<group>"; };
+		51CF37DAFE10EC7C27909933F89E146F /* SVProgressHUD.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
+		5AC97B75F4941FBEA016A46AAA9848D2 /* Pods-Decafit-DecafitUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Decafit-DecafitUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		5B4474648F6077053DFD71FDFA89A8E0 /* Pods-Decafit-DecafitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Decafit-DecafitUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		683EB2FD6C570606593F061A1069EA10 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVIndefiniteAnimatedView.h; path = SVProgressHUD/SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		6E300CDD967AA07F0651E7468C474CB2 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVProgressAnimatedView.m; path = SVProgressHUD/SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		6FE1F44D4B86F1C4E8C8BFF050774BA5 /* Pods-DecafitTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DecafitTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		70738C003B1821154CE13ABD30519174 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVRadialGradientLayer.m; path = SVProgressHUD/SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		76E20F62B6DC2BF693BB8AB9968083C6 /* Pods-Decafit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Decafit-dummy.m"; sourceTree = "<group>"; };
+		7B363D4996D5833D2648474D869E1C3A /* SVProgressHUD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SVProgressHUD.release.xcconfig; sourceTree = "<group>"; };
+		7D48A46635068E2F1F010909E2787021 /* Pods-DecafitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DecafitTests.release.xcconfig"; sourceTree = "<group>"; };
+		81BCB852831F2C59C6B456697F343C3F /* Pods-DecafitTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DecafitTests-dummy.m"; sourceTree = "<group>"; };
+		837F602F4FEAEF53731B5571AD2835C9 /* Pods-DecafitTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DecafitTests.modulemap"; sourceTree = "<group>"; };
 		8951DECC74EFE827BC12BE24173435FA /* Pods-Decafit */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Decafit"; path = Pods_Decafit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		897026F9E846304EEB0B673AE76986C4 /* Pods-Decafit-DecafitUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Decafit-DecafitUITests-dummy.m"; sourceTree = "<group>"; };
-		89CCE6DC45751CAF27326531F0FDCB4A /* Pods-Decafit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Decafit.modulemap"; sourceTree = "<group>"; };
-		93AAADF42D6D8C032292C71669D8AFBA /* Pods-DecafitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DecafitTests.debug.xcconfig"; sourceTree = "<group>"; };
-		9A6FC175A9B1407C6CD229BD0A2B052B /* Pods-DecafitTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DecafitTests.modulemap"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A0C1C019DFC24132FF3A28D626A3AAE7 /* Pods-Decafit-DecafitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Decafit-DecafitUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		A663E7C9C4E27E0F26F914D312C022EB /* Pods-DecafitTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DecafitTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8994B8187CEDD66A125EEBEAE8D738F0 /* Pods-Decafit-DecafitUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Decafit-DecafitUITests-frameworks.sh"; sourceTree = "<group>"; };
+		8D7911097715A52978B2009FC4EA90D4 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVIndefiniteAnimatedView.m; path = SVProgressHUD/SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		9C860F1B39FC5067280296A9D6D56DB3 /* Pods-DecafitTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DecafitTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A475CC30029E112F5C6ED49343AF338D /* SVProgressHUD-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SVProgressHUD-Info.plist"; sourceTree = "<group>"; };
+		A576953F766976E2DA8C07F2C1CE6F3E /* Pods-Decafit-DecafitUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Decafit-DecafitUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A7FB0068C5C1D2A897997F9B80B13B90 /* SVProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SVProgressHUD.modulemap; sourceTree = "<group>"; };
+		B433999627AADECE8714B73745D6781C /* SVProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = SVProgressHUD/SVProgressHUD.m; sourceTree = "<group>"; };
+		B6056AF6EBB170DBBD44EA79C0AFCB21 /* SwiftLint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.release.xcconfig; sourceTree = "<group>"; };
 		BA379AF504C51797A59CBC139A9679B4 /* Pods-Decafit-DecafitUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Decafit-DecafitUITests"; path = Pods_Decafit_DecafitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3732BAF818D0252927D9832ADECA70A /* Pods-DecafitTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DecafitTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		E7857831FBF718C10C29E2A202FEDDF0 /* Pods-Decafit-DecafitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Decafit-DecafitUITests.release.xcconfig"; sourceTree = "<group>"; };
-		ED9C89404F4B03B0F64E917EADA771C9 /* Pods-DecafitTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DecafitTests-dummy.m"; sourceTree = "<group>"; };
-		F0DCD6069C7F7775A0B4240F8FF14C43 /* Pods-Decafit-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Decafit-acknowledgements.markdown"; sourceTree = "<group>"; };
+		C7F76EAD7E6A92A3F56A79678FD9C5A3 /* Pods-Decafit-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Decafit-frameworks.sh"; sourceTree = "<group>"; };
+		C97B5EA6ABF79197366468F4257AB3BD /* Pods-Decafit-DecafitUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Decafit-DecafitUITests.modulemap"; sourceTree = "<group>"; };
+		D25AC615C09045A4ACE7981F553F1A9D /* Pods-DecafitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DecafitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D4A47136152900F09099F459AE5E44F4 /* Pods-Decafit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Decafit.release.xcconfig"; sourceTree = "<group>"; };
+		DD8CFE873FBF7207942D7EC422E090F9 /* Pods-Decafit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Decafit.modulemap"; sourceTree = "<group>"; };
+		E1744246FBF1467670D4242483F032A5 /* SVProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = SVProgressHUD/SVProgressHUD.h; sourceTree = "<group>"; };
+		E97D43C46A45EE515A4DA3AF94398441 /* SVProgressHUD */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SVProgressHUD; path = SVProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F240619A06810DC2AEBC5F3302471290 /* Pods-Decafit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Decafit-umbrella.h"; sourceTree = "<group>"; };
+		F3DFE23C0066E0A002950F67DFE526C8 /* Pods-DecafitTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DecafitTests-umbrella.h"; sourceTree = "<group>"; };
+		F886092EACBB381F29767E0C18BA351C /* Pods-Decafit-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Decafit-acknowledgements.plist"; sourceTree = "<group>"; };
+		FDE147E8FD66E066C048194038DA355C /* Pods-Decafit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Decafit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1C3970C11FF8EA3E069890E873E7F4E4 /* Frameworks */ = {
+		9966712A06ADC42EFCDE632F6A9F36BF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7479A2C1F303E165A0178BBA793442D5 /* Foundation.framework in Frameworks */,
+				3B7ACACC8299301E88B8EB3BC1042470 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1E24FD3A639700A0D23137CF9B95AA6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65273EF32A29C459BD936BC03C76D7CD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E389FF082B036E756B0679583C1BE62E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				798FA71F8CAE44D05016FFF767100375 /* Foundation.framework in Frameworks */,
+				53BECA6AA55F80D63F104475EE6524CA /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,154 +169,213 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F7F4DE60B65C68D8F4A9F95279A3F815 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				84DC576C4BB1C9ED437230AC47D35492 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+		0C76B96D425E4A17D485E5DA0AF07537 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+				683EB2FD6C570606593F061A1069EA10 /* SVIndefiniteAnimatedView.h */,
+				8D7911097715A52978B2009FC4EA90D4 /* SVIndefiniteAnimatedView.m */,
+				1DD191BDC1F5F8902A5116A702DF38AC /* SVProgressAnimatedView.h */,
+				6E300CDD967AA07F0651E7468C474CB2 /* SVProgressAnimatedView.m */,
+				E1744246FBF1467670D4242483F032A5 /* SVProgressHUD.h */,
+				B433999627AADECE8714B73745D6781C /* SVProgressHUD.m */,
+				4BEE20B67EE187D76EF1B1B645745EED /* SVRadialGradientLayer.h */,
+				70738C003B1821154CE13ABD30519174 /* SVRadialGradientLayer.m */,
+				CA9C5B656FC6B275483661BCA98933D3 /* Resources */,
 			);
-			name = iOS;
+			name = Core;
 			sourceTree = "<group>";
 		};
-		7A4E037B9BC0B19CB6362F357042CDD4 /* Pods-Decafit */ = {
+		0D3DC36D9A5D3C8BBABD9F6935AD09BE /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				89CCE6DC45751CAF27326531F0FDCB4A /* Pods-Decafit.modulemap */,
-				F0DCD6069C7F7775A0B4240F8FF14C43 /* Pods-Decafit-acknowledgements.markdown */,
-				041F277B3E139A7B231CDFF3BE2914E6 /* Pods-Decafit-acknowledgements.plist */,
-				340D9C28253999C49F0D72FDF43BAE79 /* Pods-Decafit-dummy.m */,
-				87454EACCC4775343409F5A5230B40AD /* Pods-Decafit-Info.plist */,
-				37D3D54207F7D706877997667DF63ADA /* Pods-Decafit-umbrella.h */,
-				07B70F885CAEE481BBE0BD2AFFF35813 /* Pods-Decafit.debug.xcconfig */,
-				3F4F8B8A1160EDF291807E969A669973 /* Pods-Decafit.release.xcconfig */,
+				0C76B96D425E4A17D485E5DA0AF07537 /* Core */,
+				D0AC7F89F48464DE3622506F4A09C735 /* Support Files */,
 			);
-			name = "Pods-Decafit";
-			path = "Target Support Files/Pods-Decafit";
+			name = SVProgressHUD;
+			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
-		7FDA596DBE0337ACDFE55A210D54EF26 /* Support Files */ = {
+		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3EC0124719FE8EF5FDDD72C26F8A2F57 /* SwiftLint.debug.xcconfig */,
-				7EAB1DA481EDDC005A251D3A5E6BE4CD /* SwiftLint.release.xcconfig */,
+				D325A42620E7427FB70FB046C7B7B240 /* iOS */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftLint";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		95DBFDD3A18108E9CAB1B435329DD5B3 /* Pods-DecafitTests */ = {
-			isa = PBXGroup;
-			children = (
-				9A6FC175A9B1407C6CD229BD0A2B052B /* Pods-DecafitTests.modulemap */,
-				A663E7C9C4E27E0F26F914D312C022EB /* Pods-DecafitTests-acknowledgements.markdown */,
-				C3732BAF818D0252927D9832ADECA70A /* Pods-DecafitTests-acknowledgements.plist */,
-				ED9C89404F4B03B0F64E917EADA771C9 /* Pods-DecafitTests-dummy.m */,
-				4DF34C57451E41649AA005FE8C1B73E6 /* Pods-DecafitTests-Info.plist */,
-				0287BF3682283B74A1733332EA9B83C9 /* Pods-DecafitTests-umbrella.h */,
-				93AAADF42D6D8C032292C71669D8AFBA /* Pods-DecafitTests.debug.xcconfig */,
-				6FBB95663FEE556562F702E874956074 /* Pods-DecafitTests.release.xcconfig */,
-			);
-			name = "Pods-DecafitTests";
-			path = "Target Support Files/Pods-DecafitTests";
-			sourceTree = "<group>";
-		};
-		965877409E01FB3D85D85E90E6B30185 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D96179D43A67C5D5323B0682D32C133C /* SwiftLint */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		B4102902A2FB1FE9E55694BEF04696C8 /* Pods-Decafit-DecafitUITests */ = {
-			isa = PBXGroup;
-			children = (
-				3A1BC94A627E8B642A3B0212FE00BAE9 /* Pods-Decafit-DecafitUITests.modulemap */,
-				74BE94D0196964AC3326B54A82EC0680 /* Pods-Decafit-DecafitUITests-acknowledgements.markdown */,
-				6AC44C87922AA886497F6862845EDC52 /* Pods-Decafit-DecafitUITests-acknowledgements.plist */,
-				897026F9E846304EEB0B673AE76986C4 /* Pods-Decafit-DecafitUITests-dummy.m */,
-				17A0BFC309DF28006E79DB32FD37DA95 /* Pods-Decafit-DecafitUITests-Info.plist */,
-				4F5F9C07FF5B0177BA0FDD6140A5C9FA /* Pods-Decafit-DecafitUITests-umbrella.h */,
-				A0C1C019DFC24132FF3A28D626A3AAE7 /* Pods-Decafit-DecafitUITests.debug.xcconfig */,
-				E7857831FBF718C10C29E2A202FEDDF0 /* Pods-Decafit-DecafitUITests.release.xcconfig */,
-			);
-			name = "Pods-Decafit-DecafitUITests";
-			path = "Target Support Files/Pods-Decafit-DecafitUITests";
-			sourceTree = "<group>";
-		};
-		BB5F903127DE25FF8CF5554E8F8F0372 /* Products */ = {
+		1637B6B50D93D840170E5D5418FE1722 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				8951DECC74EFE827BC12BE24173435FA /* Pods-Decafit */,
 				BA379AF504C51797A59CBC139A9679B4 /* Pods-Decafit-DecafitUITests */,
 				484A01BFEE114290223F41C74E7759F6 /* Pods-DecafitTests */,
+				E97D43C46A45EE515A4DA3AF94398441 /* SVProgressHUD */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		736D15AD6FE4EDA1055B4AF8DEE510C6 /* Pods-DecafitTests */ = {
+			isa = PBXGroup;
+			children = (
+				837F602F4FEAEF53731B5571AD2835C9 /* Pods-DecafitTests.modulemap */,
+				6FE1F44D4B86F1C4E8C8BFF050774BA5 /* Pods-DecafitTests-acknowledgements.markdown */,
+				9C860F1B39FC5067280296A9D6D56DB3 /* Pods-DecafitTests-acknowledgements.plist */,
+				81BCB852831F2C59C6B456697F343C3F /* Pods-DecafitTests-dummy.m */,
+				2E0A5C42DF2687B822247BACE346FC14 /* Pods-DecafitTests-Info.plist */,
+				F3DFE23C0066E0A002950F67DFE526C8 /* Pods-DecafitTests-umbrella.h */,
+				D25AC615C09045A4ACE7981F553F1A9D /* Pods-DecafitTests.debug.xcconfig */,
+				7D48A46635068E2F1F010909E2787021 /* Pods-DecafitTests.release.xcconfig */,
+			);
+			name = "Pods-DecafitTests";
+			path = "Target Support Files/Pods-DecafitTests";
+			sourceTree = "<group>";
+		};
+		88307EE4E94BE8227AC880D4E0E78230 /* Pods-Decafit-DecafitUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C97B5EA6ABF79197366468F4257AB3BD /* Pods-Decafit-DecafitUITests.modulemap */,
+				A576953F766976E2DA8C07F2C1CE6F3E /* Pods-Decafit-DecafitUITests-acknowledgements.markdown */,
+				5AC97B75F4941FBEA016A46AAA9848D2 /* Pods-Decafit-DecafitUITests-acknowledgements.plist */,
+				346A7761F6F1A79E8EAA166C86FE3062 /* Pods-Decafit-DecafitUITests-dummy.m */,
+				8994B8187CEDD66A125EEBEAE8D738F0 /* Pods-Decafit-DecafitUITests-frameworks.sh */,
+				3AABCEBFEC6091E62399457A6D5AC96D /* Pods-Decafit-DecafitUITests-Info.plist */,
+				0F135277F0390AE1B5A5A51ED86832AB /* Pods-Decafit-DecafitUITests-umbrella.h */,
+				5B4474648F6077053DFD71FDFA89A8E0 /* Pods-Decafit-DecafitUITests.debug.xcconfig */,
+				1D28402A0E2835AA582D8165CA84FFAB /* Pods-Decafit-DecafitUITests.release.xcconfig */,
+			);
+			name = "Pods-Decafit-DecafitUITests";
+			path = "Target Support Files/Pods-Decafit-DecafitUITests";
+			sourceTree = "<group>";
+		};
+		955923278622DBD1D22A6E83D4B02A1C /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E726AF5CDEC288FB980F5304409CE894 /* Pods-Decafit */,
+				88307EE4E94BE8227AC880D4E0E78230 /* Pods-Decafit-DecafitUITests */,
+				736D15AD6FE4EDA1055B4AF8DEE510C6 /* Pods-DecafitTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		AF2AFB69866374F402923DEDEE853F3D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3428903950FF3AB6AACE65A1027213C6 /* SwiftLint.debug.xcconfig */,
+				B6056AF6EBB170DBBD44EA79C0AFCB21 /* SwiftLint.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftLint";
+			sourceTree = "<group>";
+		};
+		B4D57B78648BED91B2390BB124120E7E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0D3DC36D9A5D3C8BBABD9F6935AD09BE /* SVProgressHUD */,
+				BEADF9F8ECBA28CE6C4101FB124E57C5 /* SwiftLint */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BEADF9F8ECBA28CE6C4101FB124E57C5 /* SwiftLint */ = {
+			isa = PBXGroup;
+			children = (
+				AF2AFB69866374F402923DEDEE853F3D /* Support Files */,
+			);
+			name = SwiftLint;
+			path = SwiftLint;
+			sourceTree = "<group>";
+		};
+		CA9C5B656FC6B275483661BCA98933D3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				51CF37DAFE10EC7C27909933F89E146F /* SVProgressHUD.bundle */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				965877409E01FB3D85D85E90E6B30185 /* Pods */,
-				BB5F903127DE25FF8CF5554E8F8F0372 /* Products */,
-				E812D68867FD46C237AC4D095B1A65A9 /* Targets Support Files */,
+				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
+				B4D57B78648BED91B2390BB124120E7E /* Pods */,
+				1637B6B50D93D840170E5D5418FE1722 /* Products */,
+				955923278622DBD1D22A6E83D4B02A1C /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+		D0AC7F89F48464DE3622506F4A09C735 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				578452D2E740E91742655AC8F1636D1F /* iOS */,
+				A7FB0068C5C1D2A897997F9B80B13B90 /* SVProgressHUD.modulemap */,
+				4190C85E1F7B44EF088CA12317F7F307 /* SVProgressHUD-dummy.m */,
+				A475CC30029E112F5C6ED49343AF338D /* SVProgressHUD-Info.plist */,
+				29369432C0476F3465E0CDF1A038AAD9 /* SVProgressHUD-prefix.pch */,
+				4D4529D3F2EB84353FBE586A629408EF /* SVProgressHUD-umbrella.h */,
+				20FDBD94817E7A623E71B8C499AA892C /* SVProgressHUD.debug.xcconfig */,
+				7B363D4996D5833D2648474D869E1C3A /* SVProgressHUD.release.xcconfig */,
 			);
-			name = Frameworks;
+			name = "Support Files";
+			path = "../Target Support Files/SVProgressHUD";
 			sourceTree = "<group>";
 		};
-		D96179D43A67C5D5323B0682D32C133C /* SwiftLint */ = {
+		D325A42620E7427FB70FB046C7B7B240 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				7FDA596DBE0337ACDFE55A210D54EF26 /* Support Files */,
+				31FE7C6ECA71C614A5A667C679B23874 /* Foundation.framework */,
+				2FEFE490E4A06D19E868B2B9014BB8BF /* QuartzCore.framework */,
 			);
-			path = SwiftLint;
+			name = iOS;
 			sourceTree = "<group>";
 		};
-		E812D68867FD46C237AC4D095B1A65A9 /* Targets Support Files */ = {
+		E726AF5CDEC288FB980F5304409CE894 /* Pods-Decafit */ = {
 			isa = PBXGroup;
 			children = (
-				7A4E037B9BC0B19CB6362F357042CDD4 /* Pods-Decafit */,
-				B4102902A2FB1FE9E55694BEF04696C8 /* Pods-Decafit-DecafitUITests */,
-				95DBFDD3A18108E9CAB1B435329DD5B3 /* Pods-DecafitTests */,
+				DD8CFE873FBF7207942D7EC422E090F9 /* Pods-Decafit.modulemap */,
+				150B206E2D93C0E81A35F1F2EA50FBA2 /* Pods-Decafit-acknowledgements.markdown */,
+				F886092EACBB381F29767E0C18BA351C /* Pods-Decafit-acknowledgements.plist */,
+				76E20F62B6DC2BF693BB8AB9968083C6 /* Pods-Decafit-dummy.m */,
+				C7F76EAD7E6A92A3F56A79678FD9C5A3 /* Pods-Decafit-frameworks.sh */,
+				38E8CC9690E17EC3A9117C0900EA4432 /* Pods-Decafit-Info.plist */,
+				F240619A06810DC2AEBC5F3302471290 /* Pods-Decafit-umbrella.h */,
+				FDE147E8FD66E066C048194038DA355C /* Pods-Decafit.debug.xcconfig */,
+				D4A47136152900F09099F459AE5E44F4 /* Pods-Decafit.release.xcconfig */,
 			);
-			name = "Targets Support Files";
+			name = "Pods-Decafit";
+			path = "Target Support Files/Pods-Decafit";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		124C50DFA9DE5505E6ACAB885BFFE3BE /* Headers */ = {
+		34F07816C28A4BAFC53B0C15AF183603 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84A9D38A18D310E10E8DB0AFEABE6FE6 /* Pods-Decafit-umbrella.h in Headers */,
+				4C73A5D3D32CCE2CC8A9D50127A4BD3C /* Pods-Decafit-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CAF17EA034F9609F5DC3981DF2AE3DC0 /* Headers */ = {
+		4D64788C20FFEE932E01C09534E4F9C6 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFB289E78E5DF3316DEB4CB6C09DEFD4 /* Pods-Decafit-DecafitUITests-umbrella.h in Headers */,
+				E11C83FCD18C0D8CCDA17E45AA03C980 /* Pods-Decafit-DecafitUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DE9E7B34EB24769860A549107B4F04C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E70EBA16751054574A227A6432CCE4B0 /* SVIndefiniteAnimatedView.h in Headers */,
+				F77280E74EB91678AA294E66DD6070E2 /* SVProgressAnimatedView.h in Headers */,
+				C15B3F89E6F83DC9CCB14903FC5D80C5 /* SVProgressHUD.h in Headers */,
+				4DC032894868226AE220360BADB2C237 /* SVProgressHUD-umbrella.h in Headers */,
+				6D1E33469FB8FBE812956B0076A7B28F /* SVRadialGradientLayer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,19 +390,38 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		34C28AFEBD0BC6AD0728346C36646EA3 /* Pods-Decafit */ = {
+		1C8D67D8B72D6BA42CCEDB648537A340 /* SVProgressHUD */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8833A9885762BFA7CABFD265D67465FE /* Build configuration list for PBXNativeTarget "Pods-Decafit" */;
+			buildConfigurationList = 807FEF9D9629A72728B6B83F5CA12C85 /* Build configuration list for PBXNativeTarget "SVProgressHUD" */;
 			buildPhases = (
-				124C50DFA9DE5505E6ACAB885BFFE3BE /* Headers */,
-				D6D2649CD436F8B5ADE5DA5C9A8894C5 /* Sources */,
-				1C3970C11FF8EA3E069890E873E7F4E4 /* Frameworks */,
-				AE4B9BEB4F69EF3E609E81408AF1394F /* Resources */,
+				6DE9E7B34EB24769860A549107B4F04C /* Headers */,
+				108B36464ADE4902E2E2C83461767402 /* Sources */,
+				E389FF082B036E756B0679583C1BE62E /* Frameworks */,
+				A4CCC3CC21F770E272C54B18DDDE6DA3 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D618AAE0098D53F6D14BDED4C95C299E /* PBXTargetDependency */,
+			);
+			name = SVProgressHUD;
+			productName = SVProgressHUD;
+			productReference = E97D43C46A45EE515A4DA3AF94398441 /* SVProgressHUD */;
+			productType = "com.apple.product-type.framework";
+		};
+		34C28AFEBD0BC6AD0728346C36646EA3 /* Pods-Decafit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 51BEC5ACBBB86BCE2808012883E95EDB /* Build configuration list for PBXNativeTarget "Pods-Decafit" */;
+			buildPhases = (
+				34F07816C28A4BAFC53B0C15AF183603 /* Headers */,
+				05EE670325A4BB00EA6710E85E6CEDF1 /* Sources */,
+				9966712A06ADC42EFCDE632F6A9F36BF /* Frameworks */,
+				30AA8DCB4B2414FC63F53A338B1B4EE7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A440A5094CB0C71CD6F2B011EC54FC6 /* PBXTargetDependency */,
+				860635830396EEDE33ACA8B843076FEA /* PBXTargetDependency */,
 			);
 			name = "Pods-Decafit";
 			productName = Pods_Decafit;
@@ -289,17 +430,18 @@
 		};
 		38010DA1667155599201A864FBBE8E09 /* Pods-Decafit-DecafitUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9DC6F01F0CBD3116CFB40DFA4620F0F7 /* Build configuration list for PBXNativeTarget "Pods-Decafit-DecafitUITests" */;
+			buildConfigurationList = 9CF5C7A29E01A275924577E0B764178A /* Build configuration list for PBXNativeTarget "Pods-Decafit-DecafitUITests" */;
 			buildPhases = (
-				CAF17EA034F9609F5DC3981DF2AE3DC0 /* Headers */,
-				2B493407058B3D3268F758E7BFC1B2EC /* Sources */,
-				F7F4DE60B65C68D8F4A9F95279A3F815 /* Frameworks */,
-				FBE71FDBB8FFF6EBCB878EBFE450ED9F /* Resources */,
+				4D64788C20FFEE932E01C09534E4F9C6 /* Headers */,
+				2FDF27951AF386472ACEA6A148B775C0 /* Sources */,
+				D1E24FD3A639700A0D23137CF9B95AA6 /* Frameworks */,
+				A908D9B93F5582F3EC4FFDEEA058FDF2 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				99119F436903B074640125647FF8D0AF /* PBXTargetDependency */,
+				6A07E87D17088F14CB9D787088933808 /* PBXTargetDependency */,
+				47E43DEAFA3D8144594217E583B53307 /* PBXTargetDependency */,
 			);
 			name = "Pods-Decafit-DecafitUITests";
 			productName = Pods_Decafit_DecafitUITests;
@@ -318,7 +460,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				1D2EB4F644FC5181B5496C123FC0EC7B /* PBXTargetDependency */,
+				2A81A648A4B5BD55ED70D716934399B4 /* PBXTargetDependency */,
 			);
 			name = "Pods-DecafitTests";
 			productName = Pods_DecafitTests;
@@ -343,20 +485,36 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = BB5F903127DE25FF8CF5554E8F8F0372 /* Products */;
+			productRefGroup = 1637B6B50D93D840170E5D5418FE1722 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				34C28AFEBD0BC6AD0728346C36646EA3 /* Pods-Decafit */,
 				38010DA1667155599201A864FBBE8E09 /* Pods-Decafit-DecafitUITests */,
 				B5F3598CDE4CD47F29B473C95BBCEE9E /* Pods-DecafitTests */,
+				1C8D67D8B72D6BA42CCEDB648537A340 /* SVProgressHUD */,
 				52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AE4B9BEB4F69EF3E609E81408AF1394F /* Resources */ = {
+		30AA8DCB4B2414FC63F53A338B1B4EE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4CCC3CC21F770E272C54B18DDDE6DA3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				943B0A1B436BAF4D419574466EF70FB3 /* SVProgressHUD.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A908D9B93F5582F3EC4FFDEEA058FDF2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -370,21 +528,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FBE71FDBB8FFF6EBCB878EBFE450ED9F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2B493407058B3D3268F758E7BFC1B2EC /* Sources */ = {
+		05EE670325A4BB00EA6710E85E6CEDF1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65898B0C30488E9EB865783256157B68 /* Pods-Decafit-DecafitUITests-dummy.m in Sources */,
+				34CC1B637506C115D10CFD478B8BA894 /* Pods-Decafit-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		108B36464ADE4902E2E2C83461767402 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52BCC3B2F8AE7F59556925DEC603C634 /* SVIndefiniteAnimatedView.m in Sources */,
+				1F4A13FD6675FCFCD9C19DF350348899 /* SVProgressAnimatedView.m in Sources */,
+				89DF2D9C5EFB02A72EC0CE2138B77F35 /* SVProgressHUD.m in Sources */,
+				FFD43D91BF1FA4ADF714D56E7A10B2A8 /* SVProgressHUD-dummy.m in Sources */,
+				1D325CFE11FE13A075C835E922BE1017 /* SVRadialGradientLayer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FDF27951AF386472ACEA6A148B775C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6C5BED8E9831177F4EE47BE41A169EE0 /* Pods-Decafit-DecafitUITests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,243 +567,43 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D6D2649CD436F8B5ADE5DA5C9A8894C5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F6F11C3A1405B3DC28B31B20B006326A /* Pods-Decafit-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1D2EB4F644FC5181B5496C123FC0EC7B /* PBXTargetDependency */ = {
+		2A81A648A4B5BD55ED70D716934399B4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-Decafit";
 			target = 34C28AFEBD0BC6AD0728346C36646EA3 /* Pods-Decafit */;
-			targetProxy = 11461A1BACE0B63F7443BF53B0511904 /* PBXContainerItemProxy */;
+			targetProxy = 797311F05BCE6C915CCA805CE026940F /* PBXContainerItemProxy */;
 		};
-		99119F436903B074640125647FF8D0AF /* PBXTargetDependency */ = {
+		47E43DEAFA3D8144594217E583B53307 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftLint;
 			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
-			targetProxy = B0D92719E102AB01DBE973FD30C8CCFE /* PBXContainerItemProxy */;
+			targetProxy = 269090462AD2CCE36243B4695291DFD1 /* PBXContainerItemProxy */;
 		};
-		D618AAE0098D53F6D14BDED4C95C299E /* PBXTargetDependency */ = {
+		6A07E87D17088F14CB9D787088933808 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SVProgressHUD;
+			target = 1C8D67D8B72D6BA42CCEDB648537A340 /* SVProgressHUD */;
+			targetProxy = 0CF747DDE41F80555D9C093B78FC2AB1 /* PBXContainerItemProxy */;
+		};
+		7A440A5094CB0C71CD6F2B011EC54FC6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SVProgressHUD;
+			target = 1C8D67D8B72D6BA42CCEDB648537A340 /* SVProgressHUD */;
+			targetProxy = B664A2C30A61FC85F7C23634F21F7508 /* PBXContainerItemProxy */;
+		};
+		860635830396EEDE33ACA8B843076FEA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftLint;
 			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
-			targetProxy = 891968773730B38D635C93EF3F471589 /* PBXContainerItemProxy */;
+			targetProxy = 7542395DA9D38708C2AB610C14E28C78 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		2CCB4BE8F291864956807413E01A2A02 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3F4F8B8A1160EDF291807E969A669973 /* Pods-Decafit.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Decafit/Pods-Decafit-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Decafit/Pods-Decafit.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		4959512173AB3B5BCD10C8A30156C151 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 93AAADF42D6D8C032292C71669D8AFBA /* Pods-DecafitTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-DecafitTests/Pods-DecafitTests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-DecafitTests/Pods-DecafitTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		4E6C7BF91B80E81EAB33674D858B6EB2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A0C1C019DFC24132FF3A28D626A3AAE7 /* Pods-Decafit-DecafitUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		AD81E62ACCB0B7A923FC8AA288F9921E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7EAB1DA481EDDC005A251D3A5E6BE4CD /* SwiftLint.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		B0AF2C03C216958391AAC9AA305C9EEF /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7857831FBF718C10C29E2A202FEDDF0 /* Pods-Decafit-DecafitUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		B36980433EAA335EA045659AC67A5224 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 07B70F885CAEE481BBE0BD2AFFF35813 /* Pods-Decafit.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Decafit/Pods-Decafit-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Decafit/Pods-Decafit.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		BC01E0B73776AF6B58DC318A9BE988D7 /* Debug */ = {
+		25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -685,7 +656,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -698,7 +669,239 @@
 			};
 			name = Debug;
 		};
-		C605C363CC9F26F9FF97DBB1D5C6E25C /* Release */ = {
+		4127597718D002A3696D7255541F1527 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B4474648F6077053DFD71FDFA89A8E0 /* Pods-Decafit-DecafitUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		46E061322FCDBD600490B9FCDA3A9D16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B363D4996D5833D2648474D869E1C3A /* SVProgressHUD.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SVProgressHUD/SVProgressHUD-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SVProgressHUD/SVProgressHUD-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SVProgressHUD/SVProgressHUD.modulemap";
+				PRODUCT_MODULE_NAME = SVProgressHUD;
+				PRODUCT_NAME = SVProgressHUD;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6EED39D030C615D911BC1D6DAC051087 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20FDBD94817E7A623E71B8C499AA892C /* SVProgressHUD.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SVProgressHUD/SVProgressHUD-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SVProgressHUD/SVProgressHUD-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SVProgressHUD/SVProgressHUD.modulemap";
+				PRODUCT_MODULE_NAME = SVProgressHUD;
+				PRODUCT_NAME = SVProgressHUD;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		80A96882AE33F5311FEC67FC17B07CB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D25AC615C09045A4ACE7981F553F1A9D /* Pods-DecafitTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-DecafitTests/Pods-DecafitTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-DecafitTests/Pods-DecafitTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AD81E62ACCB0B7A923FC8AA288F9921E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6056AF6EBB170DBBD44EA79C0AFCB21 /* SwiftLint.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B5EA56A1817E5B1B2A4BF22FE3FF1D87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4A47136152900F09099F459AE5E44F4 /* Pods-Decafit.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Decafit/Pods-Decafit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Decafit/Pods-Decafit.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BA6CE3B314658BC794C5EA3ADB8F6829 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D48A46635068E2F1F010909E2787021 /* Pods-DecafitTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-DecafitTests/Pods-DecafitTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-DecafitTests/Pods-DecafitTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -748,7 +951,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -760,12 +963,11 @@
 			};
 			name = Release;
 		};
-		DC162FDD979764E3D447D303B7760BB4 /* Release */ = {
+		E2BCAFCE9599BFA6A55DD920BDBE6100 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6FBB95663FEE556562F702E874956074 /* Pods-DecafitTests.release.xcconfig */;
+			baseConfigurationReference = FDE147E8FD66E066C048194038DA355C /* Pods-Decafit.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -774,16 +976,68 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-DecafitTests/Pods-DecafitTests-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Decafit/Pods-Decafit-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-DecafitTests/Pods-DecafitTests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-Decafit/Pods-Decafit.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EADD1F50ABC8096A0D6CB18822BB4EE4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3428903950FF3AB6AACE65A1027213C6 /* SwiftLint.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EAF84212B0976E18AAA0FEF2772D8A76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D28402A0E2835AA582D8165CA84FFAB /* Pods-Decafit-DecafitUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -798,30 +1052,23 @@
 			};
 			name = Release;
 		};
-		EADD1F50ABC8096A0D6CB18822BB4EE4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3EC0124719FE8EF5FDDD72C26F8A2F57 /* SwiftLint.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BC01E0B73776AF6B58DC318A9BE988D7 /* Debug */,
-				C605C363CC9F26F9FF97DBB1D5C6E25C /* Release */,
+				25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */,
+				CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		51BEC5ACBBB86BCE2808012883E95EDB /* Build configuration list for PBXNativeTarget "Pods-Decafit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2BCAFCE9599BFA6A55DD920BDBE6100 /* Debug */,
+				B5EA56A1817E5B1B2A4BF22FE3FF1D87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -829,26 +1076,26 @@
 		701DC53C8027E11ECCFA4EA2DB25896E /* Build configuration list for PBXNativeTarget "Pods-DecafitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4959512173AB3B5BCD10C8A30156C151 /* Debug */,
-				DC162FDD979764E3D447D303B7760BB4 /* Release */,
+				80A96882AE33F5311FEC67FC17B07CB7 /* Debug */,
+				BA6CE3B314658BC794C5EA3ADB8F6829 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8833A9885762BFA7CABFD265D67465FE /* Build configuration list for PBXNativeTarget "Pods-Decafit" */ = {
+		807FEF9D9629A72728B6B83F5CA12C85 /* Build configuration list for PBXNativeTarget "SVProgressHUD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B36980433EAA335EA045659AC67A5224 /* Debug */,
-				2CCB4BE8F291864956807413E01A2A02 /* Release */,
+				6EED39D030C615D911BC1D6DAC051087 /* Debug */,
+				46E061322FCDBD600490B9FCDA3A9D16 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9DC6F01F0CBD3116CFB40DFA4620F0F7 /* Build configuration list for PBXNativeTarget "Pods-Decafit-DecafitUITests" */ = {
+		9CF5C7A29E01A275924577E0B764178A /* Build configuration list for PBXNativeTarget "Pods-Decafit-DecafitUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4E6C7BF91B80E81EAB33674D858B6EB2 /* Debug */,
-				B0AF2C03C216958391AAC9AA305C9EEF /* Release */,
+				4127597718D002A3696D7255541F1527 /* Debug */,
+				EAF84212B0976E18AAA0FEF2772D8A76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

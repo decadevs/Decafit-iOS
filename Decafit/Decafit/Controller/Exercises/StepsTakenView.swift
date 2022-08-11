@@ -1,4 +1,3 @@
-
 import UIKit
 
 class StepsTakenView: UIView {

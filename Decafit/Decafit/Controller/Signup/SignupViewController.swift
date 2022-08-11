@@ -1,9 +1,3 @@
-//
-//  SignupViewController.swift
-//  Decafit
-//
-//  Created by Decagon on 20/07/2022.
-
 import UIKit
 
 final class SignupViewController: UIViewController {
@@ -19,7 +13,6 @@ final class SignupViewController: UIViewController {
     var socialButtons: [DecaButton] {
         return [googleButton, facebookButton, appleButton]
     }
-    // Button actions
     func addButtonTarget() {
         socialButtons.forEach { $0.addTarget(self, action: #selector(auth.handleSocialLogin),
                                              for: .touchUpInside) }

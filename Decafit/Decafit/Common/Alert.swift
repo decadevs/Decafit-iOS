@@ -1,9 +1,3 @@
-//
-//  Alert.swift
-//  Decafit
-//
-//  Created by Decagon on 03/08/2022.
-//
 import UIKit
 class Alert {
     static func showAlert(_ presenter: UIViewController, title: String, message: String) {

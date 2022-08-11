@@ -69,5 +69,7 @@ final class LoginViewController: UIViewController {
         setupKeyboardDismissRecognizer()
         setUpSubviews()
         addButtonTarget()
+        emailTextField.text = "clara@gmail.com"
+        passwordTextField.text = "12345678"
     }
 }

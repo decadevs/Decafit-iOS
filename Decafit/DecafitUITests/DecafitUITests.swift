@@ -66,10 +66,10 @@ class DecafitUITests: XCTestCase {
     func testHomescreen() {
         app.launch()
         let cellsQuery = app.collectionViews.cells
-        let fullBodyElement = cellsQuery.otherElements.containing(.staticText, identifier:"Full Body").element
+        let fullBodyElement = cellsQuery.otherElements.containing(.staticText, identifier: "Full Body").element
         fullBodyElement.tap()
         fullBodyElement.swipeLeft()
-        cellsQuery.otherElements.containing(.staticText, identifier:"Biceps").element.swipeRight()
+        cellsQuery.otherElements.containing(.staticText, identifier: "Biceps").element.swipeRight()
         fullBodyElement.swipeRight()
         app.staticTexts["Set your limit"].tap()
         app.textFields["Number of sets"].tap()

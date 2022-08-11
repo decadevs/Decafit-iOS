@@ -1,16 +1,30 @@
 PODS:
+  - SVProgressHUD (2.2.6):
+    - SVProgressHUD/Core (= 2.2.6)
+  - SVProgressHUD/Core (2.2.6)
   - SwiftLint (0.47.1)
 
 DEPENDENCIES:
+  - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
   - SwiftLint
 
 SPEC REPOS:
   trunk:
     - SwiftLint
 
+EXTERNAL SOURCES:
+  SVProgressHUD:
+    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
+
+CHECKOUT OPTIONS:
+  SVProgressHUD:
+    :commit: de1d4dba816a19454329031156b8788692bcfa2c
+    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
+
 SPEC CHECKSUMS:
+  SVProgressHUD: de812b4f0e1d65358f0064416473174ae619843f
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
 
-PODFILE CHECKSUM: 6fca55c4f6a7647feddfb13e3f37e3edc110dbcc
+PODFILE CHECKSUM: 198fdf0b3a0c7dbb3d9842acdf0b3c5ae83a3c39
 
 COCOAPODS: 1.11.3

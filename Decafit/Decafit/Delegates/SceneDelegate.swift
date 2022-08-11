@@ -13,7 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let authManager = AuthManager.shared
         switch authManager.isSignedIn {
         case true:
-            initialViewController = ExerciseTimerViewController()
+            initialViewController = home
         case false:
             initialViewController = LoginViewController()
         }
@@ -21,5 +21,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.rootViewController = initialViewController
         window?.makeKeyAndVisible()
+        AppDelegate.standard.window = window
     }
 }
