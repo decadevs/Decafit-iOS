@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -46,6 +46,9 @@
 		B40AFB322889AB1C00249820 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40AFB312889AB1C00249820 /* AudioToolbox.framework */; };
 		B40AFB38288ACE1D00249820 /* DecaTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB37288ACE1D00249820 /* DecaTextField.swift */; };
 		B40AFB3A288ACE3F00249820 /* DecaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB39288ACE3F00249820 /* DecaButton.swift */; };
+		B431E91828A4FBFE009769CB /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = B431E91728A4FBFE009769CB /* Apollo */; };
+		B431E91A28A4FBFE009769CB /* ApolloSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B431E91928A4FBFE009769CB /* ApolloSQLite */; };
+		B431E92228A4FE76009769CB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431E92128A4FE76009769CB /* API.swift */; };
 		B43631DC289D4BB30010976F /* ExerciseTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DB289D4BB30010976F /* ExerciseTimerViewController.swift */; };
 		B43631DE289D4D770010976F /* ExerciseTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DD289D4D770010976F /* ExerciseTimerView.swift */; };
 		B43631E0289D5AC80010976F /* StepsTakenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DF289D5AC80010976F /* StepsTakenView.swift */; };
@@ -147,6 +150,10 @@
 		B40AFB312889AB1C00249820 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B40AFB37288ACE1D00249820 /* DecaTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaTextField.swift; sourceTree = "<group>"; };
 		B40AFB39288ACE3F00249820 /* DecaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaButton.swift; sourceTree = "<group>"; };
+		B431E91B28A4FC54009769CB /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		B431E91C28A4FC54009769CB /* Login.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Login.graphql; sourceTree = "<group>"; };
+		B431E91D28A4FC54009769CB /* Register.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Register.graphql; sourceTree = "<group>"; };
+		B431E92128A4FE76009769CB /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		B43631DB289D4BB30010976F /* ExerciseTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTimerViewController.swift; sourceTree = "<group>"; };
 		B43631DD289D4D770010976F /* ExerciseTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTimerView.swift; sourceTree = "<group>"; };
 		B43631DF289D5AC80010976F /* StepsTakenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsTakenView.swift; sourceTree = "<group>"; };
@@ -199,6 +206,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B40AFB322889AB1C00249820 /* AudioToolbox.framework in Frameworks */,
+				B431E91A28A4FBFE009769CB /* ApolloSQLite in Frameworks */,
+				B431E91828A4FBFE009769CB /* Apollo in Frameworks */,
 				E9EDA8C619805CC18DD608E6 /* Pods_Decafit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,6 +468,10 @@
 		B47B5B11287C147000EEC900 /* Decafit */ = {
 			isa = PBXGroup;
 			children = (
+				B431E92128A4FE76009769CB /* API.swift */,
+				B431E91C28A4FC54009769CB /* Login.graphql */,
+				B431E91D28A4FC54009769CB /* Register.graphql */,
+				B431E91B28A4FC54009769CB /* schema.json */,
 				B44B3C1F289B0076000C94D7 /* Models */,
 				B40AFB36288ACB4F00249820 /* CustomViews */,
 				B40AFB1E288798E200249820 /* Common */,
@@ -556,6 +569,7 @@
 			buildConfigurationList = B47B5B39287C147300EEC900 /* Build configuration list for PBXNativeTarget "Decafit" */;
 			buildPhases = (
 				021FFC32A5965D03C74C850E /* [CP] Check Pods Manifest.lock */,
+				B431E91E28A4FCC8009769CB /* Apollo */,
 				B47B5B0B287C147000EEC900 /* Sources */,
 				B47B5B0C287C147000EEC900 /* Frameworks */,
 				B47B5B0D287C147000EEC900 /* Resources */,
@@ -566,6 +580,10 @@
 			dependencies = (
 			);
 			name = Decafit;
+			packageProductDependencies = (
+				B431E91728A4FBFE009769CB /* Apollo */,
+				B431E91928A4FBFE009769CB /* ApolloSQLite */,
+			);
 			productName = Decafit;
 			productReference = B47B5B0F287C147000EEC900 /* Decafit.app */;
 			productType = "com.apple.product-type.application";
@@ -639,6 +657,9 @@
 				Base,
 			);
 			mainGroup = B47B5B06287C147000EEC900;
+			packageReferences = (
+				B431E91628A4FBFE009769CB /* XCRemoteSwiftPackageReference "apollo-ios" */,
+			);
 			productRefGroup = B47B5B10287C147000EEC900 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -766,6 +787,24 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
+		B431E91E28A4FCC8009769CB /* Apollo */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Apollo;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Don't run this during index builds\nif [ $ACTION = \"indexbuild\" ]; then exit 0; fi\n\n# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n path.\n";
+		};
 		B9FEB3C0B65013E93BE9E646 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -828,6 +867,7 @@
 				B40AFB3A288ACE3F00249820 /* DecaButton.swift in Sources */,
 				B44B3C052897C8CB000C94D7 /* StartWorkoutCell.swift in Sources */,
 				B44B3C1D289A957D000C94D7 /* Alert.swift in Sources */,
+				B431E92228A4FE76009769CB /* API.swift in Sources */,
 				B40AFB38288ACE1D00249820 /* DecaTextField.swift in Sources */,
 				B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */,
 				B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */,
@@ -1171,6 +1211,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B431E91628A4FBFE009769CB /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.53.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B431E91728A4FBFE009769CB /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B431E91628A4FBFE009769CB /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+		B431E91928A4FBFE009769CB /* ApolloSQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B431E91628A4FBFE009769CB /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloSQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B47B5B07287C147000EEC900 /* Project object */;
 }
