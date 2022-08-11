@@ -11,7 +11,7 @@ let topImageView: DecaImageView = {
     let imageView = DecaImageView(frame: .zero)
     imageView.configure(with: DecaImageViewModel(
                             image: Constants.fitnessImg,
-                            contentMode: .scaleAspectFit,
+                            contentMode: .scaleAspectFill,
                             tintColor: .white))
     imageView.addSubview(trackFitnessLabel)
     return imageView
@@ -21,7 +21,7 @@ let signupTopImageView: DecaImageView = {
     let imageView = DecaImageView(frame: .zero)
     imageView.configure(with: DecaImageViewModel(
                             image: Constants.signupImg,
-                            contentMode: .scaleAspectFit,
+                            contentMode: .scaleToFill,
                             tintColor: .white))
     imageView.addSubview(createPlanLabel)
     return imageView

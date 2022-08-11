@@ -30,6 +30,7 @@ final class DecaTextField: UITextField {
     }
     static func createSecureTextField(text: String) -> Self {
         let field = Self()
+        field.keyboardType = .numberPad
         field.placeholder = text
         field.isSecureTextEntry = true
         field.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: field.frame.height))

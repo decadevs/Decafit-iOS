@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         case true:
             initialViewController = home
         case false:
-            initialViewController = LoginViewController()
+            initialViewController = SignupViewController()
         }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene

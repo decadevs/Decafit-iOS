@@ -57,14 +57,16 @@ extension UIView {
         addSubview(overlay)
     }
 }
-
-func toggleLoginSignup(_ currentVC: UIViewController) {
-    var screen: UIViewController
-    if currentVC === SignupViewController.self {
-        screen = LoginViewController.getViewController()
-    } else {
-        screen = SignupViewController.getViewController()
+extension UIViewController {
+    func toggleScreens(_ sender: UIButton) {
+        let screen: UIViewController
+        if sender.tag == 1 {
+            screen = LoginViewController.getViewController()
+        } else {
+            screen = SignupViewController.getViewController()
+        }
+        screen.modalTransitionStyle = .flipHorizontal
+        screen.modalPresentationStyle = .fullScreen
+        present(screen, animated: true)
     }
-    screen.modalPresentationStyle = .fullScreen
-    currentVC.present(screen, animated: true)
 }

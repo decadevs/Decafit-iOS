@@ -17,6 +17,7 @@ final class SignupViewController: UIViewController {
         socialButtons.forEach { $0.addTarget(self, action: #selector(auth.handleSocialLogin),
                                              for: .touchUpInside) }
         orangeSignInLink.addTarget(self, action: #selector(toggleLogin), for: .touchUpInside)
+        orangeSignInLink.tag = 1
         signUpButton.addTarget(self, action: #selector(handleUserRegistration), for: .touchUpInside)
     }
     override func viewDidLoad() {
@@ -36,7 +37,7 @@ final class SignupViewController: UIViewController {
                                      signUpButton])
         stackview.configure(with: DecaStackViewModel(
                                 axis: .vertical, alignment: .leading ,
-                                spacing: 0.1, distribution: .equalSpacing ))
+                                spacing: 10, distribution: .equalSpacing ))
        return stackview
     }()
     lazy var socialStack: DecaStack = {

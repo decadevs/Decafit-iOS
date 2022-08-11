@@ -23,6 +23,7 @@ final class LoginViewController: UIViewController {
         socialButtons.forEach { $0.addTarget(self, action: #selector(auth.handleSocialLogin),
                                              for: .touchUpInside) }
         orangeSignUpLink.addTarget(self, action: #selector(toggleSignup), for: .touchUpInside)
+        orangeSignUpLink.tag = 2
         loginButton.addTarget(self,
                               action: #selector(handleLogin), for: .touchUpInside)
     }
@@ -69,6 +70,7 @@ final class LoginViewController: UIViewController {
         setupKeyboardDismissRecognizer()
         setUpSubviews()
         addButtonTarget()
+        auth.delegate = self 
         emailTextField.text = "clara@gmail.com"
         passwordTextField.text = "12345678"
     }
