@@ -71,7 +71,5 @@ final class LoginViewController: UIViewController {
         setUpSubviews()
         addButtonTarget()
         auth.delegate = self 
-        emailTextField.text = "clara@gmail.com"
-        passwordTextField.text = "12345678"
     }
 }
