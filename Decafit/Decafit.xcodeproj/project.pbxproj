@@ -62,8 +62,8 @@
 		B43AFAFA28ABA1EF00811658 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43AFAF828ABA1EF00811658 /* AuthManager.swift */; };
 		B43AFAFE28ABA74E00811658 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43AFAFD28ABA74E00811658 /* User.swift */; };
 		B43AFB0028ABA9B600811658 /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43AFAFF28ABA9B600811658 /* ExerciseCell.swift */; };
-		B44B3C002897C7F0000C94D7 /* StartWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3BFF2897C7F0000C94D7 /* StartWorkoutViewController.swift */; };
-		B44B3C052897C8CB000C94D7 /* StartWorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C042897C8CB000C94D7 /* StartWorkoutCell.swift */; };
+		B44B3C002897C7F0000C94D7 /* WorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3BFF2897C7F0000C94D7 /* WorkoutViewController.swift */; };
+		B44B3C052897C8CB000C94D7 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C042897C8CB000C94D7 /* WorkoutCell.swift */; };
 		B44B3C0728982687000C94D7 /* CustomNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C0628982687000C94D7 /* CustomNavbar.swift */; };
 		B44B3C0F289A714A000C94D7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C0E289A714A000C94D7 /* Constants.swift */; };
 		B44B3C11289A7F57000C94D7 /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C10289A7F57000C94D7 /* TextFields.swift */; };
@@ -91,7 +91,7 @@
 		B4B96EA12892697F00E22B33 /* TodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B96EA02892697F00E22B33 /* TodayCollectionViewCell.swift */; };
 		B4B96EA728936A2800E22B33 /* FitConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B96EA628936A2800E22B33 /* FitConfigViewController.swift */; };
 		B4B96EA92893CCA500E22B33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4B96EA82893CCA500E22B33 /* Assets.xcassets */; };
-		B4E4C9C9289C4103008CD86D /* WorkoutPageTopview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E4C9C8289C4103008CD86D /* WorkoutPageTopview.swift */; };
+		B4E4C9C9289C4103008CD86D /* WorkoutTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E4C9C8289C4103008CD86D /* WorkoutTopView.swift */; };
 		B4E4C9CB289CA166008CD86D /* WorkoutModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E4C9CA289CA166008CD86D /* WorkoutModalView.swift */; };
 		E9EDA8C619805CC18DD608E6 /* Pods_Decafit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48853A80EF7AD9413CD9484E /* Pods_Decafit.framework */; };
 /* End PBXBuildFile section */
@@ -175,8 +175,8 @@
 		B43AFAF828ABA1EF00811658 /* AuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		B43AFAFD28ABA74E00811658 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		B43AFAFF28ABA9B600811658 /* ExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
-		B44B3BFF2897C7F0000C94D7 /* StartWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutViewController.swift; sourceTree = "<group>"; };
-		B44B3C042897C8CB000C94D7 /* StartWorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutCell.swift; sourceTree = "<group>"; };
+		B44B3BFF2897C7F0000C94D7 /* WorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewController.swift; sourceTree = "<group>"; };
+		B44B3C042897C8CB000C94D7 /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
 		B44B3C0628982687000C94D7 /* CustomNavbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavbar.swift; sourceTree = "<group>"; };
 		B44B3C0E289A714A000C94D7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B44B3C10289A7F57000C94D7 /* TextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFields.swift; sourceTree = "<group>"; };
@@ -210,7 +210,7 @@
 		B4B96EA02892697F00E22B33 /* TodayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCollectionViewCell.swift; sourceTree = "<group>"; };
 		B4B96EA628936A2800E22B33 /* FitConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitConfigViewController.swift; sourceTree = "<group>"; };
 		B4B96EA82893CCA500E22B33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B4E4C9C8289C4103008CD86D /* WorkoutPageTopview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPageTopview.swift; sourceTree = "<group>"; };
+		B4E4C9C8289C4103008CD86D /* WorkoutTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTopView.swift; sourceTree = "<group>"; };
 		B4E4C9CA289CA166008CD86D /* WorkoutModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutModalView.swift; sourceTree = "<group>"; };
 		E09F5AB25E31C6DF910AF630 /* Pods-Decafit-DecafitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Decafit-DecafitUITests.debug.xcconfig"; path = "Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F5A45F2515A01D1403BDB39F /* Pods_Decafit_DecafitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Decafit_DecafitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -401,9 +401,9 @@
 		B44B3C032897C898000C94D7 /* StartWorkout */ = {
 			isa = PBXGroup;
 			children = (
-				B44B3BFF2897C7F0000C94D7 /* StartWorkoutViewController.swift */,
-				B44B3C042897C8CB000C94D7 /* StartWorkoutCell.swift */,
-				B4E4C9C8289C4103008CD86D /* WorkoutPageTopview.swift */,
+				B44B3BFF2897C7F0000C94D7 /* WorkoutViewController.swift */,
+				B44B3C042897C8CB000C94D7 /* WorkoutCell.swift */,
+				B4E4C9C8289C4103008CD86D /* WorkoutTopView.swift */,
 				B4E4C9CA289CA166008CD86D /* WorkoutModalView.swift */,
 			);
 			path = StartWorkout;
@@ -914,12 +914,12 @@
 				B43631DC289D4BB30010976F /* ExerciseViewController.swift in Sources */,
 				B44B3C11289A7F57000C94D7 /* TextFields.swift in Sources */,
 				B43AFB0028ABA9B600811658 /* ExerciseCell.swift in Sources */,
-				B44B3C002897C7F0000C94D7 /* StartWorkoutViewController.swift in Sources */,
+				B44B3C002897C7F0000C94D7 /* WorkoutViewController.swift in Sources */,
 				B40AFB272888142100249820 /* SignupViewController.swift in Sources */,
 				B44B3C25289B032D000C94D7 /* StartWorkoutModel.swift in Sources */,
 				B44B3C0728982687000C94D7 /* CustomNavbar.swift in Sources */,
 				B43631E2289DB8650010976F /* ProgressBar.swift in Sources */,
-				B4E4C9C9289C4103008CD86D /* WorkoutPageTopview.swift in Sources */,
+				B4E4C9C9289C4103008CD86D /* WorkoutTopView.swift in Sources */,
 				B43AFAFA28ABA1EF00811658 /* AuthManager.swift in Sources */,
 				B4B96EA12892697F00E22B33 /* TodayCollectionViewCell.swift in Sources */,
 				B4AB95B7288E934E00FE9C96 /* DecaLabel.swift in Sources */,
@@ -930,7 +930,7 @@
 				B40AFB2B288861A300249820 /* Extensions.swift in Sources */,
 				B4AB95B9288EB0F600FE9C96 /* DecaImageView.swift in Sources */,
 				B40AFB3A288ACE3F00249820 /* DecaButton.swift in Sources */,
-				B44B3C052897C8CB000C94D7 /* StartWorkoutCell.swift in Sources */,
+				B44B3C052897C8CB000C94D7 /* WorkoutCell.swift in Sources */,
 				B431E93028A5106A009769CB /* Hud.swift in Sources */,
 				B44B3C1D289A957D000C94D7 /* Alert.swift in Sources */,
 				B431E92228A4FE76009769CB /* API.swift in Sources */,
