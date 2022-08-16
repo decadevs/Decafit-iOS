@@ -8,7 +8,8 @@
 import UIKit
 extension TimeInterval {
     var time: String {
-        return String(format: "%02d:%02d", Int(self/60),  Int(ceil(truncatingRemainder(dividingBy: 60))) )
+        return String(format: "%02d:%02d", Int(self/60),
+                      Int(ceil(truncatingRemainder(dividingBy: 60))) )
     }
 }
 extension Int {
@@ -54,7 +55,14 @@ extension UIView {
         overlay.frame = bounds
         overlay.backgroundColor = color
         overlay.alpha = alpha
+        overlay.tag = 5
+        overlay.accessibilityIdentifier = "overlay"
         addSubview(overlay)
+    }
+    func removeOverlay() {
+        guard let overlay = self.viewWithTag(5) else { return }
+        overlay.frame = .zero
+        overlay.removeFromSuperview()
     }
 }
 extension UIViewController {
@@ -68,5 +76,14 @@ extension UIViewController {
         screen.modalTransitionStyle = .flipHorizontal
         screen.modalPresentationStyle = .fullScreen
         present(screen, animated: true)
+    }
+}
+extension UICollectionView {
+    func scrollToNextItem() {
+        let contentOffset = CGFloat(floor(self.contentOffset.x + self.bounds.size.width))
+        self.moveToFrame(contentOffset: contentOffset)
+    }
+    func moveToFrame(contentOffset: CGFloat) {
+            self.setContentOffset(CGPoint(x: contentOffset, y: self.contentOffset.y), animated: true)
     }
 }

@@ -1,4 +1,3 @@
-
 import UIKit
 class WorkoutCell: UITableViewCell {
     static let identifier = Constants.workoutCellId

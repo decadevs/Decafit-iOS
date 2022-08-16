@@ -17,7 +17,7 @@ class ExerciseView: UIView {
         // get a reference to the exercise currently in display, and check the title
         // if steps view is set to visible, start steps tracking and timer countdown
         // pause timer and steps when the pause/resume button is clicked
-        if (exerciseName.text == "Run" || exerciseName.text == "Running") {
+        if exerciseName.text == "Run" || exerciseName.text == "Running" {
             progressBar.isHidden = true
             stepsTakenView.isHidden = false
             // start steps tracking and timer countdown
