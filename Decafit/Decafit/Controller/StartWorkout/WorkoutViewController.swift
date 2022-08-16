@@ -30,9 +30,7 @@ class WorkoutViewController: UIViewController {
         [topView, tableView, startWorkoutButton].forEach { view.addSubview($0)}
         startWorkoutButton.addTarget(self, action: #selector(workoutButtonTapped), for: .touchUpInside)
         setupSubviews()
-        navigationController?.navigationBar.topItem?.backBarButtonItem =
-            UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationController?.navigationBar.isHidden = true
+        setupNavigation()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -70,11 +68,21 @@ extension WorkoutViewController: UITableViewDelegate, UITableViewDataSource {
 }
 extension WorkoutViewController: UIGestureRecognizerDelegate {
     @objc func clickNavBackButton(_ sender: UIBarButtonItem) {
-        self.navigationItem.setHidesBackButton(true, animated: true)
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
         navigationController?.popViewController(animated: true)
     }
+    func setupNavigation() {
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        self.navigationController?.navigationBar.isTranslucent = false
+        
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        navigationItem.backButtonTitle = " "
+        navigationItem.backButtonDisplayMode = .minimal
+        navigationController?.navigationBar.isHidden = true
+    }
     @objc func workoutButtonTapped() {
+        if startWorkoutButton.titleLabel?.text == Constants.continueWorkout {
+            // preserve state of workout and show the first unfinished exercise
+        }
         startWorkoutButton.setTitle(Constants.continueWorkout, for: .normal)
 //        let firstIndex = tableView.indexPathsForVisibleRows?.first
 //        let firstRow = tableView.cellForRow(at: firstIndex!) as? StartWorkoutCell

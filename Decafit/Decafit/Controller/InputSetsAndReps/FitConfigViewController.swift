@@ -23,16 +23,13 @@ class FitConfigViewController: UIViewController {
         backButton.addTarget(self, action: #selector(clickNavBackButton),
                              for: .touchUpInside)
     }
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = false
-    }
 }
 extension FitConfigViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true
     }
-    @objc func clickNavBackButton(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+    @objc func clickNavBackButton() {
+        self.navigationController?.popViewController(animated: true)
     }
     @objc func gotoStartWorkout() {
         let screen = WorkoutViewController.getWorkoutView()
@@ -41,18 +38,16 @@ extension FitConfigViewController: UITextFieldDelegate {
 }
 extension FitConfigViewController: UIGestureRecognizerDelegate {
     func setupNavigation() {
-        let navbar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 50))
-        navbar.backgroundColor = .white
-        backButton.frame = CGRect(x: 20, y: 20, width: 40, height: 40)
-        navbar.addSubview(backButton)
-        navigationController?.navigationBar.addSubview(navbar)
-
+        let cview = UIView(frame: CGRect(x: 20, y: 40, width: 350, height: 50))
+        cview.addSubview(backButton)
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        backButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        backButton.bottomAnchor.constraint(equalTo: cview.bottomAnchor).isActive = true
+        view.addSubview(cview)
+        
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.navigationController?.navigationBar.isTranslucent = false
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        navigationController?.navigationBar.isHidden = true
         self.navigationItem.setHidesBackButton(true, animated: true)
         navigationItem.backButtonTitle = " "
         navigationItem.backButtonDisplayMode = .minimal

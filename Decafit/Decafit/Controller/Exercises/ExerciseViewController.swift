@@ -1,19 +1,13 @@
 import UIKit
-class ExerciseViewController: UIViewController, ExerciseCellDelegate {
-    func refCellElements(exerciseView: ExerciseView) {
-        exerciseView.timerViewBackButton.addTarget(
-            self, action: #selector(clickNavBackButton), for: .touchUpInside)
-        exerciseView.nextWorkoutButton.addTarget(
-            self, action: #selector(nextPageButtonClicked), for: .touchUpInside)
-    }
+class ExerciseViewController: UIViewController {
+    var exerciseView = ExerciseView()
     let data = DataManager.shared
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(collectionView)
         collectionView.frame = view.bounds
-        let ecell = ExerciseCell()
-        ecell.delegate = self
+        exerciseView.displaySteps()
     }
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -27,19 +21,17 @@ class ExerciseViewController: UIViewController, ExerciseCellDelegate {
                              forCellWithReuseIdentifier: ExerciseCell.identifier)
         return view
     }()
-    @objc func nextPageButtonClicked() {
-        print("========= next page button pressed ===========")
-        guard let indexPath = collectionView.indexPathsForVisibleItems.first.flatMap({
-            IndexPath(item: $0.row + 1, section: $0.section)
-        }), collectionView.cellForItem(at: indexPath) != nil else {
-            return
-        }
-        collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
-    }
 }
-extension ExerciseViewController: UIGestureRecognizerDelegate {
-    @objc func clickNavBackButton() {
-        print("========= nav bar back button pressed ===========")
+extension ExerciseViewController: UIGestureRecognizerDelegate, ExerciseCellDelegate {
+    func nextPageButtonClicked() {
+        self.collectionView.scrollToNextItem()
+        // check if the timer is complete
+        // if it is, display the complete button in the table row
+        // if it isnt, display the incomplete button,
+        // with the green progress bar indicating the progress 
+    }
+    
+    func clickNavBackButton() {
         self.navigationItem.setHidesBackButton(true, animated: true)
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         navigationController?.popViewController(animated: true)

@@ -1,11 +1,14 @@
 
 import UIKit
 protocol ExerciseCellDelegate: AnyObject {
-    func refCellElements(exerciseView: ExerciseView)
+    func nextPageButtonClicked()
+    func clickNavBackButton()
 }
 class ExerciseCell: UICollectionViewCell {
     static let identifier = "ExerciseCell"
     weak var delegate: ExerciseCellDelegate?
+    var evc = ExerciseViewController()
+    var completion: (() -> Void)?
     var timeLeft: TimeInterval = 15 // parse this from the exercise cell duration
     var endTime: Date?
     var timer = Timer()
@@ -15,12 +18,25 @@ class ExerciseCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.addSubview(exerciseView)
         contentView.frame = exerciseView.bounds
+        
+        exerciseView.timerViewBackButton.addTarget(
+            self, action: #selector(clickNavBackButton), for: .touchUpInside)
+        exerciseView.nextWorkoutButton.addTarget(
+            self, action: #selector(nextPageButtonClicked), for: .touchUpInside)
+        
         exerciseView.pauseResumeButton
             .addTarget(self, action: #selector(pauseButtonTapped),
                        for: .touchUpInside)
         exerciseView.timerLabel.text = timeLeft.time
         exerciseView.progressBar.setProgress(duration: timeLeft )
         startWorkoutButtonTapped()
+        exerciseView.displaySteps()
+    }
+    @objc func nextPageButtonClicked() {
+        delegate?.nextPageButtonClicked()
+    }
+    @objc func clickNavBackButton() {
+        delegate?.clickNavBackButton()
     }
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
@@ -31,7 +47,6 @@ class ExerciseCell: UICollectionViewCell {
         exerciseView.topImageView.image = UIImage(named: model.image)
     }
     func startWorkoutButtonTapped() {
-        delegate?.refCellElements(exerciseView: exerciseView)
         if isTimerRunning == false {
             runTimer()
         }

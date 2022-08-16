@@ -34,6 +34,7 @@ let backButton: UIButton = {
     button.layer.borderWidth = 0
     button.contentEdgeInsets = UIEdgeInsets(
         top: 12, left: 12, bottom: 12, right: 12)
+    button.isEnabled = true 
     return button
 }()
 // Start workout top view

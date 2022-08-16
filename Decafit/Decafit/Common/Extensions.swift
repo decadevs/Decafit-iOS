@@ -58,14 +58,24 @@ extension UIView {
         overlay.removeFromSuperview()
     }
 }
-
-func toggleLoginSignup(_ currentVC: UIViewController) {
-    var screen: UIViewController
-    if currentVC === SignupViewController.self {
-        screen = LoginViewController.getViewController()
-    } else {
-        screen = SignupViewController.getViewController()
+extension UIViewController {
+    func toggleLoginSignup(_ currentVC: UIViewController) {
+        var screen: UIViewController
+        if currentVC === SignupViewController.self {
+            screen = LoginViewController.getViewController()
+        } else {
+            screen = SignupViewController.getViewController()
+        }
+        screen.modalPresentationStyle = .fullScreen
+        currentVC.present(screen, animated: true)
     }
-    screen.modalPresentationStyle = .fullScreen
-    currentVC.present(screen, animated: true)
+}
+extension UICollectionView {
+    func scrollToNextItem() {
+        let contentOffset = CGFloat(floor(self.contentOffset.x + self.bounds.size.width))
+        self.moveToFrame(contentOffset: contentOffset)
+    }
+    func moveToFrame(contentOffset: CGFloat) {
+            self.setContentOffset(CGPoint(x: contentOffset, y: self.contentOffset.y), animated: true)
+    }
 }

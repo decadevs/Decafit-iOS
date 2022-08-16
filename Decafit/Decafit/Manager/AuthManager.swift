@@ -9,7 +9,7 @@ final class AuthManager {
     weak var delegate: AuthManagerDelegate?
     var successcomplete: ((Bool) -> Void)?
     public var isSignedIn: Bool {
-        return false 
+        return true 
     }
     public func register(user: User) {
         
