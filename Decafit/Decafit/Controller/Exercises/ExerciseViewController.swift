@@ -7,7 +7,6 @@ class ExerciseViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(collectionView)
         collectionView.frame = view.bounds
-        exerciseView.displaySteps()
     }
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -49,6 +48,18 @@ extension ExerciseViewController: UICollectionViewDataSource {
         let workout = data.getWorkoutData()[indexPath.row]
         cell.configure(with: workout)
         cell.delegate = self
+        
+        if cell.exerciseView.exerciseName.text == "Running" {
+//            cell.timer.invalidate()
+            cell.exerciseView.progressBar.isHidden = true
+            cell.exerciseView.stepsTakenView.isHidden = false
+            cell.exerciseView.timerLabel.isHidden = true
+            cell.exerciseView.displaySteps()
+        } else {
+            cell.exerciseView.progressBar.isHidden = false
+            cell.exerciseView.stepsTakenView.isHidden = true
+            cell.exerciseView.timerLabel.isHidden = false
+        }
         return cell
     }
 }
@@ -56,6 +67,6 @@ extension ExerciseViewController: UICollectionViewDelegate, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.size.width, height: view.frame.size.height*0.95)
+        return CGSize(width: view.frame.size.width, height: view.frame.size.height)
     }
 }

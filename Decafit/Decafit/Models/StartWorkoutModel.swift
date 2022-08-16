@@ -1,23 +1,16 @@
-//
-//  StartWorkoutModel.swift
-//  Decafit
-//
-//  Created by Decagon on 03/08/2022.
-//
-
 import Foundation
 struct StartWorkoutModel {
     let exerciseName, duration, image: String
 }
 let startWorkoutData: [StartWorkoutModel] = {
-    let workout1 = ["Jumping jacks", "00:20", "back"]
-    let workout2 = ["Push ups", "X10", "back"]
-    let workout3 = ["Push ups", "X10", "back"]
-    let workout4 = ["Push ups", "X10", "back"]
-    let workout5 = ["Push ups", "X10", "back"]
+    let workout1 = ["Stretch", "00:20", "back"]
+    let workout2 = ["Running", "00:50", "back"]
+    let workout3 = ["Jumping", "X10", "back"]
+    let workout4 = ["Run", "01:00", "back"]
+    let workout5 = ["Dancing", "X10", "back"]
     let workout6 = ["Push ups", "X10", "back"]
-    let workout7 = ["Push ups", "X10", "back"]
-    let workout8 = ["Push ups", "X10", "back"]
+    let workout7 = ["Sky diving", "X10", "back"]
+    let workout8 = ["Push downs", "X10", "back"]
     let workoutData = [workout1, workout2, workout3, workout4, workout5, workout6, workout7, workout8]
     
     var arr = [StartWorkoutModel]()

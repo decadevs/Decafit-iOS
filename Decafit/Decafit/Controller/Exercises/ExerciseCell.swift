@@ -28,8 +28,7 @@ class ExerciseCell: UICollectionViewCell {
                        for: .touchUpInside)
         exerciseView.timerLabel.text = timeLeft.time
         exerciseView.progressBar.setProgress(duration: timeLeft )
-        startWorkoutButtonTapped()
-        exerciseView.displaySteps()
+        startTimer()
     }
     @objc func nextPageButtonClicked() {
         delegate?.nextPageButtonClicked()
@@ -45,7 +44,7 @@ class ExerciseCell: UICollectionViewCell {
         exerciseView.exerciseName.text = model.exerciseName
         exerciseView.topImageView.image = UIImage(named: model.image)
     }
-    func startWorkoutButtonTapped() {
+    func startTimer() {
         if isTimerRunning == false {
             runTimer()
         }
@@ -74,12 +73,9 @@ class ExerciseCell: UICollectionViewCell {
             isTimerRunning = false
             self.resumeTapped = true
             exerciseView.progressBar.pauseAnimation()
-            if exerciseView.exerciseName.text == Constants.run {
-                // replace progress view with steps taken view
-            }
             exerciseView.pauseResumeButton.setTitle(Constants.resume, for: .normal)
             exerciseView.pauseResumeButton.setImage(
-                UIImage(systemName: Constants.playFillSystemImg), for: .selected)
+                UIImage(systemName: Constants.playFillSystemImg), for: .normal)
         } else {
             runTimer()
             self.resumeTapped = false

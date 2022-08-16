@@ -7,7 +7,7 @@ class StepsTakenView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .systemPink
+//        backgroundColor = .systemPink
         translatesAutoresizingMaskIntoConstraints = false
         isHidden = true
         setupSubviews()
@@ -17,13 +17,13 @@ class StepsTakenView: UIView {
     }
     func startStepCount() {
         if CMPedometer.isStepCountingAvailable() {
-            let calendar = Calendar.current
-            pedometer.queryPedometerData(from: calendar.startOfDay(for: Date()), to: Date()) { (data, error) in
-                print(data)
-                
-            }
+//            let calendar = Calendar.current
+//            pedometer.queryPedometerData(from: calendar.startOfDay(for: Date()), to: Date()) { (data, error) in
+//                print(data)
+//
+//            }
             pedometer.startUpdates(from: Date()) { (data, error) in
-                print(data)
+//                print(data)
                 if error == nil {
                     DispatchQueue.main.async {
                         self.stepsData.text = "\(String(describing: data?.numberOfSteps)) Steps"

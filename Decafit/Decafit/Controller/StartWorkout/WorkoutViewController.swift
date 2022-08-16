@@ -96,8 +96,6 @@ extension WorkoutViewController: UIGestureRecognizerDelegate {
 //        secondRow?.progressbar.progress = 0.4
 //        secondRow?.completeButton.isHidden = false
         
-        // move to the next when nextbutton is clicked on the exercise page
-        // Back button on all the exercises leads to workout list
         // When exercise is started, and you click the back button, that pauses the exercise, and
         // Shows the incomplete tag on the table
         // When exercise is completed before back button is clicked, show the complete tag on the table

@@ -1,7 +1,4 @@
 import UIKit
-protocol ExerciseViewDelegate: AnyObject {
-    func passViewMembers()
-}
 class ExerciseView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -13,21 +10,15 @@ class ExerciseView: UIView {
         fatalError(Constants.requiredInit)
     }
     func displaySteps() {
-        // if exercise title is Run, show steps view, and hide circular progress
-        // get a reference to the exercise currently in display, and check the title
-        // if steps view is set to visible, start steps tracking and timer countdown
-        // pause timer and steps when the pause/resume button is clicked
-        if exerciseName.text == "Run" || exerciseName.text == "Running" {
-            progressBar.isHidden = true
-            stepsTakenView.isHidden = false
-            // start steps tracking and timer countdown
+        DispatchQueue.main.async {
+            self.stepsTakenView.startStepCount()
+            self.stepsTakenView.timeData.text = self.timerLabel.text
         }
-        
     }
     lazy var topImageView: DecaImageView = {
         let img = DecaImageView(frame: .zero)
         img.configure(with: DecaImageViewModel(
-                        image: Constants.playImg, contentMode: .scaleToFill,
+                        image: Constants.playImg, contentMode: .scaleAspectFill,
                         tintColor: .clear))
         return img
     }()
