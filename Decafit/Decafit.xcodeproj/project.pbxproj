@@ -62,6 +62,7 @@
 		B43AFB0828ABAD3400811658 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43AFB0428ABAD3400811658 /* ModalViewController.swift */; };
 		B43AFB0928ABAD3400811658 /* ModalTopSwipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43AFB0528ABAD3400811658 /* ModalTopSwipeCell.swift */; };
 		B43AFB0D28ABB26700811658 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43AFB0C28ABB26700811658 /* User.swift */; };
+		B43AFB1028ABBAB600811658 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43AFB0F28ABBAB600811658 /* HealthKit.framework */; };
 		B44B3C002897C7F0000C94D7 /* WorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3BFF2897C7F0000C94D7 /* WorkoutViewController.swift */; };
 		B44B3C052897C8CB000C94D7 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C042897C8CB000C94D7 /* WorkoutCell.swift */; };
 		B44B3C0728982687000C94D7 /* CustomNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C0628982687000C94D7 /* CustomNavbar.swift */; };
@@ -174,6 +175,8 @@
 		B43AFB0428ABAD3400811658 /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		B43AFB0528ABAD3400811658 /* ModalTopSwipeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalTopSwipeCell.swift; sourceTree = "<group>"; };
 		B43AFB0C28ABB26700811658 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B43AFB0E28ABBAB600811658 /* Decafit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Decafit.entitlements; sourceTree = "<group>"; };
+		B43AFB0F28ABBAB600811658 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		B44B3BFF2897C7F0000C94D7 /* WorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewController.swift; sourceTree = "<group>"; };
 		B44B3C042897C8CB000C94D7 /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
 		B44B3C0628982687000C94D7 /* CustomNavbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavbar.swift; sourceTree = "<group>"; };
@@ -223,6 +226,7 @@
 				B431E91A28A4FBFE009769CB /* ApolloSQLite in Frameworks */,
 				B431E91828A4FBFE009769CB /* Apollo in Frameworks */,
 				E9EDA8C619805CC18DD608E6 /* Pods_Decafit.framework in Frameworks */,
+				B43AFB1028ABBAB600811658 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +347,7 @@
 		B40AFB302889AB1C00249820 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B43AFB0F28ABBAB600811658 /* HealthKit.framework */,
 				B40AFB312889AB1C00249820 /* AudioToolbox.framework */,
 				48853A80EF7AD9413CD9484E /* Pods_Decafit.framework */,
 				F5A45F2515A01D1403BDB39F /* Pods_Decafit_DecafitUITests.framework */,
@@ -496,6 +501,7 @@
 		B47B5B11287C147000EEC900 /* Decafit */ = {
 			isa = PBXGroup;
 			children = (
+				B43AFB0E28ABBAB600811658 /* Decafit.entitlements */,
 				B431E92128A4FE76009769CB /* API.swift */,
 				B431E91C28A4FC54009769CB /* Login.graphql */,
 				B431E91D28A4FC54009769CB /* Register.graphql */,
