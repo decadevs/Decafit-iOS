@@ -1,6 +1,10 @@
 import UIKit
+import CoreMotion
 
 class StepsTakenView: UIView {
+    let pedometer = CMPedometer()
+    let activityManager = CMMotionActivityManager()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemPink
@@ -10,6 +14,23 @@ class StepsTakenView: UIView {
     }
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
+    }
+    func startStepCount() {
+        if CMPedometer.isStepCountingAvailable() {
+            let calendar = Calendar.current
+            pedometer.queryPedometerData(from: calendar.startOfDay(for: Date()), to: Date()) { (data, error) in
+                print(data)
+                
+            }
+            pedometer.startUpdates(from: Date()) { (data, error) in
+                print(data)
+                if error == nil {
+                    DispatchQueue.main.async {
+                        self.stepsData.text = "\(String(describing: data?.numberOfSteps)) Steps"
+                    }
+                }
+            }
+       }
     }
     lazy var stepsTaken: DecaLabel = {
         let label = DecaLabel()
