@@ -52,8 +52,8 @@
 		B431E92A28A5063E009769CB /* SignupViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431E92928A5063E009769CB /* SignupViewController+Extension.swift */; };
 		B431E92C28A50687009769CB /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431E92B28A50687009769CB /* AuthManager.swift */; };
 		B431E93028A5106A009769CB /* Hud.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431E92F28A5106A009769CB /* Hud.swift */; };
-		B43631DC289D4BB30010976F /* ExerciseTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DB289D4BB30010976F /* ExerciseTimerViewController.swift */; };
-		B43631DE289D4D770010976F /* ExerciseTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DD289D4D770010976F /* ExerciseTimerView.swift */; };
+		B43631DC289D4BB30010976F /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DB289D4BB30010976F /* ExerciseViewController.swift */; };
+		B43631DE289D4D770010976F /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DD289D4D770010976F /* ExerciseView.swift */; };
 		B43631E0289D5AC80010976F /* StepsTakenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DF289D5AC80010976F /* StepsTakenView.swift */; };
 		B43631E2289DB8650010976F /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631E1289DB8650010976F /* ProgressBar.swift */; };
 		B43AFAF428ABA09A00811658 /* SignupViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43AFAF328ABA09A00811658 /* SignupViewController+Extension.swift */; };
@@ -165,8 +165,8 @@
 		B431E92928A5063E009769CB /* SignupViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SignupViewController+Extension.swift"; path = "../../../../../Decafit-iOS-fix-popover-branch/Decafit/Decafit/Controller/Signup/SignupViewController+Extension.swift"; sourceTree = "<group>"; };
 		B431E92B28A50687009769CB /* AuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthManager.swift; path = "../../../../Decafit-iOS-fix-popover-branch/Decafit/Decafit/Manager/AuthManager.swift"; sourceTree = "<group>"; };
 		B431E92F28A5106A009769CB /* Hud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hud.swift; sourceTree = "<group>"; };
-		B43631DB289D4BB30010976F /* ExerciseTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTimerViewController.swift; sourceTree = "<group>"; };
-		B43631DD289D4D770010976F /* ExerciseTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTimerView.swift; sourceTree = "<group>"; };
+		B43631DB289D4BB30010976F /* ExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
+		B43631DD289D4D770010976F /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
 		B43631DF289D5AC80010976F /* StepsTakenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsTakenView.swift; sourceTree = "<group>"; };
 		B43631E1289DB8650010976F /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		B43AFAF328ABA09A00811658 /* SignupViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SignupViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -372,8 +372,8 @@
 		B43631DA289D4B830010976F /* Exercises */ = {
 			isa = PBXGroup;
 			children = (
-				B43631DB289D4BB30010976F /* ExerciseTimerViewController.swift */,
-				B43631DD289D4D770010976F /* ExerciseTimerView.swift */,
+				B43631DB289D4BB30010976F /* ExerciseViewController.swift */,
+				B43631DD289D4D770010976F /* ExerciseView.swift */,
 				B43631DF289D5AC80010976F /* StepsTakenView.swift */,
 				B43AFAFF28ABA9B600811658 /* ExerciseCell.swift */,
 			);
@@ -911,7 +911,7 @@
 				B43AFAF928ABA1EF00811658 /* Network.swift in Sources */,
 				B43631E0289D5AC80010976F /* StepsTakenView.swift in Sources */,
 				B48A590A2886D684004D1BEA /* LoginViewController.swift in Sources */,
-				B43631DC289D4BB30010976F /* ExerciseTimerViewController.swift in Sources */,
+				B43631DC289D4BB30010976F /* ExerciseViewController.swift in Sources */,
 				B44B3C11289A7F57000C94D7 /* TextFields.swift in Sources */,
 				B43AFB0028ABA9B600811658 /* ExerciseCell.swift in Sources */,
 				B44B3C002897C7F0000C94D7 /* StartWorkoutViewController.swift in Sources */,
@@ -941,7 +941,7 @@
 				B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */,
 				B40AFB202887990000249820 /* CustomUIFont.swift in Sources */,
 				B431E92C28A50687009769CB /* AuthManager.swift in Sources */,
-				B43631DE289D4D770010976F /* ExerciseTimerView.swift in Sources */,
+				B43631DE289D4D770010976F /* ExerciseView.swift in Sources */,
 				B44B3C18289A893E000C94D7 /* Labels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
