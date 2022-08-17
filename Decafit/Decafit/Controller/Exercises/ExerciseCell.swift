@@ -6,9 +6,8 @@ protocol ExerciseCellDelegate: AnyObject {
 class ExerciseCell: UICollectionViewCell {
     static let identifier = Constants.exerciseCellId
     weak var delegate: ExerciseCellDelegate?
-    var evc = ExerciseViewController()
-    var completion: (() -> Void)?
-    var timeLeft: TimeInterval = 15 // parse this from the exercise cell duration
+    // parse this from the exercise cell duration
+    var timeLeft: TimeInterval = 15
     var endTime: Date?
     var timer = Timer()
     var isTimerRunning = false
@@ -20,10 +19,10 @@ class ExerciseCell: UICollectionViewCell {
         contentView.frame = exerciseView.bounds
         
         exerciseView.timerViewBackButton.addTarget(
-            self, action: #selector(clickNavBackButton), for: .touchUpInside)
+            self, action: #selector(clickNavBackButton),
+            for: .touchUpInside)
         exerciseView.nextWorkoutButton.addTarget(
             self, action: #selector(gotoNextExercise), for: .touchUpInside)
-        
         exerciseView.pauseResumeButton
             .addTarget(self, action: #selector(pauseButtonTapped),
                        for: .touchUpInside)

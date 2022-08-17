@@ -34,7 +34,7 @@ final class SignupViewController: UIViewController {
         socialButtons.forEach { $0.addTarget(self, action: #selector(auth.handleSocialLogin),
                                              for: .touchUpInside) }
         orangeSignInLink.addTarget(self, action: #selector(toggleLogin), for: .touchUpInside)
-        orangeSignInLink.tag = 1
+        orangeSignInLink.tag = Tags.orangeSignInLink
         signUpButton.addTarget(self, action: #selector(handleUserRegistration), for: .touchUpInside)
     }
     // MARK: - Labels
