@@ -1,10 +1,10 @@
 import UIKit
 protocol ExerciseCellDelegate: AnyObject {
-    func nextPageButtonClicked()
+    func gotoNextExercise()
     func clickNavBackButton()
 }
 class ExerciseCell: UICollectionViewCell {
-    static let identifier = "ExerciseCell"
+    static let identifier = Constants.exerciseCellId
     weak var delegate: ExerciseCellDelegate?
     var evc = ExerciseViewController()
     var completion: (() -> Void)?
@@ -13,6 +13,7 @@ class ExerciseCell: UICollectionViewCell {
     var timer = Timer()
     var isTimerRunning = false
     var resumeTapped = false
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(exerciseView)
@@ -21,7 +22,7 @@ class ExerciseCell: UICollectionViewCell {
         exerciseView.timerViewBackButton.addTarget(
             self, action: #selector(clickNavBackButton), for: .touchUpInside)
         exerciseView.nextWorkoutButton.addTarget(
-            self, action: #selector(nextPageButtonClicked), for: .touchUpInside)
+            self, action: #selector(gotoNextExercise), for: .touchUpInside)
         
         exerciseView.pauseResumeButton
             .addTarget(self, action: #selector(pauseButtonTapped),
@@ -30,16 +31,17 @@ class ExerciseCell: UICollectionViewCell {
         exerciseView.progressBar.setProgress(duration: timeLeft )
         startTimer()
     }
-    @objc func nextPageButtonClicked() {
-        delegate?.nextPageButtonClicked()
-    }
-    @objc func clickNavBackButton() {
-        delegate?.clickNavBackButton()
-    }
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
     }
     lazy var exerciseView = ExerciseView()
+    // MARK: - Delegates
+    @objc func gotoNextExercise() {
+        delegate?.gotoNextExercise()
+    }
+    @objc func clickNavBackButton() {
+        delegate?.clickNavBackButton()
+    }
     func configure(with model: StartWorkoutModel) {
         exerciseView.exerciseName.text = model.exerciseName
         exerciseView.topImageView.image = UIImage(named: model.image)

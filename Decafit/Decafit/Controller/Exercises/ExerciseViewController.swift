@@ -13,7 +13,6 @@ class ExerciseViewController: UIViewController {
         layout.scrollDirection = .horizontal
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.backgroundColor = .white
-        view.isPagingEnabled = true
         view.dataSource = self
         view.delegate = self
         view.register(ExerciseCell.self,
@@ -22,12 +21,14 @@ class ExerciseViewController: UIViewController {
     }()
 }
 extension ExerciseViewController: UIGestureRecognizerDelegate, ExerciseCellDelegate {
-    func nextPageButtonClicked() {
-        self.collectionView.scrollToNextItem()
+    func gotoNextExercise() {
+        
         // check if the timer is complete
         // if it is, display the complete button in the table row
         // if it isnt, display the incomplete button,
         // with the green progress bar indicating the progress
+        
+        scrollViewWillEndDragging(collectionView, withVelocity: collectionView.contentOffset, targetContentOffset: &collectionView.contentOffset)
     }
     
     func clickNavBackButton() {
@@ -64,9 +65,28 @@ extension ExerciseViewController: UICollectionViewDataSource {
     }
 }
 extension ExerciseViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.size.width, height: view.frame.size.height)
+    }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        targetContentOffset.pointee = scrollView.contentOffset
+        var factor: CGFloat = 0.5
+        if velocity.x < 0 {
+            factor = -factor
+        }
+        let pageWidth: Float = Float(self.view.bounds.width)
+        let minSpace: Float = 10.0
+        var cellToSwipe: Double = Double(Float((scrollView.contentOffset.x))/Float((pageWidth+minSpace))) + Double(0.5) + Double(factor)
+        if cellToSwipe < 0 {
+            cellToSwipe = 0
+        } else if cellToSwipe >= Double(data.getWorkoutData().count) {
+            cellToSwipe = Double(data.getWorkoutData().count) - Double(1)
+        }
+        let indexPath: IndexPath = IndexPath(row: Int(cellToSwipe), section: 0)
+        self.collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+
     }
 }

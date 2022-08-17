@@ -13,6 +13,7 @@ class WorkoutViewController: UIViewController {
     lazy var tableView: UITableView = {
         let view = UITableView(frame: view.bounds)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
         view.dataSource = self
         view.delegate = self
         view.register(WorkoutCell.self,

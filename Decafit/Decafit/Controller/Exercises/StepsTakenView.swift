@@ -7,7 +7,6 @@ class StepsTakenView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        backgroundColor = .systemPink
         translatesAutoresizingMaskIntoConstraints = false
         isHidden = true
         setupSubviews()
@@ -17,16 +16,11 @@ class StepsTakenView: UIView {
     }
     func startStepCount() {
         if CMPedometer.isStepCountingAvailable() {
-//            let calendar = Calendar.current
-//            pedometer.queryPedometerData(from: calendar.startOfDay(for: Date()), to: Date()) { (data, error) in
-//                print(data)
-//
-//            }
             pedometer.startUpdates(from: Date()) { (data, error) in
-//                print(data)
+                guard let data = data else { return }
                 if error == nil {
                     DispatchQueue.main.async {
-                        self.stepsData.text = "\(String(describing: data?.numberOfSteps)) Steps"
+                        self.stepsData.text = "\(String(describing: data.numberOfSteps)) Steps"
                     }
                 }
             }
@@ -47,7 +41,7 @@ class StepsTakenView: UIView {
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 32, font: .poppinsMedium),
                             textColor: DecaColor.decafitBlack.color,
-                            numberOfLines: 1, text: "110 Steps",
+                            numberOfLines: 1, text: "0 Steps",
                             kerning: 0))
         label.textAlignment = .center
         return label
@@ -96,8 +90,8 @@ class StepsTakenView: UIView {
         NSLayoutConstraint.activate([
             stepStack.topAnchor.constraint(equalTo: topAnchor, constant: 3),
             stepStack.centerXAnchor.constraint(equalTo: centerXAnchor),
-
-            timeStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -3),
+            timeStack.topAnchor.constraint(equalTo: stepStack.bottomAnchor, constant: 15),
+//            timeStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -3),
             timeStack.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }

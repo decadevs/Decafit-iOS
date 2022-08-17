@@ -3,6 +3,7 @@ class WorkoutCell: UITableViewCell {
     static let identifier = Constants.workoutCellId
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .white
         [exerciseImage, exerciseLabel, workoutDurationLabel, progressbar, completeButton]
             .forEach { contentView.addSubview($0)}
         setupSubviews()
