@@ -8,7 +8,8 @@
 import UIKit
 extension TimeInterval {
     var time: String {
-        return String(format: "%02d:%02d", Int(self/60),  Int(ceil(truncatingRemainder(dividingBy: 60))) )
+        return String(format: "%02d:%02d", Int(self/60),
+                      Int(ceil(truncatingRemainder(dividingBy: 60))) )
     }
 }
 extension Int {
@@ -19,9 +20,9 @@ extension Int {
 extension UINavigationBar {
     func shouldRemoveShadow(_ value: Bool) {
         if value {
-            self.setValue(true, forKey: "hidesShadow")
+            self.setValue(true, forKey: Constants.removeShadow)
         } else {
-            self.setValue(false, forKey: "hidesShadow")
+            self.setValue(false, forKey: Constants.removeShadow)
         }
     }
 }
@@ -54,13 +55,20 @@ extension UIView {
         overlay.frame = bounds
         overlay.backgroundColor = color
         overlay.alpha = alpha
+        overlay.tag = Tags.overlay
+        overlay.accessibilityIdentifier = Constants.overlayIdentifier
         addSubview(overlay)
+    }
+    func removeOverlay() {
+        guard let overlay = self.viewWithTag(Tags.overlay) else { return }
+        overlay.frame = .zero
+        overlay.removeFromSuperview()
     }
 }
 extension UIViewController {
-    func toggleScreens(_ sender: UIButton) {
+    func toggleAuthScreens(_ sender: UIButton) {
         let screen: UIViewController
-        if sender.tag == 1 {
+        if sender.tag == Tags.orangeSignInLink {
             screen = LoginViewController.getViewController()
         } else {
             screen = SignupViewController.getViewController()
@@ -68,5 +76,14 @@ extension UIViewController {
         screen.modalTransitionStyle = .flipHorizontal
         screen.modalPresentationStyle = .fullScreen
         present(screen, animated: true)
+    }
+}
+extension UICollectionView {
+    func scrollToNextItem() {
+        let contentOffset = CGFloat(floor(self.contentOffset.x + self.bounds.size.width))
+        self.moveToFrame(contentOffset: contentOffset)
+    }
+    func moveToFrame(contentOffset: CGFloat) {
+            self.setContentOffset(CGPoint(x: contentOffset, y: self.contentOffset.y), animated: true)
     }
 }

@@ -1,19 +1,23 @@
 import UIKit
-
-class ExerciseTimerView: UIView {
+protocol ExerciseViewDelegate: AnyObject {
+    func passViewMembers()
+}
+class ExerciseView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         accessibilityIdentifier = "ExerciseTimerView"
+        translatesAutoresizingMaskIntoConstraints = false
         setupSubviews()
     }
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
     }
-    lazy var topImageView: UIView = {
-       let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = DecaColor.decafitLightGray.color
-        return view
+    lazy var topImageView: DecaImageView = {
+        let img = DecaImageView(frame: .zero)
+        img.configure(with: DecaImageViewModel(
+                        image: Constants.playImg, contentMode: .scaleToFill,
+                        tintColor: .clear))
+        return img
     }()
     var exerciseName: DecaLabel = {
         let label = DecaLabel()
@@ -52,44 +56,56 @@ class ExerciseTimerView: UIView {
         button.setTitleColor(DecaColor.decafitPurple.color, for: .normal)
         return button
     }()
-    lazy var nextWorkoutButton = DecaButton.createPurpleButton(title: Constants.exerciseTimerButtonText)
+    lazy var nextWorkoutButton = DecaButton.createPurpleButton(
+        title: Constants.exerciseTimerButtonText)
+    let timerViewBackButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: Constants.backArrow), for: .normal)
+        button.backgroundColor = DecaColor.decafitLightGray.color
+        button.layer.cornerRadius = 10
+        button.layer.borderWidth = 0
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.contentEdgeInsets = UIEdgeInsets(
+            top: 12, left: 12, bottom: 12, right: 12)
+        return button
+    }()
     func setupSubviews() {
         [topImageView, exerciseName, progressBar, timerLabel,
          stepsTakenView, pauseResumeButton,
-         nextWorkoutButton, backButton].forEach { addSubview($0)}
+         nextWorkoutButton, timerViewBackButton].forEach { addSubview($0)}
         NSLayoutConstraint.activate([
+            self.widthAnchor.constraint(equalToConstant: 390),
             topImageView.topAnchor.constraint(equalTo: topAnchor),
             topImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             topImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             topImageView.widthAnchor.constraint(equalTo: widthAnchor),
             topImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4),
             // back
-            backButton.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 20),
-            backButton.topAnchor.constraint(equalTo: topImageView.topAnchor, constant: 50),
+            timerViewBackButton.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 20),
+            timerViewBackButton.topAnchor.constraint(equalTo: topImageView.topAnchor, constant: 50),
             // title
-            exerciseName.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: 0),
+            exerciseName.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: 40),
             exerciseName.leadingAnchor.constraint(equalTo: leadingAnchor),
             exerciseName.trailingAnchor.constraint(equalTo: trailingAnchor),
             exerciseName.centerXAnchor.constraint(equalTo: centerXAnchor),
             // progress bar
-            progressBar.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 70),
+            progressBar.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 100),
             progressBar.centerXAnchor.constraint(equalTo: centerXAnchor),
             progressBar.bottomAnchor.constraint(equalTo: pauseResumeButton.topAnchor, constant: -10),
-            // ticker 
+            // ticker
             timerLabel.centerXAnchor.constraint(equalTo: progressBar.centerXAnchor),
-            timerLabel.bottomAnchor.constraint(equalTo: progressBar.bottomAnchor, constant: -100),
+            timerLabel.bottomAnchor.constraint(equalTo: progressBar.bottomAnchor, constant: -70),
             // hidden view
             stepsTakenView.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 20),
             stepsTakenView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            stepsTakenView.bottomAnchor.constraint(equalTo: pauseResumeButton.topAnchor, constant: -10),
             stepsTakenView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
             stepsTakenView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2),
             // pause btn
-            pauseResumeButton.topAnchor.constraint(equalTo: stepsTakenView.bottomAnchor, constant: 20),
+            pauseResumeButton.topAnchor.constraint(equalTo: stepsTakenView.bottomAnchor, constant: 40),
             pauseResumeButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            pauseResumeButton.bottomAnchor.constraint(equalTo: nextWorkoutButton.topAnchor, constant: -25),
+            pauseResumeButton.bottomAnchor.constraint(equalTo: nextWorkoutButton.topAnchor, constant: -20),
 
-            nextWorkoutButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50),
+            nextWorkoutButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
             nextWorkoutButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85),
             nextWorkoutButton.centerXAnchor.constraint(equalTo: centerXAnchor)
 

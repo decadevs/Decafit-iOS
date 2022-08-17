@@ -1,12 +1,5 @@
-//
-//  StartWorkoutCell.swift
-//  Decafit
-//
-//  Created by Decagon on 01/08/2022.
-//
-
 import UIKit
-class StartWorkoutCell: UITableViewCell {
+class WorkoutCell: UITableViewCell {
     static let identifier = Constants.workoutCellId
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

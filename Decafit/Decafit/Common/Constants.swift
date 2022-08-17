@@ -48,7 +48,8 @@ enum Constants {
     static let goodMorning = "Good Morning"
     static let todayCellId = "TodayCell"
     static let workoutCellId = "StartWorkoutCell"
-    static let exerciseLabelText = "Jumping Jacks"
+    static let workoutModalTopSwipeCell = "WorkoutModalTopSwipeCell"
+    static let exerciseLabelText = "This Exercise"
     static let workoutDurationLabelText = "X10"
     static let bodyFocusAreaText = "First"
     static let focusDurationLabelText = "Second"
@@ -63,6 +64,8 @@ enum Constants {
     static let passwordMismatchError = "Passwords do not match!"
     static let blankTextFieldError = "All fields are required!"
     static let incorrectInputError = "Incorrect input"
+    static let overlayIdentifier = "overlay"
+    static let removeShadow = "hidesShadow"
     
     static let exerciseTimerButtonText = "Next Workout"
     static let completeText = "complete"

@@ -6,7 +6,7 @@ extension SignupViewController: AuthManagerDelegate {
                         message: message)
     }
     @objc func toggleLogin() {
-        toggleScreens(orangeSignInLink)
+        toggleAuthScreens(orangeSignInLink)
     }
     @objc func handleUserRegistration() {
         guard let fullName = fullNameTextField.text,
