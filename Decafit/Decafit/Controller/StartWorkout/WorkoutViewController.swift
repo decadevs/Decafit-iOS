@@ -84,20 +84,18 @@ extension WorkoutViewController: UIGestureRecognizerDelegate {
             // preserve state of workout and show the first unfinished exercise
         }
         startWorkoutButton.setTitle(Constants.continueWorkout, for: .normal)
-//        let firstIndex = tableView.indexPathsForVisibleRows?.first
-//        let firstRow = tableView.cellForRow(at: firstIndex!) as? StartWorkoutCell
-//        firstRow?.completeButton.isHidden = false
-//        let secondIndex = tableView.indexPathsForVisibleRows?[1]
-//        let secondRow = tableView.cellForRow(at: secondIndex!) as? StartWorkoutCell
-//        secondRow?.completeButton.setTitle(Constants.incompleteText, for: .normal)
-//        secondRow?.completeButton.setTitleColor(DecaColor.red.color, for: .normal)
-//        secondRow?.completeButton.backgroundColor = DecaColor.lightRed.color
-//        secondRow?.progressbar.isHidden = false
-//        secondRow?.progressbar.progress = 0.4
-//        secondRow?.completeButton.isHidden = false
+        let firstIndex = tableView.indexPathsForVisibleRows?.first
+        let firstRow = tableView.cellForRow(at: firstIndex!) as? WorkoutCell
+        firstRow?.completeButton.isHidden = false
+        let secondIndex = tableView.indexPathsForVisibleRows?[1]
+        let secondRow = tableView.cellForRow(at: secondIndex!) as? WorkoutCell
+        secondRow?.completeButton.setTitle(Constants.incompleteText, for: .normal)
+        secondRow?.completeButton.setTitleColor(DecaColor.red.color, for: .normal)
+        secondRow?.completeButton.backgroundColor = DecaColor.lightRed.color
+        secondRow?.progressbar.isHidden = false
+        secondRow?.progressbar.progress = 0.4
+        secondRow?.completeButton.isHidden = false
         
-        // move to the next when nextbutton is clicked on the exercise page
-        // Back button on all the exercises leads to workout list
         // When exercise is started, and you click the back button, that pauses the exercise, and
         // Shows the incomplete tag on the table
         // When exercise is completed before back button is clicked, show the complete tag on the table

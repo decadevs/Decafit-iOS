@@ -91,6 +91,7 @@
 		B4B96EA12892697F00E22B33 /* TodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B96EA02892697F00E22B33 /* TodayCollectionViewCell.swift */; };
 		B4B96EA728936A2800E22B33 /* FitConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B96EA628936A2800E22B33 /* FitConfigViewController.swift */; };
 		B4B96EA92893CCA500E22B33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4B96EA82893CCA500E22B33 /* Assets.xcassets */; };
+		B4C8D3C528ACCEF300AA901E /* TagFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8D3C428ACCEF300AA901E /* TagFile.swift */; };
 		B4E4C9C9289C4103008CD86D /* WorkoutTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E4C9C8289C4103008CD86D /* WorkoutTopView.swift */; };
 		E9EDA8C619805CC18DD608E6 /* Pods_Decafit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48853A80EF7AD9413CD9484E /* Pods_Decafit.framework */; };
 /* End PBXBuildFile section */
@@ -209,6 +210,7 @@
 		B4B96EA02892697F00E22B33 /* TodayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCollectionViewCell.swift; sourceTree = "<group>"; };
 		B4B96EA628936A2800E22B33 /* FitConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitConfigViewController.swift; sourceTree = "<group>"; };
 		B4B96EA82893CCA500E22B33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B4C8D3C428ACCEF300AA901E /* TagFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagFile.swift; sourceTree = "<group>"; };
 		B4E4C9C8289C4103008CD86D /* WorkoutTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTopView.swift; sourceTree = "<group>"; };
 		E09F5AB25E31C6DF910AF630 /* Pods-Decafit-DecafitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Decafit-DecafitUITests.debug.xcconfig"; path = "Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F5A45F2515A01D1403BDB39F /* Pods_Decafit_DecafitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Decafit_DecafitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -327,6 +329,7 @@
 				B44B3C0E289A714A000C94D7 /* Constants.swift */,
 				B44B3C1C289A957D000C94D7 /* Alert.swift */,
 				B431E92F28A5106A009769CB /* Hud.swift */,
+				B4C8D3C428ACCEF300AA901E /* TagFile.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -918,6 +921,7 @@
 				B48A590A2886D684004D1BEA /* LoginViewController.swift in Sources */,
 				B43631DC289D4BB30010976F /* ExerciseViewController.swift in Sources */,
 				B44B3C11289A7F57000C94D7 /* TextFields.swift in Sources */,
+				B4C8D3C528ACCEF300AA901E /* TagFile.swift in Sources */,
 				B43AFB0028ABA9B600811658 /* ExerciseCell.swift in Sources */,
 				B43AFB0D28ABB26700811658 /* User.swift in Sources */,
 				B44B3C002897C7F0000C94D7 /* WorkoutViewController.swift in Sources */,
@@ -1115,7 +1119,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Decafit/Decafit.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K5US6PZPYZ;
@@ -1138,7 +1141,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Decafit/Decafit.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K5US6PZPYZ;

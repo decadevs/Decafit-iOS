@@ -18,7 +18,6 @@ final class HomeViewController: UIViewController {
         view.delegate = self
         return view
     }()
-    let navbar = Navbar(frame: CGRect(x: 20, y: 20, width: 350, height: 80))
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -41,7 +40,7 @@ extension HomeViewController: FocusAreaViewDelegate {
     }
     
     func setupNavigation() {
-        let navbar = Navbar(frame: CGRect(x: 10, y: 10, width: 350, height: 80))
+        let navbar = Navbar(frame: CGRect(x: 10, y: 20, width: 350, height: 80))
         let menuBarItem = CustomNavbar()
         navbar.addSubview(menuBarItem)
         

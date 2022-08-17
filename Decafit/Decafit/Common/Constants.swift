@@ -64,6 +64,8 @@ enum Constants {
     static let passwordMismatchError = "Passwords do not match!"
     static let blankTextFieldError = "All fields are required!"
     static let incorrectInputError = "Incorrect input"
+    static let overlayIdentifier = "overlay"
+    static let removeShadow = "hidesShadow"
     
     static let exerciseTimerButtonText = "Next Workout"
     static let completeText = "complete"
