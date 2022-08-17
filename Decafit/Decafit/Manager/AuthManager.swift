@@ -6,14 +6,14 @@ protocol AuthManagerDelegate: AnyObject {
 }
 final class AuthManager {
     static let shared = AuthManager()
-    static let loginKeychainKey = "login"
+    static let loginKeychainKey = Constants.loginText
     weak var delegate: AuthManagerDelegate?
     var successcomplete: ((Bool) -> Void)?
     let keychain = KeychainSwift()
 
     public var isSignedIn: Bool {
 //        return keychain.get(AuthManager.loginKeychainKey) != nil
-        return true 
+        return false
     }
     public func register(user: User) {
         
@@ -23,11 +23,11 @@ final class AuthManager {
             HUD.hide()
           switch result {
           case .failure(let error):
-            self?.delegate?.didShowAlert(title: "Network Error",
+            self?.delegate?.didShowAlert(title: Constants.networkError,
                                    message: error.localizedDescription)
             return
           case .success(let graphQLResult):
-            if let registeredUser = graphQLResult.data?.register {
+            if let _ = graphQLResult.data?.register {
                 self?.successcomplete?(true)
             }
 
@@ -35,8 +35,7 @@ final class AuthManager {
               let message = errors
                              .map { $0.localizedDescription }
                              .joined(separator: "\n")
-                self?.delegate?.didShowAlert(title: "Something is wrong!",
-                                       message: message)
+                self?.delegate?.didShowAlert(title: Constants.alertTitleError, message: message)
                 return
             }
 
@@ -52,7 +51,7 @@ final class AuthManager {
           switch result {
           case .failure(let error):
             HUD.hide()
-            self?.delegate?.didShowAlert(title: "Network Error",
+            self?.delegate?.didShowAlert(title: Constants.networkError,
                                    message: error.localizedDescription)
             return
           case .success(let graphQLResult):
@@ -65,7 +64,7 @@ final class AuthManager {
               let message = errors
                 .map { $0.localizedDescription }
                              .joined(separator: "\n")
-                self?.delegate?.didShowAlert(title: "Error",
+                self?.delegate?.didShowAlert(title: Constants.alertTitleError,
                                        message: message)
                 return
             }
@@ -75,6 +74,7 @@ final class AuthManager {
     }
     
     public func signOut() {
+        keychain.delete(AuthManager.loginKeychainKey)
     }
     @objc func handleSocialLogin() {
         

@@ -11,13 +11,6 @@ let emailTextField: DecaTextField =
     DecaTextField.createNormalTextField(text: Constants.emailHolder)
 let passwordTextField: DecaTextField =
     DecaTextField.createSecureTextField(text: Constants.pswHolder)
-// MARK: - Signup VC Input Fields
-let fullNameTextField: DecaTextField =
-    DecaTextField.createNormalTextField(text: Constants.fullname)
-let phoneNumberTextField: DecaTextField =
-    DecaTextField.createNormalTextField(text: Constants.phone)
-let confirmPasswordTextField: DecaTextField =
-    DecaTextField.createSecureTextField(text: Constants.confirmPsw)
 // MARK: - Sets TextField
 let setsTextField: DecaTextField =
     DecaTextField.createNormalTextField(text: Constants.sets)

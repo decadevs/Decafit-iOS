@@ -43,7 +43,7 @@ let dontHaveAnAccountLabel: DecaLabel = {
 var signupTitleLabel: DecaLabel = {
     let label = DecaLabel()
     label.configure(with: DecaLabelViewModel(
-                        font: decaFont(size: 29, font: .poppinsMedium),
+                        font: decaFont(size: 26, font: .poppinsMedium),
                         textColor: DecaColor.decafitBlack.color,
                         numberOfLines: 1, text: Constants.signUp, kerning: 0.5))
     label.textAlignment = .left
@@ -52,7 +52,7 @@ var signupTitleLabel: DecaLabel = {
 let createPlanLabel: DecaLabel = {
     let label = DecaLabel()
     label.configure(with: DecaLabelViewModel(
-                        font: decaFont(size: 28, font: .poppinsMedium).bold(), textColor: .white,
+                        font: decaFont(size: 26, font: .poppinsMedium).bold(), textColor: .white,
                         numberOfLines: 2, text: Constants.createPlan, kerning: 1.4))
     return label
 }()

@@ -6,10 +6,27 @@ final class SignupViewController: UIViewController {
     static func getViewController() -> SignupViewController {
         return shared ?? SignupViewController()
     }
+    // MARK: - Text Fields
+    let fullNameTextField: DecaTextField =
+        DecaTextField.createNormalTextField(text: Constants.fullname)
+    let phoneNumberTextField: DecaTextField =
+        DecaTextField.createNormalTextField(text: Constants.phone)
+    let emailTextField: DecaTextField =
+        DecaTextField.createNormalTextField(text: Constants.emailHolder)
+    let passwordTextField: DecaTextField =
+        DecaTextField.createSecureTextField(text: Constants.pswHolder)
+    let confirmPasswordTextField: DecaTextField =
+        DecaTextField.createSecureTextField(text: Constants.confirmPsw)
     var textFields: [UITextField] {
         return [fullNameTextField, phoneNumberTextField,
                 emailTextField, passwordTextField, confirmPasswordTextField]
     }
+    // MARK: - Buttons
+    let googleButton = DecaButton.createSocialButton(image: Constants.googleImg)
+    let facebookButton = DecaButton.createSocialButton(image: Constants.fbImg)
+    let appleButton = DecaButton.createSocialButton(image: Constants.appleImg)
+    let signUpButton = DecaButton.createPurpleButton(title: Constants.signUp)
+    let orangeSignInLink = DecaButton.createOrangeButtonLink(title: Constants.signIn)
     var socialButtons: [DecaButton] {
         return [googleButton, facebookButton, appleButton]
     }
@@ -20,6 +37,15 @@ final class SignupViewController: UIViewController {
         orangeSignInLink.tag = 1
         signUpButton.addTarget(self, action: #selector(handleUserRegistration), for: .touchUpInside)
     }
+    // MARK: - Labels
+    let signInWithLabel: DecaLabel = {
+        let label = DecaLabel()
+        label.configure(with: DecaLabelViewModel(
+                            font: decaFont(size: 13, font: .poppinsMedium),
+                            textColor: DecaColor.decafitGray.color, numberOfLines: 1,
+                            text: Constants.signinWith, kerning: nil))
+        return label
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

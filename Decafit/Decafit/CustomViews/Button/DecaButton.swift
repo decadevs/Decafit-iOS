@@ -25,7 +25,7 @@ final class DecaButton: UIButton {
         btn.layer.borderWidth = 1
         btn.layer.borderColor =  DecaColor.decafitGray.color.cgColor
         btn.contentEdgeInsets = UIEdgeInsets(
-            top: 14, left: 16, bottom: 14, right: 16)
+            top: 11, left: 13, bottom: 11, right: 13)
         return btn
     }
     static func createPurpleButton(title: String) -> Self {
