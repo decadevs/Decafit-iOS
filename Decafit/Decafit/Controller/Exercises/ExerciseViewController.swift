@@ -87,6 +87,7 @@ extension ExerciseViewController: UICollectionViewDelegate, UICollectionViewDele
         }
         let indexPath: IndexPath = IndexPath(row: Int(cellToSwipe), section: 0)
         self.collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+//        ExerciseCell().timer?.startTimer()
 
     }
 }

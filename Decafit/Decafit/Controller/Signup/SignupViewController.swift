@@ -59,8 +59,7 @@ final class SignupViewController: UIViewController {
        let stackview = DecaStack(arrangedSubviews:
                                     [signupTitleLabel, fullNameTextField,
                                      phoneNumberTextField, emailTextField,
-                                     passwordTextField, confirmPasswordTextField,
-                                     signUpButton])
+                                     passwordTextField, confirmPasswordTextField])
         stackview.configure(with: DecaStackViewModel(
                                 axis: .vertical, alignment: .leading ,
                                 spacing: 10, distribution: .equalSpacing ))

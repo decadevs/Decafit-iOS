@@ -6,11 +6,7 @@ protocol ExerciseCellDelegate: AnyObject {
 class ExerciseCell: UICollectionViewCell {
     static let identifier = Constants.exerciseCellId
     weak var delegate: ExerciseCellDelegate?
-    // parse this from the exercise cell duration
-    var timeLeft: TimeInterval = 15
-    var endTime: Date?
-    var timer = Timer()
-    var isTimerRunning = false
+    var timer: DecaTimer?
     var resumeTapped = false
     // MARK: - Initializers
     override init(frame: CGRect) {
@@ -26,9 +22,11 @@ class ExerciseCell: UICollectionViewCell {
         exerciseView.pauseResumeButton
             .addTarget(self, action: #selector(pauseButtonTapped),
                        for: .touchUpInside)
-        exerciseView.timerLabel.text = timeLeft.time
-        exerciseView.progressBar.setProgress(duration: timeLeft )
-        startTimer()
+        timer = DecaTimer(timeLabel: exerciseView.timerLabel)
+        exerciseView.timerLabel.text = timer?.timeLeft.time
+        exerciseView.progressBar.setProgress(duration: timer?.timeLeft ?? 30 )
+        timer?.startTimer()
+        
     }
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
@@ -45,42 +43,19 @@ class ExerciseCell: UICollectionViewCell {
         exerciseView.exerciseName.text = model.exerciseName
         exerciseView.topImageView.image = UIImage(named: model.image)
     }
-    func startTimer() {
-        if isTimerRunning == false {
-            runTimer()
-        }
-    }
-    func runTimer() {
-        endTime = Date().addingTimeInterval(timeLeft)
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self,
-                                     selector: (#selector(updateTimer)),
-                                     userInfo: nil, repeats: true)
-        isTimerRunning = true
-    }
-    @objc func updateTimer() {
-        let timeLabel = exerciseView.timerLabel
-        if timeLeft > 0 {
-            timeLeft = endTime?.timeIntervalSinceNow ?? 0
-            timeLabel.text = timeLeft.time
-        } else {
-            timeLabel.text = "00:00"
-            timer.invalidate()
-            // Play sound to indicate time up
-        }
-    }
     @objc func pauseButtonTapped(_ sender: UIButton) {
         if self.resumeTapped == false {
-            timer.invalidate()
-            isTimerRunning = false
+            timer?.invalidate()
+            timer?.isTimerRunning = false
             self.resumeTapped = true
             exerciseView.progressBar.pauseAnimation()
             exerciseView.pauseResumeButton.setTitle(Constants.resume, for: .normal)
             exerciseView.pauseResumeButton.setImage(
                 UIImage(systemName: Constants.playFillSystemImg), for: .normal)
         } else {
-            runTimer()
+            timer?.runTimer()
             self.resumeTapped = false
-            isTimerRunning = true
+            timer?.isTimerRunning = true
              exerciseView.progressBar.resumeAnimation()
             exerciseView.pauseResumeButton.setTitle(Constants.pause, for: .normal)
             exerciseView.pauseResumeButton.setImage(

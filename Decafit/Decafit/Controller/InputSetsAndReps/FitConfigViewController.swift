@@ -31,7 +31,15 @@ extension FitConfigViewController: UITextFieldDelegate {
     @objc func clickNavBackButton() {
         self.navigationController?.popViewController(animated: true)
     }
+    func getConfigInput() {
+        guard let reps = repsTextField.text, let sets = setsTextField.text, !reps.isEmpty, !sets.isEmpty else {
+            Alert.showAlert(self, title: Constants.alertTitleError, message: Constants.blankTextFieldError)
+            return
+        }
+        print(reps, sets)
+    }
     @objc func gotoStartWorkout() {
+//        getConfigInput()
         let screen = WorkoutViewController.getWorkoutView()
         self.navigationController?.pushViewController(screen, animated: true)
     }

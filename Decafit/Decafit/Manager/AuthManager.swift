@@ -13,7 +13,7 @@ final class AuthManager {
 
     public var isSignedIn: Bool {
 //        return keychain.get(AuthManager.loginKeychainKey) != nil
-        return false
+        return true 
     }
     public func register(user: User) {
         

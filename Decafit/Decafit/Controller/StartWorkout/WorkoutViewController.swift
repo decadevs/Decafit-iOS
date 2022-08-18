@@ -85,6 +85,7 @@ extension WorkoutViewController: UIGestureRecognizerDelegate {
             // preserve state of workout and show the first unfinished exercise
         }
         startWorkoutButton.setTitle(Constants.continueWorkout, for: .normal)
+        
         let firstIndex = tableView.indexPathsForVisibleRows?.first
         let firstRow = tableView.cellForRow(at: firstIndex!) as? WorkoutCell
         firstRow?.completeButton.isHidden = false
