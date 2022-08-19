@@ -10,9 +10,10 @@ class ExerciseView: UIView {
         fatalError(Constants.requiredInit)
     }
     func displaySteps() {
+        let timer = DecaTimer(timeLabel: stepsTakenView.timeData)
         DispatchQueue.main.async {
             self.stepsTakenView.startStepCount()
-            self.stepsTakenView.timeData.text = self.timerLabel.text
+            timer.startTimer()
         }
     }
     lazy var topImageView: DecaImageView = {
@@ -42,8 +43,8 @@ class ExerciseView: UIView {
         label.textAlignment = .center
         return label
     }()
-    var progressBar: ProgressBar = {
-       let progress = ProgressBar()
+    var progressCircle: ProgressCircle = {
+       let progress = ProgressCircle()
         progress.translatesAutoresizingMaskIntoConstraints = false
         return progress
     }()
@@ -73,7 +74,7 @@ class ExerciseView: UIView {
         return button
     }()
     func setupSubviews() {
-        [topImageView, exerciseName, progressBar, timerLabel,
+        [topImageView, exerciseName, progressCircle, timerLabel,
          stepsTakenView, pauseResumeButton,
          nextWorkoutButton, timerViewBackButton].forEach { addSubview($0)}
         NSLayoutConstraint.activate([
@@ -92,12 +93,12 @@ class ExerciseView: UIView {
             exerciseName.trailingAnchor.constraint(equalTo: trailingAnchor),
             exerciseName.centerXAnchor.constraint(equalTo: centerXAnchor),
             // progress bar
-            progressBar.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 100),
-            progressBar.centerXAnchor.constraint(equalTo: centerXAnchor),
-            progressBar.bottomAnchor.constraint(equalTo: pauseResumeButton.topAnchor, constant: -10),
+            progressCircle.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 100),
+            progressCircle.centerXAnchor.constraint(equalTo: centerXAnchor),
+            progressCircle.bottomAnchor.constraint(equalTo: pauseResumeButton.topAnchor, constant: -10),
             // ticker
-            timerLabel.centerXAnchor.constraint(equalTo: progressBar.centerXAnchor),
-            timerLabel.bottomAnchor.constraint(equalTo: progressBar.bottomAnchor, constant: -70),
+            timerLabel.centerXAnchor.constraint(equalTo: progressCircle.centerXAnchor),
+            timerLabel.bottomAnchor.constraint(equalTo: progressCircle.bottomAnchor, constant: -70),
             // hidden view
             stepsTakenView.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 20),
             stepsTakenView.centerXAnchor.constraint(equalTo: centerXAnchor),

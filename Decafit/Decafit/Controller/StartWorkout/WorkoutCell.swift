@@ -11,6 +11,10 @@ class WorkoutCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
     }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        completeButton.isHidden = true 
+    }
     var exerciseImage: DecaImageView = {
         let img = DecaImageView(frame: .zero)
         img.contentMode = .scaleAspectFit
@@ -55,7 +59,7 @@ class WorkoutCell: UITableViewCell {
             top: 13, left: 12, bottom: 13, right: 12)
         return btn
     }()
-    func configure(with model: StartWorkoutModel) {
+    func configure(with model: Exercise) {
         exerciseLabel.text = model.exerciseName
         workoutDurationLabel.text = model.duration
         exerciseImage.image = UIImage(named: model.image)

@@ -1,6 +1,6 @@
 import UIKit
 
-class ProgressBar: UIView {
+class ProgressCircle: UIView {
     let progressLayer = CAShapeLayer()
     override init(frame: CGRect) {
         super.init(frame: frame)

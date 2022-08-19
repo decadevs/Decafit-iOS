@@ -51,7 +51,7 @@
 		B43631DC289D4BB30010976F /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DB289D4BB30010976F /* ExerciseViewController.swift */; };
 		B43631DE289D4D770010976F /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DD289D4D770010976F /* ExerciseView.swift */; };
 		B43631E0289D5AC80010976F /* StepsTakenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DF289D5AC80010976F /* StepsTakenView.swift */; };
-		B43631E2289DB8650010976F /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631E1289DB8650010976F /* ProgressBar.swift */; };
+		B43631E2289DB8650010976F /* ProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631E1289DB8650010976F /* ProgressCircle.swift */; };
 		B43AFAF428ABA09A00811658 /* SignupViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43AFAF328ABA09A00811658 /* SignupViewController+Extension.swift */; };
 		B43AFAF628ABA17900811658 /* LoginViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43AFAF528ABA17900811658 /* LoginViewController+Extension.swift */; };
 		B43AFAF928ABA1EF00811658 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43AFAF728ABA1EF00811658 /* Network.swift */; };
@@ -72,9 +72,9 @@
 		B44B3C18289A893E000C94D7 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C17289A893E000C94D7 /* Labels.swift */; };
 		B44B3C1B289A8ABE000C94D7 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C1A289A8ABE000C94D7 /* Images.swift */; };
 		B44B3C1D289A957D000C94D7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C1C289A957D000C94D7 /* Alert.swift */; };
-		B44B3C21289B0093000C94D7 /* FocusAreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C20289B0093000C94D7 /* FocusAreaModel.swift */; };
+		B44B3C21289B0093000C94D7 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C20289B0093000C94D7 /* Workout.swift */; };
 		B44B3C23289B0106000C94D7 /* TodaySessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C22289B0106000C94D7 /* TodaySessionModel.swift */; };
-		B44B3C25289B032D000C94D7 /* StartWorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C24289B032D000C94D7 /* StartWorkoutModel.swift */; };
+		B44B3C25289B032D000C94D7 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C24289B032D000C94D7 /* Exercise.swift */; };
 		B44B3C27289B064A000C94D7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C26289B064A000C94D7 /* DataManager.swift */; };
 		B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B12287C147000EEC900 /* AppDelegate.swift */; };
 		B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B14287C147000EEC900 /* SceneDelegate.swift */; };
@@ -167,7 +167,7 @@
 		B43631DB289D4BB30010976F /* ExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
 		B43631DD289D4D770010976F /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
 		B43631DF289D5AC80010976F /* StepsTakenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsTakenView.swift; sourceTree = "<group>"; };
-		B43631E1289DB8650010976F /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		B43631E1289DB8650010976F /* ProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircle.swift; sourceTree = "<group>"; };
 		B43AFAF328ABA09A00811658 /* SignupViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SignupViewController+Extension.swift"; sourceTree = "<group>"; };
 		B43AFAF528ABA17900811658 /* LoginViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginViewController+Extension.swift"; sourceTree = "<group>"; };
 		B43AFAF728ABA1EF00811658 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -189,9 +189,9 @@
 		B44B3C17289A893E000C94D7 /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
 		B44B3C1A289A8ABE000C94D7 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		B44B3C1C289A957D000C94D7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
-		B44B3C20289B0093000C94D7 /* FocusAreaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusAreaModel.swift; sourceTree = "<group>"; };
+		B44B3C20289B0093000C94D7 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		B44B3C22289B0106000C94D7 /* TodaySessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionModel.swift; sourceTree = "<group>"; };
-		B44B3C24289B032D000C94D7 /* StartWorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWorkoutModel.swift; sourceTree = "<group>"; };
+		B44B3C24289B032D000C94D7 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		B44B3C26289B064A000C94D7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		B47B5B0F287C147000EEC900 /* Decafit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Decafit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B47B5B12287C147000EEC900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -374,7 +374,7 @@
 				B44B3C16289A889E000C94D7 /* Label */,
 				B44B3C0628982687000C94D7 /* CustomNavView.swift */,
 				B4AB95B4288E932F00FE9C96 /* DecaStack.swift */,
-				B43631E1289DB8650010976F /* ProgressBar.swift */,
+				B43631E1289DB8650010976F /* ProgressCircle.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -478,9 +478,9 @@
 			isa = PBXGroup;
 			children = (
 				B43AFB0C28ABB26700811658 /* User.swift */,
-				B44B3C20289B0093000C94D7 /* FocusAreaModel.swift */,
+				B44B3C20289B0093000C94D7 /* Workout.swift */,
 				B44B3C22289B0106000C94D7 /* TodaySessionModel.swift */,
-				B44B3C24289B032D000C94D7 /* StartWorkoutModel.swift */,
+				B44B3C24289B032D000C94D7 /* Exercise.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -930,7 +930,7 @@
 				B4B96E9F2892696200E22B33 /* TodaySessionView.swift in Sources */,
 				B40AFB242887BD3600249820 /* CustomUIColor.swift in Sources */,
 				B4AB95CF2891D3B000FE9C96 /* FocusAreaView.swift in Sources */,
-				B44B3C21289B0093000C94D7 /* FocusAreaModel.swift in Sources */,
+				B44B3C21289B0093000C94D7 /* Workout.swift in Sources */,
 				B44B3C1B289A8ABE000C94D7 /* Images.swift in Sources */,
 				B43AFB0928ABAD3400811658 /* ModalTopSwipeCell.swift in Sources */,
 				B44B3C23289B0106000C94D7 /* TodaySessionModel.swift in Sources */,
@@ -947,9 +947,9 @@
 				B43AFB0D28ABB26700811658 /* User.swift in Sources */,
 				B44B3C002897C7F0000C94D7 /* WorkoutViewController.swift in Sources */,
 				B40AFB272888142100249820 /* SignupViewController.swift in Sources */,
-				B44B3C25289B032D000C94D7 /* StartWorkoutModel.swift in Sources */,
+				B44B3C25289B032D000C94D7 /* Exercise.swift in Sources */,
 				B44B3C0728982687000C94D7 /* CustomNavView.swift in Sources */,
-				B43631E2289DB8650010976F /* ProgressBar.swift in Sources */,
+				B43631E2289DB8650010976F /* ProgressCircle.swift in Sources */,
 				B4E4C9C9289C4103008CD86D /* WorkoutTopView.swift in Sources */,
 				B43AFAFA28ABA1EF00811658 /* AuthManager.swift in Sources */,
 				B4B96EA12892697F00E22B33 /* TodayCollectionViewCell.swift in Sources */,

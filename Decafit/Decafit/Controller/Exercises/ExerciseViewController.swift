@@ -1,7 +1,11 @@
 import UIKit
+protocol ExerciseVCDelegate: AnyObject {
+    func reload()
+}
 class ExerciseViewController: UIViewController {
     var exerciseView = ExerciseView()
     let data = DataManager.shared
+    weak var exerciseDelegate: ExerciseVCDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -21,13 +25,15 @@ class ExerciseViewController: UIViewController {
     }()
 }
 extension ExerciseViewController: UIGestureRecognizerDelegate, ExerciseCellDelegate {
+    func updatePauseTime(pauseTime: TimeInterval) {
+        // Exercise.getAllExercises[indexPath.row].pauseTime = pauseTime
+        // Exercise.saveAllExercises(allExercises: [])
+    }
+    
     func gotoNextExercise() {
-        
-        // check if the timer is complete
-        // if it is, display the complete button in the table row
-        // if it isnt, display the incomplete button,
-        // with the green progress bar indicating the progress
-        
+        // If pausetime < endtime, isCompleted = false, else true
+        // save the result 
+        exerciseDelegate?.reload()
         scrollViewWillEndDragging(collectionView, withVelocity: collectionView.contentOffset, targetContentOffset: &collectionView.contentOffset)
     }
     
@@ -36,6 +42,7 @@ extension ExerciseViewController: UIGestureRecognizerDelegate, ExerciseCellDeleg
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         navigationController?.popViewController(animated: true)
     }
+    
 }
 extension ExerciseViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -48,16 +55,15 @@ extension ExerciseViewController: UICollectionViewDataSource {
                 for: indexPath) as? ExerciseCell else { return UICollectionViewCell() }
         let workout = data.getWorkoutData()[indexPath.row]
         cell.configure(with: workout)
-        cell.delegate = self
+        cell.exerciseCellDelegate = self
         
         if cell.exerciseView.exerciseName.text == "Running" {
-//            cell.timer.invalidate()
-            cell.exerciseView.progressBar.isHidden = true
+            cell.exerciseView.progressCircle.isHidden = true
             cell.exerciseView.stepsTakenView.isHidden = false
             cell.exerciseView.timerLabel.isHidden = true
             cell.exerciseView.displaySteps()
         } else {
-            cell.exerciseView.progressBar.isHidden = false
+            cell.exerciseView.progressCircle.isHidden = false
             cell.exerciseView.stepsTakenView.isHidden = true
             cell.exerciseView.timerLabel.isHidden = false
         }

@@ -8,13 +8,13 @@
 import UIKit
 class FocusAreaCollectionViewCell: UICollectionViewCell {
     static let identifier = "WorkoutCell"
-    var focusAreaCell: FocusAreaModel? {
+    var focusAreaCell: Workout? {
         didSet {
             guard focusAreaCell != nil else {
                 return
             }
-            focusImage.image = UIImage(named: focusAreaCell?.image ?? "")
-            bodyFocusAreaLabel.text = focusAreaCell?.bodyPart ?? "ttt"
+            focusImage.image = UIImage(named: focusAreaCell?.backgroundImage ?? "")
+            bodyFocusAreaLabel.text = focusAreaCell?.title ?? "ttt"
             focusDurationLabel.text = focusAreaCell?.duration ?? "kkk"
         }
     }

@@ -36,6 +36,7 @@ extension FitConfigViewController: UITextFieldDelegate {
             Alert.showAlert(self, title: Constants.alertTitleError, message: Constants.blankTextFieldError)
             return
         }
+        // Save the data 
         print(reps, sets)
     }
     @objc func gotoStartWorkout() {
