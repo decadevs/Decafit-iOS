@@ -28,6 +28,8 @@ enum Constants {
     static let inputvcSubt = "Enter the number of reps and sets for your workout"
     static let sets = "Number of sets"
     static let reps = "Number of reps"
+    static let time = "Estimated time"
+    static let count = "Number of counts"
     
     static let googleImg = "google-logo"
     static let fbImg = "fb-img"
@@ -48,6 +50,7 @@ enum Constants {
     static let goodMorning = "Good Morning"
     static let todayCellId = "TodayCell"
     static let workoutCellId = "StartWorkoutCell"
+    static let exerciseCellId = "ExerciseCell"
     static let workoutModalTopSwipeCell = "WorkoutModalTopSwipeCell"
     static let exerciseLabelText = "This Exercise"
     static let workoutDurationLabelText = "X10"
@@ -61,9 +64,11 @@ enum Constants {
     static let todayFourthLabelTextAfterIcon = " 24 Kcal"
     
     static let alertTitleError = "Error!"
+    static let networkError = "Network Error"
     static let passwordMismatchError = "Passwords do not match!"
     static let blankTextFieldError = "All fields are required!"
     static let incorrectInputError = "Incorrect input"
+    static let loginText = "login"
     static let overlayIdentifier = "overlay"
     static let removeShadow = "hidesShadow"
     
@@ -74,6 +79,7 @@ enum Constants {
     static let resume = " Resume"
     static let pause = " Pause"
     static let loremText = modalText()
+    static let urlStr = "https://decagon-decafit-api.herokuapp.com/decafit"
 }
 func modalText() -> String {
     let text1 = "Lorem ipsum dolor sit amet, consetetur elitr, sed diam nonumy eirmod tempor invidunt labore etLorem ipsum dolor sit amet, consetetur elitr, sed diam nonumy eirmod tempor"

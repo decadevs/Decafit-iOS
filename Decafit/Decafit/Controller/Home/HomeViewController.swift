@@ -26,7 +26,11 @@ final class HomeViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        setNeedsStatusBarAppearanceUpdate()
         navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -40,18 +44,21 @@ extension HomeViewController: FocusAreaViewDelegate {
     }
     
     func setupNavigation() {
-        let navbar = Navbar(frame: CGRect(x: 10, y: 20, width: 350, height: 80))
-        let menuBarItem = CustomNavbar()
+        let navbar = Navbar(frame: CGRect(x: 10, y: 25, width: 350, height: 80))
+        navbar.backgroundColor = .white
+        let menuBarItem = CustomNavView()
         navbar.addSubview(menuBarItem)
         
-        let currWidth = menuBarItem.widthAnchor.constraint(equalToConstant: view.frame.size.width*0.9)
+        let currWidth = menuBarItem.widthAnchor.constraint(equalToConstant: view.frame.size.width)
         currWidth.isActive = true
-        let currHeight = menuBarItem.heightAnchor.constraint(equalToConstant: 300)
+        let currHeight = menuBarItem.heightAnchor.constraint(equalToConstant: 60)
         currHeight.isActive = true
-
-        self.navigationController?.navigationBar.addSubview(navbar)
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.shouldRemoveShadow(true)
+        
+        navigationController?.navigationBar.addSubview(navbar)
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.shouldRemoveShadow(true)
+        navigationController?.navigationBar.barStyle = .default
     }
     func setupSubviews() {
         [todayView, focusAreaView].forEach { view.addSubview($0)}
@@ -65,20 +72,5 @@ extension HomeViewController: FocusAreaViewDelegate {
             focusAreaView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             focusAreaView.heightAnchor.constraint(equalToConstant: CGFloat(view.frame.height * 0.4))
         ])
-    }
-}
-class Navbar: UINavigationBar {
-    let customView = UIBarButtonItem(customView: CustomNavbar())
-    let navitem = UINavigationItem(title: "")
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
     }
 }

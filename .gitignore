@@ -14,6 +14,9 @@
 
 # Xcode
 xcuserdata/
+xcuserdata/**/*
+Decafit.xcodeproj/xcuserdata/*
+Decafit.xcodeproj/project.xcworkspace/xcuserdata/*
 *.xcworkspace/
 DerivedData/
 

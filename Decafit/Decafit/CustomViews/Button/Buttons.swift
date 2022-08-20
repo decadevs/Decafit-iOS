@@ -12,15 +12,13 @@ let googleButton = DecaButton.createSocialButton(image: Constants.googleImg)
 let facebookButton = DecaButton.createSocialButton(image: Constants.fbImg)
 let appleButton = DecaButton.createSocialButton(image: Constants.appleImg)
 let orangeSignUpLink = DecaButton.createOrangeButtonLink(title: Constants.signUp)
-let signUpButton = DecaButton.createPurpleButton(title: Constants.signUp)
-let orangeSignInLink = DecaButton.createOrangeButtonLink(title: Constants.signIn)
 let nextButton = DecaButton.createPurpleButton(title: Constants.next)
 // MARK: - Custom navbar calender button
 var navbarRightCalender: UIButton = {
    let btn = UIButton()
     btn.setImage(UIImage(named: Constants.calenderImg)!, for: .normal)
-    btn.imageView?.addoverlay(color: DecaColor.decafitPalePurple.color)
-    btn.backgroundColor = DecaColor.decafitLightGray.color
+    btn.imageView?.addoverlay(color: DecaColor.palePurple.color)
+    btn.backgroundColor = DecaColor.lightGray.color
     btn.layer.cornerRadius = 10
     btn.layer.borderWidth = 0
     btn.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +29,7 @@ var navbarRightCalender: UIButton = {
 let backButton: UIButton = {
     let button = UIButton()
     button.setImage(UIImage(named: Constants.backArrow), for: .normal)
-    button.backgroundColor = DecaColor.decafitLightGray.color
+    button.backgroundColor = DecaColor.lightGray.color
     button.layer.cornerRadius = 10
     button.layer.borderWidth = 0
     button.contentEdgeInsets = UIEdgeInsets(

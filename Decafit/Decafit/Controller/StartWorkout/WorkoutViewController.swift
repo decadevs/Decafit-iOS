@@ -1,7 +1,4 @@
 import UIKit
-protocol StartWorkoutViewControllerDelegate: AnyObject {
-    func didDisplaySelectedCell(image: String, title: String, duration: String)
-}
 class WorkoutViewController: UIViewController {
     static var shared: WorkoutViewController?
     static func getWorkoutView() -> WorkoutViewController {
@@ -9,10 +6,11 @@ class WorkoutViewController: UIViewController {
     }
     let data = DataManager.shared
     var detailsView = ModalViewController()
-    weak var delegate: StartWorkoutViewControllerDelegate?
+    let defaults = UserDefaults.standard
     lazy var tableView: UITableView = {
         let view = UITableView(frame: view.bounds)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
         view.dataSource = self
         view.delegate = self
         view.register(WorkoutCell.self,
@@ -31,6 +29,7 @@ class WorkoutViewController: UIViewController {
         startWorkoutButton.addTarget(self, action: #selector(workoutButtonTapped), for: .touchUpInside)
         setupSubviews()
         setupNavigation()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -40,6 +39,32 @@ class WorkoutViewController: UIViewController {
         }
     }
 }
+// MARK: - Exercise View Controller Delegate
+extension WorkoutViewController: ExerciseVCDelegate {
+    func reload() {
+        checkExerciseCompletion()
+        tableView.reloadData()
+    }
+    func checkExerciseCompletion() {
+        // check store for isComplete var
+//        if isComplete {
+//            WorkoutCell().completeButton.isHidden = false
+//        } else {
+//            showIncompleteBtn(row: <#T##IndexPath#>, progress: <#T##Float#>)
+//        }
+    }
+    func showIncompleteBtn(row: IndexPath, progress: Float) {
+        // let firstIndex = tableView.indexPathsForVisibleRows?.first
+        let row = tableView.cellForRow(at: row) as? WorkoutCell
+        row?.completeButton.isHidden = false
+        row?.completeButton.setTitle(Constants.incompleteText, for: .normal)
+        row?.completeButton.setTitleColor(DecaColor.red.color, for: .normal)
+        row?.completeButton.backgroundColor = DecaColor.lightRed.color
+        row?.progressbar.isHidden = false
+        row?.progressbar.progress = progress
+    }
+}
+// MARK: - Table View Data Source
 extension WorkoutViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         data.getWorkoutData().count
@@ -48,6 +73,10 @@ extension WorkoutViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: WorkoutCell.identifier, for: indexPath)
                 as? WorkoutCell else { return UITableViewCell()}
+        cell.completeButton.isHidden = true
+        cell.progressbar.isHidden = true
+        cell.exerciseImage.image = UIImage()
+        cell.exerciseLabel.text = ""
         cell.configure(with: data.getWorkoutData()[indexPath.row])
         return cell
     }
@@ -56,16 +85,16 @@ extension WorkoutViewController: UITableViewDelegate, UITableViewDataSource {
         let selectedCell = data.getWorkoutData()[indexPath.row]
         let image = selectedCell.image
         let title = selectedCell.exerciseName
-        let duration = selectedCell.duration
+        _ = selectedCell.duration
         
         detailsView.titleText = title
         detailsView.imageName = image
         detailsView.modalPresentationStyle = .popover
         present(detailsView, animated: true, completion: nil)
         view.addoverlay(color: .black, alpha: 0.6)
-        delegate?.didDisplaySelectedCell(image: image, title: title, duration: duration)
     }
 }
+// MARK: - Gesture Recognizer Delegate
 extension WorkoutViewController: UIGestureRecognizerDelegate {
     @objc func clickNavBackButton(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
@@ -80,29 +109,9 @@ extension WorkoutViewController: UIGestureRecognizerDelegate {
         navigationController?.navigationBar.isHidden = true
     }
     @objc func workoutButtonTapped() {
-        if startWorkoutButton.titleLabel?.text == Constants.continueWorkout {
-            // preserve state of workout and show the first unfinished exercise
-        }
         startWorkoutButton.setTitle(Constants.continueWorkout, for: .normal)
-        let firstIndex = tableView.indexPathsForVisibleRows?.first
-        let firstRow = tableView.cellForRow(at: firstIndex!) as? WorkoutCell
-        firstRow?.completeButton.isHidden = false
-        let secondIndex = tableView.indexPathsForVisibleRows?[1]
-        let secondRow = tableView.cellForRow(at: secondIndex!) as? WorkoutCell
-        secondRow?.completeButton.setTitle(Constants.incompleteText, for: .normal)
-        secondRow?.completeButton.setTitleColor(DecaColor.red.color, for: .normal)
-        secondRow?.completeButton.backgroundColor = DecaColor.lightRed.color
-        secondRow?.progressbar.isHidden = false
-        secondRow?.progressbar.progress = 0.4
-        secondRow?.completeButton.isHidden = false
-        
-        // When exercise is started, and you click the back button, that pauses the exercise, and
-        // Shows the incomplete tag on the table
-        // When exercise is completed before back button is clicked, show the complete tag on the table
-        // [topImageView, exerciseName, progressBar, timerLabel,
-        // stepsTakenView, pauseResumeButton,nextWorkoutButton, backButton]
-        
         let exerciseVC = ExerciseViewController()
+        exerciseVC.exerciseDelegate = self
         self.navigationController?.pushViewController(exerciseVC, animated: true)
     }
     func setupSubviews() {

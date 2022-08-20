@@ -28,7 +28,7 @@ class WorkoutTopView: UIView {
         let image = UIImageView(image: UIImage(named: Constants.weightImg))
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
-        image.addoverlay(color: DecaColor.decafitPurple.color)
+        image.addoverlay(color: DecaColor.purple.color)
         return image
     }()
     let workoutTopviewBackButton: DecaButton = {

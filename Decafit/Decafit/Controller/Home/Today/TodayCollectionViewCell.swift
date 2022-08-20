@@ -30,7 +30,7 @@ class TodayCollectionViewCell: UICollectionViewCell {
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.layer.cornerRadius = 10
-        image.addoverlay(color: DecaColor.decafitPurple.color)
+        image.addoverlay(color: DecaColor.purple.color)
         return image
     }()
     let firstLabel: UILabel = {

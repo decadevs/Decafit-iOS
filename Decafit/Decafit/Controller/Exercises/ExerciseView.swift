@@ -1,21 +1,26 @@
 import UIKit
-protocol ExerciseViewDelegate: AnyObject {
-    func passViewMembers()
-}
 class ExerciseView: UIView {
+    var timer: DecaTimer?
     override init(frame: CGRect) {
         super.init(frame: frame)
         accessibilityIdentifier = "ExerciseTimerView"
         translatesAutoresizingMaskIntoConstraints = false
+        timer = DecaTimer(timeLabel: stepsTakenView.timeData)
         setupSubviews()
     }
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
     }
+    func displaySteps() {
+        DispatchQueue.main.async { [self] in
+            stepsTakenView.startStepCount()
+            timer?.startTimer()
+        }
+    }
     lazy var topImageView: DecaImageView = {
         let img = DecaImageView(frame: .zero)
         img.configure(with: DecaImageViewModel(
-                        image: Constants.playImg, contentMode: .scaleToFill,
+                        image: Constants.playImg, contentMode: .scaleAspectFill,
                         tintColor: .clear))
         return img
     }()
@@ -23,7 +28,7 @@ class ExerciseView: UIView {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 24, font: .poppinsBold),
-                            textColor: DecaColor.decafitBlack.color,
+                            textColor: DecaColor.black.color,
                             numberOfLines: 1, text: Constants.exerciseLabelText,
                             kerning: 0))
         label.textAlignment = .center
@@ -33,14 +38,14 @@ class ExerciseView: UIView {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 22, font: .poppinsBold),
-                            textColor: DecaColor.decafitBlack.color,
+                            textColor: DecaColor.black.color,
                             numberOfLines: 1, text: "00:02",
                             kerning: 0.5))
         label.textAlignment = .center
         return label
     }()
-    var progressBar: ProgressBar = {
-       let progress = ProgressBar()
+    var progressCircle: ProgressCircle = {
+       let progress = ProgressCircle()
         progress.translatesAutoresizingMaskIntoConstraints = false
         return progress
     }()
@@ -51,9 +56,9 @@ class ExerciseView: UIView {
         button.layer.borderWidth = 0
         button.setTitle(Constants.pause, for: .normal)
         button.setImage(UIImage(systemName: Constants.pauseImg), for: .normal)
-        button.tintColor = DecaColor.decafitPurple.color
+        button.tintColor = DecaColor.purple.color
         button.titleLabel?.font = decaFont(size: 20, font: .poppinsMedium)
-        button.setTitleColor(DecaColor.decafitPurple.color, for: .normal)
+        button.setTitleColor(DecaColor.purple.color, for: .normal)
         return button
     }()
     lazy var nextWorkoutButton = DecaButton.createPurpleButton(
@@ -61,7 +66,7 @@ class ExerciseView: UIView {
     let timerViewBackButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: Constants.backArrow), for: .normal)
-        button.backgroundColor = DecaColor.decafitLightGray.color
+        button.backgroundColor = DecaColor.lightGray.color
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 0
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -70,12 +75,12 @@ class ExerciseView: UIView {
         return button
     }()
     func setupSubviews() {
-        [topImageView, exerciseName, progressBar, timerLabel,
+        [topImageView, exerciseName, progressCircle, timerLabel,
          stepsTakenView, pauseResumeButton,
          nextWorkoutButton, timerViewBackButton].forEach { addSubview($0)}
         NSLayoutConstraint.activate([
             self.widthAnchor.constraint(equalToConstant: 390),
-            topImageView.topAnchor.constraint(equalTo: topAnchor),
+            topImageView.topAnchor.constraint(equalTo: topAnchor, constant: -5),
             topImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             topImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             topImageView.widthAnchor.constraint(equalTo: widthAnchor),
@@ -89,12 +94,12 @@ class ExerciseView: UIView {
             exerciseName.trailingAnchor.constraint(equalTo: trailingAnchor),
             exerciseName.centerXAnchor.constraint(equalTo: centerXAnchor),
             // progress bar
-            progressBar.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 100),
-            progressBar.centerXAnchor.constraint(equalTo: centerXAnchor),
-            progressBar.bottomAnchor.constraint(equalTo: pauseResumeButton.topAnchor, constant: -10),
+            progressCircle.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 100),
+            progressCircle.centerXAnchor.constraint(equalTo: centerXAnchor),
+            progressCircle.bottomAnchor.constraint(equalTo: pauseResumeButton.topAnchor, constant: -10),
             // ticker
-            timerLabel.centerXAnchor.constraint(equalTo: progressBar.centerXAnchor),
-            timerLabel.bottomAnchor.constraint(equalTo: progressBar.bottomAnchor, constant: -70),
+            timerLabel.centerXAnchor.constraint(equalTo: progressCircle.centerXAnchor),
+            timerLabel.bottomAnchor.constraint(equalTo: progressCircle.bottomAnchor, constant: -70),
             // hidden view
             stepsTakenView.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 20),
             stepsTakenView.centerXAnchor.constraint(equalTo: centerXAnchor),

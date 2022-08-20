@@ -14,9 +14,9 @@ final class DecaTextField: UITextField {
         backgroundColor = .clear
         font = decaFont(size: 16, font: .poppinsRegular)
         layer.borderWidth = 1
-        textColor = DecaColor.decafitDarkGray.color
+        textColor = DecaColor.darkGray.color
         layer.cornerRadius = 5
-        layer.borderColor = DecaColor.decafitDarkGray.color.cgColor
+        layer.borderColor = DecaColor.darkGray.color.cgColor
         leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
         leftViewMode = .always
     }

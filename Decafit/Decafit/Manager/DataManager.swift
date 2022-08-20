@@ -8,11 +8,11 @@
 import Foundation
 final class DataManager {
     static let shared = DataManager()
-    func getWorkoutData() -> [StartWorkoutModel] {
-        return startWorkoutData
+    func getWorkoutData() -> [Exercise] {
+        return exerciseData
     }
-    func getFocusAreaData() -> [FocusAreaModel] {
-        return focusData
+    func getFocusAreaData() -> [Workout] {
+        return workoutData
     }
     func getTodayData() -> [TodaySessionModel] {
         return todayData

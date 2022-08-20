@@ -6,7 +6,7 @@ final class HUD {
         DispatchQueue.main.async {
             SVProgressHUD.setDefaultStyle(.custom)
             SVProgressHUD.setDefaultMaskType(.custom)
-            SVProgressHUD.setForegroundColor(DecaColor.decafitPurple.color)
+            SVProgressHUD.setForegroundColor(DecaColor.purple.color)
             SVProgressHUD.setBackgroundColor(.black)
             SVProgressHUD.setBackgroundLayerColor(.clear)
             SVProgressHUD.show(withStatus: status)

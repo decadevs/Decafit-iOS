@@ -14,7 +14,7 @@ class ModalTopSwipeCell: UICollectionViewCell {
     lazy var workoutModalImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
-        image.backgroundColor = DecaColor.decafitLightGray.color
+        image.backgroundColor = DecaColor.lightGray.color
         return image
     }()
 }
