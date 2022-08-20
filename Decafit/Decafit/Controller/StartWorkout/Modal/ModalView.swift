@@ -1,4 +1,3 @@
-
 import UIKit
 class ModalView: UIView {
     override init(frame: CGRect) {
@@ -28,7 +27,7 @@ class ModalView: UIView {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 12, font: .poppinsRegular),
-                            textColor: DecaColor.decafitDarkGray.color, numberOfLines: 0,
+                            textColor: DecaColor.darkGray.color, numberOfLines: 0,
                             text: Constants.loremText, kerning: nil))
         label.sizeToFit()
         return label
@@ -39,9 +38,9 @@ class ModalView: UIView {
                         title: Constants.close,
                         font: decaFont(size: 14, font: .poppinsRegular),
                         backgroundColor: .clear,
-                        titleColor: DecaColor.decafitPurple.color,
+                        titleColor: DecaColor.purple.color,
                         image: nil, borderWidth: 1, cornerRadius: 4,
-                        borderColor: DecaColor.decafitPurple.color.cgColor,
+                        borderColor: DecaColor.purple.color.cgColor,
                         contentEdgeInsets: nil, isEnabled: true, tarmic: false))
         return btn
     }()

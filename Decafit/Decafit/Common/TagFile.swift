@@ -9,4 +9,5 @@ import Foundation
 enum Tags {
     static let overlay = 5
     static let orangeSignInLink = 1
+    static let stepcell = 2
 }

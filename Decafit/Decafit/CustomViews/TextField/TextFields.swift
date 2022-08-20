@@ -16,3 +16,7 @@ let setsTextField: DecaTextField =
     DecaTextField.createNormalTextField(text: Constants.sets)
 let repsTextField: DecaTextField
     = DecaTextField.createNormalTextField(text: Constants.reps)
+let timeTextField: DecaTextField =
+    DecaTextField.createNormalTextField(text: Constants.time)
+let countTextField: DecaTextField
+    = DecaTextField.createNormalTextField(text: Constants.count)

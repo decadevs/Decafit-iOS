@@ -44,14 +44,14 @@ extension HomeViewController: FocusAreaViewDelegate {
     }
     
     func setupNavigation() {
-        let navbar = Navbar(frame: CGRect(x: 10, y: 20, width: 350, height: 80))
+        let navbar = Navbar(frame: CGRect(x: 10, y: 25, width: 350, height: 80))
         navbar.backgroundColor = .white
         let menuBarItem = CustomNavView()
         navbar.addSubview(menuBarItem)
         
         let currWidth = menuBarItem.widthAnchor.constraint(equalToConstant: view.frame.size.width)
         currWidth.isActive = true
-        let currHeight = menuBarItem.heightAnchor.constraint(equalToConstant: 300)
+        let currHeight = menuBarItem.heightAnchor.constraint(equalToConstant: 60)
         currHeight.isActive = true
         
         navigationController?.navigationBar.addSubview(navbar)

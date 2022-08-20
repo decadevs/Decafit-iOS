@@ -11,7 +11,6 @@ class ExerciseCell: UICollectionViewCell {
     var timer: DecaTimer?
     var resumeTapped = false
     var pauseTime: TimeInterval = 0
-    var exerciseStarted: Bool = false
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,7 +21,6 @@ class ExerciseCell: UICollectionViewCell {
         exerciseView.timerLabel.text = timer?.timeLeft.time
         exerciseView.progressCircle.setProgress(duration: timer?.timeLeft ?? 30 )
         timer?.startTimer()
-        exerciseStarted = true 
     }
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
@@ -45,37 +43,40 @@ class ExerciseCell: UICollectionViewCell {
         exerciseView.topImageView.image = UIImage(named: model.image)
     }
     @objc func gotoNextExercise() {
-        // setDuration is coming from time input field in FitConfig
-//        if pauseTime < setDuration {
-//            isComplete = false
-//        } else {
-//            isComplete = true
-        // save it 
-//        }
         exerciseCellDelegate?.gotoNextExercise()
     }
     @objc func clickNavBackButton() {
         exerciseCellDelegate?.clickNavBackButton()
     }
+}
+extension ExerciseCell {
     @objc func pauseButtonTapped(_ sender: UIButton) {
-        if self.resumeTapped == false {
-            timer?.invalidate()
-            timer?.isTimerRunning = false
-            self.resumeTapped = true
-            pauseTime = timer?.timeLeft ?? 0.0
+        if sender.tag == Tags.stepcell {
+            let timer = exerciseView.timer
+            pauseTimer(timer: timer!)
+        } else {
+            pauseTimer(timer: self.timer!)
+        }
+    }
+    func pauseTimer(timer: DecaTimer) {
+        if resumeTapped == false {
+            timer.invalidate()
+            timer.isTimerRunning = false
+            resumeTapped = true
+            pauseTime = timer.timeLeft
             exerciseCellDelegate?.updatePauseTime(pauseTime: pauseTime)
             exerciseView.progressCircle.pauseAnimation()
             exerciseView.pauseResumeButton.setTitle(Constants.resume, for: .normal)
             exerciseView.pauseResumeButton.setImage(
                 UIImage(systemName: Constants.playFillSystemImg), for: .normal)
         } else {
-            timer?.runTimer()
-            self.resumeTapped = false
-            timer?.isTimerRunning = true
-             exerciseView.progressCircle.resumeAnimation()
+            timer.runTimer()
+            resumeTapped = false
+            timer.isTimerRunning = true
+            exerciseView.progressCircle.resumeAnimation()
             exerciseView.pauseResumeButton.setTitle(Constants.pause, for: .normal)
             exerciseView.pauseResumeButton.setImage(
-                UIImage(systemName: Constants.pauseImg), for: .normal)
+               UIImage(systemName: Constants.pauseImg), for: .normal)
         }
     }
 }

@@ -42,7 +42,7 @@ final class SignupViewController: UIViewController {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 13, font: .poppinsMedium),
-                            textColor: DecaColor.decafitGray.color, numberOfLines: 1,
+                            textColor: DecaColor.gray.color, numberOfLines: 1,
                             text: Constants.signinWith, kerning: nil))
         return label
     }()

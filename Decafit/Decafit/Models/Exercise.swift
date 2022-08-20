@@ -20,7 +20,7 @@ struct Exercise: Codable {
     }
      static func saveAllExercises(allExercises: [Exercise]) {
           let encoder = JSONEncoder()
-          if let encoded = try? encoder.encode(allExercises){
+          if let encoded = try? encoder.encode(allExercises) {
              UserDefaults.standard.set(encoded, forKey: "exercises")
           }
      }

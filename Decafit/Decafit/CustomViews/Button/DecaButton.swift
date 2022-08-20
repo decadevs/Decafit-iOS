@@ -23,7 +23,7 @@ final class DecaButton: UIButton {
         btn.setImage(UIImage(named: image), for: .normal)
         btn.layer.cornerRadius = 3
         btn.layer.borderWidth = 1
-        btn.layer.borderColor =  DecaColor.decafitGray.color.cgColor
+        btn.layer.borderColor =  DecaColor.gray.color.cgColor
         btn.contentEdgeInsets = UIEdgeInsets(
             top: 11, left: 13, bottom: 11, right: 13)
         return btn
@@ -33,7 +33,7 @@ final class DecaButton: UIButton {
         btn.setTitle(title, for: .normal)
         btn.titleLabel?.font = decaFont(size: 24, font: .ubuntuMedium)
         btn.setTitleColor(.white, for: .normal)
-        btn.backgroundColor = DecaColor.decafitPurple.color
+        btn.backgroundColor = DecaColor.purple.color
         btn.layer.cornerRadius = 5
         btn.heightAnchor.constraint(equalToConstant: 64).isActive = true
         return btn
@@ -42,7 +42,7 @@ final class DecaButton: UIButton {
         let btn = Self()
         btn.setTitle(title, for: .normal)
         btn.titleLabel?.font = decaFont(size: 16, font: .poppinsRegular)
-        btn.setTitleColor(DecaColor.decafitOrange.color, for: .normal)
+        btn.setTitleColor(DecaColor.orange.color, for: .normal)
         btn.backgroundColor = .clear
         return btn
     }

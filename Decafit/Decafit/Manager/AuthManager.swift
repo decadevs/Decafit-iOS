@@ -27,7 +27,7 @@ final class AuthManager {
                                    message: error.localizedDescription)
             return
           case .success(let graphQLResult):
-            if let _ = graphQLResult.data?.register {
+            if graphQLResult.data?.register != nil {
                 self?.successcomplete?(true)
             }
 

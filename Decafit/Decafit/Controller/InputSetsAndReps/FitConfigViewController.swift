@@ -2,6 +2,7 @@ import UIKit
 
 class FitConfigViewController: UIViewController {
     static let shared =  FitConfigViewController()
+// MARK: - Views
     lazy var topImageView = TodaySessionView(isHidden: true)
     lazy var labelStack: UIStackView = {
        let stack = UIStackView(arrangedSubviews:
@@ -10,6 +11,17 @@ class FitConfigViewController: UIViewController {
         stack.spacing = 15
         stack.alignment = .leading
         stack.distribution = .fillProportionally
+        stack.contentHuggingPriority(for: .vertical)
+        return stack
+    }()
+    lazy var textfieldStack: UIStackView = {
+       let stack = UIStackView(arrangedSubviews:
+                                [setsTextField, repsTextField,
+                                 timeTextField, countTextField])
+        stack.axis = .vertical
+        stack.spacing = 10
+        stack.alignment = .leading
+        stack.distribution = .fillEqually
         stack.contentHuggingPriority(for: .vertical)
         return stack
     }()
@@ -32,12 +44,12 @@ extension FitConfigViewController: UITextFieldDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     func getConfigInput() {
-        guard let reps = repsTextField.text, let sets = setsTextField.text, !reps.isEmpty, !sets.isEmpty else {
+        guard let reps = repsTextField.text, let sets = setsTextField.text, let time = timeTextField.text, let count = countTextField.text, !reps.isEmpty, !sets.isEmpty, !time.isEmpty, !count.isEmpty else {
             Alert.showAlert(self, title: Constants.alertTitleError, message: Constants.blankTextFieldError)
             return
         }
         // Save the data 
-        print(reps, sets)
+        print(reps, sets, time, count)
     }
     @objc func gotoStartWorkout() {
 //        getConfigInput()
@@ -64,11 +76,12 @@ extension FitConfigViewController: UIGestureRecognizerDelegate {
 }
 extension FitConfigViewController {
     func setupSubviews() {
-        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height/1.6)
+        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height/1.2)
         let parentStack: DecaStack = {
             let stackView = DecaStack(arrangedSubviews: [topImageView,
                                                          labelStack,
-                                                         setsTextField, repsTextField, nextButton])
+                                                         textfieldStack,
+                                                         nextButton])
             stackView.configure(with: DecaStackViewModel(
                                     axis: .vertical, alignment: .center,
                                     spacing: 20, distribution: .fillProportionally))
@@ -77,7 +90,7 @@ extension FitConfigViewController {
         }()
         view.addSubview(parentStack)
         NSLayoutConstraint.activate([
-            topImageView.widthAnchor.constraint(equalToConstant: view.frame.width-10),
+            topImageView.widthAnchor.constraint(equalToConstant: view.frame.width),
             topImageView.heightAnchor.constraint(equalToConstant: 240),
             topImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             labelStack.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: 15),
@@ -85,9 +98,13 @@ extension FitConfigViewController {
             labelStack.leadingAnchor.constraint(equalTo: setsTextField.leadingAnchor, constant: 0),
             setsTextField.heightAnchor.constraint(equalToConstant: 56),
             repsTextField.heightAnchor.constraint(equalToConstant: 56),
+            timeTextField.heightAnchor.constraint(equalToConstant: 56),
+            countTextField.heightAnchor.constraint(equalToConstant: 56),
             nextButton.heightAnchor.constraint(equalToConstant: 64),
             setsTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             repsTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            timeTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            countTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             nextButton.widthAnchor
                 .constraint(equalTo: view.widthAnchor, multiplier: 0.85)
         ])

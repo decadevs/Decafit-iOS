@@ -30,7 +30,7 @@ class StepsTakenView: UIView {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 16, font: .poppinsMedium),
-                            textColor: DecaColor.decafitGray.color,
+                            textColor: DecaColor.gray.color,
                             numberOfLines: 1, text: "Steps taken",
                             kerning: 0))
         label.textAlignment = .center
@@ -40,7 +40,7 @@ class StepsTakenView: UIView {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 32, font: .poppinsMedium),
-                            textColor: DecaColor.decafitBlack.color,
+                            textColor: DecaColor.black.color,
                             numberOfLines: 1, text: "0 Steps",
                             kerning: 0))
         label.textAlignment = .center
@@ -59,7 +59,7 @@ class StepsTakenView: UIView {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 16, font: .poppinsMedium),
-                            textColor: DecaColor.decafitGray.color,
+                            textColor: DecaColor.gray.color,
                             numberOfLines: 1, text: "Time remaining",
                             kerning: 0))
         label.textAlignment = .center
@@ -70,7 +70,7 @@ class StepsTakenView: UIView {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 32, font: .poppinsMedium),
-                            textColor: DecaColor.decafitBlack.color,
+                            textColor: DecaColor.black.color,
                             numberOfLines: 1, text: "01:43",
                             kerning: 0))
         label.textAlignment = .center

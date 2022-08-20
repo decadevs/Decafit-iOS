@@ -27,7 +27,7 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = Constants.focusAreaViewTitleText
         label.font = decaFont(size: 16, font: .poppinsMedium).bold()
-        label.textColor = DecaColor.decafitBlack.color
+        label.textColor = DecaColor.black.color
         return label
     }()
     override init(frame: CGRect) {

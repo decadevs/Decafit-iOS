@@ -7,36 +7,36 @@
 
 import UIKit
 enum DecaColor {
-    case decafitGray
-    case decafitBlack
-    case decafitOrange
-    case decafitPurple
-    case decafitLightGray
-    case decafitDarkGray
-    case decafitPalePurple
-    case decafitLightGreen
-    case decafitGreen
+    case gray
+    case black
+    case orange
+    case purple
+    case lightGray
+    case darkGray
+    case palePurple
+    case lightGreen
+    case green
     case lightRed
     case red
     var color: UIColor {
         switch self {
-        case .decafitGray:
+        case .gray:
             return #colorLiteral(red: 0.7126122117, green: 0.74427706, blue: 0.7983196378, alpha: 1)
-        case .decafitBlack:
+        case .black:
             return #colorLiteral(red: 0.1642587185, green: 0.1759757698, blue: 0.2050507069, alpha: 1)
-        case .decafitOrange:
+        case .orange:
             return #colorLiteral(red: 0.9505439401, green: 0.394153595, blue: 0.1895760596, alpha: 1)
-        case .decafitPurple:
+        case .purple:
             return #colorLiteral(red: 0.4031648636, green: 0.3810556829, blue: 0.658888042, alpha: 1)
-        case .decafitLightGray:
+        case .lightGray:
             return #colorLiteral(red: 0.9684734941, green: 0.968393147, blue: 0.9848353267, alpha: 1)
-        case .decafitDarkGray:
+        case .darkGray:
             return #colorLiteral(red: 0.516553998, green: 0.548253119, blue: 0.5981615782, alpha: 1)
-        case .decafitPalePurple:
+        case .palePurple:
             return #colorLiteral(red: 0.7604640722, green: 0.7548263669, blue: 0.8625454903, alpha: 1)
-        case .decafitLightGreen:
+        case .lightGreen:
             return #colorLiteral(red: 0.9002782106, green: 0.9613595605, blue: 0.9450122714, alpha: 1)
-        case .decafitGreen:
+        case .green:
             return #colorLiteral(red: 0, green: 0.6074795723, blue: 0.4437177181, alpha: 1)
         case .lightRed:
             return #colorLiteral(red: 0.9974444509, green: 0.9414363503, blue: 0.9158548713, alpha: 1)

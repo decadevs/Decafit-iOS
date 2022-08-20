@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftySound
 class DecaTimer {
     var timeLeft: TimeInterval = 25
     var endTime: Date?
@@ -36,9 +37,9 @@ class DecaTimer {
             timeLeft = endTime?.timeIntervalSinceNow ?? 0
             timeLabel.text = timeLeft.time
         } else {
-            timeLabel.text = "00:00"
             timer.invalidate()
-            // Play sound to indicate time up
+            Sound.play(file: "sound-effect.mp3")
+            timeLabel.text = "00:00"
         }
     }
 }

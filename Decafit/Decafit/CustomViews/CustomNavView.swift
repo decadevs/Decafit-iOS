@@ -9,7 +9,8 @@ import UIKit
 class CustomNavView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white 
+        backgroundColor = .white
+        translatesAutoresizingMaskIntoConstraints = false
         setupSubviews()
     }
     required init?(coder: NSCoder) {
@@ -22,7 +23,7 @@ class CustomNavView: UIView {
             navbarProfileImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             navbarTitleLabel.leadingAnchor.constraint(equalTo: navbarProfileImage.trailingAnchor, constant: 25),
             navbarTitleLabel.topAnchor.constraint(equalTo: navbarProfileImage.topAnchor, constant: 15),
-            navbarRightCalender.leadingAnchor.constraint(equalTo: navbarTitleLabel.trailingAnchor, constant: 50),
+            navbarRightCalender.leadingAnchor.constraint(equalTo: navbarTitleLabel.trailingAnchor, constant: 60),
             navbarRightCalender.topAnchor.constraint(equalTo: navbarProfileImage.topAnchor, constant: 5)
         ])
     }

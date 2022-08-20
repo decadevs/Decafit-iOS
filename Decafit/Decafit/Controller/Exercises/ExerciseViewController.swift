@@ -28,11 +28,13 @@ extension ExerciseViewController: UIGestureRecognizerDelegate, ExerciseCellDeleg
     func updatePauseTime(pauseTime: TimeInterval) {
         // Exercise.getAllExercises[indexPath.row].pauseTime = pauseTime
         // Exercise.saveAllExercises(allExercises: [])
+        
     }
     
     func gotoNextExercise() {
         // If pausetime < endtime, isCompleted = false, else true
-        // save the result 
+        // endtime is the time set in fitconfig
+        // save the result
         exerciseDelegate?.reload()
         scrollViewWillEndDragging(collectionView, withVelocity: collectionView.contentOffset, targetContentOffset: &collectionView.contentOffset)
     }
@@ -42,7 +44,6 @@ extension ExerciseViewController: UIGestureRecognizerDelegate, ExerciseCellDeleg
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         navigationController?.popViewController(animated: true)
     }
-    
 }
 extension ExerciseViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -56,16 +57,17 @@ extension ExerciseViewController: UICollectionViewDataSource {
         let workout = data.getWorkoutData()[indexPath.row]
         cell.configure(with: workout)
         cell.exerciseCellDelegate = self
-        
-        if cell.exerciseView.exerciseName.text == "Running" {
-            cell.exerciseView.progressCircle.isHidden = true
-            cell.exerciseView.stepsTakenView.isHidden = false
-            cell.exerciseView.timerLabel.isHidden = true
-            cell.exerciseView.displaySteps()
+        let stepcell = cell.exerciseView
+        if workout.exerciseName == "Running" {
+            stepcell.progressCircle.isHidden = true
+            stepcell.stepsTakenView.isHidden = false
+            stepcell.timerLabel.isHidden = true
+            stepcell.pauseResumeButton.tag = Tags.stepcell
+            stepcell.displaySteps()
         } else {
-            cell.exerciseView.progressCircle.isHidden = false
-            cell.exerciseView.stepsTakenView.isHidden = true
-            cell.exerciseView.timerLabel.isHidden = false
+            stepcell.progressCircle.isHidden = false
+            stepcell.stepsTakenView.isHidden = true
+            stepcell.timerLabel.isHidden = false
         }
         return cell
     }
@@ -93,7 +95,5 @@ extension ExerciseViewController: UICollectionViewDelegate, UICollectionViewDele
         }
         let indexPath: IndexPath = IndexPath(row: Int(cellToSwipe), section: 0)
         self.collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
-//        ExerciseCell().timer?.startTimer()
-
     }
 }

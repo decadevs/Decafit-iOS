@@ -28,6 +28,8 @@ enum Constants {
     static let inputvcSubt = "Enter the number of reps and sets for your workout"
     static let sets = "Number of sets"
     static let reps = "Number of reps"
+    static let time = "Estimated time"
+    static let count = "Number of counts"
     
     static let googleImg = "google-logo"
     static let fbImg = "fb-img"
@@ -77,6 +79,7 @@ enum Constants {
     static let resume = " Resume"
     static let pause = " Pause"
     static let loremText = modalText()
+    static let urlStr = "https://decagon-decafit-api.herokuapp.com/decafit"
 }
 func modalText() -> String {
     let text1 = "Lorem ipsum dolor sit amet, consetetur elitr, sed diam nonumy eirmod tempor invidunt labore etLorem ipsum dolor sit amet, consetetur elitr, sed diam nonumy eirmod tempor"

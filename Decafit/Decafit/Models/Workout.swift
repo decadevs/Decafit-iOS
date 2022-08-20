@@ -8,7 +8,7 @@
 import Foundation
 struct Workout: Codable {
     let backgroundImage, title: String
-    var duration: String = "01:00"
+    var duration: String
 //    var sets, reps, count, time: Int
     // id: ID, title: String, backgroundImage, createdAt: String
     //  exercises: [Excercise] 

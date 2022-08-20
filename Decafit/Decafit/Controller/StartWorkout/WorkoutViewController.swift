@@ -85,7 +85,7 @@ extension WorkoutViewController: UITableViewDelegate, UITableViewDataSource {
         let selectedCell = data.getWorkoutData()[indexPath.row]
         let image = selectedCell.image
         let title = selectedCell.exerciseName
-        let duration = selectedCell.duration
+        _ = selectedCell.duration
         
         detailsView.titleText = title
         detailsView.imageName = image
@@ -94,7 +94,7 @@ extension WorkoutViewController: UITableViewDelegate, UITableViewDataSource {
         view.addoverlay(color: .black, alpha: 0.6)
     }
 }
-// MARK:- Gesture Recognizer Delegate
+// MARK: - Gesture Recognizer Delegate
 extension WorkoutViewController: UIGestureRecognizerDelegate {
     @objc func clickNavBackButton(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)

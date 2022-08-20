@@ -17,12 +17,12 @@ class ProgressCircle: UIView {
             startAngle: -90.degreesToRadians, endAngle: 270.degreesToRadians,
             clockwise: true)
         circleLayer.path = circularPath.cgPath
-        circleLayer.strokeColor = DecaColor.decafitLightGray.color.cgColor
+        circleLayer.strokeColor = DecaColor.lightGray.color.cgColor
         circleLayer.lineWidth = 6
         circleLayer.fillColor = UIColor.clear.cgColor
         layer.addSublayer(circleLayer)
         progressLayer.path = circularPath.cgPath
-        progressLayer.strokeColor = DecaColor.decafitPurple.color.cgColor
+        progressLayer.strokeColor = DecaColor.purple.color.cgColor
         progressLayer.lineWidth = 6
         progressLayer.fillColor = UIColor.clear.cgColor
         progressLayer.strokeEnd = 0

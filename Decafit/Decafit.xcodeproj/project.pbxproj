@@ -95,6 +95,8 @@
 		B4C8D3C328AC6DF000AA901E /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8D3C228AC6DF000AA901E /* NavBar.swift */; };
 		B4C8D3C528ACCEF300AA901E /* TagFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8D3C428ACCEF300AA901E /* TagFile.swift */; };
 		B4C8D3C828AEBF3000AA901E /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8D3C728AEBF3000AA901E /* Timer.swift */; };
+		B4C8D3CA28B06C1400AA901E /* sound-effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B4C8D3C928B06C1400AA901E /* sound-effect.mp3 */; };
+		B4C8D3CC28B0712C00AA901E /* revb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B4C8D3CB28B0712C00AA901E /* revb.mp3 */; };
 		B4E4C9C9289C4103008CD86D /* WorkoutTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E4C9C8289C4103008CD86D /* WorkoutTopView.swift */; };
 		E9EDA8C619805CC18DD608E6 /* Pods_Decafit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48853A80EF7AD9413CD9484E /* Pods_Decafit.framework */; };
 /* End PBXBuildFile section */
@@ -218,6 +220,8 @@
 		B4C8D3C228AC6DF000AA901E /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
 		B4C8D3C428ACCEF300AA901E /* TagFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagFile.swift; sourceTree = "<group>"; };
 		B4C8D3C728AEBF3000AA901E /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		B4C8D3C928B06C1400AA901E /* sound-effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sound-effect.mp3"; sourceTree = "<group>"; };
+		B4C8D3CB28B0712C00AA901E /* revb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = revb.mp3; sourceTree = "<group>"; };
 		B4E4C9C8289C4103008CD86D /* WorkoutTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTopView.swift; sourceTree = "<group>"; };
 		E09F5AB25E31C6DF910AF630 /* Pods-Decafit-DecafitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Decafit-DecafitUITests.debug.xcconfig"; path = "Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F5A45F2515A01D1403BDB39F /* Pods_Decafit_DecafitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Decafit_DecafitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -586,6 +590,8 @@
 		B48A59042886D4AD004D1BEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B4C8D3C928B06C1400AA901E /* sound-effect.mp3 */,
+				B4C8D3CB28B0712C00AA901E /* revb.mp3 */,
 				B4B96EA82893CCA500E22B33 /* Assets.xcassets */,
 				B40AFACB2887970700249820 /* Fonts */,
 			);
@@ -732,11 +738,13 @@
 			files = (
 				B40AFB172887983C00249820 /* Ubuntu-Regular.ttf in Resources */,
 				B40AFAE42887974200249820 /* Poppins-Light.ttf in Resources */,
+				B4C8D3CC28B0712C00AA901E /* revb.mp3 in Resources */,
 				B40AFAEE2887974200249820 /* Poppins-Black.ttf in Resources */,
 				B40AFB1C2887983C00249820 /* Ubuntu-Light.ttf in Resources */,
 				B4B96EA92893CCA500E22B33 /* Assets.xcassets in Resources */,
 				B40AFB1B2887983C00249820 /* Ubuntu-Italic.ttf in Resources */,
 				B40AFAEC2887974200249820 /* Poppins-LightItalic.ttf in Resources */,
+				B4C8D3CA28B06C1400AA901E /* sound-effect.mp3 in Resources */,
 				B40AFB1D2887983C00249820 /* UFL.txt in Resources */,
 				B40AFB192887983C00249820 /* Ubuntu-MediumItalic.ttf in Resources */,
 				B40AFAEF2887974200249820 /* Poppins-Thin.ttf in Resources */,
@@ -1146,6 +1154,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K5US6PZPYZ;
 				INFOPLIST_FILE = Decafit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1168,6 +1177,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K5US6PZPYZ;
 				INFOPLIST_FILE = Decafit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

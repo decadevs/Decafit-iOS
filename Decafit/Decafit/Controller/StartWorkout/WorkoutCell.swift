@@ -24,21 +24,21 @@ class WorkoutCell: UITableViewCell {
     var exerciseLabel: DecaLabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(font: decaFont(size: 18, font: .poppinsMedium).bold(),
-                                                 textColor: DecaColor.decafitBlack.color, numberOfLines: 1,
+                                                 textColor: DecaColor.black.color, numberOfLines: 1,
                                                  text: Constants.exerciseLabelText, kerning: nil))
         return label
     }()
     var workoutDurationLabel: UILabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(font: decaFont(size: 16, font: .poppinsMedium),
-                                                 textColor: DecaColor.decafitGray.color, numberOfLines: 1,
+                                                 textColor: DecaColor.gray.color, numberOfLines: 1,
                                                  text: Constants.workoutDurationLabelText, kerning: nil))
         return label
     }()
     var progressbar: UIProgressView = {
         let bar = UIProgressView()
         bar.translatesAutoresizingMaskIntoConstraints = false
-        bar.progressTintColor = DecaColor.decafitLightGreen.color
+        bar.progressTintColor = DecaColor.lightGreen.color
         bar.trackTintColor = .white
         bar.isHidden = true
         bar.isOpaque = false
@@ -50,8 +50,8 @@ class WorkoutCell: UITableViewCell {
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setTitle(Constants.completeText, for: .normal)
         btn.titleLabel?.font = decaFont(size: 12, font: .poppinsMedium)
-        btn.setTitleColor(DecaColor.decafitGreen.color, for: .normal)
-        btn.backgroundColor = DecaColor.decafitLightGreen.color
+        btn.setTitleColor(DecaColor.green.color, for: .normal)
+        btn.backgroundColor = DecaColor.lightGreen.color
         btn.layer.cornerRadius = 15
         btn.layer.borderWidth = 0
         btn.isHidden = true
