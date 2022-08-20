@@ -1,11 +1,5 @@
-//
-//  WorkoutPageTopview.swift
-//  Decafit
-//
-//  Created by Decagon on 02/08/2022.
-//
 import UIKit
-class WorkoutPageTopview: UIView {
+class WorkoutTopView: UIView {
     lazy var titleLabel: UILabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
@@ -34,7 +28,7 @@ class WorkoutPageTopview: UIView {
         let image = UIImageView(image: UIImage(named: Constants.weightImg))
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
-        image.addoverlay(color: DecaColor.decafitPurple.color)
+        image.addoverlay(color: DecaColor.purple.color)
         return image
     }()
     let workoutTopviewBackButton: DecaButton = {

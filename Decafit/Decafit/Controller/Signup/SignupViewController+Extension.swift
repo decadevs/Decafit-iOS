@@ -1,15 +1,12 @@
-//
-//  SignupViewController+Extension.swift
-//  Decafit
-//
-//  Created by Decagon on 20/07/2022.
-//
-
 import UIKit
 
-extension SignupViewController {
+extension SignupViewController: AuthManagerDelegate {
+    func didShowAlert(title: String, message: String) {
+        Alert.showAlert(self, title: title,
+                        message: message)
+    }
     @objc func toggleLogin() {
-        toggleLoginSignup(self)
+        toggleAuthScreens(orangeSignInLink)
     }
     @objc func handleUserRegistration() {
         guard let fullName = fullNameTextField.text,
@@ -27,37 +24,43 @@ extension SignupViewController {
                             message: Constants.passwordMismatchError)
             return
         }
-        // Call auth sign in method here
-        print(fullName, phoneNumber, email)
+        let user = User(fullName: fullName, email: email,
+                        phoneNumber: phoneNumber, password: password)
+        HUD.show(status: "Signing you up...")
+        auth.register(user: user)
+        auth.successcomplete = { [weak self] output in
+            if output {
+                self?.didShowNextScreen()
+            }
+        }
     }
 }
 
 extension SignupViewController {
     func setUpSubviews() {
-        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height-25)
         let parentStack: DecaStack = {
             let stackView = DecaStack(arrangedSubviews:
-                                        [signupTopImageView, textViewStack,
+                                        [signupTopImageView, textViewStack, signUpButton,
                                          lineStack, socialStack, redirectToSigninStack])
             stackView.configure(with: DecaStackViewModel(
                                     axis: .vertical, alignment: .center,
                                     spacing: 10, distribution: .fill))
-            stackView.frame.size = contentViewSize
+            stackView.translatesAutoresizingMaskIntoConstraints = false
             return stackView
         }()
         view.addSubview(parentStack)
-        let scrollView = UIScrollView(frame: view.bounds)
-        scrollView.contentSize = contentViewSize
-        scrollView.showsHorizontalScrollIndicator = true
         NSLayoutConstraint.activate([
+            parentStack.widthAnchor.constraint(equalTo: view.widthAnchor),
+//            parentStack.heightAnchor.constraint(equalTo: view.heightAnchor),
+            parentStack.topAnchor.constraint(equalTo: view.topAnchor),
+            parentStack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
             signupTopImageView.widthAnchor.constraint(equalTo: parentStack.widthAnchor),
-            signupTopImageView.topAnchor.constraint(equalTo: parentStack.topAnchor, constant: -20),
-            fullNameTextField.heightAnchor.constraint(equalToConstant: 53),
-            phoneNumberTextField.heightAnchor.constraint(equalToConstant: 53),
-            emailTextField.heightAnchor.constraint(equalToConstant: 53),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 53),
-            confirmPasswordTextField.heightAnchor.constraint(equalToConstant: 53),
-            signUpButton.heightAnchor.constraint(equalToConstant: 58),
+            signupTopImageView.topAnchor.constraint(equalTo: parentStack.topAnchor, constant: 0),
+            fullNameTextField.heightAnchor.constraint(equalToConstant: 52),
+            phoneNumberTextField.heightAnchor.constraint(equalToConstant: 52),
+            emailTextField.heightAnchor.constraint(equalToConstant: 52),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 52),
+            confirmPasswordTextField.heightAnchor.constraint(equalToConstant: 52),
             fullNameTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             phoneNumberTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             emailTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
@@ -65,7 +68,7 @@ extension SignupViewController {
             confirmPasswordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             signUpButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             createPlanLabel.leadingAnchor.constraint(equalTo: signupTopImageView.leadingAnchor, constant: 30),
-            createPlanLabel.trailingAnchor.constraint(equalTo: signupTopImageView.trailingAnchor, constant: -40),
+            createPlanLabel.trailingAnchor.constraint(equalTo: signupTopImageView.trailingAnchor, constant: -15),
             createPlanLabel.bottomAnchor.constraint(equalTo: signupTopImageView.bottomAnchor, constant: -30)
         ])
     }
@@ -88,5 +91,18 @@ extension SignupViewController: UITextFieldDelegate {
     }
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    func didShowNextScreen() {
+        let title = "Success!"
+        let message = "You have been successfully registered. Check your email inbox for your verification token."
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            DispatchQueue.main.async {
+                let login = LoginViewController.getViewController()
+                login.modalPresentationStyle = .fullScreen
+                self.present(login, animated: true, completion: nil)
+            }
+        }))
+        present(alert, animated: true, completion: nil)
     }
 }

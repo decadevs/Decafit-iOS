@@ -1,10 +1,12 @@
-
 import UIKit
+import CoreMotion
 
 class StepsTakenView: UIView {
+    let pedometer = CMPedometer()
+    let activityManager = CMMotionActivityManager()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .systemPink
         translatesAutoresizingMaskIntoConstraints = false
         isHidden = true
         setupSubviews()
@@ -12,11 +14,23 @@ class StepsTakenView: UIView {
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
     }
+    func startStepCount() {
+        if CMPedometer.isStepCountingAvailable() {
+            pedometer.startUpdates(from: Date()) { (data, error) in
+                guard let data = data else { return }
+                if error == nil {
+                    DispatchQueue.main.async {
+                        self.stepsData.text = "\(String(describing: data.numberOfSteps)) Steps"
+                    }
+                }
+            }
+       }
+    }
     lazy var stepsTaken: DecaLabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 16, font: .poppinsMedium),
-                            textColor: DecaColor.decafitGray.color,
+                            textColor: DecaColor.gray.color,
                             numberOfLines: 1, text: "Steps taken",
                             kerning: 0))
         label.textAlignment = .center
@@ -26,8 +40,8 @@ class StepsTakenView: UIView {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 32, font: .poppinsMedium),
-                            textColor: DecaColor.decafitBlack.color,
-                            numberOfLines: 1, text: "110 Steps",
+                            textColor: DecaColor.black.color,
+                            numberOfLines: 1, text: "0 Steps",
                             kerning: 0))
         label.textAlignment = .center
         return label
@@ -45,7 +59,7 @@ class StepsTakenView: UIView {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 16, font: .poppinsMedium),
-                            textColor: DecaColor.decafitGray.color,
+                            textColor: DecaColor.gray.color,
                             numberOfLines: 1, text: "Time remaining",
                             kerning: 0))
         label.textAlignment = .center
@@ -56,7 +70,7 @@ class StepsTakenView: UIView {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 32, font: .poppinsMedium),
-                            textColor: DecaColor.decafitBlack.color,
+                            textColor: DecaColor.black.color,
                             numberOfLines: 1, text: "01:43",
                             kerning: 0))
         label.textAlignment = .center
@@ -76,8 +90,8 @@ class StepsTakenView: UIView {
         NSLayoutConstraint.activate([
             stepStack.topAnchor.constraint(equalTo: topAnchor, constant: 3),
             stepStack.centerXAnchor.constraint(equalTo: centerXAnchor),
-
-            timeStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -3),
+            timeStack.topAnchor.constraint(equalTo: stepStack.bottomAnchor, constant: 15),
+//            timeStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -3),
             timeStack.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }

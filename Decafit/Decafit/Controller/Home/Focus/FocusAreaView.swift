@@ -27,7 +27,7 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = Constants.focusAreaViewTitleText
         label.font = decaFont(size: 16, font: .poppinsMedium).bold()
-        label.textColor = DecaColor.decafitBlack.color
+        label.textColor = DecaColor.black.color
         return label
     }()
     override init(frame: CGRect) {
@@ -69,7 +69,7 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.frame.size.width/2.3, height: 120)
+        return CGSize(width: self.frame.size.width/2.35, height: 120)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let screen = FitConfigViewController.shared

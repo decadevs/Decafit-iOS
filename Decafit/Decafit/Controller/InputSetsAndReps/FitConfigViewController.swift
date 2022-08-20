@@ -1,14 +1,8 @@
-//
-//  InputViewController.swift
-//  Decafit
-//
-//  Created by Decagon on 29/07/2022.
-//
-
 import UIKit
 
 class FitConfigViewController: UIViewController {
     static let shared =  FitConfigViewController()
+// MARK: - Views
     lazy var topImageView = TodaySessionView(isHidden: true)
     lazy var labelStack: UIStackView = {
        let stack = UIStackView(arrangedSubviews:
@@ -17,6 +11,17 @@ class FitConfigViewController: UIViewController {
         stack.spacing = 15
         stack.alignment = .leading
         stack.distribution = .fillProportionally
+        stack.contentHuggingPriority(for: .vertical)
+        return stack
+    }()
+    lazy var textfieldStack: UIStackView = {
+       let stack = UIStackView(arrangedSubviews:
+                                [setsTextField, repsTextField,
+                                 timeTextField, countTextField])
+        stack.axis = .vertical
+        stack.spacing = 10
+        stack.alignment = .leading
+        stack.distribution = .fillEqually
         stack.contentHuggingPriority(for: .vertical)
         return stack
     }()
@@ -30,36 +35,40 @@ class FitConfigViewController: UIViewController {
         backButton.addTarget(self, action: #selector(clickNavBackButton),
                              for: .touchUpInside)
     }
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = false
-    }
 }
 extension FitConfigViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true
     }
-    @objc func clickNavBackButton(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+    @objc func clickNavBackButton() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    func getConfigInput() {
+        guard let reps = repsTextField.text, let sets = setsTextField.text, let time = timeTextField.text, let count = countTextField.text, !reps.isEmpty, !sets.isEmpty, !time.isEmpty, !count.isEmpty else {
+            Alert.showAlert(self, title: Constants.alertTitleError, message: Constants.blankTextFieldError)
+            return
+        }
+        // Save the data 
+        print(reps, sets, time, count)
     }
     @objc func gotoStartWorkout() {
-        let screen = StartWorkoutViewController.getWorkoutView()
+//        getConfigInput()
+        let screen = WorkoutViewController.getWorkoutView()
         self.navigationController?.pushViewController(screen, animated: true)
     }
 }
 extension FitConfigViewController: UIGestureRecognizerDelegate {
     func setupNavigation() {
-        let navbar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 50))
-        navbar.backgroundColor = .white
-        backButton.frame = CGRect(x: 20, y: 20, width: 40, height: 40)
-        navbar.addSubview(backButton)
-        navigationController?.navigationBar.addSubview(navbar)
-
+        let cview = UIView(frame: CGRect(x: 20, y: 40, width: 350, height: 50))
+        cview.addSubview(backButton)
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        backButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        backButton.bottomAnchor.constraint(equalTo: cview.bottomAnchor).isActive = true
+        view.addSubview(cview)
+        
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.navigationController?.navigationBar.isTranslucent = false
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        navigationController?.navigationBar.isHidden = true
         self.navigationItem.setHidesBackButton(true, animated: true)
         navigationItem.backButtonTitle = " "
         navigationItem.backButtonDisplayMode = .minimal
@@ -67,11 +76,12 @@ extension FitConfigViewController: UIGestureRecognizerDelegate {
 }
 extension FitConfigViewController {
     func setupSubviews() {
-        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height/1.6)
+        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height/1.2)
         let parentStack: DecaStack = {
             let stackView = DecaStack(arrangedSubviews: [topImageView,
                                                          labelStack,
-                                                         setsTextField, repsTextField, nextButton])
+                                                         textfieldStack,
+                                                         nextButton])
             stackView.configure(with: DecaStackViewModel(
                                     axis: .vertical, alignment: .center,
                                     spacing: 20, distribution: .fillProportionally))
@@ -80,17 +90,21 @@ extension FitConfigViewController {
         }()
         view.addSubview(parentStack)
         NSLayoutConstraint.activate([
-            topImageView.widthAnchor.constraint(equalToConstant: view.frame.width-10),
-            topImageView.heightAnchor.constraint(equalToConstant: 170),
-            topImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -40),
-            labelStack.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: -20),
+            topImageView.widthAnchor.constraint(equalToConstant: view.frame.width),
+            topImageView.heightAnchor.constraint(equalToConstant: 240),
+            topImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            labelStack.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: 15),
             labelStack.heightAnchor.constraint(equalToConstant: 45),
             labelStack.leadingAnchor.constraint(equalTo: setsTextField.leadingAnchor, constant: 0),
             setsTextField.heightAnchor.constraint(equalToConstant: 56),
             repsTextField.heightAnchor.constraint(equalToConstant: 56),
+            timeTextField.heightAnchor.constraint(equalToConstant: 56),
+            countTextField.heightAnchor.constraint(equalToConstant: 56),
             nextButton.heightAnchor.constraint(equalToConstant: 64),
             setsTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             repsTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            timeTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            countTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             nextButton.widthAnchor
                 .constraint(equalTo: view.widthAnchor, multiplier: 0.85)
         ])

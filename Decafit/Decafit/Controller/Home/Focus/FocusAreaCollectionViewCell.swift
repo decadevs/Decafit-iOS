@@ -8,13 +8,13 @@
 import UIKit
 class FocusAreaCollectionViewCell: UICollectionViewCell {
     static let identifier = "WorkoutCell"
-    var focusAreaCell: FocusAreaModel? {
+    var focusAreaCell: Workout? {
         didSet {
             guard focusAreaCell != nil else {
                 return
             }
-            focusImage.image = UIImage(named: focusAreaCell?.image ?? "")
-            bodyFocusAreaLabel.text = focusAreaCell?.bodyPart ?? "ttt"
+            focusImage.image = UIImage(named: focusAreaCell?.backgroundImage ?? "")
+            bodyFocusAreaLabel.text = focusAreaCell?.title ?? "ttt"
             focusDurationLabel.text = focusAreaCell?.duration ?? "kkk"
         }
     }
@@ -31,7 +31,7 @@ class FocusAreaCollectionViewCell: UICollectionViewCell {
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.layer.cornerRadius = 10
-        image.addoverlay(color: DecaColor.decafitPurple.color)
+        image.addoverlay(color: DecaColor.purple.color)
         return image
     }()
     var bodyFocusAreaLabel: UILabel = {

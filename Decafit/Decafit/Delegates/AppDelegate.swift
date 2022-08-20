@@ -9,6 +9,11 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    var window: UIWindow?
+    static var standard: AppDelegate {
+        // swiftlint:disable:next force_cast
+        return UIApplication.shared.delegate as! AppDelegate
+    }
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions
                         launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

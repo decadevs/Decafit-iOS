@@ -26,25 +26,43 @@ final class HomeViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        setupNavigation()
+        setNeedsStatusBarAppearanceUpdate()
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+
     }
 }
 extension HomeViewController: FocusAreaViewDelegate {
     func didDisplayFitConfigScreen(_ screen: FitConfigViewController, image: UIImage?, title: String) {
         self.navigationController?.pushViewController(screen, animated: true)
     }
+    
     func setupNavigation() {
-        let navbar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 100))
-        navbar.addSubview(CustomNavbar())
+        let navbar = Navbar(frame: CGRect(x: 10, y: 25, width: 350, height: 80))
+        navbar.backgroundColor = .white
+        let menuBarItem = CustomNavView()
+        navbar.addSubview(menuBarItem)
+        
+        let currWidth = menuBarItem.widthAnchor.constraint(equalToConstant: view.frame.size.width)
+        currWidth.isActive = true
+        let currHeight = menuBarItem.heightAnchor.constraint(equalToConstant: 60)
+        currHeight.isActive = true
+        
         navigationController?.navigationBar.addSubview(navbar)
-        view.addSubview(navbar)
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.shouldRemoveShadow(true)
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.shouldRemoveShadow(true)
+        navigationController?.navigationBar.barStyle = .default
     }
     func setupSubviews() {
         [todayView, focusAreaView].forEach { view.addSubview($0)}
         NSLayoutConstraint.activate([
-            
             todayView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
             todayView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             todayView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),

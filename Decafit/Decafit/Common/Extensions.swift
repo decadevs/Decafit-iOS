@@ -8,20 +8,21 @@
 import UIKit
 extension TimeInterval {
     var time: String {
-        return String(format:"%02d:%02d", Int(self/60),  Int(ceil(truncatingRemainder(dividingBy: 60))) )
+        return String(format: "%02d:%02d", Int(self/60),
+                      Int(ceil(truncatingRemainder(dividingBy: 60))) )
     }
 }
 extension Int {
-    var degreesToRadians : CGFloat {
+    var degreesToRadians: CGFloat {
         return CGFloat(self) * .pi / 180
     }
 }
 extension UINavigationBar {
     func shouldRemoveShadow(_ value: Bool) {
         if value {
-            self.setValue(true, forKey: "hidesShadow")
+            self.setValue(true, forKey: Constants.removeShadow)
         } else {
-            self.setValue(false, forKey: "hidesShadow")
+            self.setValue(false, forKey: Constants.removeShadow)
         }
     }
 }
@@ -54,17 +55,35 @@ extension UIView {
         overlay.frame = bounds
         overlay.backgroundColor = color
         overlay.alpha = alpha
+        overlay.tag = Tags.overlay
+        overlay.accessibilityIdentifier = Constants.overlayIdentifier
         addSubview(overlay)
     }
-}
-
-func toggleLoginSignup(_ currentVC: UIViewController) {
-    var screen: UIViewController
-    if currentVC === SignupViewController.self {
-        screen = LoginViewController.getViewController()
-    } else {
-        screen = SignupViewController.getViewController()
+    func removeOverlay() {
+        guard let overlay = self.viewWithTag(Tags.overlay) else { return }
+        overlay.frame = .zero
+        overlay.removeFromSuperview()
     }
-    screen.modalPresentationStyle = .fullScreen
-    currentVC.present(screen, animated: true)
+}
+extension UIViewController {
+    func toggleAuthScreens(_ sender: UIButton) {
+        let screen: UIViewController
+        if sender.tag == Tags.orangeSignInLink {
+            screen = LoginViewController.getViewController()
+        } else {
+            screen = SignupViewController.getViewController()
+        }
+        screen.modalTransitionStyle = .flipHorizontal
+        screen.modalPresentationStyle = .fullScreen
+        present(screen, animated: true)
+    }
+}
+extension UICollectionView {
+    func scrollToNextItem() {
+        let contentOffset = CGFloat(floor(self.contentOffset.x + self.bounds.size.width))
+        self.moveToFrame(contentOffset: contentOffset)
+    }
+    func moveToFrame(contentOffset: CGFloat) {
+            self.setContentOffset(CGPoint(x: contentOffset, y: self.contentOffset.y), animated: true)
+    }
 }

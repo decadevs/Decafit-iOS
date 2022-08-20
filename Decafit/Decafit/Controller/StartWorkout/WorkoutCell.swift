@@ -1,21 +1,19 @@
-//
-//  StartWorkoutCell.swift
-//  Decafit
-//
-//  Created by Decagon on 01/08/2022.
-//
-
 import UIKit
-class StartWorkoutCell: UITableViewCell {
+class WorkoutCell: UITableViewCell {
     static let identifier = Constants.workoutCellId
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .white
         [exerciseImage, exerciseLabel, workoutDurationLabel, progressbar, completeButton]
             .forEach { contentView.addSubview($0)}
         setupSubviews()
     }
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
+    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        completeButton.isHidden = true 
     }
     var exerciseImage: DecaImageView = {
         let img = DecaImageView(frame: .zero)
@@ -26,21 +24,21 @@ class StartWorkoutCell: UITableViewCell {
     var exerciseLabel: DecaLabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(font: decaFont(size: 18, font: .poppinsMedium).bold(),
-                                                 textColor: DecaColor.decafitBlack.color, numberOfLines: 1,
+                                                 textColor: DecaColor.black.color, numberOfLines: 1,
                                                  text: Constants.exerciseLabelText, kerning: nil))
         return label
     }()
     var workoutDurationLabel: UILabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(font: decaFont(size: 16, font: .poppinsMedium),
-                                                 textColor: DecaColor.decafitGray.color, numberOfLines: 1,
+                                                 textColor: DecaColor.gray.color, numberOfLines: 1,
                                                  text: Constants.workoutDurationLabelText, kerning: nil))
         return label
     }()
     var progressbar: UIProgressView = {
         let bar = UIProgressView()
         bar.translatesAutoresizingMaskIntoConstraints = false
-        bar.progressTintColor = DecaColor.decafitLightGreen.color
+        bar.progressTintColor = DecaColor.lightGreen.color
         bar.trackTintColor = .white
         bar.isHidden = true
         bar.isOpaque = false
@@ -52,8 +50,8 @@ class StartWorkoutCell: UITableViewCell {
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setTitle(Constants.completeText, for: .normal)
         btn.titleLabel?.font = decaFont(size: 12, font: .poppinsMedium)
-        btn.setTitleColor(DecaColor.decafitGreen.color, for: .normal)
-        btn.backgroundColor = DecaColor.decafitLightGreen.color
+        btn.setTitleColor(DecaColor.green.color, for: .normal)
+        btn.backgroundColor = DecaColor.lightGreen.color
         btn.layer.cornerRadius = 15
         btn.layer.borderWidth = 0
         btn.isHidden = true
@@ -61,7 +59,7 @@ class StartWorkoutCell: UITableViewCell {
             top: 13, left: 12, bottom: 13, right: 12)
         return btn
     }()
-    func configure(with model: StartWorkoutModel) {
+    func configure(with model: Exercise) {
         exerciseLabel.text = model.exerciseName
         workoutDurationLabel.text = model.duration
         exerciseImage.image = UIImage(named: model.image)

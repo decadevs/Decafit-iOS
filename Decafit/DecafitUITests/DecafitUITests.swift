@@ -8,6 +8,8 @@
 import XCTest
 
 class DecafitUITests: XCTestCase {
+    let app = XCUIApplication()
+
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
             measure(metrics: [XCTApplicationLaunchMetric()]) {
@@ -16,7 +18,6 @@ class DecafitUITests: XCTestCase {
         }
     }
     func testLogin() {
-        let app = XCUIApplication()
         app.launch()
         let emailField = app.textFields["Email address"]
         XCTAssertTrue(emailField.exists)
@@ -34,7 +35,6 @@ class DecafitUITests: XCTestCase {
         XCTAssertFalse(button.exists)
     }
     func testToggleSignup() {
-        let app = XCUIApplication()
         app.launch()
         let registerButton = app.buttons["Sign up"]
         XCTAssertTrue(registerButton.exists)
@@ -48,7 +48,6 @@ class DecafitUITests: XCTestCase {
         XCTAssertTrue(text1.exists)
     }
     func testExerciseTimer() {
-        let app = XCUIApplication()
         app.launch()
         let pauseButton = app.buttons[" Pause"]
         XCTAssertTrue(pauseButton.exists)
@@ -65,13 +64,12 @@ class DecafitUITests: XCTestCase {
         XCTAssertTrue(workoutBtn.exists)
     }
     func testHomescreen() {
-        let app = XCUIApplication()
         app.launch()
         let cellsQuery = app.collectionViews.cells
-        let fullBodyElement = cellsQuery.otherElements.containing(.staticText, identifier:"Full Body").element
+        let fullBodyElement = cellsQuery.otherElements.containing(.staticText, identifier: "Full Body").element
         fullBodyElement.tap()
         fullBodyElement.swipeLeft()
-        cellsQuery.otherElements.containing(.staticText, identifier:"Biceps").element.swipeRight()
+        cellsQuery.otherElements.containing(.staticText, identifier: "Biceps").element.swipeRight()
         fullBodyElement.swipeRight()
         app.staticTexts["Set your limit"].tap()
         app.textFields["Number of sets"].tap()

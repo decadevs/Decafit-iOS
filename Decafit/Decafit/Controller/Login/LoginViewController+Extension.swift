@@ -1,13 +1,13 @@
-//
-//  LoginViewController+Extension.swift
-//  Decafit
-//
-//  Created by Decagon on 20/07/2022.
-//
 import UIKit
-extension LoginViewController {
+import KeychainSwift
+
+extension LoginViewController: AuthManagerDelegate {
     @objc func toggleSignup() {
-        toggleLoginSignup(self)
+        self.dismiss(animated: true, completion: nil)
+    }
+    func didShowAlert(title: String, message: String) {
+        Alert.showAlert(self, title: title,
+                        message: message)
     }
     @objc func handleLogin() {
         guard let email = emailTextField.text, let password = passwordTextField.text
@@ -19,16 +19,18 @@ extension LoginViewController {
             Alert.showAlert(self, title: Constants.alertTitleError, message: Constants.incorrectInputError)
             return
         }
-        // Call auth login function here
-        let home = HomeViewController.getHomeView()
-        home.modalPresentationStyle = .fullScreen
-        present(home, animated: true, completion: nil)
-
+        let user = LoginInput(email: email, password: password)
+        HUD.show(status: "Signing you in...")
+        auth.login(user: user)
+        auth.successcomplete = { _ in
+            let home = HomeViewController.getHomeView()
+            home.modalPresentationStyle = .fullScreen
+            self.present(home, animated: true, completion: nil)
+        }
     }
 }
 extension LoginViewController {
     func setUpSubviews() {
-        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height)
         let parentStack: DecaStack = {
             let stackView = DecaStack(arrangedSubviews: [topImageView,
                                                          textViewStack, lineStack,
@@ -36,11 +38,12 @@ extension LoginViewController {
             stackView.configure(with: DecaStackViewModel(
                                     axis: .vertical, alignment: .center,
                                     spacing: 15, distribution: .fill))
-            stackView.frame.size = contentViewSize
             return stackView
         }()
         view.addSubview(parentStack)
         NSLayoutConstraint.activate([
+            parentStack.widthAnchor.constraint(equalTo: view.widthAnchor),
+            parentStack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -60),
             topImageView.widthAnchor.constraint(equalTo: parentStack.widthAnchor),
             topImageView.topAnchor.constraint(equalTo: parentStack.topAnchor, constant: -20),
             emailTextField.heightAnchor.constraint(equalToConstant: 56),
@@ -49,9 +52,9 @@ extension LoginViewController {
             emailTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             passwordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-            trackFitnessLabel.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 30),
+            trackFitnessLabel.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 25),
             trackFitnessLabel.trailingAnchor.constraint(equalTo: topImageView.trailingAnchor, constant: -40),
-            trackFitnessLabel.bottomAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: -35)
+            trackFitnessLabel.bottomAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: -20)
         ])
     }
 }
