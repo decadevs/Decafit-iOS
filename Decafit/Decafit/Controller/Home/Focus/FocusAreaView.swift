@@ -6,13 +6,16 @@
 //
 
 import UIKit
+
 protocol FocusAreaViewDelegate: AnyObject {
-    func didDisplayFitConfigScreen(_ screen: FitConfigViewController, image: UIImage?, title: String)
+    func didDisplayFitConfigScreen(_ screen: FitConfigViewController, image: UIImage?, title: String, workoutId: String)
 }
 class FocusAreaView: UIView, UICollectionViewDataSource,
                      UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     weak var delegate: FocusAreaViewDelegate?
     let data = DataManager.shared
+    var allWorkouts = [WorkoutListQuery.Data.Workout]()
+
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -32,9 +35,18 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         setupSubviews()
         backgroundColor = .clear
         self.translatesAutoresizingMaskIntoConstraints = false
+        
+        data.fetchData()
+        data.completion = { [self] graphQLResult in
+            if let workouts = graphQLResult.data?.workouts.compactMap({ $0 }) {
+                allWorkouts = workouts
+                collectionView.reloadData()
+            }
+        }
     }
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
@@ -53,29 +65,36 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.getFocusAreaData().count
+        return allWorkouts.count
     }
+    
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
                                                         withReuseIdentifier: FocusAreaCollectionViewCell.identifier,
                                                         for: indexPath) as?
                 FocusAreaCollectionViewCell else { return UICollectionViewCell() }
-        let workouts = data.getFocusAreaData()[indexPath.item]
+        let workouts = allWorkouts[indexPath.row]
         cell.focusAreaCell = workouts
         return cell
     }
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.frame.size.width/2.35, height: 120)
+        return CGSize(width: self.frame.size.width/2.4, height: 120)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let workouts = allWorkouts[indexPath.row]
         let screen = FitConfigViewController.shared
         let selectedCell = collectionView.cellForItem(at: indexPath) as? FocusAreaCollectionViewCell
-        let image = selectedCell?.focusImage.image
-        let title = selectedCell?.bodyFocusAreaLabel.text ?? "Full Body"
-        delegate?.didDisplayFitConfigScreen(screen, image: image, title: title)
+        let image = selectedCell?.workoutImage.image
+        let title = selectedCell?.workoutTitle.text ?? "Full Body"
+        delegate?.didDisplayFitConfigScreen(screen, image: image, title: title, workoutId: workouts.id)
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 15, left: 5, bottom: 10, right: 5)
     }
 }

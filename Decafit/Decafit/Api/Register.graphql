@@ -1,7 +1,9 @@
 mutation Register($user: RegisterInput) {
-  register(user: $user) {
+  userRegister(user: $user) {
+    id
     fullName
     email
     phoneNumber
+    message
   }
 }

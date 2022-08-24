@@ -2,8 +2,9 @@ import UIKit
 
 class FitConfigViewController: UIViewController {
     static let shared =  FitConfigViewController()
-// MARK: - Views
-    lazy var topImageView = TodaySessionView(isHidden: true)
+    var selectedWorkoutid: String?
+    lazy var topImageView = ConfigTopView()
+    
     lazy var labelStack: UIStackView = {
        let stack = UIStackView(arrangedSubviews:
                                 [inputVCTitleLabel, inputVCSubTitleLabel])
@@ -11,7 +12,6 @@ class FitConfigViewController: UIViewController {
         stack.spacing = 15
         stack.alignment = .leading
         stack.distribution = .fillProportionally
-        stack.contentHuggingPriority(for: .vertical)
         return stack
     }()
     lazy var textfieldStack: UIStackView = {
@@ -25,6 +25,7 @@ class FitConfigViewController: UIViewController {
         stack.contentHuggingPriority(for: .vertical)
         return stack
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -36,6 +37,7 @@ class FitConfigViewController: UIViewController {
                              for: .touchUpInside)
     }
 }
+
 extension FitConfigViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true
@@ -54,9 +56,13 @@ extension FitConfigViewController: UITextFieldDelegate {
     @objc func gotoStartWorkout() {
 //        getConfigInput()
         let screen = WorkoutViewController.getWorkoutView()
+        let img = topImageView.fitConfigImage.image
+        screen.topView.topImage.image = img
+        screen.selectedId = selectedWorkoutid
         self.navigationController?.pushViewController(screen, animated: true)
     }
 }
+
 extension FitConfigViewController: UIGestureRecognizerDelegate {
     func setupNavigation() {
         let cview = UIView(frame: CGRect(x: 20, y: 40, width: 350, height: 50))
@@ -74,9 +80,10 @@ extension FitConfigViewController: UIGestureRecognizerDelegate {
         navigationItem.backButtonDisplayMode = .minimal
     }
 }
+
 extension FitConfigViewController {
     func setupSubviews() {
-        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height/1.2)
+        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height/1.18)
         let parentStack: DecaStack = {
             let stackView = DecaStack(arrangedSubviews: [topImageView,
                                                          labelStack,
@@ -90,11 +97,13 @@ extension FitConfigViewController {
         }()
         view.addSubview(parentStack)
         NSLayoutConstraint.activate([
-            topImageView.widthAnchor.constraint(equalToConstant: view.frame.width),
-            topImageView.heightAnchor.constraint(equalToConstant: 240),
-            topImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            labelStack.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: 15),
-            labelStack.heightAnchor.constraint(equalToConstant: 45),
+            topImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+            topImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            topImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            topImageView.heightAnchor.constraint(equalToConstant: CGFloat(view.frame.height * 0.21)),
+            topImageView.bottomAnchor.constraint(equalTo: labelStack.topAnchor, constant: -40),
+            
+            labelStack.heightAnchor.constraint(equalToConstant: 50),
             labelStack.leadingAnchor.constraint(equalTo: setsTextField.leadingAnchor, constant: 0),
             setsTextField.heightAnchor.constraint(equalToConstant: 56),
             repsTextField.heightAnchor.constraint(equalToConstant: 56),

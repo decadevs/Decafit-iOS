@@ -38,7 +38,7 @@ class DecaTimer {
             timeLabel.text = timeLeft.time
         } else {
             timer.invalidate()
-            Sound.play(file: "sound-effect.mp3")
+//            Sound.play(file: "sound-effect.mp3")
             timeLabel.text = "00:00"
         }
     }

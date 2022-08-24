@@ -4,9 +4,13 @@ class WorkoutViewController: UIViewController {
     static func getWorkoutView() -> WorkoutViewController {
         return shared ?? WorkoutViewController()
     }
+    
     let data = DataManager.shared
     var detailsView = ModalViewController()
     let defaults = UserDefaults.standard
+    var exercises = [WorkoutListQuery.Data.Workout.Exercise]()
+    var selectedId: String?
+    
     lazy var tableView: UITableView = {
         let view = UITableView(frame: view.bounds)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -29,7 +33,7 @@ class WorkoutViewController: UIViewController {
         startWorkoutButton.addTarget(self, action: #selector(workoutButtonTapped), for: .touchUpInside)
         setupSubviews()
         setupNavigation()
-        
+        getExercises()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -38,7 +42,18 @@ class WorkoutViewController: UIViewController {
             self.view.removeOverlay()
         }
     }
+    
+    func getExercises() {
+        data.getExerciseList(workoutId: selectedId ?? "")
+        data.exerciseCompletion = { [self] result in
+            self.exercises = result
+            tableView.reloadData()
+            topView.titleLabel.text = "\(self.exercises.count) Exercises"
+        }
+    }
+    
 }
+
 // MARK: - Exercise View Controller Delegate
 extension WorkoutViewController: ExerciseVCDelegate {
     func reload() {
@@ -50,7 +65,7 @@ extension WorkoutViewController: ExerciseVCDelegate {
 //        if isComplete {
 //            WorkoutCell().completeButton.isHidden = false
 //        } else {
-//            showIncompleteBtn(row: <#T##IndexPath#>, progress: <#T##Float#>)
+//            showIncompleteBtn(row: , progress: )
 //        }
     }
     func showIncompleteBtn(row: IndexPath, progress: Float) {
@@ -66,29 +81,29 @@ extension WorkoutViewController: ExerciseVCDelegate {
 }
 // MARK: - Table View Data Source
 extension WorkoutViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        data.getWorkoutData().count
+        exercises.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: WorkoutCell.identifier, for: indexPath)
                 as? WorkoutCell else { return UITableViewCell()}
-        cell.completeButton.isHidden = true
-        cell.progressbar.isHidden = true
-        cell.exerciseImage.image = UIImage()
-        cell.exerciseLabel.text = ""
-        cell.configure(with: data.getWorkoutData()[indexPath.row])
+        let exercises = exercises[indexPath.row]
+        cell.configure(with: exercises)
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let selectedCell = data.getWorkoutData()[indexPath.row]
+        let selectedCell = exercises[indexPath.row]
         let image = selectedCell.image
-        let title = selectedCell.exerciseName
-        _ = selectedCell.duration
+        let title = selectedCell.title
+        let desc = selectedCell.description
+        _ = selectedCell.type
         
         detailsView.titleText = title
         detailsView.imageName = image
+        detailsView.desc = desc
         detailsView.modalPresentationStyle = .popover
         present(detailsView, animated: true, completion: nil)
         view.addoverlay(color: .black, alpha: 0.6)
@@ -112,6 +127,7 @@ extension WorkoutViewController: UIGestureRecognizerDelegate {
         startWorkoutButton.setTitle(Constants.continueWorkout, for: .normal)
         let exerciseVC = ExerciseViewController()
         exerciseVC.exerciseDelegate = self
+        exerciseVC.selectedWorkoutId = selectedId
         self.navigationController?.pushViewController(exerciseVC, animated: true)
     }
     func setupSubviews() {

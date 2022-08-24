@@ -6,13 +6,37 @@
 //
 
 import Foundation
+import Apollo
+
 final class DataManager {
     static let shared = DataManager()
-    func getWorkoutData() -> [Exercise] {
-        return exerciseData
+    private var activeRequest: Cancellable?
+    typealias WorkoutData = WorkoutListQuery.Data.Workout
+    var workouts = [WorkoutData?]()
+    var completion: ((GraphQLResult<WorkoutListQuery.Data>) -> Void)?
+    var exerciseCompletion: (([WorkoutData.Exercise]) -> Void)?
+    
+    func fetchData() {
+        Network.shared.apolloSQLite.fetch(query: WorkoutListQuery()) { result in
+          switch result {
+          case .failure(let error):
+            print("Failure! Error: \(error)")
+          case .success(let graphQLResult):
+            print("Success! Result: ")
+            self.completion?(graphQLResult)
+          }
+        }
     }
-    func getFocusAreaData() -> [Workout] {
-        return workoutData
+    func getExerciseList(workoutId: String) {
+        fetchData()
+        self.completion = { [self] graphQLResult in
+            if let workouts = graphQLResult.data?.workouts.compactMap({ $0 }) {
+                let workout = workouts.filter({ $0.id == workoutId})
+                if let exercises = workout[0].exercises?.compactMap({ $0 }) {
+                    exerciseCompletion?(exercises)
+                }
+            }
+        }
     }
     func getTodayData() -> [TodaySessionModel] {
         return todayData

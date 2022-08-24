@@ -38,9 +38,9 @@ class ExerciseCell: UICollectionViewCell {
             for: .touchUpInside)
     }
     // MARK: - Delegates
-    func configure(with model: Exercise) {
-        exerciseView.exerciseName.text = model.exerciseName
-        exerciseView.topImageView.image = UIImage(named: model.image)
+    func configure(with model: WorkoutListQuery.Data.Workout.Exercise) {
+        exerciseView.exerciseName.text = model.title
+        exerciseView.topImageView.kf.setImage(with: URL(string: model.image), placeholder: UIImage(named: "back"), options: nil, completionHandler: nil)
     }
     @objc func gotoNextExercise() {
         exerciseCellDelegate?.gotoNextExercise()

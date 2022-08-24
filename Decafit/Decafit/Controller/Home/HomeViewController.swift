@@ -39,10 +39,13 @@ final class HomeViewController: UIViewController {
     }
 }
 extension HomeViewController: FocusAreaViewDelegate {
-    func didDisplayFitConfigScreen(_ screen: FitConfigViewController, image: UIImage?, title: String) {
+    func didDisplayFitConfigScreen(_ screen: FitConfigViewController, image: UIImage?, title: String, workoutId: String) {
+        screen.topImageView.firstLabel.text = title
+        screen.topImageView.fitConfigImage.image = image
+        screen.selectedWorkoutid = workoutId
         self.navigationController?.pushViewController(screen, animated: true)
     }
-    
+
     func setupNavigation() {
         let navbar = Navbar(frame: CGRect(x: 10, y: 25, width: 350, height: 80))
         navbar.backgroundColor = .white

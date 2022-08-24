@@ -4,13 +4,18 @@ protocol ExerciseVCDelegate: AnyObject {
 }
 class ExerciseViewController: UIViewController {
     var exerciseView = ExerciseView()
+    
     let data = DataManager.shared
+    var selectedWorkoutId: String?
     weak var exerciseDelegate: ExerciseVCDelegate?
+    var exercises = [WorkoutListQuery.Data.Workout.Exercise]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(collectionView)
         collectionView.frame = view.bounds
+        getExercises()
     }
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -23,6 +28,15 @@ class ExerciseViewController: UIViewController {
                              forCellWithReuseIdentifier: ExerciseCell.identifier)
         return view
     }()
+    
+    func getExercises() {
+        data.getExerciseList(workoutId: selectedWorkoutId ?? "")
+        data.exerciseCompletion = { [self] result in
+            self.exercises = result
+            collectionView.reloadData()
+        }
+    }
+
 }
 extension ExerciseViewController: UIGestureRecognizerDelegate, ExerciseCellDelegate {
     func updatePauseTime(pauseTime: TimeInterval) {
@@ -47,18 +61,20 @@ extension ExerciseViewController: UIGestureRecognizerDelegate, ExerciseCellDeleg
 }
 extension ExerciseViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.getWorkoutData().count
+        return exercises.count
     }
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: ExerciseCell.identifier,
                 for: indexPath) as? ExerciseCell else { return UICollectionViewCell() }
-        let workout = data.getWorkoutData()[indexPath.row]
-        cell.configure(with: workout)
+        let exercise = exercises[indexPath.item]
+        cell.configure(with: exercise)
         cell.exerciseCellDelegate = self
         let stepcell = cell.exerciseView
-        if workout.exerciseName == "Running" {
+        if exercise.title == "Skipping" ||
+            exercise.title == "Running" ||
+            exercise.title == "Jogging" {
             stepcell.progressCircle.isHidden = true
             stepcell.stepsTakenView.isHidden = false
             stepcell.timerLabel.isHidden = true
@@ -90,8 +106,8 @@ extension ExerciseViewController: UICollectionViewDelegate, UICollectionViewDele
         var cellToSwipe: Double = Double(Float((scrollView.contentOffset.x))/Float((pageWidth+minSpace))) + Double(0.5) + Double(factor)
         if cellToSwipe < 0 {
             cellToSwipe = 0
-        } else if cellToSwipe >= Double(data.getWorkoutData().count) {
-            cellToSwipe = Double(data.getWorkoutData().count) - Double(1)
+        } else if cellToSwipe >= Double(exercises.count) {
+            cellToSwipe = Double(exercises.count) - Double(1)
         }
         let indexPath: IndexPath = IndexPath(row: Int(cellToSwipe), section: 0)
         self.collectionView.scrollToItem(at: indexPath, at: .left, animated: true)

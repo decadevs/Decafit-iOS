@@ -11,9 +11,21 @@ class WorkoutCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
     }
+    func configure(with model: WorkoutListQuery.Data.Workout.Exercise) {
+        exerciseLabel.text = model.title
+        workoutDurationLabel.text = model.type.rawValue
+        exerciseImage.kf.setImage(with: URL(string: model.image), placeholder: UIImage(named: "back"), options: nil, completionHandler: nil)
+    }
     override func prepareForReuse() {
         super.prepareForReuse()
-        completeButton.isHidden = true 
+//        cell.completeButton.isHidden = true
+//        cell.progressbar.isHidden = true
+//        cell.exerciseImage.image = UIImage()
+//        cell.exerciseLabel.text = ""
+        completeButton.isHidden = true
+        exerciseImage.image = nil
+        exerciseLabel.text = nil
+        workoutDurationLabel.text = nil 
     }
     var exerciseImage: DecaImageView = {
         let img = DecaImageView(frame: .zero)
@@ -59,11 +71,6 @@ class WorkoutCell: UITableViewCell {
             top: 13, left: 12, bottom: 13, right: 12)
         return btn
     }()
-    func configure(with model: Exercise) {
-        exerciseLabel.text = model.exerciseName
-        workoutDurationLabel.text = model.duration
-        exerciseImage.image = UIImage(named: model.image)
-    }
     func setupSubviews() {
         NSLayoutConstraint.activate([
             contentView.heightAnchor.constraint(equalToConstant: 120),

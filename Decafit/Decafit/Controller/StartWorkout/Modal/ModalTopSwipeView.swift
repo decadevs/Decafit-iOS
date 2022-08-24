@@ -37,10 +37,12 @@ extension ModalTopSwipeView: UICollectionViewDataSource {
                                                         for: indexPath) as? ModalTopSwipeCell else {
             return UICollectionViewCell()
         }
-        let image = UIImage(named: cellImage ?? "apple-img")
-        cell.workoutModalImage.image = image 
+        cell.workoutModalImage.image = nil
+        cell.workoutModalImage.kf.setImage(with: URL(string: cellImage ?? "back"), placeholder: UIImage(named: "back"), options: nil, completionHandler: nil)
+//        cell.workoutModalImage.image = UIImage(named: cellImage ?? "back")
         return cell
     }
+    
 }
 extension ModalTopSwipeView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,

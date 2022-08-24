@@ -59,7 +59,7 @@ enum Constants {
     static let focusAreaViewTitleText = "Other Focus Areas"
     static let todaySessionViewTitleText = "Today's session"
     static let todayFirstLabelText = "First"
-    static let todaySecondLabelText = "Second"
+    static let todaySecondLabelText = "Counts"
     static let todayThirdLabelTextAfterIcon = " 24 min"
     static let todayFourthLabelTextAfterIcon = " 24 Kcal"
     
@@ -68,7 +68,11 @@ enum Constants {
     static let passwordMismatchError = "Passwords do not match!"
     static let blankTextFieldError = "All fields are required!"
     static let incorrectInputError = "Incorrect input"
-    static let loginText = "login"
+    
+    
+    static let loginText = "login4"
+    
+    
     static let overlayIdentifier = "overlay"
     static let removeShadow = "hidesShadow"
     

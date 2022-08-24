@@ -20,7 +20,7 @@ class ExerciseView: UIView {
     lazy var topImageView: DecaImageView = {
         let img = DecaImageView(frame: .zero)
         img.configure(with: DecaImageViewModel(
-                        image: Constants.playImg, contentMode: .scaleAspectFill,
+                        image: Constants.playImg, contentMode: .scaleToFill,
                         tintColor: .clear))
         return img
     }()
@@ -84,12 +84,13 @@ class ExerciseView: UIView {
             topImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             topImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             topImageView.widthAnchor.constraint(equalTo: widthAnchor),
-            topImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4),
+//            topImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2),
+            topImageView.heightAnchor.constraint(equalToConstant: 300),
             // back
             timerViewBackButton.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 20),
             timerViewBackButton.topAnchor.constraint(equalTo: topImageView.topAnchor, constant: 50),
             // title
-            exerciseName.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: 40),
+            exerciseName.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: 30),
             exerciseName.leadingAnchor.constraint(equalTo: leadingAnchor),
             exerciseName.trailingAnchor.constraint(equalTo: trailingAnchor),
             exerciseName.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -99,7 +100,7 @@ class ExerciseView: UIView {
             progressCircle.bottomAnchor.constraint(equalTo: pauseResumeButton.topAnchor, constant: -10),
             // ticker
             timerLabel.centerXAnchor.constraint(equalTo: progressCircle.centerXAnchor),
-            timerLabel.bottomAnchor.constraint(equalTo: progressCircle.bottomAnchor, constant: -70),
+            timerLabel.bottomAnchor.constraint(equalTo: progressCircle.bottomAnchor, constant: -80),
             // hidden view
             stepsTakenView.topAnchor.constraint(equalTo: exerciseName.bottomAnchor, constant: 20),
             stepsTakenView.centerXAnchor.constraint(equalTo: centerXAnchor),
