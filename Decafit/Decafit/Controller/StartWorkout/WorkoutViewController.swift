@@ -61,7 +61,6 @@ extension WorkoutViewController: ExerciseVCDelegate {
         tableView.reloadData()
     }
     func checkExerciseCompletion() {
-        // check store for isComplete var
 //        if isComplete {
 //            WorkoutCell().completeButton.isHidden = false
 //        } else {
@@ -89,6 +88,7 @@ extension WorkoutViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: WorkoutCell.identifier, for: indexPath)
                 as? WorkoutCell else { return UITableViewCell()}
+
         let exercises = exercises[indexPath.row]
         cell.configure(with: exercises)
         return cell

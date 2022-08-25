@@ -1,9 +1,12 @@
 import UIKit
+import KeychainSwift
 
 class FitConfigViewController: UIViewController {
     static let shared =  FitConfigViewController()
     var selectedWorkoutid: String?
+    let data = DataManager.shared
     lazy var topImageView = ConfigTopView()
+    var defaults = UserDefaults.standard
     
     lazy var labelStack: UIStackView = {
        let stack = UIStackView(arrangedSubviews:
@@ -45,20 +48,64 @@ extension FitConfigViewController: UITextFieldDelegate {
     @objc func clickNavBackButton() {
         self.navigationController?.popViewController(animated: true)
     }
+    /**
+     mutation ReportCreate($input: ReportCreateInput) {
+       reportCreate(input: $input) {
+         userID
+         workouts {
+           workoutId
+           workoutReps
+           workoutSet
+           workoutTime
+           workoutCount
+           exercises {
+             excerciseId
+             type
+             paused
+             pausedTime
+             completed
+           }
+         }
+       }
+     }
+     */
     func getConfigInput() {
         guard let reps = repsTextField.text, let sets = setsTextField.text, let time = timeTextField.text, let count = countTextField.text, !reps.isEmpty, !sets.isEmpty, !time.isEmpty, !count.isEmpty else {
             Alert.showAlert(self, title: Constants.alertTitleError, message: Constants.blankTextFieldError)
             return
         }
-        // Save the data 
-        print(reps, sets, time, count)
+        
+        // Save the data
+        defaults.setValue(reps, forKey: "reps")
+        defaults.setValue(sets, forKey: "sets")
+        defaults.setValue(time, forKey: "time")
+        defaults.setValue(count, forKey: "count")
+        
+        defaults.set(count, forKey: "count")
+        defaults.set(time, forKey: "time")
+
+        let keychain = KeychainSwift()
+        guard let userID = keychain.get("userID") else { return }
+        
+        let workout = Workout1(workoutId: selectedWorkoutid, workoutTime: time, workoutReps: Int(reps)!, workoutSet: Int(sets)!, workoutCount: Int(count)!, exercises: nil)
+        let report = ReportCreate(userID: userID, workouts: [workout])
+   
+        let reportExcerciseProgressInput = ReportExcerciseProgressInput(excerciseId: "", type: .count, paused: false, pausedTime: "", completed: false)
+        
+        let reportWorkout = ReportWorkoutInput(workoutId: selectedWorkoutid ?? "", workoutReps: Int(reps)!, workoutSet: Int(sets)!, workoutTime: time, workoutCount: Int(count)!, exercises: [reportExcerciseProgressInput])
+        
+//        data.updateReport(userId: userID, workout: reportWorkout)
+        
+        print(report)
+        UserDefaults.standard.workoutReport = report
     }
     @objc func gotoStartWorkout() {
-//        getConfigInput()
+        getConfigInput()
         let screen = WorkoutViewController.getWorkoutView()
         let img = topImageView.fitConfigImage.image
         screen.topView.topImage.image = img
         screen.selectedId = selectedWorkoutid
+        
         self.navigationController?.pushViewController(screen, animated: true)
     }
 }

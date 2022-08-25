@@ -70,7 +70,7 @@ enum Constants {
     static let incorrectInputError = "Incorrect input"
     
     
-    static let loginText = "login4"
+    static let loginText = "login5"
     
     
     static let overlayIdentifier = "overlay"

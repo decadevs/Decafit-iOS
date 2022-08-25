@@ -58,8 +58,10 @@ final class AuthManager {
             if let data = graphQLResult.data?.userLogin {
                 HUD.hide()
                 guard let token = data.token else { return }
+                
                 UserDefaults.standard.set(token, forKey: "token")
                 self?.keychain.set(String(describing: token), forKey: AuthManager.loginKeychainKey)
+                self?.keychain.set(data.id, forKey: "userID")
                 self?.successcomplete?(true)
             }
             if let errors = graphQLResult.errors {

@@ -17,14 +17,14 @@ final class DataManager {
     var exerciseCompletion: (([WorkoutData.Exercise]) -> Void)?
     
     func fetchData() {
-        Network.shared.apolloSQLite.fetch(query: WorkoutListQuery()) { result in
-          switch result {
-          case .failure(let error):
-            print("Failure! Error: \(error)")
-          case .success(let graphQLResult):
-            print("Success! Result: ")
-            self.completion?(graphQLResult)
-          }
+        Network.shared.apolloSQLite.watch(query: WorkoutListQuery(), cachePolicy: .returnCacheDataAndFetch, callbackQueue: .main) { result in
+            switch result {
+            case .failure(let error):
+              print("Failure! Error: \(error)")
+            case .success(let graphQLResult):
+              print("Success! Result: ")
+              self.completion?(graphQLResult)
+            }
         }
     }
     func getExerciseList(workoutId: String) {
@@ -40,5 +40,33 @@ final class DataManager {
     }
     func getTodayData() -> [TodaySessionModel] {
         return todayData
+    }
+    
+    public func updateReport(userId: String, workout: ReportWorkoutInput) {
+        let reportWorkoutInput = ReportWorkoutInput(workoutId: workout.workoutId, workoutReps: workout.workoutReps, workoutSet: workout.workoutSet, workoutTime: workout.workoutTime, workoutCount: workout.workoutCount, exercises: workout.exercises)
+        let reportCreateInput = ReportCreateInput(userId: userId, workouts: reportWorkoutInput)
+        Network.shared.apolloSQLite.perform(mutation: UpdateReportMutation(input: reportCreateInput)) { result in
+            HUD.hide()
+            switch result {
+            case .failure(let error):
+                print("Errors", error.localizedDescription)
+                return
+            case .success(let graphQLResult):
+                if let errors = graphQLResult.errors {
+                    
+                    let message = errors
+                                   .map { $0.localizedDescription }
+                                   .joined(separator: "\n")
+                    print(message)
+                    return
+                }
+                if graphQLResult.data?.reportUpdate != nil {
+                    print(graphQLResult.data?.reportUpdate)
+                }
+            }
+            
+        }
+
+        
     }
 }

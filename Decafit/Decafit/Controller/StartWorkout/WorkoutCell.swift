@@ -11,9 +11,11 @@ class WorkoutCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
     }
+    
+    
     func configure(with model: WorkoutListQuery.Data.Workout.Exercise) {
         exerciseLabel.text = model.title
-        workoutDurationLabel.text = model.type.rawValue
+        workoutDurationLabel.text = "\(model.type)"
         exerciseImage.kf.setImage(with: URL(string: model.image), placeholder: UIImage(named: "back"), options: nil, completionHandler: nil)
     }
     override func prepareForReuse() {
