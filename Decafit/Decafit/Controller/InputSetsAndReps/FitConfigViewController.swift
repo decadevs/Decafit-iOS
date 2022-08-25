@@ -90,7 +90,7 @@ extension FitConfigViewController: UITextFieldDelegate {
         let workout = Workout1(workoutId: selectedWorkoutid, workoutTime: time, workoutReps: Int(reps)!, workoutSet: Int(sets)!, workoutCount: Int(count)!, exercises: nil)
         let report = ReportCreate(userID: userID, workouts: [workout])
    
-        let reportExcerciseProgressInput = ReportExcerciseProgressInput(excerciseId: "", type: .count, paused: false, pausedTime: "", completed: false)
+        let reportExcerciseProgressInput = ReportExcerciseProgressInput(excerciseId: "", type: .count, paused: false, limit: "", completed: false, progress: 0)
         
         let reportWorkout = ReportWorkoutInput(workoutId: selectedWorkoutid ?? "", workoutReps: Int(reps)!, workoutSet: Int(sets)!, workoutTime: time, workoutCount: Int(count)!, exercises: [reportExcerciseProgressInput])
         

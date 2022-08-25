@@ -1,4 +1,4 @@
-mutation UpdateReport($input: ReportCreateInput) {
+mutation ReportUpdate($input: ReportCreateInput) {
   reportUpdate(input: $input) {
     userID
     workouts {
@@ -11,8 +11,9 @@ mutation UpdateReport($input: ReportCreateInput) {
         excerciseId
         type
         paused
-        pausedTime
+        limit
         completed
+        progress
       }
     }
   }

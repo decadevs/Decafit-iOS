@@ -75,6 +75,7 @@
 		B44B3C23289B0106000C94D7 /* TodaySessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C22289B0106000C94D7 /* TodaySessionModel.swift */; };
 		B44B3C27289B064A000C94D7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C26289B064A000C94D7 /* DataManager.swift */; };
 		B459C0F728B75B1C0007AECE /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B459C0F628B75B1C0007AECE /* Defaults.swift */; };
+		B459C10228B796030007AECE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B459C10128B796030007AECE /* API.swift */; };
 		B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B12287C147000EEC900 /* AppDelegate.swift */; };
 		B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B14287C147000EEC900 /* SceneDelegate.swift */; };
 		B47B5B17287C147000EEC900 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B16287C147000EEC900 /* HomeViewController.swift */; };
@@ -99,7 +100,6 @@
 		B4C8D3D028B37DE800AA901E /* Login.graphql in Resources */ = {isa = PBXBuildFile; fileRef = B4C8D3CF28B37DE800AA901E /* Login.graphql */; };
 		B4C8D3D328B380BA00AA901E /* Register.graphql in Resources */ = {isa = PBXBuildFile; fileRef = B4C8D3D228B380BA00AA901E /* Register.graphql */; };
 		B4C8D3D728B3872100AA901E /* WorkoutList.graphql in Resources */ = {isa = PBXBuildFile; fileRef = B4C8D3D628B3872100AA901E /* WorkoutList.graphql */; };
-		B4C8D3DB28B38A3C00AA901E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8D3DA28B38A3C00AA901E /* API.swift */; };
 		B4C8D3DD28B43C6A00AA901E /* ConfigTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8D3DC28B43C6A00AA901E /* ConfigTopView.swift */; };
 		B4D19C7728B6838F003541E3 /* UpdateReport.graphql in Resources */ = {isa = PBXBuildFile; fileRef = B4D19C7628B6838F003541E3 /* UpdateReport.graphql */; };
 		B4E4C9C9289C4103008CD86D /* WorkoutTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E4C9C8289C4103008CD86D /* WorkoutTopView.swift */; };
@@ -196,6 +196,8 @@
 		B44B3C22289B0106000C94D7 /* TodaySessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionModel.swift; sourceTree = "<group>"; };
 		B44B3C26289B064A000C94D7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		B459C0F628B75B1C0007AECE /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		B459C10028B7958A0007AECE /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		B459C10128B796030007AECE /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = Decafit/API.swift; sourceTree = SOURCE_ROOT; };
 		B47B5B0F287C147000EEC900 /* Decafit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Decafit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B47B5B12287C147000EEC900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B47B5B14287C147000EEC900 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -224,10 +226,8 @@
 		B4C8D3C928B06C1400AA901E /* sound-effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sound-effect.mp3"; sourceTree = "<group>"; };
 		B4C8D3CB28B0712C00AA901E /* revb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = revb.mp3; sourceTree = "<group>"; };
 		B4C8D3CF28B37DE800AA901E /* Login.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Login.graphql; sourceTree = "<group>"; };
-		B4C8D3D128B3805800AA901E /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		B4C8D3D228B380BA00AA901E /* Register.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Register.graphql; sourceTree = "<group>"; };
 		B4C8D3D628B3872100AA901E /* WorkoutList.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = WorkoutList.graphql; sourceTree = "<group>"; };
-		B4C8D3DA28B38A3C00AA901E /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = Decafit/API.swift; sourceTree = SOURCE_ROOT; };
 		B4C8D3DC28B43C6A00AA901E /* ConfigTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigTopView.swift; sourceTree = "<group>"; };
 		B4D19C7628B6838F003541E3 /* UpdateReport.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = UpdateReport.graphql; sourceTree = "<group>"; };
 		B4E4C9C8289C4103008CD86D /* WorkoutTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTopView.swift; sourceTree = "<group>"; };
@@ -620,9 +620,9 @@
 		B4C8D3C628AE4BAD00AA901E /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				B459C10128B796030007AECE /* API.swift */,
 				B4C8D3CF28B37DE800AA901E /* Login.graphql */,
-				B4C8D3DA28B38A3C00AA901E /* API.swift */,
-				B4C8D3D128B3805800AA901E /* schema.json */,
+				B459C10028B7958A0007AECE /* schema.json */,
 				B4C8D3D228B380BA00AA901E /* Register.graphql */,
 				B4C8D3D628B3872100AA901E /* WorkoutList.graphql */,
 				B4D19C7628B6838F003541E3 /* UpdateReport.graphql */,
@@ -980,7 +980,7 @@
 				B43AFB0628ABAD3400811658 /* ModalTopSwipeView.swift in Sources */,
 				B47B5B17287C147000EEC900 /* HomeViewController.swift in Sources */,
 				B4C8D3C828AEBF3000AA901E /* Timer.swift in Sources */,
-				B4C8D3DB28B38A3C00AA901E /* API.swift in Sources */,
+				B459C10228B796030007AECE /* API.swift in Sources */,
 				B4C8D3C328AC6DF000AA901E /* NavBar.swift in Sources */,
 				B4AB95CC2891D20D00FE9C96 /* FocusAreaCollectionViewCell.swift in Sources */,
 				B40AFB2B288861A300249820 /* Extensions.swift in Sources */,

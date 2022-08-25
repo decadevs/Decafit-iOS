@@ -187,10 +187,11 @@ public struct ReportExcerciseProgressInput: GraphQLMapConvertible {
   ///   - excerciseId
   ///   - type
   ///   - paused
-  ///   - pausedTime
+  ///   - limit
   ///   - completed
-  public init(excerciseId: Swift.Optional<String?> = nil, type: Swift.Optional<EnumType?> = nil, paused: Swift.Optional<Bool?> = nil, pausedTime: Swift.Optional<String?> = nil, completed: Swift.Optional<Bool?> = nil) {
-    graphQLMap = ["excerciseId": excerciseId, "type": type, "paused": paused, "pausedTime": pausedTime, "completed": completed]
+  ///   - progress
+  public init(excerciseId: Swift.Optional<String?> = nil, type: Swift.Optional<EnumType?> = nil, paused: Swift.Optional<Bool?> = nil, limit: Swift.Optional<String?> = nil, completed: Swift.Optional<Bool?> = nil, progress: Swift.Optional<Int?> = nil) {
+    graphQLMap = ["excerciseId": excerciseId, "type": type, "paused": paused, "limit": limit, "completed": completed, "progress": progress]
   }
 
   public var excerciseId: Swift.Optional<String?> {
@@ -220,12 +221,12 @@ public struct ReportExcerciseProgressInput: GraphQLMapConvertible {
     }
   }
 
-  public var pausedTime: Swift.Optional<String?> {
+  public var limit: Swift.Optional<String?> {
     get {
-      return graphQLMap["pausedTime"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      return graphQLMap["limit"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
     }
     set {
-      graphQLMap.updateValue(newValue, forKey: "pausedTime")
+      graphQLMap.updateValue(newValue, forKey: "limit")
     }
   }
 
@@ -235,6 +236,15 @@ public struct ReportExcerciseProgressInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "completed")
+    }
+  }
+
+  public var progress: Swift.Optional<Int?> {
+    get {
+      return graphQLMap["progress"] as? Swift.Optional<Int?> ?? Swift.Optional<Int?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "progress")
     }
   }
 }
@@ -575,11 +585,11 @@ public final class RegisterMutation: GraphQLMutation {
   }
 }
 
-public final class UpdateReportMutation: GraphQLMutation {
+public final class ReportUpdateMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    mutation UpdateReport($input: ReportCreateInput) {
+    mutation ReportUpdate($input: ReportCreateInput) {
       reportUpdate(input: $input) {
         __typename
         userID
@@ -595,15 +605,16 @@ public final class UpdateReportMutation: GraphQLMutation {
             excerciseId
             type
             paused
-            pausedTime
+            limit
             completed
+            progress
           }
         }
       }
     }
     """
 
-  public let operationName: String = "UpdateReport"
+  public let operationName: String = "ReportUpdate"
 
   public var input: ReportCreateInput?
 
@@ -788,8 +799,9 @@ public final class UpdateReportMutation: GraphQLMutation {
               GraphQLField("excerciseId", type: .scalar(String.self)),
               GraphQLField("type", type: .scalar(EnumType.self)),
               GraphQLField("paused", type: .scalar(Bool.self)),
-              GraphQLField("pausedTime", type: .scalar(String.self)),
+              GraphQLField("limit", type: .scalar(String.self)),
               GraphQLField("completed", type: .scalar(Bool.self)),
+              GraphQLField("progress", type: .scalar(Int.self)),
             ]
           }
 
@@ -799,8 +811,8 @@ public final class UpdateReportMutation: GraphQLMutation {
             self.resultMap = unsafeResultMap
           }
 
-          public init(excerciseId: String? = nil, type: EnumType? = nil, paused: Bool? = nil, pausedTime: String? = nil, completed: Bool? = nil) {
-            self.init(unsafeResultMap: ["__typename": "ReportExcerciseProgress", "excerciseId": excerciseId, "type": type, "paused": paused, "pausedTime": pausedTime, "completed": completed])
+          public init(excerciseId: String? = nil, type: EnumType? = nil, paused: Bool? = nil, limit: String? = nil, completed: Bool? = nil, progress: Int? = nil) {
+            self.init(unsafeResultMap: ["__typename": "ReportExcerciseProgress", "excerciseId": excerciseId, "type": type, "paused": paused, "limit": limit, "completed": completed, "progress": progress])
           }
 
           public var __typename: String {
@@ -839,12 +851,12 @@ public final class UpdateReportMutation: GraphQLMutation {
             }
           }
 
-          public var pausedTime: String? {
+          public var limit: String? {
             get {
-              return resultMap["pausedTime"] as? String
+              return resultMap["limit"] as? String
             }
             set {
-              resultMap.updateValue(newValue, forKey: "pausedTime")
+              resultMap.updateValue(newValue, forKey: "limit")
             }
           }
 
@@ -854,6 +866,15 @@ public final class UpdateReportMutation: GraphQLMutation {
             }
             set {
               resultMap.updateValue(newValue, forKey: "completed")
+            }
+          }
+
+          public var progress: Int? {
+            get {
+              return resultMap["progress"] as? Int
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "progress")
             }
           }
         }

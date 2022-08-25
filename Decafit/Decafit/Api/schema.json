@@ -1020,7 +1020,7 @@
             "defaultValue": null
           },
           {
-            "name": "pausedTime",
+            "name": "limit",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1035,6 +1035,16 @@
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "progress",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
               "ofType": null
             },
             "defaultValue": null
@@ -1228,7 +1238,7 @@
             "deprecationReason": null
           },
           {
-            "name": "pausedTime",
+            "name": "limit",
             "description": null,
             "args": [],
             "type": {
@@ -1246,6 +1256,18 @@
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "progress",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
               "ofType": null
             },
             "isDeprecated": false,

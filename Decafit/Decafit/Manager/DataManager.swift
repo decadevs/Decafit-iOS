@@ -45,7 +45,7 @@ final class DataManager {
     public func updateReport(userId: String, workout: ReportWorkoutInput) {
         let reportWorkoutInput = ReportWorkoutInput(workoutId: workout.workoutId, workoutReps: workout.workoutReps, workoutSet: workout.workoutSet, workoutTime: workout.workoutTime, workoutCount: workout.workoutCount, exercises: workout.exercises)
         let reportCreateInput = ReportCreateInput(userId: userId, workouts: reportWorkoutInput)
-        Network.shared.apolloSQLite.perform(mutation: UpdateReportMutation(input: reportCreateInput)) { result in
+        Network.shared.apolloSQLite.perform(mutation: ReportUpdateMutation(input: reportCreateInput)) { result in
             HUD.hide()
             switch result {
             case .failure(let error):
