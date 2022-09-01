@@ -29,17 +29,13 @@ final class HomeViewController: UIViewController {
         setupSubviews()
         setupNavigation()
         
-        print("Home")
-        UserDefaults.standard.removeObject(forKey: UserDefaultKeys.workoutReport)
+//        UserDefaults.standard.removeObject(forKey: UserDefaultKeys.workoutReport)
 
-//        print("Workout Report From Device", defaults.workoutReport)
-        /**
-         * Next. check if they have report in user defaults, if they do, use them to determine state of workout
+        /** TODO
          * add icon to focus area to show that exercise was started but not complete
-         * display alert to ask if they waant to resume uncompleted workout
+         * display alert to ask if user wants to resume uncompleted workout
          * if yes, display workout with saved state restored
          * if no, reset workout, and fetch fresh workout from server
-         * constrain time and counts to a particular object
          * 
          */
         

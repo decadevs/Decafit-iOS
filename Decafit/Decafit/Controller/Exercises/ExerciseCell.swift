@@ -21,7 +21,6 @@ class ExerciseCell: UICollectionViewCell {
         contentView.frame = exerciseView.bounds
         addTargets()
 
-        // pausetime, paused, completed, progress
         let timeLeft = TimeInterval(defaults.double(forKey: UserDefaultKeys.time))
         
         timer = DecaTimer(timeLabel: exerciseView.timerLabel, timeLeft: timeLeft)
@@ -58,7 +57,6 @@ class ExerciseCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-//        exerciseView.progressCircle.setProgress(duration: timer?.timeLeft ?? 20)
     }
 }
 extension ExerciseCell {

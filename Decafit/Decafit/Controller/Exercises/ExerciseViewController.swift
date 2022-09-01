@@ -98,7 +98,7 @@ extension ExerciseViewController: UIGestureRecognizerDelegate, ExerciseCellDeleg
                 thisExercise?.progress = Float(pauseTime/endTime)
                 thisExercise?.excerciseId = exercises[currentIndex.row].id
                 thisExercise?.type = exercises[currentIndex.row].type.rawValue
-                thisExercise?.limit = "\(self.pauseTime)"
+                thisExercise?.limit = "\(String(describing: self.pauseTime))"
 
             }
         }
@@ -133,7 +133,7 @@ extension ExerciseViewController: UIGestureRecognizerDelegate, ExerciseCellDeleg
         navigationController?.popViewController(animated: true)
         
         delegate?.didDisplayCompleteButton()
-
+        
         // update report in cache and server
         updateReportInCacheAndServer()
         
@@ -212,7 +212,6 @@ extension ExerciseViewController: UICollectionViewDelegate, UICollectionViewDele
         }
         let indexPath: IndexPath = IndexPath(row: Int(cellToSwipe), section: 0)
         self.collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
-        
         currentIndex = indexPath
     }
 }

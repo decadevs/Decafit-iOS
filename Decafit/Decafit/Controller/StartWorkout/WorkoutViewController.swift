@@ -43,9 +43,6 @@ class WorkoutViewController: UIViewController {
         detailsView.dismissCompletion = {
             self.view.removeOverlay()
         }
-        
-        // check for complete button
-        
     }
 
     func getExercises() {
@@ -64,7 +61,6 @@ class WorkoutViewController: UIViewController {
 // MARK: - Exercise View Controller Delegate
 extension WorkoutViewController: ExerciseVCDelegate {
     func didDisplayCompleteButton() {
-        // loop through the table, and display button for each
         let selectedWorkoutIndex = defaults.integer(forKey: UserDefaultKeys.selectedWorkoutIndex)
         guard let exercises = defaults.workoutReport?.workout[selectedWorkoutIndex].exerciseArr else { fatalError() }
         for num in 0..<exercises.count {
@@ -72,7 +68,7 @@ extension WorkoutViewController: ExerciseVCDelegate {
                 completion?(false)
             } else {
                 completion?(true)
-//                self.showIncompleteBtn(row: currentIndex, progress: Float((exercises[num].progress ?? 0)) )
+                self.showIncompleteBtn(row: currentIndex, progress: Float((exercises[num].progress ?? 0)) )
             }
             tableView.reloadData()
         }
@@ -118,19 +114,18 @@ extension WorkoutViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
         }
-        
-//        self.completion = { res in
-//            if res == false {
-//                cell.completeButton.isHidden = false
-//            }
-//        }
+        self.completion = { res in
+            if res == false {
+                cell.completeButton.isHidden = false
+            }
+        }
         
         let selectedWorkoutIndex = defaults.integer(forKey: UserDefaultKeys.selectedWorkoutIndex)
         var thisExercise = defaults.workoutReport?.workout[selectedWorkoutIndex].exerciseArr?[indexPath.row]
         if thisExercise?.started == true {
             cell.completeButton.isHidden = false
         } else {
-//            self.showIncompleteBtn(row: currentIndex, progress: Float(thisExercise?.progress ?? 0))
+            self.showIncompleteBtn(row: currentIndex, progress: Float(thisExercise?.progress ?? 0))
         }
         
         return cell
