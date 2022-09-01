@@ -5,7 +5,11 @@ class ExerciseView: UIView {
         super.init(frame: frame)
         accessibilityIdentifier = "ExerciseTimerView"
         translatesAutoresizingMaskIntoConstraints = false
-        timer = DecaTimer(timeLabel: stepsTakenView.timeData)
+        let defaults = UserDefaults.standard
+        
+        let timeLeft = TimeInterval(defaults.double(forKey: UserDefaultKeys.time))
+        timer = DecaTimer(timeLabel: stepsTakenView.timeData, timeLeft: timeLeft)
+        
         setupSubviews()
     }
     required init?(coder: NSCoder) {

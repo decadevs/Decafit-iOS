@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import KeychainSwift
 extension TimeInterval {
     var time: String {
         return String(format: "%02d:%02d", Int(self/60),
@@ -65,6 +66,12 @@ extension UIView {
         overlay.frame = .zero
         overlay.removeFromSuperview()
     }
+    func getUserID() -> String {
+        guard let key = KeychainSwift().get(Constants.userID) else {
+            fatalError("User not logged in yet")
+        }
+        return key
+    }
 }
 extension UIViewController {
     func toggleAuthScreens(_ sender: UIButton) {
@@ -78,6 +85,7 @@ extension UIViewController {
         screen.modalPresentationStyle = .fullScreen
         present(screen, animated: true)
     }
+    
 }
 extension UICollectionView {
     func scrollToNextItem() {
@@ -88,15 +96,12 @@ extension UICollectionView {
             self.setContentOffset(CGPoint(x: contentOffset, y: self.contentOffset.y), animated: true)
     }
 }
+extension FileManager {
+    func getDocumentDirectory() -> URL {
+        return self.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    }
+    func getCache() -> URL { 
+        return self.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("apollo_cache.sqlite")
+    }
+}
 
-//extension UserDefaults {
-//    func object<T: Codable>(_ type: T.Type, with key: String, usingDecoder decoder: JSONDecoder = JSONDecoder()) -> T? {
-//        guard let data = self.value(forKey: key) as? Data else { return nil }
-//        return try? decoder.decode(type.self, from: data)
-//    }
-//
-//    func set<T: Codable>(object: T, forKey key: String, usingEncoder encoder: JSONEncoder = JSONEncoder()) {
-//        let data = try? encoder.encode(object)
-//        self.set(data, forKey: key)
-//    }
-//}

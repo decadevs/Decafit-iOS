@@ -13,7 +13,7 @@ struct DataClass: Codable {
     let workouts: [WorkoutElement]
 }
 struct WorkoutElement: Codable {
-    let id: String
+    let wid: String
     var title: String
     let backgroundImage: String
     let sets, reps: Int
@@ -21,18 +21,17 @@ struct WorkoutElement: Codable {
     let exercises: [Exercise]
 }
 struct Exercise: Codable {
-    let id, title, exerciseDescription: String
+    let wid, title, exerciseDescription: String
     let image: String
     let type: TypeEnum
 
     enum CodingKeys: String, CodingKey {
-        case id, title
+        case wid, title
         case exerciseDescription = "description"
         case image, type
     }
 }
-
 enum TypeEnum: String, Codable {
-    case count = "count"
-    case time = "time"
+    case count
+    case time
 }

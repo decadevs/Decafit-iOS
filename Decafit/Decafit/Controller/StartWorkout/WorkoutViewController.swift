@@ -10,6 +10,8 @@ class WorkoutViewController: UIViewController {
     let defaults = UserDefaults.standard
     var exercises = [WorkoutListQuery.Data.Workout.Exercise]()
     var selectedId: String?
+    var currentIndex: IndexPath = [0, 0]
+    var completion: ((Bool) -> Void)?
     
     lazy var tableView: UITableView = {
         let view = UITableView(frame: view.bounds)
@@ -41,14 +43,19 @@ class WorkoutViewController: UIViewController {
         detailsView.dismissCompletion = {
             self.view.removeOverlay()
         }
+        
+        // check for complete button
+        
     }
-    
+
     func getExercises() {
         data.getExerciseList(workoutId: selectedId ?? "")
         data.exerciseCompletion = { [self] result in
-            self.exercises = result
-            tableView.reloadData()
-            topView.titleLabel.text = "\(self.exercises.count) Exercises"
+            DispatchQueue.main.async {
+                self.exercises = result
+                tableView.reloadData()
+                topView.titleLabel.text = "\(self.exercises.count) Exercises"
+            }
         }
     }
     
@@ -56,19 +63,26 @@ class WorkoutViewController: UIViewController {
 
 // MARK: - Exercise View Controller Delegate
 extension WorkoutViewController: ExerciseVCDelegate {
+    func didDisplayCompleteButton() {
+        // loop through the table, and display button for each
+        let selectedWorkoutIndex = defaults.integer(forKey: UserDefaultKeys.selectedWorkoutIndex)
+        guard let exercises = defaults.workoutReport?.workout[selectedWorkoutIndex].exerciseArr else { fatalError() }
+        for num in 0..<exercises.count {
+            if exercises[num].started == true {
+                completion?(false)
+            } else {
+                completion?(true)
+//                self.showIncompleteBtn(row: currentIndex, progress: Float((exercises[num].progress ?? 0)) )
+            }
+            tableView.reloadData()
+        }
+        
+    }
+    
     func reload() {
-        checkExerciseCompletion()
         tableView.reloadData()
     }
-    func checkExerciseCompletion() {
-//        if isComplete {
-//            WorkoutCell().completeButton.isHidden = false
-//        } else {
-//            showIncompleteBtn(row: , progress: )
-//        }
-    }
     func showIncompleteBtn(row: IndexPath, progress: Float) {
-        // let firstIndex = tableView.indexPathsForVisibleRows?.first
         let row = tableView.cellForRow(at: row) as? WorkoutCell
         row?.completeButton.isHidden = false
         row?.completeButton.setTitle(Constants.incompleteText, for: .normal)
@@ -88,9 +102,37 @@ extension WorkoutViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: WorkoutCell.identifier, for: indexPath)
                 as? WorkoutCell else { return UITableViewCell()}
-
+        currentIndex = indexPath
         let exercises = exercises[indexPath.row]
         cell.configure(with: exercises)
+        
+        if let _ = defaults.string(forKey: "time"), let count = defaults.string(forKey: "count") {
+            
+            let timeLeft = TimeInterval(defaults.double(forKey: UserDefaultKeys.time))
+            let endTime = Date().addingTimeInterval(timeLeft)
+            
+            if exercises.type == .time {
+                cell.workoutDurationLabel.text = endTime.timeIntervalSinceNow.time
+            } else {
+                cell.workoutDurationLabel.text = "X\(count)"
+            }
+            
+        }
+        
+//        self.completion = { res in
+//            if res == false {
+//                cell.completeButton.isHidden = false
+//            }
+//        }
+        
+        let selectedWorkoutIndex = defaults.integer(forKey: UserDefaultKeys.selectedWorkoutIndex)
+        var thisExercise = defaults.workoutReport?.workout[selectedWorkoutIndex].exerciseArr?[indexPath.row]
+        if thisExercise?.started == true {
+            cell.completeButton.isHidden = false
+        } else {
+//            self.showIncompleteBtn(row: currentIndex, progress: Float(thisExercise?.progress ?? 0))
+        }
+        
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -126,7 +168,7 @@ extension WorkoutViewController: UIGestureRecognizerDelegate {
     @objc func workoutButtonTapped() {
         startWorkoutButton.setTitle(Constants.continueWorkout, for: .normal)
         let exerciseVC = ExerciseViewController()
-        exerciseVC.exerciseDelegate = self
+        exerciseVC.delegate = self
         exerciseVC.selectedWorkoutId = selectedId
         self.navigationController?.pushViewController(exerciseVC, animated: true)
     }

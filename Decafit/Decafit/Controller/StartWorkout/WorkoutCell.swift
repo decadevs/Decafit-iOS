@@ -7,11 +7,11 @@ class WorkoutCell: UITableViewCell {
         [exerciseImage, exerciseLabel, workoutDurationLabel, progressbar, completeButton]
             .forEach { contentView.addSubview($0)}
         setupSubviews()
+        
     }
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
     }
-    
     
     func configure(with model: WorkoutListQuery.Data.Workout.Exercise) {
         exerciseLabel.text = model.title
@@ -20,11 +20,7 @@ class WorkoutCell: UITableViewCell {
     }
     override func prepareForReuse() {
         super.prepareForReuse()
-//        cell.completeButton.isHidden = true
-//        cell.progressbar.isHidden = true
-//        cell.exerciseImage.image = UIImage()
-//        cell.exerciseLabel.text = ""
-        completeButton.isHidden = true
+        completeButton.isHidden = true 
         exerciseImage.image = nil
         exerciseLabel.text = nil
         workoutDurationLabel.text = nil 
@@ -74,6 +70,7 @@ class WorkoutCell: UITableViewCell {
         return btn
     }()
     func setupSubviews() {
+        contentView.setContentHuggingPriority(.defaultHigh, for: .vertical)
         NSLayoutConstraint.activate([
             contentView.heightAnchor.constraint(equalToConstant: 120),
             progressbar.heightAnchor.constraint(equalTo: contentView.heightAnchor),

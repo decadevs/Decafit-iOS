@@ -23,14 +23,15 @@ final class DecaTextField: UITextField {
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
     }
-    static func createNormalTextField(text: String) -> Self {
+    static func createNormalTextField(text: String, keyboardType: UIKeyboardType? = .default) -> Self {
         let field = Self()
         field.placeholder = text
+        field.keyboardType = keyboardType ?? .asciiCapable
         return field
     }
     static func createSecureTextField(text: String) -> Self {
         let field = Self()
-        field.keyboardType = .numberPad
+//        field.keyboardType = .numberPad
         field.placeholder = text
         field.isSecureTextEntry = true
         field.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: field.frame.height))

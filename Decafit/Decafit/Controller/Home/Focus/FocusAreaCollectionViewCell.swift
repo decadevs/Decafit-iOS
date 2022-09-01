@@ -59,7 +59,7 @@ class FocusAreaCollectionViewCell: UICollectionViewCell {
             workoutImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             workoutImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             
-            workoutImage.widthAnchor.constraint(equalToConstant: 130),
+            workoutImage.widthAnchor.constraint(equalToConstant: 162.5),
             workoutImage.heightAnchor.constraint(equalToConstant: 120),
 
             workoutTitle.leadingAnchor.constraint(equalTo: workoutImage.leadingAnchor, constant: 5),

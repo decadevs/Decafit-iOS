@@ -69,9 +69,8 @@ enum Constants {
     static let blankTextFieldError = "All fields are required!"
     static let incorrectInputError = "Incorrect input"
     
-    
     static let loginText = "login5"
-    
+    static let userID = "userID"
     
     static let overlayIdentifier = "overlay"
     static let removeShadow = "hidesShadow"

@@ -6,23 +6,43 @@
 //
 
 import UIKit
+import SQLite
+import Apollo
 
 final class HomeViewController: UIViewController {
     static var shared: HomeViewController?
     static func getHomeView() -> HomeViewController {
         return shared ?? HomeViewController()
     }
+    let data = DataManager.shared
+    let defaults = UserDefaults.standard
     lazy var todayView = TodaySessionView()
     lazy var focusAreaView: FocusAreaView = {
         let view = FocusAreaView()
         view.delegate = self
         return view
     }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupSubviews()
         setupNavigation()
+        
+        print("Home")
+        UserDefaults.standard.removeObject(forKey: UserDefaultKeys.workoutReport)
+
+//        print("Workout Report From Device", defaults.workoutReport)
+        /**
+         * Next. check if they have report in user defaults, if they do, use them to determine state of workout
+         * add icon to focus area to show that exercise was started but not complete
+         * display alert to ask if they waant to resume uncompleted workout
+         * if yes, display workout with saved state restored
+         * if no, reset workout, and fetch fresh workout from server
+         * constrain time and counts to a particular object
+         * 
+         */
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

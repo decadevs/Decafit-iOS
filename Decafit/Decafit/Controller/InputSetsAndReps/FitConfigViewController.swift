@@ -1,5 +1,4 @@
 import UIKit
-import KeychainSwift
 
 class FitConfigViewController: UIViewController {
     static let shared =  FitConfigViewController()
@@ -7,10 +6,11 @@ class FitConfigViewController: UIViewController {
     let data = DataManager.shared
     lazy var topImageView = ConfigTopView()
     var defaults = UserDefaults.standard
+    var reps, sets, count, time: String?
     
     lazy var labelStack: UIStackView = {
-       let stack = UIStackView(arrangedSubviews:
-                                [inputVCTitleLabel, inputVCSubTitleLabel])
+        let stack = UIStackView(arrangedSubviews:
+                                    [inputVCTitleLabel, inputVCSubTitleLabel])
         stack.axis = .vertical
         stack.spacing = 15
         stack.alignment = .leading
@@ -18,9 +18,9 @@ class FitConfigViewController: UIViewController {
         return stack
     }()
     lazy var textfieldStack: UIStackView = {
-       let stack = UIStackView(arrangedSubviews:
-                                [setsTextField, repsTextField,
-                                 timeTextField, countTextField])
+        let stack = UIStackView(arrangedSubviews:
+                                    [setsTextField, repsTextField,
+                                     timeTextField, countTextField])
         stack.axis = .vertical
         stack.spacing = 10
         stack.alignment = .leading
@@ -38,74 +38,59 @@ class FitConfigViewController: UIViewController {
                              for: .touchUpInside)
         backButton.addTarget(self, action: #selector(clickNavBackButton),
                              for: .touchUpInside)
-    }
-}
+        
+        // check if workout exists in device
+        if defaults.object(forKey: UserDefaultKeys.workoutReport) != nil {
+            reps = defaults.string(forKey: UserDefaultKeys.reps)
+            repsTextField.text = reps
+            sets = defaults.string(forKey: UserDefaultKeys.sets)
+            setsTextField.text = sets
+            count = defaults.string(forKey: UserDefaultKeys.count)
+            countTextField.text = count
+            time = defaults.string(forKey: UserDefaultKeys.time)
+            timeTextField.text = time
 
+        }
+    }
+    // Text Fields
+    let setsTextField: DecaTextField =
+        DecaTextField.createNormalTextField(text: Constants.sets, keyboardType: .numberPad)
+    let repsTextField: DecaTextField
+        = DecaTextField.createNormalTextField(text: Constants.reps, keyboardType: .numberPad)
+    let timeTextField: DecaTextField =
+        DecaTextField.createNormalTextField(text: Constants.time, keyboardType: .numberPad)
+    let countTextField: DecaTextField
+        = DecaTextField.createNormalTextField(text: Constants.count, keyboardType: .numberPad)
+
+}
+   
 extension FitConfigViewController: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true
     }
     @objc func clickNavBackButton() {
         self.navigationController?.popViewController(animated: true)
     }
-    /**
-     mutation ReportCreate($input: ReportCreateInput) {
-       reportCreate(input: $input) {
-         userID
-         workouts {
-           workoutId
-           workoutReps
-           workoutSet
-           workoutTime
-           workoutCount
-           exercises {
-             excerciseId
-             type
-             paused
-             pausedTime
-             completed
-           }
-         }
-       }
-     }
-     */
     func getConfigInput() {
         guard let reps = repsTextField.text, let sets = setsTextField.text, let time = timeTextField.text, let count = countTextField.text, !reps.isEmpty, !sets.isEmpty, !time.isEmpty, !count.isEmpty else {
             Alert.showAlert(self, title: Constants.alertTitleError, message: Constants.blankTextFieldError)
             return
         }
-        
-        // Save the data
-        defaults.setValue(reps, forKey: "reps")
-        defaults.setValue(sets, forKey: "sets")
-        defaults.setValue(time, forKey: "time")
-        defaults.setValue(count, forKey: "count")
-        
-        defaults.set(count, forKey: "count")
-        defaults.set(time, forKey: "time")
+ 
+        defaults.set(count, forKey: UserDefaultKeys.count)
+        defaults.set(time, forKey: UserDefaultKeys.time)
+        defaults.set(reps, forKey: UserDefaultKeys.reps)
+        defaults.set(sets, forKey: UserDefaultKeys.sets)
 
-        let keychain = KeychainSwift()
-        guard let userID = keychain.get("userID") else { return }
-        
-        let workout = Workout1(workoutId: selectedWorkoutid, workoutTime: time, workoutReps: Int(reps)!, workoutSet: Int(sets)!, workoutCount: Int(count)!, exercises: nil)
-        let report = ReportCreate(userID: userID, workouts: [workout])
-   
-        let reportExcerciseProgressInput = ReportExcerciseProgressInput(excerciseId: "", type: .count, paused: false, limit: "", completed: false, progress: 0)
-        
-        let reportWorkout = ReportWorkoutInput(workoutId: selectedWorkoutid ?? "", workoutReps: Int(reps)!, workoutSet: Int(sets)!, workoutTime: time, workoutCount: Int(count)!, exercises: [reportExcerciseProgressInput])
-        
-//        data.updateReport(userId: userID, workout: reportWorkout)
-        
-        print(report)
-        UserDefaults.standard.workoutReport = report
     }
+    
     @objc func gotoStartWorkout() {
         getConfigInput()
         let screen = WorkoutViewController.getWorkoutView()
         let img = topImageView.fitConfigImage.image
         screen.topView.topImage.image = img
         screen.selectedId = selectedWorkoutid
-        
         self.navigationController?.pushViewController(screen, animated: true)
     }
 }
@@ -149,7 +134,6 @@ extension FitConfigViewController {
             topImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             topImageView.heightAnchor.constraint(equalToConstant: CGFloat(view.frame.height * 0.21)),
             topImageView.bottomAnchor.constraint(equalTo: labelStack.topAnchor, constant: -40),
-            
             labelStack.heightAnchor.constraint(equalToConstant: 50),
             labelStack.leadingAnchor.constraint(equalTo: setsTextField.leadingAnchor, constant: 0),
             setsTextField.heightAnchor.constraint(equalToConstant: 56),
