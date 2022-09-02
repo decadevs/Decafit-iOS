@@ -38,6 +38,16 @@ class FocusAreaCollectionViewCell: UICollectionViewCell {
         image.addoverlay(color: DecaColor.purple.color)
         return image
     }()
+    
+   lazy var startedLabel: UILabel = {
+        let label = DecaLabel()
+        label.configure(with: DecaLabelViewModel(font: decaFont(size: 7, font: .poppinsRegular),
+                                                 textColor: .white, numberOfLines: 1,
+                                                 text: Constants.workoutStartedText, kerning: nil))
+    label.backgroundColor = .systemRed
+        return label
+    }()
+    
     var workoutTitle: UILabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(font: decaFont(size: 16, font: .poppinsMedium).bold(),
@@ -53,7 +63,7 @@ class FocusAreaCollectionViewCell: UICollectionViewCell {
         return label
     }()
     func setupViews() {
-        [workoutImage, workoutTitle, focusDurationLabel].forEach { contentView.addSubview($0)}
+        [workoutImage, workoutTitle, focusDurationLabel, startedLabel].forEach { contentView.addSubview($0)}
         NSLayoutConstraint.activate([
             workoutImage.topAnchor.constraint(equalTo: topAnchor, constant: 5),
             workoutImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
@@ -61,6 +71,9 @@ class FocusAreaCollectionViewCell: UICollectionViewCell {
             
             workoutImage.widthAnchor.constraint(equalToConstant: 162.5),
             workoutImage.heightAnchor.constraint(equalToConstant: 120),
+            
+            startedLabel.topAnchor.constraint(equalTo: workoutImage.topAnchor, constant: 0),
+            startedLabel.trailingAnchor.constraint(equalTo: workoutImage.trailingAnchor, constant: 0),
 
             workoutTitle.leadingAnchor.constraint(equalTo: workoutImage.leadingAnchor, constant: 5),
             workoutTitle.bottomAnchor.constraint(equalTo: workoutImage.bottomAnchor, constant: -15),

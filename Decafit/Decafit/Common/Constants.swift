@@ -83,6 +83,7 @@ enum Constants {
     static let pause = " Pause"
     static let loremText = modalText()
     static let urlStr = "https://decagon-decafit-api.herokuapp.com/decafit"
+    static let workoutStartedText = "in progress"
 }
 func modalText() -> String {
     let text1 = "Lorem ipsum dolor sit amet, consetetur elitr, sed diam nonumy eirmod tempor invidunt labore etLorem ipsum dolor sit amet, consetetur elitr, sed diam nonumy eirmod tempor"

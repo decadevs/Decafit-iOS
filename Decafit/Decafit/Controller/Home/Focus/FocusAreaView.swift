@@ -9,6 +9,7 @@ import UIKit
 
 protocol FocusAreaViewDelegate: AnyObject {
     func didDisplayFitConfigScreen(_ screen: FitConfigViewController, image: UIImage?, title: String, workoutId: String)
+    func showDialog()
 }
 class FocusAreaView: UIView, UICollectionViewDataSource,
                      UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -110,6 +111,9 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
         return CGSize(width: self.frame.size.width/2.4, height: 120)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        delegate?.showDialog()
+        
         let workouts = allWorkouts[indexPath.row]
         let selectedWorkoutIndex = indexPath.row
         defaults.set(selectedWorkoutIndex, forKey: UserDefaultKeys.selectedWorkoutIndex)

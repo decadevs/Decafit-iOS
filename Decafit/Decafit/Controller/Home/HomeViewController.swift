@@ -30,14 +30,6 @@ final class HomeViewController: UIViewController {
         setupNavigation()
         
 //        UserDefaults.standard.removeObject(forKey: UserDefaultKeys.workoutReport)
-
-        /** TODO
-         * add icon to focus area to show that exercise was started but not complete
-         * display alert to ask if user wants to resume uncompleted workout
-         * if yes, display workout with saved state restored
-         * if no, reset workout, and fetch fresh workout from server
-         * 
-         */
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -55,6 +47,10 @@ final class HomeViewController: UIViewController {
     }
 }
 extension HomeViewController: FocusAreaViewDelegate {
+    func showDialog() {
+        Alert.showDialog(self, title: "Continue Workout?", message: "You are yet to complete this workout. What would you like to do?")
+    }
+    
     func didDisplayFitConfigScreen(_ screen: FitConfigViewController, image: UIImage?, title: String, workoutId: String) {
         screen.topImageView.firstLabel.text = title
         screen.topImageView.fitConfigImage.image = image
