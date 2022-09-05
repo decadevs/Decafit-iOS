@@ -1,0 +1,20 @@
+mutation ReportUpdate($input: ReportCreateInput) {
+  reportUpdate(input: $input) {
+    userID
+    workouts {
+      workoutId
+      workoutReps
+      workoutSet
+      workoutTime
+      workoutCount
+      exercises {
+        excerciseId
+        type
+        paused
+        limit
+        completed
+        progress
+      }
+    }
+  }
+}

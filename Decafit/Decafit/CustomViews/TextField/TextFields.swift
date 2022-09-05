@@ -11,12 +11,3 @@ let emailTextField: DecaTextField =
     DecaTextField.createNormalTextField(text: Constants.emailHolder)
 let passwordTextField: DecaTextField =
     DecaTextField.createSecureTextField(text: Constants.pswHolder)
-// MARK: - Sets TextField
-let setsTextField: DecaTextField =
-    DecaTextField.createNormalTextField(text: Constants.sets)
-let repsTextField: DecaTextField
-    = DecaTextField.createNormalTextField(text: Constants.reps)
-let timeTextField: DecaTextField =
-    DecaTextField.createNormalTextField(text: Constants.time)
-let countTextField: DecaTextField
-    = DecaTextField.createNormalTextField(text: Constants.count)

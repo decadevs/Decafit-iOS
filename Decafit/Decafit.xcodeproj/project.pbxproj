@@ -44,9 +44,11 @@
 		B40AFB322889AB1C00249820 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40AFB312889AB1C00249820 /* AudioToolbox.framework */; };
 		B40AFB38288ACE1D00249820 /* DecaTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB37288ACE1D00249820 /* DecaTextField.swift */; };
 		B40AFB3A288ACE3F00249820 /* DecaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40AFB39288ACE3F00249820 /* DecaButton.swift */; };
+		B417338D28BDF03700FED065 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B417338C28BDF03600FED065 /* API.swift */; };
+		B417338F28BF637400FED065 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B417338E28BF637400FED065 /* UserDefaultKeys.swift */; };
+		B417339128C10E1500FED065 /* SavedWorkoutReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = B417339028C10E1500FED065 /* SavedWorkoutReport.swift */; };
 		B431E91828A4FBFE009769CB /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = B431E91728A4FBFE009769CB /* Apollo */; };
 		B431E91A28A4FBFE009769CB /* ApolloSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B431E91928A4FBFE009769CB /* ApolloSQLite */; };
-		B431E92228A4FE76009769CB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431E92128A4FE76009769CB /* API.swift */; };
 		B431E93028A5106A009769CB /* Hud.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431E92F28A5106A009769CB /* Hud.swift */; };
 		B43631DC289D4BB30010976F /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DB289D4BB30010976F /* ExerciseViewController.swift */; };
 		B43631DE289D4D770010976F /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43631DD289D4D770010976F /* ExerciseView.swift */; };
@@ -74,8 +76,9 @@
 		B44B3C1D289A957D000C94D7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C1C289A957D000C94D7 /* Alert.swift */; };
 		B44B3C21289B0093000C94D7 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C20289B0093000C94D7 /* Workout.swift */; };
 		B44B3C23289B0106000C94D7 /* TodaySessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C22289B0106000C94D7 /* TodaySessionModel.swift */; };
-		B44B3C25289B032D000C94D7 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C24289B032D000C94D7 /* Exercise.swift */; };
 		B44B3C27289B064A000C94D7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C26289B064A000C94D7 /* DataManager.swift */; };
+		B459C0F728B75B1C0007AECE /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B459C0F628B75B1C0007AECE /* Defaults.swift */; };
+		B459C10628B83C680007AECE /* CreateReport.graphql in Resources */ = {isa = PBXBuildFile; fileRef = B459C10528B83C680007AECE /* CreateReport.graphql */; };
 		B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B12287C147000EEC900 /* AppDelegate.swift */; };
 		B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B14287C147000EEC900 /* SceneDelegate.swift */; };
 		B47B5B17287C147000EEC900 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B16287C147000EEC900 /* HomeViewController.swift */; };
@@ -88,6 +91,8 @@
 		B4AB95B9288EB0F600FE9C96 /* DecaImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95B8288EB0F600FE9C96 /* DecaImageView.swift */; };
 		B4AB95CC2891D20D00FE9C96 /* FocusAreaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95CB2891D20D00FE9C96 /* FocusAreaCollectionViewCell.swift */; };
 		B4AB95CF2891D3B000FE9C96 /* FocusAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95CE2891D3B000FE9C96 /* FocusAreaView.swift */; };
+		B4B101D328BCC98A00CE2273 /* GetReport.graphql in Resources */ = {isa = PBXBuildFile; fileRef = B4B101D228BCC98A00CE2273 /* GetReport.graphql */; };
+		B4B101D528BCCA7D00CE2273 /* GetWorkoutReport.graphql in Resources */ = {isa = PBXBuildFile; fileRef = B4B101D428BCCA7D00CE2273 /* GetWorkoutReport.graphql */; };
 		B4B96E9F2892696200E22B33 /* TodaySessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B96E9E2892696200E22B33 /* TodaySessionView.swift */; };
 		B4B96EA12892697F00E22B33 /* TodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B96EA02892697F00E22B33 /* TodayCollectionViewCell.swift */; };
 		B4B96EA728936A2800E22B33 /* FitConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B96EA628936A2800E22B33 /* FitConfigViewController.swift */; };
@@ -97,6 +102,11 @@
 		B4C8D3C828AEBF3000AA901E /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8D3C728AEBF3000AA901E /* Timer.swift */; };
 		B4C8D3CA28B06C1400AA901E /* sound-effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B4C8D3C928B06C1400AA901E /* sound-effect.mp3 */; };
 		B4C8D3CC28B0712C00AA901E /* revb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B4C8D3CB28B0712C00AA901E /* revb.mp3 */; };
+		B4C8D3D028B37DE800AA901E /* Login.graphql in Resources */ = {isa = PBXBuildFile; fileRef = B4C8D3CF28B37DE800AA901E /* Login.graphql */; };
+		B4C8D3D328B380BA00AA901E /* Register.graphql in Resources */ = {isa = PBXBuildFile; fileRef = B4C8D3D228B380BA00AA901E /* Register.graphql */; };
+		B4C8D3D728B3872100AA901E /* WorkoutList.graphql in Resources */ = {isa = PBXBuildFile; fileRef = B4C8D3D628B3872100AA901E /* WorkoutList.graphql */; };
+		B4C8D3DD28B43C6A00AA901E /* ConfigTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8D3DC28B43C6A00AA901E /* ConfigTopView.swift */; };
+		B4D19C7728B6838F003541E3 /* UpdateReport.graphql in Resources */ = {isa = PBXBuildFile; fileRef = B4D19C7628B6838F003541E3 /* UpdateReport.graphql */; };
 		B4E4C9C9289C4103008CD86D /* WorkoutTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E4C9C8289C4103008CD86D /* WorkoutTopView.swift */; };
 		E9EDA8C619805CC18DD608E6 /* Pods_Decafit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48853A80EF7AD9413CD9484E /* Pods_Decafit.framework */; };
 /* End PBXBuildFile section */
@@ -161,10 +171,9 @@
 		B40AFB312889AB1C00249820 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B40AFB37288ACE1D00249820 /* DecaTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaTextField.swift; sourceTree = "<group>"; };
 		B40AFB39288ACE3F00249820 /* DecaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaButton.swift; sourceTree = "<group>"; };
-		B431E91B28A4FC54009769CB /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		B431E91C28A4FC54009769CB /* Login.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Login.graphql; sourceTree = "<group>"; };
-		B431E91D28A4FC54009769CB /* Register.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Register.graphql; sourceTree = "<group>"; };
-		B431E92128A4FE76009769CB /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		B417338C28BDF03600FED065 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = Decafit/API.swift; sourceTree = SOURCE_ROOT; };
+		B417338E28BF637400FED065 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
+		B417339028C10E1500FED065 /* SavedWorkoutReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedWorkoutReport.swift; sourceTree = "<group>"; };
 		B431E92F28A5106A009769CB /* Hud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hud.swift; sourceTree = "<group>"; };
 		B43631DB289D4BB30010976F /* ExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
 		B43631DD289D4D770010976F /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
@@ -193,8 +202,10 @@
 		B44B3C1C289A957D000C94D7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		B44B3C20289B0093000C94D7 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		B44B3C22289B0106000C94D7 /* TodaySessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionModel.swift; sourceTree = "<group>"; };
-		B44B3C24289B032D000C94D7 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		B44B3C26289B064A000C94D7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		B459C0F628B75B1C0007AECE /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		B459C10028B7958A0007AECE /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		B459C10528B83C680007AECE /* CreateReport.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = CreateReport.graphql; sourceTree = "<group>"; };
 		B47B5B0F287C147000EEC900 /* Decafit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Decafit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B47B5B12287C147000EEC900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B47B5B14287C147000EEC900 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -213,6 +224,8 @@
 		B4AB95B8288EB0F600FE9C96 /* DecaImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecaImageView.swift; sourceTree = "<group>"; };
 		B4AB95CB2891D20D00FE9C96 /* FocusAreaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusAreaCollectionViewCell.swift; sourceTree = "<group>"; };
 		B4AB95CE2891D3B000FE9C96 /* FocusAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusAreaView.swift; sourceTree = "<group>"; };
+		B4B101D228BCC98A00CE2273 /* GetReport.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetReport.graphql; sourceTree = "<group>"; };
+		B4B101D428BCCA7D00CE2273 /* GetWorkoutReport.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetWorkoutReport.graphql; sourceTree = "<group>"; };
 		B4B96E9E2892696200E22B33 /* TodaySessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionView.swift; sourceTree = "<group>"; };
 		B4B96EA02892697F00E22B33 /* TodayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCollectionViewCell.swift; sourceTree = "<group>"; };
 		B4B96EA628936A2800E22B33 /* FitConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitConfigViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +235,11 @@
 		B4C8D3C728AEBF3000AA901E /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		B4C8D3C928B06C1400AA901E /* sound-effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sound-effect.mp3"; sourceTree = "<group>"; };
 		B4C8D3CB28B0712C00AA901E /* revb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = revb.mp3; sourceTree = "<group>"; };
+		B4C8D3CF28B37DE800AA901E /* Login.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Login.graphql; sourceTree = "<group>"; };
+		B4C8D3D228B380BA00AA901E /* Register.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Register.graphql; sourceTree = "<group>"; };
+		B4C8D3D628B3872100AA901E /* WorkoutList.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = WorkoutList.graphql; sourceTree = "<group>"; };
+		B4C8D3DC28B43C6A00AA901E /* ConfigTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigTopView.swift; sourceTree = "<group>"; };
+		B4D19C7628B6838F003541E3 /* UpdateReport.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = UpdateReport.graphql; sourceTree = "<group>"; };
 		B4E4C9C8289C4103008CD86D /* WorkoutTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTopView.swift; sourceTree = "<group>"; };
 		E09F5AB25E31C6DF910AF630 /* Pods-Decafit-DecafitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Decafit-DecafitUITests.debug.xcconfig"; path = "Target Support Files/Pods-Decafit-DecafitUITests/Pods-Decafit-DecafitUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F5A45F2515A01D1403BDB39F /* Pods_Decafit_DecafitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Decafit_DecafitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -344,6 +362,7 @@
 				B4C8D3C228AC6DF000AA901E /* NavBar.swift */,
 				B4C8D3C428ACCEF300AA901E /* TagFile.swift */,
 				B4C8D3C728AEBF3000AA901E /* Timer.swift */,
+				B417338E28BF637400FED065 /* UserDefaultKeys.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -474,6 +493,7 @@
 			isa = PBXGroup;
 			children = (
 				B4B96EA628936A2800E22B33 /* FitConfigViewController.swift */,
+				B4C8D3DC28B43C6A00AA901E /* ConfigTopView.swift */,
 			);
 			path = InputSetsAndReps;
 			sourceTree = "<group>";
@@ -484,7 +504,7 @@
 				B43AFB0C28ABB26700811658 /* User.swift */,
 				B44B3C20289B0093000C94D7 /* Workout.swift */,
 				B44B3C22289B0106000C94D7 /* TodaySessionModel.swift */,
-				B44B3C24289B032D000C94D7 /* Exercise.swift */,
+				B417339028C10E1500FED065 /* SavedWorkoutReport.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -553,6 +573,7 @@
 				B43AFAF828ABA1EF00811658 /* AuthManager.swift */,
 				B43AFAF728ABA1EF00811658 /* Network.swift */,
 				B44B3C26289B064A000C94D7 /* DataManager.swift */,
+				B459C0F628B75B1C0007AECE /* Defaults.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -611,10 +632,15 @@
 		B4C8D3C628AE4BAD00AA901E /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				B431E92128A4FE76009769CB /* API.swift */,
-				B431E91C28A4FC54009769CB /* Login.graphql */,
-				B431E91D28A4FC54009769CB /* Register.graphql */,
-				B431E91B28A4FC54009769CB /* schema.json */,
+				B417338C28BDF03600FED065 /* API.swift */,
+				B4C8D3CF28B37DE800AA901E /* Login.graphql */,
+				B459C10028B7958A0007AECE /* schema.json */,
+				B4C8D3D228B380BA00AA901E /* Register.graphql */,
+				B4C8D3D628B3872100AA901E /* WorkoutList.graphql */,
+				B4D19C7628B6838F003541E3 /* UpdateReport.graphql */,
+				B459C10528B83C680007AECE /* CreateReport.graphql */,
+				B4B101D228BCC98A00CE2273 /* GetReport.graphql */,
+				B4B101D428BCCA7D00CE2273 /* GetWorkoutReport.graphql */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -736,22 +762,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4C8D3D328B380BA00AA901E /* Register.graphql in Resources */,
 				B40AFB172887983C00249820 /* Ubuntu-Regular.ttf in Resources */,
 				B40AFAE42887974200249820 /* Poppins-Light.ttf in Resources */,
 				B4C8D3CC28B0712C00AA901E /* revb.mp3 in Resources */,
 				B40AFAEE2887974200249820 /* Poppins-Black.ttf in Resources */,
 				B40AFB1C2887983C00249820 /* Ubuntu-Light.ttf in Resources */,
 				B4B96EA92893CCA500E22B33 /* Assets.xcassets in Resources */,
+				B4B101D528BCCA7D00CE2273 /* GetWorkoutReport.graphql in Resources */,
 				B40AFB1B2887983C00249820 /* Ubuntu-Italic.ttf in Resources */,
+				B4B101D328BCC98A00CE2273 /* GetReport.graphql in Resources */,
 				B40AFAEC2887974200249820 /* Poppins-LightItalic.ttf in Resources */,
+				B459C10628B83C680007AECE /* CreateReport.graphql in Resources */,
 				B4C8D3CA28B06C1400AA901E /* sound-effect.mp3 in Resources */,
 				B40AFB1D2887983C00249820 /* UFL.txt in Resources */,
 				B40AFB192887983C00249820 /* Ubuntu-MediumItalic.ttf in Resources */,
+				B4D19C7728B6838F003541E3 /* UpdateReport.graphql in Resources */,
 				B40AFAEF2887974200249820 /* Poppins-Thin.ttf in Resources */,
 				B40AFB162887983C00249820 /* Ubuntu-LightItalic.ttf in Resources */,
 				B40AFAE02887974200249820 /* Poppins-ExtraLight.ttf in Resources */,
 				B40AFAF02887974200249820 /* Poppins-SemiBold.ttf in Resources */,
 				B40AFAED2887974200249820 /* Poppins-Bold.ttf in Resources */,
+				B4C8D3D028B37DE800AA901E /* Login.graphql in Resources */,
+				B4C8D3D728B3872100AA901E /* WorkoutList.graphql in Resources */,
 				B40AFAE12887974200249820 /* Poppins-ThinItalic.ttf in Resources */,
 				B40AFB182887983C00249820 /* Ubuntu-Bold.ttf in Resources */,
 				B40AFAE22887974200249820 /* Poppins-ExtraLightItalic.ttf in Resources */,
@@ -932,6 +965,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4AB95B5288E932F00FE9C96 /* DecaStack.swift in Sources */,
+				B459C0F728B75B1C0007AECE /* Defaults.swift in Sources */,
 				B4B96EA728936A2800E22B33 /* FitConfigViewController.swift in Sources */,
 				B43AFAF428ABA09A00811658 /* SignupViewController+Extension.swift in Sources */,
 				B43AFB0728ABAD3400811658 /* ModalView.swift in Sources */,
@@ -955,7 +989,6 @@
 				B43AFB0D28ABB26700811658 /* User.swift in Sources */,
 				B44B3C002897C7F0000C94D7 /* WorkoutViewController.swift in Sources */,
 				B40AFB272888142100249820 /* SignupViewController.swift in Sources */,
-				B44B3C25289B032D000C94D7 /* Exercise.swift in Sources */,
 				B44B3C0728982687000C94D7 /* CustomNavView.swift in Sources */,
 				B43631E2289DB8650010976F /* ProgressCircle.swift in Sources */,
 				B4E4C9C9289C4103008CD86D /* WorkoutTopView.swift in Sources */,
@@ -965,18 +998,21 @@
 				B43AFB0628ABAD3400811658 /* ModalTopSwipeView.swift in Sources */,
 				B47B5B17287C147000EEC900 /* HomeViewController.swift in Sources */,
 				B4C8D3C828AEBF3000AA901E /* Timer.swift in Sources */,
+				B417338D28BDF03700FED065 /* API.swift in Sources */,
 				B4C8D3C328AC6DF000AA901E /* NavBar.swift in Sources */,
 				B4AB95CC2891D20D00FE9C96 /* FocusAreaCollectionViewCell.swift in Sources */,
 				B40AFB2B288861A300249820 /* Extensions.swift in Sources */,
 				B4AB95B9288EB0F600FE9C96 /* DecaImageView.swift in Sources */,
 				B40AFB3A288ACE3F00249820 /* DecaButton.swift in Sources */,
 				B44B3C052897C8CB000C94D7 /* WorkoutCell.swift in Sources */,
+				B417339128C10E1500FED065 /* SavedWorkoutReport.swift in Sources */,
 				B431E93028A5106A009769CB /* Hud.swift in Sources */,
+				B417338F28BF637400FED065 /* UserDefaultKeys.swift in Sources */,
 				B44B3C1D289A957D000C94D7 /* Alert.swift in Sources */,
-				B431E92228A4FE76009769CB /* API.swift in Sources */,
 				B43AFAF628ABA17900811658 /* LoginViewController+Extension.swift in Sources */,
 				B40AFB38288ACE1D00249820 /* DecaTextField.swift in Sources */,
 				B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */,
+				B4C8D3DD28B43C6A00AA901E /* ConfigTopView.swift in Sources */,
 				B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */,
 				B40AFB202887990000249820 /* CustomUIFont.swift in Sources */,
 				B43AFB0828ABAD3400811658 /* ModalViewController.swift in Sources */,

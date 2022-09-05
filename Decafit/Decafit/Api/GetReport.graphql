@@ -1,0 +1,20 @@
+query GetReport($userId: String!) {
+  report(userID: $userId) {
+    userID
+    workouts {
+      workoutId
+      workoutReps
+      workoutSet
+      workoutTime
+      workoutCount
+      exercises {
+        excerciseId
+        type
+        paused
+        limit
+        completed
+        progress
+      }
+    }
+  }
+}

@@ -2,22 +2,25 @@ import UIKit
 
 class FitConfigViewController: UIViewController {
     static let shared =  FitConfigViewController()
-// MARK: - Views
-    lazy var topImageView = TodaySessionView(isHidden: true)
+    var selectedWorkoutid: String?
+    let data = DataManager.shared
+    lazy var topImageView = ConfigTopView()
+    var defaults = UserDefaults.standard
+    var reps, sets, count, time: String?
+    
     lazy var labelStack: UIStackView = {
-       let stack = UIStackView(arrangedSubviews:
-                                [inputVCTitleLabel, inputVCSubTitleLabel])
+        let stack = UIStackView(arrangedSubviews:
+                                    [inputVCTitleLabel, inputVCSubTitleLabel])
         stack.axis = .vertical
         stack.spacing = 15
         stack.alignment = .leading
         stack.distribution = .fillProportionally
-        stack.contentHuggingPriority(for: .vertical)
         return stack
     }()
     lazy var textfieldStack: UIStackView = {
-       let stack = UIStackView(arrangedSubviews:
-                                [setsTextField, repsTextField,
-                                 timeTextField, countTextField])
+        let stack = UIStackView(arrangedSubviews:
+                                    [setsTextField, repsTextField,
+                                     timeTextField, countTextField])
         stack.axis = .vertical
         stack.spacing = 10
         stack.alignment = .leading
@@ -25,6 +28,7 @@ class FitConfigViewController: UIViewController {
         stack.contentHuggingPriority(for: .vertical)
         return stack
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -34,9 +38,34 @@ class FitConfigViewController: UIViewController {
                              for: .touchUpInside)
         backButton.addTarget(self, action: #selector(clickNavBackButton),
                              for: .touchUpInside)
+        
+        // check if workout exists in device
+        if defaults.object(forKey: UserDefaultKeys.workoutReport) != nil {
+            reps = defaults.string(forKey: UserDefaultKeys.reps)
+            repsTextField.text = reps
+            sets = defaults.string(forKey: UserDefaultKeys.sets)
+            setsTextField.text = sets
+            count = defaults.string(forKey: UserDefaultKeys.count)
+            countTextField.text = count
+            time = defaults.string(forKey: UserDefaultKeys.time)
+            timeTextField.text = time
+
+        }
     }
+    // Text Fields
+    let setsTextField: DecaTextField =
+        DecaTextField.createNormalTextField(text: Constants.sets, keyboardType: .numberPad)
+    let repsTextField: DecaTextField
+        = DecaTextField.createNormalTextField(text: Constants.reps, keyboardType: .numberPad)
+    let timeTextField: DecaTextField =
+        DecaTextField.createNormalTextField(text: Constants.time, keyboardType: .numberPad)
+    let countTextField: DecaTextField
+        = DecaTextField.createNormalTextField(text: Constants.count, keyboardType: .numberPad)
+
 }
+   
 extension FitConfigViewController: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true
     }
@@ -48,15 +77,24 @@ extension FitConfigViewController: UITextFieldDelegate {
             Alert.showAlert(self, title: Constants.alertTitleError, message: Constants.blankTextFieldError)
             return
         }
-        // Save the data 
-        print(reps, sets, time, count)
+ 
+        defaults.set(count, forKey: UserDefaultKeys.count)
+        defaults.set(time, forKey: UserDefaultKeys.time)
+        defaults.set(reps, forKey: UserDefaultKeys.reps)
+        defaults.set(sets, forKey: UserDefaultKeys.sets)
+
     }
+    
     @objc func gotoStartWorkout() {
-//        getConfigInput()
+        getConfigInput()
         let screen = WorkoutViewController.getWorkoutView()
+        let img = topImageView.fitConfigImage.image
+        screen.topView.topImage.image = img
+        screen.selectedId = selectedWorkoutid
         self.navigationController?.pushViewController(screen, animated: true)
     }
 }
+
 extension FitConfigViewController: UIGestureRecognizerDelegate {
     func setupNavigation() {
         let cview = UIView(frame: CGRect(x: 20, y: 40, width: 350, height: 50))
@@ -74,9 +112,10 @@ extension FitConfigViewController: UIGestureRecognizerDelegate {
         navigationItem.backButtonDisplayMode = .minimal
     }
 }
+
 extension FitConfigViewController {
     func setupSubviews() {
-        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height/1.2)
+        let contentViewSize = CGSize(width: view.frame.width, height: view.frame.height/1.18)
         let parentStack: DecaStack = {
             let stackView = DecaStack(arrangedSubviews: [topImageView,
                                                          labelStack,
@@ -90,11 +129,12 @@ extension FitConfigViewController {
         }()
         view.addSubview(parentStack)
         NSLayoutConstraint.activate([
-            topImageView.widthAnchor.constraint(equalToConstant: view.frame.width),
-            topImageView.heightAnchor.constraint(equalToConstant: 240),
-            topImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            labelStack.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: 15),
-            labelStack.heightAnchor.constraint(equalToConstant: 45),
+            topImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+            topImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            topImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            topImageView.heightAnchor.constraint(equalToConstant: CGFloat(view.frame.height * 0.21)),
+            topImageView.bottomAnchor.constraint(equalTo: labelStack.topAnchor, constant: -40),
+            labelStack.heightAnchor.constraint(equalToConstant: 50),
             labelStack.leadingAnchor.constraint(equalTo: setsTextField.leadingAnchor, constant: 0),
             setsTextField.heightAnchor.constraint(equalToConstant: 56),
             repsTextField.heightAnchor.constraint(equalToConstant: 56),

@@ -4,9 +4,15 @@ class WorkoutViewController: UIViewController {
     static func getWorkoutView() -> WorkoutViewController {
         return shared ?? WorkoutViewController()
     }
+    
     let data = DataManager.shared
     var detailsView = ModalViewController()
     let defaults = UserDefaults.standard
+    var exercises = [WorkoutListQuery.Data.Workout.Exercise]()
+    var selectedId: String?
+    var currentIndex: IndexPath = [0, 0]
+    var completion: ((Bool) -> Void)?
+    
     lazy var tableView: UITableView = {
         let view = UITableView(frame: view.bounds)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -29,7 +35,7 @@ class WorkoutViewController: UIViewController {
         startWorkoutButton.addTarget(self, action: #selector(workoutButtonTapped), for: .touchUpInside)
         setupSubviews()
         setupNavigation()
-        
+        getExercises()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -38,23 +44,41 @@ class WorkoutViewController: UIViewController {
             self.view.removeOverlay()
         }
     }
+
+    func getExercises() {
+        data.getExerciseList(workoutId: selectedId ?? "")
+        data.exerciseCompletion = { [self] result in
+            DispatchQueue.main.async {
+                self.exercises = result
+                tableView.reloadData()
+                topView.titleLabel.text = "\(self.exercises.count) Exercises"
+            }
+        }
+    }
+    
 }
+
 // MARK: - Exercise View Controller Delegate
 extension WorkoutViewController: ExerciseVCDelegate {
+    func didDisplayCompleteButton() {
+        let selectedWorkoutIndex = defaults.integer(forKey: UserDefaultKeys.selectedWorkoutIndex)
+        guard let exercises = defaults.workoutReport?.workout[selectedWorkoutIndex].exerciseArr else { fatalError() }
+        for num in 0..<exercises.count {
+            if exercises[num].started == true {
+                completion?(false)
+            } else {
+                completion?(true)
+                self.showIncompleteBtn(row: currentIndex, progress: Float((exercises[num].progress ?? 0)) )
+            }
+            tableView.reloadData()
+        }
+        
+    }
+    
     func reload() {
-        checkExerciseCompletion()
         tableView.reloadData()
     }
-    func checkExerciseCompletion() {
-        // check store for isComplete var
-//        if isComplete {
-//            WorkoutCell().completeButton.isHidden = false
-//        } else {
-//            showIncompleteBtn(row: <#T##IndexPath#>, progress: <#T##Float#>)
-//        }
-    }
     func showIncompleteBtn(row: IndexPath, progress: Float) {
-        // let firstIndex = tableView.indexPathsForVisibleRows?.first
         let row = tableView.cellForRow(at: row) as? WorkoutCell
         row?.completeButton.isHidden = false
         row?.completeButton.setTitle(Constants.incompleteText, for: .normal)
@@ -66,29 +90,57 @@ extension WorkoutViewController: ExerciseVCDelegate {
 }
 // MARK: - Table View Data Source
 extension WorkoutViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        data.getWorkoutData().count
+        exercises.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: WorkoutCell.identifier, for: indexPath)
                 as? WorkoutCell else { return UITableViewCell()}
-        cell.completeButton.isHidden = true
-        cell.progressbar.isHidden = true
-        cell.exerciseImage.image = UIImage()
-        cell.exerciseLabel.text = ""
-        cell.configure(with: data.getWorkoutData()[indexPath.row])
+        currentIndex = indexPath
+        let exercises = exercises[indexPath.row]
+        cell.configure(with: exercises)
+        
+        if let _ = defaults.string(forKey: "time"), let count = defaults.string(forKey: "count") {
+            
+            let timeLeft = TimeInterval(defaults.double(forKey: UserDefaultKeys.time))
+            let endTime = Date().addingTimeInterval(timeLeft)
+            
+            if exercises.type == .time {
+                cell.workoutDurationLabel.text = endTime.timeIntervalSinceNow.time
+            } else {
+                cell.workoutDurationLabel.text = "X\(count)"
+            }
+            
+        }
+        self.completion = { res in
+            if res == false {
+                cell.completeButton.isHidden = false
+            }
+        }
+        
+        let selectedWorkoutIndex = defaults.integer(forKey: UserDefaultKeys.selectedWorkoutIndex)
+        var thisExercise = defaults.workoutReport?.workout[selectedWorkoutIndex].exerciseArr?[indexPath.row]
+        if thisExercise?.started == true {
+            cell.completeButton.isHidden = false
+        } else {
+            self.showIncompleteBtn(row: currentIndex, progress: Float(thisExercise?.progress ?? 0))
+        }
+        
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let selectedCell = data.getWorkoutData()[indexPath.row]
+        let selectedCell = exercises[indexPath.row]
         let image = selectedCell.image
-        let title = selectedCell.exerciseName
-        _ = selectedCell.duration
+        let title = selectedCell.title
+        let desc = selectedCell.description
+        _ = selectedCell.type
         
         detailsView.titleText = title
         detailsView.imageName = image
+        detailsView.desc = desc
         detailsView.modalPresentationStyle = .popover
         present(detailsView, animated: true, completion: nil)
         view.addoverlay(color: .black, alpha: 0.6)
@@ -111,7 +163,8 @@ extension WorkoutViewController: UIGestureRecognizerDelegate {
     @objc func workoutButtonTapped() {
         startWorkoutButton.setTitle(Constants.continueWorkout, for: .normal)
         let exerciseVC = ExerciseViewController()
-        exerciseVC.exerciseDelegate = self
+        exerciseVC.delegate = self
+        exerciseVC.selectedWorkoutId = selectedId
         self.navigationController?.pushViewController(exerciseVC, animated: true)
     }
     func setupSubviews() {

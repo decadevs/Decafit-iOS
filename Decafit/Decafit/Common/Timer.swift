@@ -8,14 +8,15 @@
 import UIKit
 import SwiftySound
 class DecaTimer {
-    var timeLeft: TimeInterval = 25
+    var timeLeft: TimeInterval
     var endTime: Date?
     var timer = Timer()
     var isTimerRunning = false
     var timeLabel: UILabel
     
-    init(timeLabel: UILabel) {
+    init(timeLabel: UILabel, timeLeft: TimeInterval) {
         self.timeLabel = timeLabel
+        self.timeLeft = timeLeft
     }
     func invalidate() {
         timer.invalidate()
@@ -38,7 +39,7 @@ class DecaTimer {
             timeLabel.text = timeLeft.time
         } else {
             timer.invalidate()
-            Sound.play(file: "sound-effect.mp3")
+//            Sound.play(file: "sound-effect.mp3")
             timeLabel.text = "00:00"
         }
     }

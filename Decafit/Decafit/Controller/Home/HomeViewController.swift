@@ -6,23 +6,31 @@
 //
 
 import UIKit
+import SQLite
+import Apollo
 
 final class HomeViewController: UIViewController {
     static var shared: HomeViewController?
     static func getHomeView() -> HomeViewController {
         return shared ?? HomeViewController()
     }
+    let data = DataManager.shared
+    let defaults = UserDefaults.standard
     lazy var todayView = TodaySessionView()
     lazy var focusAreaView: FocusAreaView = {
         let view = FocusAreaView()
         view.delegate = self
         return view
     }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupSubviews()
         setupNavigation()
+        
+//        UserDefaults.standard.removeObject(forKey: UserDefaultKeys.workoutReport)
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -39,10 +47,17 @@ final class HomeViewController: UIViewController {
     }
 }
 extension HomeViewController: FocusAreaViewDelegate {
-    func didDisplayFitConfigScreen(_ screen: FitConfigViewController, image: UIImage?, title: String) {
-        self.navigationController?.pushViewController(screen, animated: true)
+    func showDialog() {
+        Alert.showDialog(self, title: "Continue Workout?", message: "You are yet to complete this workout. What would you like to do?")
     }
     
+    func didDisplayFitConfigScreen(_ screen: FitConfigViewController, image: UIImage?, title: String, workoutId: String) {
+        screen.topImageView.firstLabel.text = title
+        screen.topImageView.fitConfigImage.image = image
+        screen.selectedWorkoutid = workoutId
+        self.navigationController?.pushViewController(screen, animated: true)
+    }
+
     func setupNavigation() {
         let navbar = Navbar(frame: CGRect(x: 10, y: 25, width: 350, height: 80))
         navbar.backgroundColor = .white

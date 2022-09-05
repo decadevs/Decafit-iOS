@@ -12,22 +12,22 @@ final class AuthManager {
     let keychain = KeychainSwift()
 
     public var isSignedIn: Bool {
-//        return keychain.get(AuthManager.loginKeychainKey) != nil
-        return true 
+        return keychain.get(AuthManager.loginKeychainKey) != nil
+//        return false
     }
     public func register(user: User) {
         
         let user =  RegisterInput(fullName: user.fullName, email: user.email,
                                   phoneNumber: user.phoneNumber, password: user.password)
         Network.shared.apollo.perform(mutation: RegisterMutation(user: user)) { [weak self] result in
-            HUD.hide()
+          HUD.hide()
           switch result {
           case .failure(let error):
             self?.delegate?.didShowAlert(title: Constants.networkError,
                                    message: error.localizedDescription)
             return
           case .success(let graphQLResult):
-            if graphQLResult.data?.register != nil {
+            if graphQLResult.data?.userRegister != nil {
                 self?.successcomplete?(true)
             }
 
@@ -55,9 +55,11 @@ final class AuthManager {
                                    message: error.localizedDescription)
             return
           case .success(let graphQLResult):
-            if let token = graphQLResult.data?.login.token {
+            if let data = graphQLResult.data?.userLogin {
                 HUD.hide()
+                guard let token = data.token else { return }
                 self?.keychain.set(String(describing: token), forKey: AuthManager.loginKeychainKey)
+                self?.keychain.set(data.id, forKey: Constants.userID)
                 self?.successcomplete?(true)
             }
             if let errors = graphQLResult.errors {

@@ -59,7 +59,7 @@ enum Constants {
     static let focusAreaViewTitleText = "Other Focus Areas"
     static let todaySessionViewTitleText = "Today's session"
     static let todayFirstLabelText = "First"
-    static let todaySecondLabelText = "Second"
+    static let todaySecondLabelText = "Counts"
     static let todayThirdLabelTextAfterIcon = " 24 min"
     static let todayFourthLabelTextAfterIcon = " 24 Kcal"
     
@@ -68,7 +68,10 @@ enum Constants {
     static let passwordMismatchError = "Passwords do not match!"
     static let blankTextFieldError = "All fields are required!"
     static let incorrectInputError = "Incorrect input"
-    static let loginText = "login"
+    
+    static let loginText = "login5"
+    static let userID = "userID"
+    
     static let overlayIdentifier = "overlay"
     static let removeShadow = "hidesShadow"
     
@@ -80,6 +83,7 @@ enum Constants {
     static let pause = " Pause"
     static let loremText = modalText()
     static let urlStr = "https://decagon-decafit-api.herokuapp.com/decafit"
+    static let workoutStartedText = "in progress"
 }
 func modalText() -> String {
     let text1 = "Lorem ipsum dolor sit amet, consetetur elitr, sed diam nonumy eirmod tempor invidunt labore etLorem ipsum dolor sit amet, consetetur elitr, sed diam nonumy eirmod tempor"

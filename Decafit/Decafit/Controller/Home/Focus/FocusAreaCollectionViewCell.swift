@@ -6,16 +6,20 @@
 //
 
 import UIKit
+import Kingfisher
+
 class FocusAreaCollectionViewCell: UICollectionViewCell {
     static let identifier = "WorkoutCell"
-    var focusAreaCell: Workout? {
+    var focusAreaCell: WorkoutListQuery.Data.Workout? {
         didSet {
-            guard focusAreaCell != nil else {
-                return
+            workoutTitle.text = focusAreaCell?.title
+            focusDurationLabel.text = "30 days"
+            DispatchQueue.main.async { [weak self] in
+                let placeholder = UIImage(named: "back")
+                let url = URL(string: self?.focusAreaCell?.backgroundImage ?? "back")
+                self?.workoutImage.kf.indicatorType = .activity
+                self?.workoutImage.kf.setImage(with: url, placeholder: placeholder, options: nil, completionHandler: nil)
             }
-            focusImage.image = UIImage(named: focusAreaCell?.backgroundImage ?? "")
-            bodyFocusAreaLabel.text = focusAreaCell?.title ?? "ttt"
-            focusDurationLabel.text = focusAreaCell?.duration ?? "kkk"
         }
     }
     override init(frame: CGRect) {
@@ -23,9 +27,9 @@ class FocusAreaCollectionViewCell: UICollectionViewCell {
         setupViews()
     }
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(Constants.requiredInit)
     }
-    let focusImage: UIImageView = {
+    let workoutImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
@@ -34,7 +38,17 @@ class FocusAreaCollectionViewCell: UICollectionViewCell {
         image.addoverlay(color: DecaColor.purple.color)
         return image
     }()
-    var bodyFocusAreaLabel: UILabel = {
+    
+   lazy var startedLabel: UILabel = {
+        let label = DecaLabel()
+        label.configure(with: DecaLabelViewModel(font: decaFont(size: 7, font: .poppinsRegular),
+                                                 textColor: .white, numberOfLines: 1,
+                                                 text: Constants.workoutStartedText, kerning: nil))
+    label.backgroundColor = .systemRed
+        return label
+    }()
+    
+    var workoutTitle: UILabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(font: decaFont(size: 16, font: .poppinsMedium).bold(),
                                                  textColor: .white, numberOfLines: 1,
@@ -49,15 +63,22 @@ class FocusAreaCollectionViewCell: UICollectionViewCell {
         return label
     }()
     func setupViews() {
-        [focusImage, bodyFocusAreaLabel, focusDurationLabel].forEach { contentView.addSubview($0)}
+        [workoutImage, workoutTitle, focusDurationLabel, startedLabel].forEach { contentView.addSubview($0)}
         NSLayoutConstraint.activate([
-            focusImage.topAnchor.constraint(equalTo: topAnchor, constant: 5),
-            focusImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
-            focusImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
-            bodyFocusAreaLabel.leadingAnchor.constraint(equalTo: focusImage.leadingAnchor, constant: 10),
-            bodyFocusAreaLabel.bottomAnchor.constraint(equalTo: focusImage.bottomAnchor, constant: -20),
-            focusDurationLabel.trailingAnchor.constraint(equalTo: focusImage.trailingAnchor, constant: -20),
-            focusDurationLabel.bottomAnchor.constraint(equalTo: focusImage.bottomAnchor, constant: -20)
+            workoutImage.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            workoutImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            workoutImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            
+            workoutImage.widthAnchor.constraint(equalToConstant: 162.5),
+            workoutImage.heightAnchor.constraint(equalToConstant: 120),
+            
+            startedLabel.topAnchor.constraint(equalTo: workoutImage.topAnchor, constant: 0),
+            startedLabel.trailingAnchor.constraint(equalTo: workoutImage.trailingAnchor, constant: 0),
+
+            workoutTitle.leadingAnchor.constraint(equalTo: workoutImage.leadingAnchor, constant: 5),
+            workoutTitle.bottomAnchor.constraint(equalTo: workoutImage.bottomAnchor, constant: -15),
+            focusDurationLabel.trailingAnchor.constraint(equalTo: workoutImage.trailingAnchor, constant: -5),
+            focusDurationLabel.bottomAnchor.constraint(equalTo: workoutImage.bottomAnchor, constant: -5)
 
         ])
     }

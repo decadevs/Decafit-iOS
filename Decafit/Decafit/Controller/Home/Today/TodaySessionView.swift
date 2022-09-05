@@ -5,12 +5,8 @@
 //  Created by Decagon on 28/07/2022.
 //
 import UIKit
-protocol TodaySessionViewDelegate: AnyObject {
-    func didDisplayInputScreen(_ screen: FitConfigViewController)
-}
 class TodaySessionView: UIView {
     let data = DataManager.shared
-    weak var delegate: TodaySessionViewDelegate?
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -78,7 +74,5 @@ extension TodaySessionView: UICollectionViewDelegate,
         return CGSize(width: self.frame.size.width, height: 150)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let screen = FitConfigViewController.shared
-        (delegate?.didDisplayInputScreen(screen))
     }
 }

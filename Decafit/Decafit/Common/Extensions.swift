@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import KeychainSwift
 extension TimeInterval {
     var time: String {
         return String(format: "%02d:%02d", Int(self/60),
@@ -26,6 +27,7 @@ extension UINavigationBar {
         }
     }
 }
+
 extension UILabel {
     func set(text: String, withKerning kerning: CGFloat) {
         let attributedString = NSMutableAttributedString(string: text)
@@ -64,6 +66,12 @@ extension UIView {
         overlay.frame = .zero
         overlay.removeFromSuperview()
     }
+    func getUserID() -> String {
+        guard let key = KeychainSwift().get(Constants.userID) else {
+            fatalError("User not logged in yet")
+        }
+        return key
+    }
 }
 extension UIViewController {
     func toggleAuthScreens(_ sender: UIButton) {
@@ -77,6 +85,7 @@ extension UIViewController {
         screen.modalPresentationStyle = .fullScreen
         present(screen, animated: true)
     }
+    
 }
 extension UICollectionView {
     func scrollToNextItem() {
@@ -87,3 +96,12 @@ extension UICollectionView {
             self.setContentOffset(CGPoint(x: contentOffset, y: self.contentOffset.y), animated: true)
     }
 }
+extension FileManager {
+    func getDocumentDirectory() -> URL {
+        return self.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    }
+    func getCache() -> URL { 
+        return self.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("apollo_cache.sqlite")
+    }
+}
+

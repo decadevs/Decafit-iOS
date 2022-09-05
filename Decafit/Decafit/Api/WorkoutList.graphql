@@ -1,0 +1,17 @@
+query WorkoutList {
+  workouts {
+    id
+    title
+    backgroundImage
+    sets
+    reps
+    createdAt
+    exercises {
+      id
+      title
+      description
+      image
+      type
+    }
+  }
+}
