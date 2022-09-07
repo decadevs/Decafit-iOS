@@ -45,6 +45,7 @@ class TodaySessionView: UIView {
         NSLayoutConstraint.activate([
             todaySessionViewTitle.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             todaySessionViewTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+//            todaySessionViewTitle.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 10),
 
             collectionView.topAnchor.constraint(equalTo: todaySessionViewTitle.bottomAnchor, constant: 0),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),

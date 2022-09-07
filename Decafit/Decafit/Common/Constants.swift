@@ -79,16 +79,13 @@ enum Constants {
     static let completeText = "complete"
     static let incompleteText = "incomplete"
     static let continueWorkout = "Continue Workout"
+    static let repeatWorkout = "Repeat Workout"
+
     static let resume = " Resume"
     static let pause = " Pause"
-    static let loremText = modalText()
+    static let start = "  Start"
+
     static let urlStr = "https://decagon-decafit-api.herokuapp.com/decafit"
     static let workoutStartedText = "in progress"
-}
-func modalText() -> String {
-    let text1 = "Lorem ipsum dolor sit amet, consetetur elitr, sed diam nonumy eirmod tempor invidunt labore etLorem ipsum dolor sit amet, consetetur elitr, sed diam nonumy eirmod tempor"
-    let text2 = "dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, sea takimata sanctus est Lorem ipsum dolor "
-    let text3 = "Lorem ipsum dolor sit amet, consetetur elitr, sed diam nonumy eirmod tempor invidunt labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo"
-    let text = text1 + text2 + text3
-    return text
+    static let FocusAreaDialogMsg =  "You are yet to complete this workout. What would you like to do?"
 }

@@ -51,4 +51,7 @@ class ProgressCircle: UIView {
         CACurrentMediaTime(), from: nil) - pausedTime
       layer.beginTime = timeSincePause
     }
+    func restartAnimation() {
+        
+    }
 }

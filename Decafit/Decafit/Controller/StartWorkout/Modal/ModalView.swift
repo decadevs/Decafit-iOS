@@ -28,7 +28,7 @@ class ModalView: UIView {
         label.configure(with: DecaLabelViewModel(
                             font: decaFont(size: 12, font: .poppinsRegular),
                             textColor: DecaColor.darkGray.color, numberOfLines: 0,
-                            text: Constants.loremText, kerning: nil))
+                            text: Constants.todayFirstLabelText, kerning: nil))
         label.sizeToFit()
         return label
     }()

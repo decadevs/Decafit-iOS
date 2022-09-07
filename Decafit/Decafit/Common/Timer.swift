@@ -43,4 +43,10 @@ class DecaTimer {
             timeLabel.text = "00:00"
         }
     }
+    func resetTimer(timeLeft: TimeInterval) {
+        timer.invalidate()
+        isTimerRunning = false
+        self.timeLeft = timeLeft
+        startTimer()
+    }
 }

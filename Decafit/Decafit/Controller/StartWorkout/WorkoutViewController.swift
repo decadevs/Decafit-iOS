@@ -65,12 +65,13 @@ extension WorkoutViewController: ExerciseVCDelegate {
         guard let exercises = defaults.workoutReport?.workout[selectedWorkoutIndex].exerciseArr else { fatalError() }
         for num in 0..<exercises.count {
             if exercises[num].started == true {
-                completion?(false)
-            } else {
                 completion?(true)
-                self.showIncompleteBtn(row: currentIndex, progress: Float((exercises[num].progress ?? 0)) )
+                tableView.reloadData()
+            } else {
+                completion?(false)
+                tableView.reloadData()
+
             }
-            tableView.reloadData()
         }
         
     }
@@ -78,14 +79,15 @@ extension WorkoutViewController: ExerciseVCDelegate {
     func reload() {
         tableView.reloadData()
     }
-    func showIncompleteBtn(row: IndexPath, progress: Float) {
-        let row = tableView.cellForRow(at: row) as? WorkoutCell
-        row?.completeButton.isHidden = false
-        row?.completeButton.setTitle(Constants.incompleteText, for: .normal)
-        row?.completeButton.setTitleColor(DecaColor.red.color, for: .normal)
-        row?.completeButton.backgroundColor = DecaColor.lightRed.color
-        row?.progressbar.isHidden = false
-        row?.progressbar.progress = progress
+    func showIncompleteBtn(cell: UITableViewCell, progress: Float) {
+//        let row = tableView.cellForRow(at: row) as? WorkoutCell
+        let cell = UITableViewCell() as? WorkoutCell
+        cell?.completeButton.isHidden = false
+        cell?.completeButton.setTitle(Constants.incompleteText, for: .normal)
+        cell?.completeButton.setTitleColor(DecaColor.red.color, for: .normal)
+        cell?.completeButton.backgroundColor = DecaColor.lightRed.color
+        cell?.progressbar.isHidden = false
+        cell?.progressbar.progress = progress
     }
 }
 // MARK: - Table View Data Source
@@ -103,29 +105,21 @@ extension WorkoutViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configure(with: exercises)
         
         if let _ = defaults.string(forKey: "time"), let count = defaults.string(forKey: "count") {
-            
-            let timeLeft = TimeInterval(defaults.double(forKey: UserDefaultKeys.time))
-            let endTime = Date().addingTimeInterval(timeLeft)
-            
+
             if exercises.type == .time {
-                cell.workoutDurationLabel.text = endTime.timeIntervalSinceNow.time
+                cell.workoutDurationLabel.text = view.inputTimeAsInterval
             } else {
                 cell.workoutDurationLabel.text = "X\(count)"
             }
             
         }
-        self.completion = { res in
-            if res == false {
+        self.completion = { [weak self] res in
+            if res == true {
                 cell.completeButton.isHidden = false
+            } else {
+                self?.showIncompleteBtn(cell: cell, progress: 0.5 )
+                tableView.reloadData()
             }
-        }
-        
-        let selectedWorkoutIndex = defaults.integer(forKey: UserDefaultKeys.selectedWorkoutIndex)
-        var thisExercise = defaults.workoutReport?.workout[selectedWorkoutIndex].exerciseArr?[indexPath.row]
-        if thisExercise?.started == true {
-            cell.completeButton.isHidden = false
-        } else {
-            self.showIncompleteBtn(row: currentIndex, progress: Float(thisExercise?.progress ?? 0))
         }
         
         return cell

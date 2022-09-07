@@ -1,6 +1,7 @@
 PODS:
   - KeychainSwift (20.0.0)
   - Kingfisher (7.3.1)
+  - SideMenu (6.5.0)
   - SVProgressHUD (2.2.5)
   - SwiftLint (0.47.1)
   - SwiftySound (1.2.0)
@@ -8,6 +9,7 @@ PODS:
 DEPENDENCIES:
   - KeychainSwift (~> 20.0)
   - Kingfisher (~> 7.0)
+  - SideMenu (~> 6.0)
   - SVProgressHUD
   - SwiftLint
   - SwiftySound
@@ -16,6 +18,7 @@ SPEC REPOS:
   trunk:
     - KeychainSwift
     - Kingfisher
+    - SideMenu
     - SVProgressHUD
     - SwiftLint
     - SwiftySound
@@ -23,10 +26,11 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   KeychainSwift: 0ce6a4d13f7228054d1a71bb1b500448fb2ab837
   Kingfisher: f411ab4902e733fc0c40522920fb5a236d7a7334
+  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
   SwiftySound: 9eb28bb14edb601b40027e44319e0ef8383f88bf
 
-PODFILE CHECKSUM: 17527bc76beb03c20f591f9b8e41710c69c30488
+PODFILE CHECKSUM: 485250cabfd000a731e3368ca5a0315d02b5b9cd
 
 COCOAPODS: 1.11.3

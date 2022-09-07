@@ -300,6 +300,19 @@ public final class CreateReportMutation: GraphQLMutation {
         workouts {
           __typename
           workoutId
+          workoutReps
+          workoutSet
+          workoutTime
+          workoutCount
+          exercises {
+            __typename
+            excerciseId
+            type
+            paused
+            limit
+            completed
+            progress
+          }
         }
       }
     }
@@ -400,6 +413,11 @@ public final class CreateReportMutation: GraphQLMutation {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("workoutId", type: .nonNull(.scalar(String.self))),
+            GraphQLField("workoutReps", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("workoutSet", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("workoutTime", type: .nonNull(.scalar(String.self))),
+            GraphQLField("workoutCount", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("exercises", type: .nonNull(.list(.nonNull(.object(Exercise.selections))))),
           ]
         }
 
@@ -409,8 +427,8 @@ public final class CreateReportMutation: GraphQLMutation {
           self.resultMap = unsafeResultMap
         }
 
-        public init(workoutId: String) {
-          self.init(unsafeResultMap: ["__typename": "ReportWorkout", "workoutId": workoutId])
+        public init(workoutId: String, workoutReps: Int, workoutSet: Int, workoutTime: String, workoutCount: Int, exercises: [Exercise]) {
+          self.init(unsafeResultMap: ["__typename": "ReportWorkout", "workoutId": workoutId, "workoutReps": workoutReps, "workoutSet": workoutSet, "workoutTime": workoutTime, "workoutCount": workoutCount, "exercises": exercises.map { (value: Exercise) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -428,6 +446,140 @@ public final class CreateReportMutation: GraphQLMutation {
           }
           set {
             resultMap.updateValue(newValue, forKey: "workoutId")
+          }
+        }
+
+        public var workoutReps: Int {
+          get {
+            return resultMap["workoutReps"]! as! Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "workoutReps")
+          }
+        }
+
+        public var workoutSet: Int {
+          get {
+            return resultMap["workoutSet"]! as! Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "workoutSet")
+          }
+        }
+
+        public var workoutTime: String {
+          get {
+            return resultMap["workoutTime"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "workoutTime")
+          }
+        }
+
+        public var workoutCount: Int {
+          get {
+            return resultMap["workoutCount"]! as! Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "workoutCount")
+          }
+        }
+
+        public var exercises: [Exercise] {
+          get {
+            return (resultMap["exercises"] as! [ResultMap]).map { (value: ResultMap) -> Exercise in Exercise(unsafeResultMap: value) }
+          }
+          set {
+            resultMap.updateValue(newValue.map { (value: Exercise) -> ResultMap in value.resultMap }, forKey: "exercises")
+          }
+        }
+
+        public struct Exercise: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["ReportExcerciseProgress"]
+
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("excerciseId", type: .scalar(String.self)),
+              GraphQLField("type", type: .scalar(EnumType.self)),
+              GraphQLField("paused", type: .scalar(Bool.self)),
+              GraphQLField("limit", type: .scalar(String.self)),
+              GraphQLField("completed", type: .scalar(Bool.self)),
+              GraphQLField("progress", type: .scalar(Int.self)),
+            ]
+          }
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(excerciseId: String? = nil, type: EnumType? = nil, paused: Bool? = nil, limit: String? = nil, completed: Bool? = nil, progress: Int? = nil) {
+            self.init(unsafeResultMap: ["__typename": "ReportExcerciseProgress", "excerciseId": excerciseId, "type": type, "paused": paused, "limit": limit, "completed": completed, "progress": progress])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var excerciseId: String? {
+            get {
+              return resultMap["excerciseId"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "excerciseId")
+            }
+          }
+
+          public var type: EnumType? {
+            get {
+              return resultMap["type"] as? EnumType
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "type")
+            }
+          }
+
+          public var paused: Bool? {
+            get {
+              return resultMap["paused"] as? Bool
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "paused")
+            }
+          }
+
+          public var limit: String? {
+            get {
+              return resultMap["limit"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "limit")
+            }
+          }
+
+          public var completed: Bool? {
+            get {
+              return resultMap["completed"] as? Bool
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "completed")
+            }
+          }
+
+          public var progress: Int? {
+            get {
+              return resultMap["progress"] as? Int
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "progress")
+            }
           }
         }
       }

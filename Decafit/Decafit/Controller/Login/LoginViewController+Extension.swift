@@ -3,7 +3,8 @@ import KeychainSwift
 
 extension LoginViewController: AuthManagerDelegate {
     @objc func toggleSignup() {
-        self.dismiss(animated: true, completion: nil)
+        toggleAuthScreens(orangeSignUpLink)
+//        self.dismiss(animated: true, completion: nil)
     }
     func didShowAlert(title: String, message: String) {
         Alert.showAlert(self, title: title,
@@ -23,9 +24,9 @@ extension LoginViewController: AuthManagerDelegate {
         HUD.show(status: "Signing you in...")
         auth.login(user: user)
         auth.successcomplete = { _ in
-            let home = HomeViewController.getHomeView()
-            home.modalPresentationStyle = .fullScreen
-            self.present(home, animated: true, completion: nil)
+            let home = UINavigationController(rootViewController: HomeViewController.getHomeView())
+            self.view.window?.rootViewController = home
+            
         }
     }
 }

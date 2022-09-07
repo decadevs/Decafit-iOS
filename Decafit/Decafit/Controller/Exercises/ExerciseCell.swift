@@ -13,6 +13,8 @@ class ExerciseCell: UICollectionViewCell {
     
     var timer: DecaTimer?
     var resumeTapped = false
+    var pauseTapped = false
+
     var pauseTime: TimeInterval = 0
     // MARK: - Initializers
     override init(frame: CGRect) {
@@ -25,10 +27,9 @@ class ExerciseCell: UICollectionViewCell {
         
         timer = DecaTimer(timeLabel: exerciseView.timerLabel, timeLeft: timeLeft)
         exerciseView.timerLabel.text = timer?.timeLeft.time
-        exerciseView.progressCircle.setProgress(duration: timer?.timeLeft ?? 20 )
-        timer?.startTimer()
+//        exerciseView.progressCircle.setProgress(duration: timer?.timeLeft ?? 20 )
+//        timer?.startTimer()
     
-        exerciseCellDelegate?.startExercise()
 
     }
     required init?(coder: NSCoder) {
@@ -66,10 +67,31 @@ extension ExerciseCell {
     @objc func pauseButtonTapped(_ sender: UIButton) {
         if sender.tag == Tags.stepcell {
             let timer = exerciseView.timer
-            pauseTimer(timer: timer!)
+            resumeTimer(timer: timer!)
         } else {
-            pauseTimer(timer: self.timer!)
+            resumeTimer(timer: self.timer!)
         }
+    }
+    func resumeTimer(timer: DecaTimer) {
+        if exerciseView.pauseResumeButton.currentTitle == Constants.start {
+            exerciseView.progressCircle.setProgress(duration: timer.timeLeft ?? 20 )
+            
+            exerciseView.progressCircle.resumeAnimation()
+            timer.startTimer()
+
+            exerciseCellDelegate?.startExercise()
+            
+            timer.isTimerRunning = true
+            
+            exerciseView.pauseResumeButton.setTitle(Constants.pause, for: .normal)
+            exerciseView.pauseResumeButton.setImage(
+               UIImage(systemName: Constants.pauseImg), for: .normal)
+//            exerciseView.nextWorkoutButton.setTitle(Constants.repeatWorkout, for: .normal)
+
+        } else {
+            pauseTimer(timer: timer)
+        }
+
     }
     func pauseTimer(timer: DecaTimer) {
         if resumeTapped == false {

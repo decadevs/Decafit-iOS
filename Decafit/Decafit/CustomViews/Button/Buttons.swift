@@ -13,19 +13,7 @@ let facebookButton = DecaButton.createSocialButton(image: Constants.fbImg)
 let appleButton = DecaButton.createSocialButton(image: Constants.appleImg)
 let orangeSignUpLink = DecaButton.createOrangeButtonLink(title: Constants.signUp)
 let nextButton = DecaButton.createPurpleButton(title: Constants.next)
-// MARK: - Custom navbar calender button
-var navbarRightCalender: UIButton = {
-   let btn = UIButton()
-    btn.setImage(UIImage(named: Constants.calenderImg)!, for: .normal)
-    btn.imageView?.addoverlay(color: DecaColor.palePurple.color)
-    btn.backgroundColor = DecaColor.lightGray.color
-    btn.layer.cornerRadius = 10
-    btn.layer.borderWidth = 0
-    btn.translatesAutoresizingMaskIntoConstraints = false
-    btn.contentEdgeInsets = UIEdgeInsets(
-        top: 10, left: 12, bottom: 10, right: 12)
-    return btn
-}()
+
 let backButton: UIButton = {
     let button = UIButton()
     button.setImage(UIImage(named: Constants.backArrow), for: .normal)

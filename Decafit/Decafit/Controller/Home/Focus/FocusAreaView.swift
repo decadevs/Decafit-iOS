@@ -43,13 +43,14 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
         self.translatesAutoresizingMaskIntoConstraints = false
 
         data.fetchWorkouts()
-        data.fetchWorkoutsCompletion = { [self] graphQLResult in
+        data.fetchWorkoutsCompletion = { [weak self] graphQLResult in
             if let workouts = graphQLResult.data?.workouts.compactMap({ $0 }) {
-                allWorkouts = workouts
-                collectionView.reloadData()
-                createLocalWorkoutReport()
+                self?.allWorkouts = workouts
+                self?.collectionView.reloadData()
+                self?.createLocalWorkoutReport()
             }
         }
+        data.fetchReportFromServer(userId: getUserID())
         
     }
     required init?(coder: NSCoder) {
@@ -58,7 +59,9 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
     
     func createLocalWorkoutReport() {
         if defaults.object(forKey: UserDefaultKeys.workoutReport) == nil {
-            let exerciseReport = ExerciseReport(excerciseId: "", type: "", paused: false, completed: false, limit: "", progress: 0)
+            let exerciseReport = ExerciseReport(excerciseId: "", type: "",
+                                                paused: false, completed: false,
+                                                limit: "", progress: 0)
             defaults.workoutReport = SavedWorkoutReport(workout: [])
 
             var arr = [ExerciseReport]()
@@ -72,7 +75,6 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
                 defaults.workoutReport?.workout.append(SavedWorkout(workoutId: workout.id, exerciseArr: arr))
                 arr = []
             }
-            
         }
     }
 
@@ -83,7 +85,7 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
         NSLayoutConstraint.activate([
             focusAreaViewTitle.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
             focusAreaViewTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            focusAreaViewTitle.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: -20),
+            focusAreaViewTitle.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 0),
             collectionView.topAnchor.constraint(equalTo: focusAreaViewTitle.bottomAnchor, constant: 20),
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
@@ -103,6 +105,29 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
                 FocusAreaCollectionViewCell else { return UICollectionViewCell() }
         let workouts = allWorkouts[indexPath.row]
         cell.focusAreaCell = workouts
+        
+
+//        var shouldDisplayIcon = false
+        
+        // check if this exercise is complete
+        data.fetchWorkoutReportFromCache(userId: getUserID(), workoutId: workouts.id)
+        data.workoutReportCacheCompletion = { data in
+            print("Workout from cache", data)
+            if (data.reportWorkout?.workouts?.exercises.isEmpty) != nil || (data.reportWorkout?.workouts?.exercises != nil) {
+                guard let incomplete = data.reportWorkout?.workouts?.exercises.filter({ $0.completed == false }) else { fatalError() }
+                print(incomplete)
+                if incomplete.count > 0 {
+                    // workout is incomplete
+                    cell.startedBtn.isHidden = false
+
+                }
+            } else {
+                // Workout has no exercises
+                print("This workout has no exercises!", workouts.id)
+                cell.startedBtn.isHidden = true
+            }
+
+        }
         return cell
     }
     func collectionView(_ collectionView: UICollectionView,
@@ -112,13 +137,32 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        delegate?.showDialog()
+//         if any of the exercises in workout is started, but not complete, display dialog
+        data.fetchReportFromServerCompletion = { [weak self] result in
+            for data in 0..<(result.data?.report?.workouts?.exercises.count)! {
+                for exercise in 0..<(self?.defaults.workoutReport?.workout[data].exerciseArr?.count)! {
+                    if self?.defaults.workoutReport?.workout[data].exerciseArr?[exercise].started == true && result.data?.report?.workouts?.exercises[data].completed == false {
+                        // cell.startedBtn.isHidden = false
+                        self?.delegate?.showDialog()
+
+                    } else {
+                        // cell.startedBtn.isHidden = true
+
+                    }
+                }
+            }
+        }
+        
         
         let workouts = allWorkouts[indexPath.row]
         let selectedWorkoutIndex = indexPath.row
+//        print(workouts.id)
         defaults.set(selectedWorkoutIndex, forKey: UserDefaultKeys.selectedWorkoutIndex)
         defaults.workoutReport?.workout[selectedWorkoutIndex].workoutId = workouts.id
         defaults.set(workouts.id, forKey: UserDefaultKeys.workoutID)
+        
+//        data.fetchWorkoutReportFromServer(userId: getUserID(), workoutId: workouts.id)
+        data.fetchWorkoutReportFromCache(userId: getUserID(), workoutId: workouts.id)
         
         let screen = FitConfigViewController.shared
         let selectedCell = collectionView.cellForItem(at: indexPath) as? FocusAreaCollectionViewCell
@@ -130,4 +174,5 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 15, left: 5, bottom: 10, right: 5)
     }
+    
 }

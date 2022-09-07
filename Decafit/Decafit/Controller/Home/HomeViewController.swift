@@ -8,14 +8,19 @@
 import UIKit
 import SQLite
 import Apollo
+import SideMenu
+import KeychainSwift
 
 final class HomeViewController: UIViewController {
     static var shared: HomeViewController?
     static func getHomeView() -> HomeViewController {
         return shared ?? HomeViewController()
     }
+    
+    let keychain = KeychainSwift()
     let data = DataManager.shared
     let defaults = UserDefaults.standard
+    let profileVC = ProfileViewController()
     lazy var todayView = TodaySessionView()
     lazy var focusAreaView: FocusAreaView = {
         let view = FocusAreaView()
@@ -26,11 +31,20 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+
         setupSubviews()
         setupNavigation()
-        
+        profileVC.delegate = self
+
 //        UserDefaults.standard.removeObject(forKey: UserDefaultKeys.workoutReport)
+//        focusAreaView.createLocalWorkoutReport()
+//        print(defaults.workoutReport)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(showOfflineDeviceUI(notification:)), name: NSNotification.Name.connectivityStatus, object: nil)
         
+    }
+    deinit {
+      print("HomeViewController was deallocated")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -43,12 +57,51 @@ final class HomeViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         navigationController?.setNavigationBarHidden(true, animated: true)
-
     }
+    
+    @objc func showOfflineDeviceUI(notification: Notification) {
+        if NetworkMonitor.shared.isConnected {
+            print("Connected")
+        } else {
+            print("Not connected")
+        }
+    }
+    
+    @objc func showProfile(_ sender: DecaButton) {
+        let menu = SideMenuNavigationController(rootViewController: ProfileViewController())
+        menu.alwaysAnimate = true
+        menu.leftSide = true
+        menu.menuWidth = 300
+        menu.presentationStyle = .menuSlideIn
+        present(menu, animated: true, completion: nil)
+    }
+    var mainTitleLabel: DecaLabel = {
+        let label = DecaLabel()
+        label.configure(with: DecaLabelViewModel(
+                            font: decaFont(size: 22, font: .ubuntuBold), textColor: DecaColor.black.color, numberOfLines: 1,
+                            text: "Your Daily Tracker", kerning: 0))
+         return label
+    }()
+    
 }
 extension HomeViewController: FocusAreaViewDelegate {
+    
     func showDialog() {
-        Alert.showDialog(self, title: "Continue Workout?", message: "You are yet to complete this workout. What would you like to do?")
+        
+        Alert.showDialog(self, title: "Continue Workout?",
+                         message: Constants.FocusAreaDialogMsg, firstAction: "Restart",
+                         secondAction: "Resume") { [weak self] output in
+            
+            if output {
+                // restart
+                print(output)
+                // clear this workout report from cache
+                
+            } else {
+                // resume
+            }
+        }
+        
     }
     
     func didDisplayFitConfigScreen(_ screen: FitConfigViewController, image: UIImage?, title: String, workoutId: String) {
@@ -59,14 +112,18 @@ extension HomeViewController: FocusAreaViewDelegate {
     }
 
     func setupNavigation() {
-        let navbar = Navbar(frame: CGRect(x: 10, y: 25, width: 350, height: 80))
+        let navbar = UINavigationBar(frame: CGRect(x: 10, y: 20, width: 340, height: 70))
         navbar.backgroundColor = .white
         let menuBarItem = CustomNavView()
+        
+        menuBarItem.navProfileImageBtn.addTarget(self, action: #selector(showProfile), for: .touchUpInside)
+        menuBarItem.navbarRightCalender.addTarget(self, action: #selector(showProfile), for: .touchUpInside)
         navbar.addSubview(menuBarItem)
         
-        let currWidth = menuBarItem.widthAnchor.constraint(equalToConstant: view.frame.size.width)
+        menuBarItem.topAnchor.constraint(equalTo: navbar.topAnchor, constant: -10).isActive = true
+        let currWidth = menuBarItem.widthAnchor.constraint(equalToConstant: view.frame.size.width*0.95)
         currWidth.isActive = true
-        let currHeight = menuBarItem.heightAnchor.constraint(equalToConstant: 60)
+        let currHeight = menuBarItem.heightAnchor.constraint(equalToConstant: 50)
         currHeight.isActive = true
         
         navigationController?.navigationBar.addSubview(navbar)
@@ -76,16 +133,25 @@ extension HomeViewController: FocusAreaViewDelegate {
         navigationController?.navigationBar.barStyle = .default
     }
     func setupSubviews() {
-        [todayView, focusAreaView].forEach { view.addSubview($0)}
+        [mainTitleLabel, todayView, focusAreaView].forEach { view.addSubview($0)}
         NSLayoutConstraint.activate([
-            todayView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
+            mainTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 55),
+            mainTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            mainTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            todayView.topAnchor.constraint(equalTo: mainTitleLabel.bottomAnchor, constant: 25),
             todayView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             todayView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             todayView.heightAnchor.constraint(equalToConstant: CGFloat(view.frame.height * 0.3)),
+            
             focusAreaView.topAnchor.constraint(equalTo: todayView.bottomAnchor, constant: 10),
             focusAreaView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             focusAreaView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             focusAreaView.heightAnchor.constraint(equalToConstant: CGFloat(view.frame.height * 0.4))
         ])
     }
+}
+extension HomeViewController: ProfileViewControllerDelegate {
+    func didTapLogout() {}
+    
 }

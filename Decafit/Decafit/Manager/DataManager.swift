@@ -7,6 +7,7 @@
 
 import Foundation
 import Apollo
+import Network
 
 final class DataManager {
     static let shared = DataManager()
@@ -18,7 +19,9 @@ final class DataManager {
     var reportCompletion: ((GraphQLResult<GetWorkoutReportQuery.Data>) -> Void)?
     var workoutReportCacheCompletion: ((GetWorkoutReportQuery.Data) -> Void)?
     var updateCacheCompletion: ((GetWorkoutReportQuery.Data) -> Void)?
-    
+    var fetchReportFromCacheCompletion: ((GetReportQuery.Data) -> Void)?
+    var fetchReportFromServerCompletion: ((GraphQLResult<GetReportQuery.Data>) -> Void)?
+
     // MARK: - Fetch From Server
     func watchServer<T: GraphQLQuery>(query: T, completion:
                                         @escaping (GraphQLResult<T.Data>) -> Void) {
@@ -29,7 +32,6 @@ final class DataManager {
             case .failure(let error):
                 print("Failure! Error: \(error)")
             case .success(let graphQLResult):
-                print("Success! List Fetched")
                 completion(graphQLResult)
             }
         }
@@ -37,16 +39,37 @@ final class DataManager {
     
     func fetchWorkouts() {
         let query = WorkoutListQuery()
-        watchServer(query: query) { [weak self] result in
-            self?.fetchWorkoutsCompletion?(result)
+        if NetworkMonitor.shared.isConnected {
+            watchServer(query: query) { [weak self] result in
+                self?.fetchWorkoutsCompletion?(result)
+            }
+        } else {
+            apolloSQ.store.load(query: query) { [weak self] result in
+                switch result {
+                case .failure(let error):
+                    print("Failure! Error: \(error)")
+                case .success(let graphQLResult):
+                    DispatchQueue.main.async {
+                        self?.fetchWorkoutsCompletion?(graphQLResult)
+                    }
+                }
+                
+            }
         }
+
     }
     
     func fetchWorkoutReportFromServer(userId: String, workoutId: String) {
         let query = GetWorkoutReportQuery(userId: userId, workoutId: workoutId)
         watchServer(query: query) {[weak self] result in
-            print(result)
             self?.reportCompletion?(result)
+        }
+    }
+    
+    func fetchReportFromServer(userId: String) {
+        let query = GetReportQuery(userId: userId)
+        watchServer(query: query) {[weak self] result in 
+            self?.fetchReportFromServerCompletion?(result)
         }
     }
     
@@ -95,8 +118,8 @@ final class DataManager {
     }
     func fetchReportFromCache(userId: String) {
         let query = GetReportQuery(userId: userId)
-        readCachedQuery(query: query, completion: { data in
-            print(data)
+        readCachedQuery(query: query, completion: { [weak self] data in
+            self?.fetchReportFromCacheCompletion?(data)
         })
     }
     
@@ -109,8 +132,7 @@ final class DataManager {
             do {
                 try transaction.update(query: query, { (data: inout GetWorkoutReportQuery.Data) in
                     data.reportWorkout?.workouts? = workouts
-                    print("Cache updated successfully", data)
-                    
+//                    print("After updating cache", data.reportWorkout?.workouts)
                 })
                 
             } catch let err {
@@ -135,6 +157,7 @@ final class DataManager {
             }
         }
     }
+    
     public func updateReport(userId: String, workout: ReportWorkoutInput) {
         let input = ReportCreateInput(userId: userId, workouts: workout)
         
@@ -161,15 +184,5 @@ final class DataManager {
         }
         
     }
-    
-//    apolloSQ.cacheKeyForObject = { dict in
-//      guard
-//        let dict = dict,
-//        let id = dict["id"] as? Int,
-//        let typename = dict["__typename"] as? String  else {
-//            return nil
-//        }
-//        return "\(typename)-\(id)"
-//    }
     
 }

@@ -16,9 +16,9 @@ class ExerciseView: UIView {
         fatalError(Constants.requiredInit)
     }
     func displaySteps() {
-        DispatchQueue.main.async { [self] in
-            stepsTakenView.startStepCount()
-            timer?.startTimer()
+        DispatchQueue.main.async { [weak self] in
+            self?.stepsTakenView.startStepCount()
+            self?.stepsTakenView.timeData.text = self?.inputTimeAsInterval
         }
     }
     lazy var topImageView: DecaImageView = {
@@ -50,20 +50,17 @@ class ExerciseView: UIView {
     }()
     var progressCircle: ProgressCircle = {
        let progress = ProgressCircle()
+        progress.pauseAnimation()
         progress.translatesAutoresizingMaskIntoConstraints = false
         return progress
     }()
     var stepsTakenView = StepsTakenView()
-    var pauseResumeButton: UIButton = {
-        let button = DecaButton.createSocialButton(image: Constants.playImg)
-        button.backgroundColor = .white
-        button.layer.borderWidth = 0
-        button.setTitle(Constants.pause, for: .normal)
-        button.setImage(UIImage(systemName: Constants.pauseImg), for: .normal)
-        button.tintColor = DecaColor.purple.color
-        button.titleLabel?.font = decaFont(size: 20, font: .poppinsMedium)
-        button.setTitleColor(DecaColor.purple.color, for: .normal)
-        return button
+    var pauseResumeButton: DecaButton = {
+       let btn = DecaButton()
+        btn.configure(with: DecaButtonViewModel(
+                        title: Constants.start, font: decaFont(size: 20, font: .poppinsMedium), backgroundColor: .white, titleColor: DecaColor.purple.color, image: UIImage(named: Constants.playImg), borderWidth: 0, cornerRadius: nil, borderColor: nil, contentEdgeInsets: nil, isEnabled: true, tarmic: false))
+        btn.tintColor = DecaColor.purple.color
+        return btn
     }()
     lazy var nextWorkoutButton = DecaButton.createPurpleButton(
         title: Constants.exerciseTimerButtonText)

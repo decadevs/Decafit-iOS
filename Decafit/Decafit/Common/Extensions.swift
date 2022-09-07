@@ -7,6 +7,7 @@
 
 import UIKit
 import KeychainSwift
+var defaults = UserDefaults.standard
 extension TimeInterval {
     var time: String {
         return String(format: "%02d:%02d", Int(self/60),
@@ -18,6 +19,7 @@ extension Int {
         return CGFloat(self) * .pi / 180
     }
 }
+
 extension UINavigationBar {
     func shouldRemoveShadow(_ value: Bool) {
         if value {
@@ -71,6 +73,13 @@ extension UIView {
             fatalError("User not logged in yet")
         }
         return key
+    }
+    var inputTimeAsInterval: String {
+        let timeLeft = TimeInterval(defaults.double(forKey: UserDefaultKeys.time))
+        let endTime = Date().addingTimeInterval(timeLeft)
+        let time = endTime.timeIntervalSinceNow.time
+        
+        return time
     }
 }
 extension UIViewController {

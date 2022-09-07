@@ -10,6 +10,9 @@ import Kingfisher
 
 class FocusAreaCollectionViewCell: UICollectionViewCell {
     static let identifier = "WorkoutCell"
+    let defaults = UserDefaults.standard
+    let data = DataManager.shared
+    
     var focusAreaCell: WorkoutListQuery.Data.Workout? {
         didSet {
             workoutTitle.text = focusAreaCell?.title
@@ -25,6 +28,7 @@ class FocusAreaCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
+        
     }
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
@@ -39,13 +43,11 @@ class FocusAreaCollectionViewCell: UICollectionViewCell {
         return image
     }()
     
-   lazy var startedLabel: UILabel = {
-        let label = DecaLabel()
-        label.configure(with: DecaLabelViewModel(font: decaFont(size: 7, font: .poppinsRegular),
-                                                 textColor: .white, numberOfLines: 1,
-                                                 text: Constants.workoutStartedText, kerning: nil))
-    label.backgroundColor = .systemRed
-        return label
+   lazy var startedBtn: DecaButton = {
+        let btn = DecaButton()
+        btn.configure(with: DecaButtonViewModel(title: Constants.workoutStartedText, font: decaFont(size: 7, font: .poppinsRegular), backgroundColor: .systemRed, titleColor: .white, image: nil, borderWidth: nil, cornerRadius: 5, borderColor: nil, contentEdgeInsets: UIEdgeInsets(top: 2, left: 7, bottom: 2, right: 7), isEnabled: false, tarmic: false))
+        btn.isHidden = true
+        return btn
     }()
     
     var workoutTitle: UILabel = {
@@ -62,8 +64,13 @@ class FocusAreaCollectionViewCell: UICollectionViewCell {
                                                  text: Constants.focusDurationLabelText, kerning: 0.5))
         return label
     }()
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        startedBtn.setTitle("", for: .normal)
+        startedBtn.backgroundColor = .clear
+    }
     func setupViews() {
-        [workoutImage, workoutTitle, focusDurationLabel, startedLabel].forEach { contentView.addSubview($0)}
+        [workoutImage, workoutTitle, focusDurationLabel, startedBtn].forEach { contentView.addSubview($0)}
         NSLayoutConstraint.activate([
             workoutImage.topAnchor.constraint(equalTo: topAnchor, constant: 5),
             workoutImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
@@ -72,8 +79,8 @@ class FocusAreaCollectionViewCell: UICollectionViewCell {
             workoutImage.widthAnchor.constraint(equalToConstant: 162.5),
             workoutImage.heightAnchor.constraint(equalToConstant: 120),
             
-            startedLabel.topAnchor.constraint(equalTo: workoutImage.topAnchor, constant: 0),
-            startedLabel.trailingAnchor.constraint(equalTo: workoutImage.trailingAnchor, constant: 0),
+            startedBtn.topAnchor.constraint(equalTo: workoutImage.topAnchor, constant: 0),
+            startedBtn.trailingAnchor.constraint(equalTo: workoutImage.trailingAnchor, constant: 0),
 
             workoutTitle.leadingAnchor.constraint(equalTo: workoutImage.leadingAnchor, constant: 5),
             workoutTitle.bottomAnchor.constraint(equalTo: workoutImage.bottomAnchor, constant: -15),
