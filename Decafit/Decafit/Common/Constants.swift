@@ -16,6 +16,7 @@ enum Constants {
     static let signIn = "Sign In"
     static let signUp = "Sign up"
     static let next = "Next"
+    static let logout = "Log Out"
 
     static let run = "Run"
     static let close = "Close"
@@ -80,6 +81,7 @@ enum Constants {
     static let incompleteText = "incomplete"
     static let continueWorkout = "Continue Workout"
     static let repeatWorkout = "Repeat Workout"
+    static let endWorkout = "End Workout"
 
     static let resume = " Resume"
     static let pause = " Pause"

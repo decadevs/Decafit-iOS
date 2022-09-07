@@ -94,6 +94,7 @@
 		B4AB95CC2891D20D00FE9C96 /* FocusAreaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95CB2891D20D00FE9C96 /* FocusAreaCollectionViewCell.swift */; };
 		B4AB95CF2891D3B000FE9C96 /* FocusAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB95CE2891D3B000FE9C96 /* FocusAreaView.swift */; };
 		B4ABEF8328C7AE34008A66B9 /* ExerciseViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ABEF8228C7AE34008A66B9 /* ExerciseViewController+Extension.swift */; };
+		B4ABEF8728C8BCF0008A66B9 /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4ABEF8628C8BCF0008A66B9 /* HomeKit.framework */; };
 		B4B101D328BCC98A00CE2273 /* GetReport.graphql in Resources */ = {isa = PBXBuildFile; fileRef = B4B101D228BCC98A00CE2273 /* GetReport.graphql */; };
 		B4B101D528BCCA7D00CE2273 /* GetWorkoutReport.graphql in Resources */ = {isa = PBXBuildFile; fileRef = B4B101D428BCCA7D00CE2273 /* GetWorkoutReport.graphql */; };
 		B4B96E9F2892696200E22B33 /* TodaySessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B96E9E2892696200E22B33 /* TodaySessionView.swift */; };
@@ -229,6 +230,7 @@
 		B4AB95CB2891D20D00FE9C96 /* FocusAreaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusAreaCollectionViewCell.swift; sourceTree = "<group>"; };
 		B4AB95CE2891D3B000FE9C96 /* FocusAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusAreaView.swift; sourceTree = "<group>"; };
 		B4ABEF8228C7AE34008A66B9 /* ExerciseViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseViewController+Extension.swift"; sourceTree = "<group>"; };
+		B4ABEF8628C8BCF0008A66B9 /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
 		B4B101D228BCC98A00CE2273 /* GetReport.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetReport.graphql; sourceTree = "<group>"; };
 		B4B101D428BCCA7D00CE2273 /* GetWorkoutReport.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetWorkoutReport.graphql; sourceTree = "<group>"; };
 		B4B96E9E2892696200E22B33 /* TodaySessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionView.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4ABEF8728C8BCF0008A66B9 /* HomeKit.framework in Frameworks */,
 				B40AFB322889AB1C00249820 /* AudioToolbox.framework in Frameworks */,
 				B431E91A28A4FBFE009769CB /* ApolloSQLite in Frameworks */,
 				B431E91828A4FBFE009769CB /* Apollo in Frameworks */,
@@ -382,6 +385,7 @@
 		B40AFB302889AB1C00249820 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B4ABEF8628C8BCF0008A66B9 /* HomeKit.framework */,
 				B43AFB0F28ABBAB600811658 /* HealthKit.framework */,
 				B40AFB312889AB1C00249820 /* AudioToolbox.framework */,
 				48853A80EF7AD9413CD9484E /* Pods_Decafit.framework */,
@@ -1194,16 +1198,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Decafit/Decafit.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K5US6PZPYZ;
+				DEVELOPMENT_TEAM = G2HT7368M4;
 				INFOPLIST_FILE = Decafit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ucwealth.Decafit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ucwealth.decafit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1217,16 +1222,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Decafit/Decafit.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K5US6PZPYZ;
+				DEVELOPMENT_TEAM = G2HT7368M4;
 				INFOPLIST_FILE = Decafit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ucwealth.Decafit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ucwealth.decafit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

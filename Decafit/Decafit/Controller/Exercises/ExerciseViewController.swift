@@ -13,6 +13,7 @@ class ExerciseViewController: UIViewController, UIGestureRecognizerDelegate {
     var exercises = [WorkoutListQuery.Data.Workout.Exercise]()
     
     var currentIndex: IndexPath = [0, 0]
+    var lastIndex: IndexPath = [0, 0]
     var pauseTime: TimeInterval?
     var selectedWorkoutIndex: Int?
     var currentExerciseId: String?
@@ -98,8 +99,14 @@ extension ExerciseViewController: UICollectionViewDataSource {
             
         }
         
+        let repsTracker = defaults.integer(forKey: UserDefaultKeys.repsTracker)
+        if repsTracker > 1 {
+            cell.exerciseView.nextWorkoutButton.setTitle(Constants.repeatWorkout, for: .normal)
+        }
+
+
         if indexPath.row == exercises.count - 1 {
-            cell.exerciseView.nextWorkoutButton.setTitle("End Workout", for: .normal)
+            cell.exerciseView.nextWorkoutButton.setTitle(Constants.endWorkout, for: .normal)
         }
         
         let selectedWorkoutIndex = defaults.integer(forKey: UserDefaultKeys.selectedWorkoutIndex)
@@ -152,11 +159,19 @@ extension ExerciseViewController: UICollectionViewDelegate, UICollectionViewDele
         var cellToSwipe: Double = Double(Float((scrollView.contentOffset.x))/Float((pageWidth+minSpace))) + Double(0.5) + Double(factor)
         if cellToSwipe < 0 {
             cellToSwipe = 0
-        } else if cellToSwipe >= Double(exercises.count) {
-            cellToSwipe = Double(exercises.count) - Double(1)
         }
-        let indexPath: IndexPath = IndexPath(row: Int(cellToSwipe), section: 0)
-        currentIndex = indexPath
+        
+//        else if cellToSwipe >= Double(exercises.count) {
+//            cellToSwipe = Double(exercises.count) - Double(1)
+//        }
+//        let indexPath = IndexPath(row: Int(cellToSwipe), section: 0)
+
+        if cellToSwipe < Double(exercises.count) {
+            currentIndex = IndexPath(row: Int(cellToSwipe), section: 0)
+        } else {
+            lastIndex = IndexPath(row: Int(cellToSwipe), section: 0)
+
+        }
 
 //        updateReportInCacheAndServer()
 
@@ -164,44 +179,45 @@ extension ExerciseViewController: UICollectionViewDelegate, UICollectionViewDele
         var repsTracker = defaults.integer(forKey: UserDefaultKeys.repsTracker)
         let repeatIndex: IndexPath = IndexPath(row: Int(cellToSwipe)-1, section: 0)
         let firstIndex: IndexPath = IndexPath(row: 0, section: 0)
-        
-        print("Row count", indexPath.row)
-        if indexPath.row < exercises.count {
+
+        if currentIndex.row < exercises.count || lastIndex.row == exercises.count {
             if repsTracker > 1 {
+                
+                // change button title to repeat workout
                 exerciseView.nextWorkoutButton.setTitle(Constants.repeatWorkout, for: .normal)
                 
                 self.collectionView.scrollToItem(at: repeatIndex, at: .left, animated: true)
                 print("Repeating exercise")
   
-                // change button title
                 // restart timer
                 exerciseView.timer?.invalidate()
                 let timeLeft = TimeInterval(defaults.double(forKey: UserDefaultKeys.time))
                 exerciseView.timer?.timeLeft = timeLeft
                 exerciseView.progressCircle.setProgress(duration: timeLeft)
                 exerciseView.pauseResumeButton.setTitle(Constants.start, for: .normal)
-                
-                // trigger a reload
-            
+
                 repsTracker -= 1
                 defaults.set(repsTracker, forKey: "repsTracker")
                 print("repsTracker", repsTracker)
+                
+                // trigger a reload
 //                collectionView.reloadData()
                 
             } else {
                 
-                self.collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+                self.collectionView.scrollToItem(at: currentIndex, at: .left, animated: true)
             }
 
-        } else {
+        } else { // this wont ever get called because of the celltoswipe logic
             
             if setsTracker > 1 {
+                self.collectionView.scrollToItem(at: firstIndex, at: .left, animated: true)
+                
                 setsTracker -= 1
                 defaults.set(setsTracker, forKey: "setsTracker")
                 
                 updateReportInCacheAndServer()
-                self.collectionView.scrollToItem(at: firstIndex, at: .left, animated: true)
-                
+
             } else {
                 exerciseView.nextWorkoutButton.setTitle("The End", for: .normal)
 

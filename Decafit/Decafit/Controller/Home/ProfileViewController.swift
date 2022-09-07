@@ -34,15 +34,11 @@ class ProfileViewController: UIViewController {
         screen.modalPresentationStyle = .fullScreen
         present(screen, animated: true, completion: nil)
     }
-    
-    deinit {
-      print("ProfileViewController was deallocated")
-    }
-    
+
     var logoutBtn: DecaButton = {
         let btn = DecaButton()
         btn.configure(with: DecaButtonViewModel(
-                        title: "Log Out", font: decaFont(size: 14, font: .poppinsMedium), backgroundColor: DecaColor.purple.color,
+                        title: Constants.logout, font: decaFont(size: 14, font: .poppinsMedium), backgroundColor: DecaColor.purple.color,
                         titleColor: .white, image: nil, borderWidth: 0,
                         cornerRadius: 5, borderColor: nil,
                         contentEdgeInsets: UIEdgeInsets(

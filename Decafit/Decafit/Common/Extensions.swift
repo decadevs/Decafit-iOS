@@ -94,6 +94,10 @@ extension UIViewController {
         screen.modalPresentationStyle = .fullScreen
         present(screen, animated: true)
     }
+    var homeVC: UIViewController {
+        let home = UINavigationController(rootViewController: HomeViewController())
+        return home
+    }
     
 }
 extension UICollectionView {
@@ -113,4 +117,3 @@ extension FileManager {
         return self.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("apollo_cache.sqlite")
     }
 }
-

@@ -20,7 +20,7 @@ final class HomeViewController: UIViewController {
     let keychain = KeychainSwift()
     let data = DataManager.shared
     let defaults = UserDefaults.standard
-    let profileVC = ProfileViewController()
+
     lazy var todayView = TodaySessionView()
     lazy var focusAreaView: FocusAreaView = {
         let view = FocusAreaView()
@@ -31,20 +31,15 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-
         setupSubviews()
         setupNavigation()
-        profileVC.delegate = self
 
-//        UserDefaults.standard.removeObject(forKey: UserDefaultKeys.workoutReport)
+//        defaults.removeObject(forKey: UserDefaultKeys.workoutReport)
 //        focusAreaView.createLocalWorkoutReport()
 //        print(defaults.workoutReport)
 
         NotificationCenter.default.addObserver(self, selector: #selector(showOfflineDeviceUI(notification:)), name: NSNotification.Name.connectivityStatus, object: nil)
         
-    }
-    deinit {
-      print("HomeViewController was deallocated")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -150,8 +145,4 @@ extension HomeViewController: FocusAreaViewDelegate {
             focusAreaView.heightAnchor.constraint(equalToConstant: CGFloat(view.frame.height * 0.4))
         ])
     }
-}
-extension HomeViewController: ProfileViewControllerDelegate {
-    func didTapLogout() {}
-    
 }

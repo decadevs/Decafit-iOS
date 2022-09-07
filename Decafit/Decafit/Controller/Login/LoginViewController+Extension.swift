@@ -4,7 +4,6 @@ import KeychainSwift
 extension LoginViewController: AuthManagerDelegate {
     @objc func toggleSignup() {
         toggleAuthScreens(orangeSignUpLink)
-//        self.dismiss(animated: true, completion: nil)
     }
     func didShowAlert(title: String, message: String) {
         Alert.showAlert(self, title: title,
@@ -23,9 +22,9 @@ extension LoginViewController: AuthManagerDelegate {
         let user = LoginInput(email: email, password: password)
         HUD.show(status: "Signing you in...")
         auth.login(user: user)
-        auth.successcomplete = { _ in
-            let home = UINavigationController(rootViewController: HomeViewController.getHomeView())
-            self.view.window?.rootViewController = home
+        auth.successcomplete = { [weak self] _ in
+            let home = self?.homeVC
+            self?.view.window?.rootViewController = home
             
         }
     }
@@ -35,7 +34,7 @@ extension LoginViewController {
         let parentStack: DecaStack = {
             let stackView = DecaStack(arrangedSubviews: [topImageView,
                                                          textViewStack, lineStack,
-                                                         socialStack, redirectToSignupStack])
+                                                         appleSigninButton, redirectToSignupStack])
             stackView.configure(with: DecaStackViewModel(
                                     axis: .vertical, alignment: .center,
                                     spacing: 15, distribution: .fill))
@@ -55,7 +54,10 @@ extension LoginViewController {
             loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             trackFitnessLabel.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 25),
             trackFitnessLabel.trailingAnchor.constraint(equalTo: topImageView.trailingAnchor, constant: -40),
-            trackFitnessLabel.bottomAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: -20)
+            trackFitnessLabel.bottomAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: -20),
+            appleSigninButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            appleSigninButton.heightAnchor.constraint(equalToConstant: 56)
+
         ])
     }
 }

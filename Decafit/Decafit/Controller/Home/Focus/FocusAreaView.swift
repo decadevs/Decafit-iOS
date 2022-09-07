@@ -106,7 +106,6 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
         let workouts = allWorkouts[indexPath.row]
         cell.focusAreaCell = workouts
         
-
 //        var shouldDisplayIcon = false
         
         // check if this exercise is complete
@@ -115,7 +114,6 @@ class FocusAreaView: UIView, UICollectionViewDataSource,
             print("Workout from cache", data)
             if (data.reportWorkout?.workouts?.exercises.isEmpty) != nil || (data.reportWorkout?.workouts?.exercises != nil) {
                 guard let incomplete = data.reportWorkout?.workouts?.exercises.filter({ $0.completed == false }) else { fatalError() }
-                print(incomplete)
                 if incomplete.count > 0 {
                     // workout is incomplete
                     cell.startedBtn.isHidden = false
