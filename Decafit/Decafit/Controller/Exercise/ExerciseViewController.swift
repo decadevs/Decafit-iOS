@@ -8,28 +8,20 @@ class ExerciseViewController: UIViewController, UIGestureRecognizerDelegate {
     let data = DataManager.shared
     let realmDb = StorageManager.shared
     let defaults = UserDefaults.standard
+    let viewModel = ExerciseViewModel()
     
+    typealias WorkoutData = GetWorkoutReportQuery.Data.ReportWorkout.Workout
+    var exercises = [WorkoutListQuery.Data.Workout.Exercise]()
+    var workoutExercisesList = [WorkoutData.Exercise]()
+    var savedExercisesList = [ReportExcerciseProgressInput]()
     var selectedWorkoutid: String?
     weak var delegate: ExerciseVCDelegate?
-    var exercises = [WorkoutListQuery.Data.Workout.Exercise]()
-    var exerciseRow = [WorkoutListQuery.Data.Workout.Exercise]()
-    var filteredExerciseArr = [WorkoutListQuery.Data.Workout.Exercise]()
-    var completedExerciseArr = [WorkoutListQuery.Data.Workout.Exercise]()
+    var currentExerciseId: String?
 
     var currentIndex: IndexPath = [0, 0]
     var lastIndex: IndexPath = [0, 0]
     var pauseTime: TimeInterval?
     var selectedWorkoutIndex: Int?
-    var currentExerciseId: String?
-        
-    typealias WorkoutData = GetWorkoutReportQuery.Data.ReportWorkout.Workout
-    var workoutExercisesList = [WorkoutData.Exercise]()
-    var savedExercisesList = [ReportExcerciseProgressInput]()
-    
-    var currentWorkoutReport: DbWorkout {
-        guard let selectedWorkoutId = selectedWorkoutid else { fatalError() }
-        return realmDb.getWorkout(workoutId: selectedWorkoutId)
-    }
     
     var currentExerciseReport: DbExercise {
         guard let currentExerciseID = currentExerciseId else { fatalError() }
@@ -57,13 +49,7 @@ class ExerciseViewController: UIViewController, UIGestureRecognizerDelegate {
         data.workoutReportCacheCompletion = { [weak self] data in
             self?.workoutExercisesList = data.reportWorkout?.workouts?.exercises ?? []
         }
-        
-//        if completedExerciseArr.count == exercises.count {
-//            print("completedExerciseArr", completedExerciseArr)
-//            // exercises are completed
-//            Alert.showAlert(self, title: "Done", message: "You have completed this workout!")
-//            navigationController?.popViewController(animated: true)
-//        }
+                
     }
 
     lazy var collectionView: UICollectionView = {
@@ -77,50 +63,20 @@ class ExerciseViewController: UIViewController, UIGestureRecognizerDelegate {
                              forCellWithReuseIdentifier: ExerciseCell.identifier)
         return view
     }()
-    
-    func filterExercisesReport() {
-        // loop through the exercises, check for those incomplete
-        // add them to a new array, present that array
-        let exercisesReport = realmDb.fetchAllExercises().where({ $0.associatedWorkoutId == selectedWorkoutid ?? "0" })
-        print("exercises", exercises)
-        if exercisesReport.count > 0 {
-            for each in exercisesReport {
-                if each.exerciseCompleted == true {
-                    print("exercise completed", each)
-
-                    let completedExercises = exercises.filter({ $0.id == each.exerciseId })
-                    print("completedExercises", completedExercises)
-                    completedExerciseArr.append(contentsOf: completedExercises)
-                    print("completedExerciseArr", completedExerciseArr)
-                } else {
-                    print("exercise not completed", each)
-
-                    let filteredExercises = exercises.filter({ $0.id == each.exerciseId })
-                    print("filteredExercises", filteredExercises)
-                    filteredExerciseArr.append(contentsOf: filteredExercises)
-                    print("filteredExerciseArr", filteredExerciseArr)
-                }
-            }
-            exerciseRow = filteredExerciseArr
-        } else {
-            exerciseRow = exercises
-        }
-        
-    }
-    
+   
     func getExercises() {
         guard let selectedWorkoutId = selectedWorkoutid else { fatalError() }
         data.getExerciseList(workoutId: selectedWorkoutId)
-//        data.fetchWorkoutReportFromCache(userId: view.getUserID(), workoutId: selectedWorkoutId)
         data.exerciseCompletion = { [weak self] result in
             DispatchQueue.main.async {
                 self?.exercises = result
                 self?.collectionView.reloadData()
-                self?.filterExercisesReport()
+                self?.viewModel.filteredExercisesReport()
 
             }
         }
     }
+    
     func clickNavBackButton() {
         self.navigationItem.setHidesBackButton(true, animated: true)
         navigationController?.interactivePopGestureRecognizer?.delegate = self
@@ -133,7 +89,7 @@ class ExerciseViewController: UIViewController, UIGestureRecognizerDelegate {
 // MARK: - DATA SOURCE
 extension ExerciseViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filteredExerciseArr.count > 0 ? filteredExerciseArr.count : exerciseRow.count
+        return viewModel.filteredExerciseArr.count > 0 ? viewModel.filteredExerciseArr.count : viewModel.exerciseRow.count
     }
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -142,17 +98,16 @@ extension ExerciseViewController: UICollectionViewDataSource {
                 withReuseIdentifier: ExerciseCell.identifier,
                 for: indexPath) as? ExerciseCell else { return UICollectionViewCell() }
 
-        if exerciseRow.count < 1 {
-            print("No more exercises")
+        if viewModel.exerciseRow.count < 1 {
             Alert.showAlert(self, title: "Done", message: "You have completed this workout")
             navigationController?.popViewController(animated: true)
         }
-        let exercise = exerciseRow[indexPath.item]
+        // get filtered array from view model and use as data source
+        let exercise = viewModel.exerciseRow[indexPath.item]
 
         cell.configure(with: exercise)
         cell.exerciseCellDelegate = self
         currentExerciseId = exercise.id
-        print("currentExerciseId ", currentExerciseId ?? "")
  
         let stepcell = cell.exerciseView
         switch exercise.title {
@@ -180,48 +135,34 @@ extension ExerciseViewController: UICollectionViewDataSource {
             cell.exerciseView.timerLabel.text = view.inputTimeAsInterval
             cell.timer?.timeLeft = timeLeft
         }
-
-        defaults.set(currentWorkoutReport.reps, forKey: UserDefaultKeys.repsTracker)
-        defaults.set(currentWorkoutReport.sets, forKey: UserDefaultKeys.setsTracker)
+//
+//        defaults.set(currentWorkoutReport.reps, forKey: UserDefaultKeys.repsTracker)
+//        defaults.set(currentWorkoutReport.sets, forKey: UserDefaultKeys.setsTracker)
+//
         let setsTracker = Double().setsTracker
         let repsTracker = Int().repsTracker
         
-        exerciseView.repsProgressTag.setTitle("\(repsTracker/currentWorkoutReport.reps)", for: .normal)
-        
-        if indexPath.row == exerciseRow.count - 1 {
-            if setsTracker < 2 {
-                cell.exerciseView.nextExerciseButton.setTitle(Constants.endWorkout, for: .normal)
-            } else {
-                cell.exerciseView.nextExerciseButton.setTitle(Constants.repeatWorkout, for: .normal)
-                
-            }
-        }
+        exerciseView.repsProgressTag.setTitle("\(repsTracker/viewModel.currentWorkoutReport.reps)", for: .normal)
 
         return cell
                
     }
  
-    func resetTimer() {
-        var repsTracker = Int().repsTracker
-
+    func restartTimer() {
         let timeLeft = TimeInterval(endTime)
-        exerciseView.timer?.invalidate()
-        exerciseView.timer?.timeLeft = timeLeft
-
+        
+        exerciseView.nextExerciseButton.setTitle(Constants.repeatExercise, for: .normal)
+        exerciseView.repsProgressTag.setTitle(viewModel.nextExerciseBtnTitle, for: .normal)
+        
+        exerciseView.isFirstTimerClick = true
         let timer = DecaTimer(timeLabel: exerciseView.timerLabel, timeLeft: timeLeft)
+        timer.resetTimer(timeLeft: timeLeft)
         exerciseView.timer = timer
 
         let progressCircle = ProgressCircle()
-        progressCircle.pauseAnimation()
-        progressCircle.setProgress(duration: timeLeft)
+        exerciseView.progressCircle.setProgress(duration: timeLeft)
         exerciseView.progressCircle = progressCircle
         
-        exerciseView.pauseResumeButton.setTitle(Constants.start, for: .normal)
-        exerciseView.nextExerciseButton.setTitle(Constants.repeatExercise, for: .normal)
-        exerciseView.repsProgressTag.setTitle("\(repsTracker) Of \(currentWorkoutReport.reps) Reps", for: .normal)
-        
-//        collectionView.reloadData()
-
     }
 }
 
@@ -262,28 +203,35 @@ extension ExerciseViewController: UICollectionViewDelegate, UICollectionViewDele
         case true:
             switch repsTracker > 1 {
             case true:
+                restartTimer()
+                collectionView.reloadData()
+
                 self.collectionView.scrollToItem(at: repeatIndex, at: .left, animated: true)
-                resetTimer()
+                exerciseView.pauseResumeButton.setTitle("Restart", for: .normal)
                 
+                collectionView.reloadData()
+
                 repsTracker -= 1
                 defaults.set(repsTracker, forKey: UserDefaultKeys.repsTracker)
                 
-//                collectionView.reloadData()
-
                 print("Repeating exercise repsTracker", repsTracker)
 
             default:
                 self.collectionView.scrollToItem(at: currentIndex, at: .left, animated: true)
+                
+                if currentIndex.row == viewModel.exerciseRow.count - 1 {
+                    exerciseView.nextExerciseButton.setTitle(Constants.endWorkout, for: .normal)
+                }
             }
         default:
             switch setsTracker > 1 {
             case true:
                 self.collectionView.scrollToItem(at: firstIndex, at: .left, animated: true)
-                resetTimer()
-                
+                restartTimer()
+
                 setsTracker -= 1
                 defaults.set(setsTracker, forKey: UserDefaultKeys.setsTracker)
-                
+
                 print("Sets Tracker ", setsTracker)
                 updateReportInCacheAndServer()
             default:

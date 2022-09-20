@@ -53,6 +53,7 @@ class ProgressCircle: UIView {
     }
     func startAnimation(duration: TimeInterval) {
         setProgress(duration: duration)
+
     }
     func restartAnimation() {
         

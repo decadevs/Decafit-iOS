@@ -11,28 +11,33 @@ class LogViewModel {
     var dbExercise: DbExercise?
     var logs = [DbWorkout]()
     var workoutObjectArr = [WorkoutNameAndImage]()
+    var workoutNameCompletion: (() -> Void)?
 
     var allWorkoutReports: Results<DbWorkout> {
         return realmDb.fetchAllWorkouts()
     }
     
     func extractWorkoutName() {
+//        data.fetchWorkouts()
         data.fetchWorkoutsCompletion = { [weak self] graphQLResult in
             print("graphQLResult", graphQLResult)
             if let workouts = graphQLResult.data?.workouts.compactMap({ $0 }) {
-                
                 for workout in workouts {
+                    print("self?.logs", self?.logs)
                     for log in self?.logs ?? [] {
                         if log.workoutId == workout.id {
                             let workoutObj = WorkoutNameAndImage(name: workout.title, image: workout.backgroundImage)
                             print("workoutObj", workoutObj)
                             self?.workoutObjectArr.append(workoutObj)
                             print("workoutObjectArr", self?.workoutObjectArr)
+                            self?.workoutNameCompletion?()
                         }
                         
                     }
                 
                 }
+            } else {
+                print("SOmething is wrong", graphQLResult)
             }
         }
     }
@@ -43,7 +48,7 @@ class LogViewModel {
         }
     }
 
-    func updateValues() {
+    func updateValuesFromServerCache() {
         data.fetchReportFromServerCompletion = { [weak self] result in
             print("Report Fetched from Server", result)
             guard let workouts = result.data?.report?.workouts, let userId = result.data?.report?.userId else { fatalError() }

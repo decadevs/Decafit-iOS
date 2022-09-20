@@ -53,17 +53,15 @@ final class HomeViewController: UIViewController {
         super.viewWillAppear(true)
         setNeedsStatusBarAppearanceUpdate()
         navigationController?.setNavigationBarHidden(false, animated: true)
+        focusAreaView.collectionView.reloadData()
     }
-//    override var preferredStatusBarStyle: UIStatusBarStyle {
-//        return .darkContent
-//    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         navigationController?.setNavigationBarHidden(true, animated: true)
         
-        logViewModel.extractWorkoutName()
     }
-    
+
     @objc func showOfflineDeviceUI(notification: Notification) {
         if NetworkMonitor.shared.isConnected {
             print("Connected")

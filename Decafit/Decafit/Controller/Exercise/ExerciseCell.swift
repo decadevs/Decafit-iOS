@@ -4,6 +4,7 @@ class ExerciseCell: UICollectionViewCell {
     weak var exerciseCellDelegate: ExerciseCellDelegate?
     let defaults = UserDefaults.standard
     let dataman = DataManager.shared
+    let viewModel = ExerciseViewModel()
     
     var timer: DecaTimer?
     var resumeTapped = false
@@ -21,6 +22,9 @@ class ExerciseCell: UICollectionViewCell {
         
         timer = DecaTimer(timeLabel: exerciseView.timerLabel, timeLeft: timeLeft)
         exerciseView.timerLabel.text = timer?.timeLeft.time
+        
+        defaults.set(viewModel.currentWorkoutReport.reps, forKey: UserDefaultKeys.repsTracker)
+        defaults.set(viewModel.currentWorkoutReport.sets, forKey: UserDefaultKeys.setsTracker)
 
     }
     required init?(coder: NSCoder) {
@@ -42,8 +46,8 @@ class ExerciseCell: UICollectionViewCell {
     // MARK: - Delegates
     func configure(with model: WorkoutListQuery.Data.Workout.Exercise) {
         exerciseView.exerciseName.text = model.title
-        exerciseView.repsProgressTag.setTitle("1 Of 4 Reps", for: .normal)
-        exerciseView.nextExerciseButton.setTitle(exerciseView.nextExerciseBtnTitle, for: .normal)
+        exerciseView.repsProgressTag.setTitle(viewModel.repsProgressTagTitle, for: .normal)
+        exerciseView.nextExerciseButton.setTitle(viewModel.nextExerciseBtnTitle, for: .normal)
         exerciseView.topImageView.kf.setImage(with: URL(string: model.image), placeholder: UIImage(named: "back"), options: nil, completionHandler: nil)
     }
     @objc func clickNavBackButton() {
@@ -52,7 +56,7 @@ class ExerciseCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+        exerciseView.nextExerciseButton.setTitle(nil, for: .normal)
     }
 }
 extension ExerciseCell {
@@ -68,10 +72,11 @@ extension ExerciseCell {
         }
     }
     func resumeTimer(timer: DecaTimer) {
-        if exerciseView.pauseResumeButton.currentTitle == Constants.start {
-            exerciseView.progressCircle.setProgress(duration: timer.timeLeft )
+//        if exerciseView.pauseResumeButton.currentTitle == Constants.start {
+        if exerciseView.isFirstTimerClick {
+            exerciseView.isFirstTimerClick = false
+            exerciseView.progressCircle.startAnimation(duration: timer.timeLeft)
             
-            exerciseView.progressCircle.resumeAnimation()
             timer.startTimer()
 
             exerciseCellDelegate?.startExercise()

@@ -13,8 +13,7 @@ extension ExerciseViewController: ExerciseCellDelegate {
             currentExerciseReport.setValue(true, forKey: "started")
         })
         // change button text to repeat
-        exerciseView.nextExerciseButton.setTitle(exerciseView.nextExerciseBtnTitle, for: .normal)
-//        collectionView.reloadItems(at: [lastIndex])
+        exerciseView.nextExerciseButton.setTitle(viewModel.nextExerciseBtnTitle, for: .normal)
     }
     
     // MARK: - NEXT EXERCISE
@@ -78,10 +77,10 @@ extension ExerciseViewController: ExerciseCellDelegate {
         let completed = currentExerciseReport.completed
         
         guard let selectedId = selectedWorkoutid else { fatalError() }
-        let reps = currentWorkoutReport.reps
-        let sets = currentWorkoutReport.sets
-        let count = currentWorkoutReport.count
-        let time = currentWorkoutReport.time
+        let reps = viewModel.currentWorkoutReport.reps
+        let sets = viewModel.currentWorkoutReport.sets
+        let count = viewModel.currentWorkoutReport.count
+        let time = viewModel.currentWorkoutReport.time
         
         // update cache
 //        let exercise = WorkoutData.Exercise(excerciseId: exid, type: type, paused: paused, limit: limit, completed: completed, progress: Int(progress))

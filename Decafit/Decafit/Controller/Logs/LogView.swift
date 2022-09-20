@@ -1,4 +1,3 @@
-
 import UIKit
 class LogView: UIView {
     var logHeader = LogHeader()
@@ -12,7 +11,9 @@ class LogView: UIView {
         setupSubviews()
         viewModel.getLogs()
         viewModel.extractWorkoutName()
-//        backgroundColor = .blue
+        viewModel.workoutNameCompletion = { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
     required init?(coder: NSCoder) {
         fatalError()
@@ -41,12 +42,23 @@ extension LogView: UITableViewDataSource {
                 as? LogTableCell else { return UITableViewCell()}
         let log = viewModel.logs[indexPath.row]
         cell.logCell = log
-        viewModel.workoutObjectArr.forEach({
-            print("workoutObjectArr", $0)
-            cell.workoutTitleLabel.text = $0.name
-            cell.workoutImageView.image = UIImage(named: $0.image)
-            
-        })
+//        viewModel.workoutObjectArr.forEach({
+//            print("workoutObjectArr", $0)
+//            cell.workoutTitleLabel.text = $0.name
+//            cell.workoutImageView.image = UIImage(named: $0.image)
+//
+//        })
+        viewModel.workoutNameCompletion = {
+            DispatchQueue.main.async { [weak self] in
+                self?.viewModel.workoutObjectArr.forEach({
+                    print("workoutObjectArr", $0)
+                    cell.workoutTitleLabel.text = $0.name
+                    cell.workoutImageView.image = UIImage(named: $0.image)
+                    
+                })
+                tableView.reloadData()
+            }
+        }
 
         return cell
     }    
@@ -69,7 +81,7 @@ extension LogView {
             logHeader.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             logHeader.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             logHeader.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-            logHeader.heightAnchor.constraint(equalToConstant: 120),
+            logHeader.heightAnchor.constraint(equalToConstant: 100),
 
             tableView.topAnchor.constraint(equalTo: logHeader.bottomAnchor, constant: 0),
             tableView.leadingAnchor.constraint(equalTo: logHeader.leadingAnchor, constant: 0),

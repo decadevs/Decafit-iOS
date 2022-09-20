@@ -88,6 +88,7 @@
 		B44B3C27289B064A000C94D7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B3C26289B064A000C94D7 /* DataManager.swift */; };
 		B459C0F728B75B1C0007AECE /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B459C0F628B75B1C0007AECE /* Defaults.swift */; };
 		B459C10628B83C680007AECE /* CreateReport.graphql in Resources */ = {isa = PBXBuildFile; fileRef = B459C10528B83C680007AECE /* CreateReport.graphql */; };
+		B45DDF0C28D9EB7A00D0A4D1 /* ExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45DDF0B28D9EB7A00D0A4D1 /* ExerciseViewModel.swift */; };
 		B47B5B13287C147000EEC900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B12287C147000EEC900 /* AppDelegate.swift */; };
 		B47B5B15287C147000EEC900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B14287C147000EEC900 /* SceneDelegate.swift */; };
 		B47B5B17287C147000EEC900 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47B5B16287C147000EEC900 /* HomeViewController.swift */; };
@@ -229,6 +230,7 @@
 		B44B3C26289B064A000C94D7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		B459C0F628B75B1C0007AECE /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		B459C10528B83C680007AECE /* CreateReport.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = CreateReport.graphql; sourceTree = "<group>"; };
+		B45DDF0B28D9EB7A00D0A4D1 /* ExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModel.swift; sourceTree = "<group>"; };
 		B47B5B0F287C147000EEC900 /* Decafit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Decafit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B47B5B12287C147000EEC900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B47B5B14287C147000EEC900 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 				B43631DF289D5AC80010976F /* StepsTakenView.swift */,
 				B43AFAFF28ABA9B600811658 /* ExerciseCell.swift */,
 				B4ABEF8228C7AE34008A66B9 /* ExerciseViewController+Extension.swift */,
+				B45DDF0B28D9EB7A00D0A4D1 /* ExerciseViewModel.swift */,
 			);
 			path = Exercise;
 			sourceTree = "<group>";
@@ -1038,6 +1041,7 @@
 				B4C8D3C528ACCEF300AA901E /* TagFile.swift in Sources */,
 				B44519B628D084EF00996B78 /* CalenderViewController.swift in Sources */,
 				B43AFB0028ABA9B600811658 /* ExerciseCell.swift in Sources */,
+				B45DDF0C28D9EB7A00D0A4D1 /* ExerciseViewModel.swift in Sources */,
 				B43AFB0D28ABB26700811658 /* User.swift in Sources */,
 				B44B3C002897C7F0000C94D7 /* WorkoutViewController.swift in Sources */,
 				B40AFB272888142100249820 /* SignupViewController.swift in Sources */,

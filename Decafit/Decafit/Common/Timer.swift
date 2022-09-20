@@ -14,6 +14,7 @@ class DecaTimer {
     var isTimerRunning = false
     var timeLabel: UILabel
     
+    
     init(timeLabel: UILabel, timeLeft: TimeInterval) {
         self.timeLabel = timeLabel
         self.timeLeft = timeLeft
@@ -26,6 +27,7 @@ class DecaTimer {
             runTimer()
         }
     }
+    
     func runTimer() {
         endTime = Date().addingTimeInterval(timeLeft)
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self,
@@ -43,10 +45,17 @@ class DecaTimer {
             timeLabel.text = "00:00"
         }
     }
-    func resetTimer(timeLeft: TimeInterval) {
-        timer.invalidate()
+
+    func stopTimer() {
+        if isTimerRunning {
+            timer.invalidate()
+        }
         isTimerRunning = false
+    }
+    func resetTimer(timeLeft: TimeInterval) {
+        timeLabel.text = "\(timeLeft)"
         self.timeLeft = timeLeft
-        startTimer()
+        stopTimer()
+
     }
 }

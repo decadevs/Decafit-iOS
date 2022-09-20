@@ -18,8 +18,8 @@ class WorkoutViewModel {
     let arr: List<DbExercise> = List<DbExercise>()
     
     var currentWorkoutReport: DbWorkout {
-        guard let selectedWorkoutId = selectedId else { fatalError() }
-        return realmDb.getWorkout(workoutId: selectedWorkoutId)
+        guard let currentWorkoutId = defaults.string(forKey: UserDefaultKeys.workoutID) else { fatalError() }
+        return realmDb.getWorkout(workoutId: currentWorkoutId)
     }
     
     var currentExerciseReport: DbExercise {
@@ -27,23 +27,29 @@ class WorkoutViewModel {
         return realmDb.getExercise(exerciseId: currentExerciseID)
     }
     
-//    for each in realmDb.fetchAllExercises() {
-//        print("Exercise in realm", each)
-//    }
-//    for each in realmDb.fetchAllWorkouts() {
-//        print("Workout in realm", each)
-//    }
-    
-//    
-//    func getExercises() {
-//        data.getExerciseList(workoutId: selectedId ?? "")
-//        data.exerciseCompletion = { [weak self] result in
-//            DispatchQueue.main.async {
-//                self?.exercises = result
-//                self?.tableView.reloadData()
-//                self?.topView.titleLabel.text = "\(self?.exercises.count ?? 0) Exercises"
-//            }
-//        }
-//    }
+    var isWorkoutCompleted: Bool {
+        guard let currentWorkoutId = defaults.string(forKey: UserDefaultKeys.workoutID) else { fatalError() }
+        let workouts = realmDb.fetchAllExercises().where({ $0.associatedWorkoutId == currentWorkoutId })
+        var completedArr = [DbExercise]()
+        for workout in workouts where workout.exerciseCompleted == true  {
+            completedArr.append(workout)
+        }
+        return completedArr.count == workouts.count
+    }
+    // MARK: - Workout Button Title
+    var workoutBtnTitle: String {
+        var title = ""
+        let assocExercises = realmDb.fetchAllExercises().where({ $0.associatedWorkoutId == selectedId ?? "0" })
+        assocExercises.forEach { exercise in
+            if exercise.exerciseNotStarted == true {
+                title = Constants.startWorkout
+            } else if exercise.exerciseNotComplete == true {
+                title = Constants.continueWorkout
+            } else {
+                title = Constants.workoutComplete
+            }
+        }
+        return title
+    }
     
 }

@@ -19,17 +19,19 @@ class CalenderViewController: UIViewController {
         view.backgroundColor = .white
         logViewModel.getLogs()
         logViewModel.extractWorkoutName()
+
         logView.delegate = self 
         
         view.addSubview(calenderView)
         
         if !logViewModel.logs.isEmpty {
             view.addSubview(logView)
+            setupWorkoutView()
+
         } else {
             print("No Logs to display!")
             view.addSubview(dummyLabel)
         }
-        setupWorkoutView()
         
     }
     
@@ -52,10 +54,13 @@ class CalenderViewController: UIViewController {
     func setupWorkoutView() {
         let workouts = realmDb.fetchAllWorkouts()
         let exercises = realmDb.fetchAllExercises()
-
+         
         let formatter = DateFormatter()
         // EEEE is the weekday, a is the am/pm
         formatter.dateFormat = "EEEE dd h:mm a dd-MM-YYYY"
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
+        formatter.timeZone = TimeZone.current
+
         let dateString = formatter.string(from: workouts[0].workoutDate)
         let splitted = dateString.split(separator: " ")
 
@@ -65,12 +70,7 @@ class CalenderViewController: UIViewController {
         logView.logHeader.dateLabel.text = "\(splitted[1])"
         logView.logHeader.dateLabel2.text = "\(splitted[0].uppercased().prefix(3))"
         logView.logHeader.percentageLabel.setTitle("60%", for: .normal)
-        // I need date, date title string, time, progress as percentage,
-        // and number of workouts and exercises
-        
-        // if i had date available, i would filter to get workouts for that date
-        // and display it
-        
+  
     }
     
     override func viewDidLayoutSubviews() {
@@ -84,19 +84,9 @@ class CalenderViewController: UIViewController {
 
 }
 
-extension CalenderViewController: FSCalendarDataSource {
-    func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
-        return "Wondeful"
-    }
-    func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
-        "Nawa o"
-    }
-}
-
 extension CalenderViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let formatter = DateFormatter()
-        // EEEE is the weekday, a is the am/pm
         formatter.dateFormat = "EEEE dd MM YYYY h:mm dd-MM-YYYY at h:mm a"
         let dateString = formatter.string(from: date)
         print("\(dateString)")

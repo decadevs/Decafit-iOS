@@ -1,6 +1,9 @@
 import UIKit
 class ExerciseView: UIView {
     var timer: DecaTimer?
+    var isFirstTimerClick = true
+    var viewModel = ExerciseViewModel()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         accessibilityIdentifier = "ExerciseTimerView"
@@ -14,17 +17,17 @@ class ExerciseView: UIView {
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
     }
-    var nextExerciseBtnTitle: String {
-        var title = ""
-        print("Double().repsTracker", Double().repsTracker)
-        print("Int repstracker", Int().repsTracker)
-        if Double().repsTracker > 1 {
-            title = Constants.repeatExercise
-        } else {
-            title = Constants.nextExercise
-        }
-        return title
-    }
+//    var nextExerciseBtnTitle: String {
+//        var title = ""
+//        print("Double().repsTracker", Double().repsTracker)
+//        print("Int repstracker", Int().repsTracker)
+//        if Double().repsTracker > 1 {
+//            title = Constants.repeatExercise
+//        } else {
+//            title = Constants.nextExercise
+//        }
+//        return title
+//    }
     
     func displaySteps() {
         DispatchQueue.main.async { [weak self] in
@@ -69,7 +72,7 @@ class ExerciseView: UIView {
     }()
     var progressCircle: ProgressCircle = {
        let progress = ProgressCircle()
-        progress.pauseAnimation()
+//        progress.pauseAnimation()
         progress.translatesAutoresizingMaskIntoConstraints = false
         return progress
     }()

@@ -16,6 +16,7 @@ class LogTableCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(cardStack)
+        setupSubviews()
     }
     required init?(coder: NSCoder) {
         fatalError(Constants.requiredInit)
@@ -60,7 +61,6 @@ class LogTableCell: UITableViewCell {
         button.tintColor = DecaColor.black.color
         button.contentEdgeInsets = UIEdgeInsets(
             top: 7, left: 7, bottom: 7, right: 7)
-//        button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
     }()
@@ -114,22 +114,28 @@ class LogTableCell: UITableViewCell {
     // MARK: - Workout Card Stack
     lazy var cardStack: DecaStack = {
        let stackview = DecaStack(arrangedSubviews: [workoutImageView, workoutDataStack, seeMoreButton])
-        stackview.backgroundColor = DecaColor.palePurple.color
+        stackview.backgroundColor = DecaColor.lightPink.color
         stackview.configure(with: DecaStackViewModel(
                                 axis: .horizontal, alignment: .center,
                                 spacing: 15, distribution: .equalSpacing ))
        return stackview
     }()
-    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 40, bottom: 10, right: 30))
+    }
     func setupSubviews() {
         NSLayoutConstraint.activate([
-            cardStack.widthAnchor.constraint(equalTo: widthAnchor),
-            cardStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-            cardStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            
+//            cardStack.widthAnchor.constraint(equalToConstant: 200),
+//            cardStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 10),
+//            cardStack.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor, constant: 10),
+            cardStack.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0),
                         
             workoutImageView.widthAnchor.constraint(equalToConstant: 50),
             workoutImageView.heightAnchor.constraint(equalToConstant: 50),
-            workoutImageView.leadingAnchor.constraint(equalTo: cardStack.leadingAnchor, constant: 30)
+            workoutImageView.leadingAnchor.constraint(equalTo: cardStack.leadingAnchor, constant: 0)
 
         ])
     }

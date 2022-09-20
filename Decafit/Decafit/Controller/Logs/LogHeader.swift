@@ -114,7 +114,7 @@ class LogHeader: UIView {
        let stackview = DecaStack(arrangedSubviews: [titleStack, dividerStack])
         stackview.configure(with: DecaStackViewModel(
                                 axis: .vertical, alignment: .leading,
-                                spacing: 20, distribution: .fillProportionally ))
+                                spacing: 10, distribution: .fillProportionally ))
        return stackview
     }()
     
@@ -124,7 +124,7 @@ extension LogHeader {
         NSLayoutConstraint.activate([
             allStack.topAnchor.constraint(equalTo: topAnchor),
             allStack.leadingAnchor.constraint(equalTo: leadingAnchor),
-            allStack.trailingAnchor.constraint(equalTo: trailingAnchor),
+            allStack.trailingAnchor.constraint(equalTo: trailingAnchor)
   
         ])
     }

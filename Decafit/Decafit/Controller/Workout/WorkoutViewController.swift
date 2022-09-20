@@ -11,6 +11,7 @@ class WorkoutViewController: UIViewController {
     var detailsView = ModalViewController()
     let defaults = UserDefaults.standard
     var exercises = [WorkoutListQuery.Data.Workout.Exercise]()
+    let viewModel = WorkoutViewModel()
 
     var selectedId: String?
     var currentIndex: IndexPath = [0, 0]
@@ -29,36 +30,13 @@ class WorkoutViewController: UIViewController {
     var currentExerciseReport: DbExercise {
         return realmDb.getExercise(exerciseId: currentExerciseId ?? "0")
     }
-    
+
     var endTime: Double {
         guard let selectedWorkoutId = selectedId else { fatalError() }
         let num = realmDb.getWorkout(workoutId: selectedWorkoutId).time
         return Double(num)!
     }
-    // MARK: - Workout button enabled
-    var isWorkoutBtnEnabled: Bool {
-        switch startWorkoutButton.currentTitle {
-        case Constants.workoutComplete:
-            return false
-        default:
-            return true
-        }
-    }
-    // MARK: - Workout Button Title
-    var workoutBtnTitle: String {
-        var title = ""
-        let assocExercises = realmDb.fetchAllExercises().where({ $0.associatedWorkoutId == selectedId ?? "0" })
-        assocExercises.forEach { exercise in
-            if exercise.exerciseNotStarted == true {
-                title = Constants.startWorkout
-            } else if exercise.exerciseNotComplete == true {
-                title = Constants.continueWorkout
-            } else {
-                title = Constants.workoutComplete
-            }
-        }
-        return title
-    }
+
     // MARK: - Get Exercises List
     func getExercises() {
         data.getExerciseList(workoutId: selectedId ?? "")
@@ -100,7 +78,6 @@ class WorkoutViewController: UIViewController {
         setupSubviews()
         setupNavigation()
         getExercises()
-        
         showCompletionTag()
         
     }
@@ -113,9 +90,12 @@ class WorkoutViewController: UIViewController {
             self.view.removeOverlay()
         }
         showCompletionTag()
-        
-        // start workout button title
-        startWorkoutButton.isEnabled = isWorkoutBtnEnabled
+        if viewModel.isWorkoutCompleted == true {
+            startWorkoutButton.setTitle(Constants.workoutComplete, for: .normal)
+            startWorkoutButton.addTarget(self, action: #selector(workoutCompleteBtnTapped), for: .touchUpInside)
+        } else {
+            startWorkoutButton.setTitle(Constants.continueWorkout, for: .normal)
+        }
 
     }
     // MARK: - Override viewDidAppear
@@ -133,8 +113,8 @@ class WorkoutViewController: UIViewController {
     
     // MARK: - Create StartWorkout Button
     lazy var startWorkoutButton: DecaButton = {
-//        let button = DecaButton.createPurpleButton(title: workoutBtnTitle)
-        let button = DecaButton.createPurpleButton(title: Constants.startWorkout)
+        let button = DecaButton.createPurpleButton(title: viewModel.workoutBtnTitle)
+//        let button = DecaButton.createPurpleButton(title: Constants.startWorkout)
 
         button.layer.shadowOffset = CGSize(width: 0, height: 8)
         button.layer.shadowOpacity = 0.1
@@ -267,12 +247,21 @@ extension WorkoutViewController: UIGestureRecognizerDelegate {
     }
     // MARK: - Workout Button Tapped
     @objc func workoutButtonTapped() {
-        startWorkoutButton.setTitle(Constants.continueWorkout, for: .normal)
-        let exerciseVC = ExerciseViewController()
-        exerciseVC.delegate = self
-        exerciseVC.selectedWorkoutid = selectedId
-        
-        self.navigationController?.pushViewController(exerciseVC, animated: true)
+        if viewModel.isWorkoutCompleted == true {
+            startWorkoutButton.setTitle(Constants.workoutComplete, for: .normal)
+        } else {
+            startWorkoutButton.setTitle(Constants.continueWorkout, for: .normal)
+            let exerciseVC = ExerciseViewController()
+            exerciseVC.delegate = self
+            exerciseVC.selectedWorkoutid = selectedId
+            self.navigationController?.pushViewController(exerciseVC, animated: true)
+        }
+    }
+    @objc func workoutCompleteBtnTapped() {
+        Alert.showAlert(self, title: "Done!", message: "You have completed this workout!")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
     // MARK: - Set Up Constraints
     func setupSubviews() {
