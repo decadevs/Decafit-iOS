@@ -10,23 +10,24 @@ extension LoginViewController: AuthManagerDelegate {
                         message: message)
     }
     @objc func handleLogin() {
-        guard let email = emailTextField.text, let password = passwordTextField.text
-        else {
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
             Alert.showAlert(self, title: Constants.alertTitleError, message: Constants.blankTextFieldError)
-            return
+            return 
         }
         if password.count < 7 || !email.contains("@") {
             Alert.showAlert(self, title: Constants.alertTitleError, message: Constants.incorrectInputError)
             return
         }
-        let user = LoginInput(email: email, password: password)
-        HUD.show(status: "Signing you in...")
-        auth.login(user: user)
-        auth.successcomplete = { [weak self] _ in
-            let home = self?.homeVC
-            self?.view.window?.rootViewController = home
-            
+        func login(email: String, password: String) {
+            HUD.show(status: "Signing you in...")
+            auth.login(email: email, password: password)
+            auth.successcomplete = { [weak self] _ in
+                let home = self?.homeVC
+                self?.view.window?.rootViewController = home
+                
+            }
         }
+
     }
 }
 extension LoginViewController {
@@ -55,8 +56,8 @@ extension LoginViewController {
             trackFitnessLabel.leadingAnchor.constraint(equalTo: topImageView.leadingAnchor, constant: 25),
             trackFitnessLabel.trailingAnchor.constraint(equalTo: topImageView.trailingAnchor, constant: -40),
             trackFitnessLabel.bottomAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: -20),
-            appleSigninButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-            appleSigninButton.heightAnchor.constraint(equalToConstant: 56)
+            appleSigninButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75),
+            appleSigninButton.heightAnchor.constraint(equalToConstant: 50)
 
         ])
     }

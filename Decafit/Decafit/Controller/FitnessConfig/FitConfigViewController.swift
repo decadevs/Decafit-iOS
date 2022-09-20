@@ -1,9 +1,13 @@
 import UIKit
+import RealmSwift
 
 class FitConfigViewController: UIViewController {
     static let shared =  FitConfigViewController()
     var selectedWorkoutid: String?
     let data = DataManager.shared
+    let realmDb = StorageManager.shared
+    let realm = try! Realm()
+
     lazy var topImageView = ConfigTopView()
     var defaults = UserDefaults.standard
     var reps, sets, count, time: String?
@@ -40,18 +44,25 @@ class FitConfigViewController: UIViewController {
                              for: .touchUpInside)
         
         // check if workout exists in device
-        if defaults.object(forKey: UserDefaultKeys.workoutReport) != nil {
-            reps = defaults.string(forKey: UserDefaultKeys.reps)
-            repsTextField.text = reps
-            sets = defaults.string(forKey: UserDefaultKeys.sets)
-            setsTextField.text = sets
-            count = defaults.string(forKey: UserDefaultKeys.count)
-            countTextField.text = count
-            time = defaults.string(forKey: UserDefaultKeys.time)
-            timeTextField.text = time
-
+        guard let selectedWorkoutId = selectedWorkoutid else {
+            return
         }
+
+        let userWorkout = realmDb.fetchAllWorkouts().where({ $0.workoutId == selectedWorkoutId })
+        if userWorkout.count > 0 {
+            reps = String(describing: userWorkout[0].reps)
+            sets = String(describing: userWorkout[0].sets)
+            count = String(describing: userWorkout[0].count)
+            time = userWorkout[0].time
+            
+            repsTextField.text = reps
+            setsTextField.text = sets
+            countTextField.text = count
+            timeTextField.text = time
+        }
+    
     }
+    
     // Text Fields
     let setsTextField: DecaTextField =
         DecaTextField.createNormalTextField(text: Constants.sets, keyboardType: .numberPad)
@@ -61,14 +72,14 @@ class FitConfigViewController: UIViewController {
         DecaTextField.createNormalTextField(text: Constants.time, keyboardType: .numberPad)
     let countTextField: DecaTextField
         = DecaTextField.createNormalTextField(text: Constants.count, keyboardType: .numberPad)
+    
+    var textFields: [UITextField] {
+        return [setsTextField, repsTextField, timeTextField, countTextField]
+    }
 
 }
    
-extension FitConfigViewController: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return true
-    }
+extension FitConfigViewController {
     @objc func clickNavBackButton() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -77,12 +88,17 @@ extension FitConfigViewController: UITextFieldDelegate {
             Alert.showAlert(self, title: Constants.alertTitleError, message: Constants.blankTextFieldError)
             return
         }
- 
+
+        guard let selectedWorkoutId = selectedWorkoutid else {
+            fatalError()
+        }
+//        defaults.set(reps, forKey: UserDefaultKeys.reps)
+//        defaults.set(sets, forKey: UserDefaultKeys.sets)
         defaults.set(count, forKey: UserDefaultKeys.count)
         defaults.set(time, forKey: UserDefaultKeys.time)
-        defaults.set(reps, forKey: UserDefaultKeys.reps)
-        defaults.set(sets, forKey: UserDefaultKeys.sets)
 
+        let workoutConfig = DbWorkout(workoutId: selectedWorkoutId, sets: Int(sets)!, reps: Int(reps)!, count: Int(count)!, time: time, workoutDate: Date())
+        realmDb.saveWorkout(workoutConfig)
     }
     
     @objc func gotoStartWorkout() {
@@ -148,5 +164,24 @@ extension FitConfigViewController {
             nextButton.widthAnchor
                 .constraint(equalTo: view.widthAnchor, multiplier: 0.85)
         ])
+    }
+}
+extension FitConfigViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let selectedTextFieldIndex =
+            textFields.firstIndex(of: textField), selectedTextFieldIndex < textFields.count - 1 {
+            textFields[selectedTextFieldIndex + 1].becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    func setupKeyboardDismissRecognizer() {
+            let tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(
+                target: self, action: #selector(self.dismissKeyboard))
+            self.view.addGestureRecognizer(tapRecognizer)
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

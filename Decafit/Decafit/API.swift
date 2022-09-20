@@ -657,13 +657,13 @@ public final class GetReportQuery: GraphQLQuery {
     }
 
     public struct Report: GraphQLSelectionSet {
-      public static let possibleTypes: [String] = ["Report"]
+      public static let possibleTypes: [String] = ["Report2"]
 
       public static var selections: [GraphQLSelection] {
         return [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("userID", type: .nonNull(.scalar(String.self))),
-          GraphQLField("workouts", type: .object(Workout.selections)),
+          GraphQLField("workouts", type: .list(.object(Workout.selections))),
         ]
       }
 
@@ -673,8 +673,8 @@ public final class GetReportQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(userId: String, workouts: Workout? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Report", "userID": userId, "workouts": workouts.flatMap { (value: Workout) -> ResultMap in value.resultMap }])
+      public init(userId: String, workouts: [Workout?]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Report2", "userID": userId, "workouts": workouts.flatMap { (value: [Workout?]) -> [ResultMap?] in value.map { (value: Workout?) -> ResultMap? in value.flatMap { (value: Workout) -> ResultMap in value.resultMap } } }])
       }
 
       public var __typename: String {
@@ -695,12 +695,12 @@ public final class GetReportQuery: GraphQLQuery {
         }
       }
 
-      public var workouts: Workout? {
+      public var workouts: [Workout?]? {
         get {
-          return (resultMap["workouts"] as? ResultMap).flatMap { Workout(unsafeResultMap: $0) }
+          return (resultMap["workouts"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Workout?] in value.map { (value: ResultMap?) -> Workout? in value.flatMap { (value: ResultMap) -> Workout in Workout(unsafeResultMap: value) } } }
         }
         set {
-          resultMap.updateValue(newValue?.resultMap, forKey: "workouts")
+          resultMap.updateValue(newValue.flatMap { (value: [Workout?]) -> [ResultMap?] in value.map { (value: Workout?) -> ResultMap? in value.flatMap { (value: Workout) -> ResultMap in value.resultMap } } }, forKey: "workouts")
         }
       }
 

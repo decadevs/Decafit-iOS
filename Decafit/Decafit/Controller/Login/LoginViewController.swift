@@ -7,6 +7,7 @@
 
 import UIKit
 import AuthenticationServices
+import KeychainSwift
 
 final class LoginViewController: UIViewController {
     let auth = AuthManager.shared
@@ -15,6 +16,8 @@ final class LoginViewController: UIViewController {
         return shared ?? LoginViewController()
     }
     let defaults = UserDefaults.standard
+    let keychain = KeychainSwift()
+    
     var textFields: [UITextField] {
         return [emailTextField, passwordTextField]
     }
@@ -111,14 +114,25 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
             let fullName = appleIDCredential.fullName
             let email = appleIDCredential.email
             let token = appleIDCredential.identityToken
-            print("User id is \(userIdentifier) \n Full Name is \(String(describing: fullName)) \n Email id is \(String(describing: email))")
+            let asp = ASPasswordCredential()
+            let password = asp.password
             
-            // Save the UserIdentifier in the keychain
+            print("User id is \(userIdentifier) \n Full Name is \(String(describing: fullName)) \n Email id is \(String(describing: email)), \n Token is \(String(describing: token)), \n Password is \(password)")
+            
+            keychain.set(String(describing: token), forKey: AuthManager.loginKeychainKey)
+            keychain.set(userIdentifier, forKey: Constants.userID)
+            
             let home = homeVC
-            // home.userID = userIdentifier
-//            view.window?.rootViewController = home
+            view.window?.rootViewController = home
+//        case let passwordCredential as ASPasswordCredential:
+//            // Sign in using an existing iCloud Keychain credential.
+//            let username = passwordCredential.user
+//            let password = passwordCredential.password
+//
+//            print("username \(username)   password \(password)") // use this information to verify the account from server and resume normal app flow
         default:
             break
+            
         }
         
     }

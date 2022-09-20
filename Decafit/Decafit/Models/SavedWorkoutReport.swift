@@ -19,6 +19,6 @@ struct ExerciseReport: Codable {
     var type: String
     var paused, completed: Bool?
     var limit: String
-    var progress: Float 
-    var started: Bool? = false 
+    var progress: Float
+    var started: Bool? = false
 }

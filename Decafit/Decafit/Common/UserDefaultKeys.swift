@@ -16,4 +16,5 @@ enum UserDefaultKeys {
     static let selectedWorkoutIndex = "selectedWorkoutIndex"
     static let repsTracker = "repsTracker"
     static let setsTracker = "setsTracker"
+    static let currentWorkoutId = "currentWorkoutId"
 }

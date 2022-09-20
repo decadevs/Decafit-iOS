@@ -1,7 +1,6 @@
 import Foundation
 import Apollo
 import KeychainSwift
-import ApolloSQLite
 
 class Network {
     static let shared = Network()
@@ -14,6 +13,7 @@ class Network {
             let documentsPath = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let fileUrl = documentsPath.appendingPathComponent("apollo_cache.sqlite")
             print(documentsPath.absoluteString)
+
             let sqliteCache = try SQLiteNormalizedCache(fileURL: fileUrl)
             let store = ApolloStore(cache: sqliteCache)
 

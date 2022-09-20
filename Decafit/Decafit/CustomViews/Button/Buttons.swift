@@ -24,10 +24,3 @@ let backButton: UIButton = {
         top: 12, left: 12, bottom: 12, right: 12)
     return button
 }()
-// Start workout top view
-let startWorkoutButton: DecaButton = {
-    let button = DecaButton.createPurpleButton(title: "Start Workout")
-    button.layer.shadowOffset = CGSize(width: 0, height: 8)
-    button.layer.shadowOpacity = 0.1
-    return button
-}()

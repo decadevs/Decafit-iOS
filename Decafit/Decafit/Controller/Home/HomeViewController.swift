@@ -10,6 +10,7 @@ import SQLite
 import Apollo
 import SideMenu
 import KeychainSwift
+import RealmSwift
 
 final class HomeViewController: UIViewController {
     static var shared: HomeViewController?
@@ -20,6 +21,11 @@ final class HomeViewController: UIViewController {
     let keychain = KeychainSwift()
     let data = DataManager.shared
     let defaults = UserDefaults.standard
+    var dialogCompletion: (() -> Void)?
+
+    let realmDb = StorageManager.shared
+    let realm = try! Realm()
+    var logViewModel = LogViewModel()
 
     lazy var todayView = TodaySessionView()
     lazy var focusAreaView: FocusAreaView = {
@@ -34,10 +40,12 @@ final class HomeViewController: UIViewController {
         setupSubviews()
         setupNavigation()
 
-//        defaults.removeObject(forKey: UserDefaultKeys.workoutReport)
-//        focusAreaView.createLocalWorkoutReport()
-//        print(defaults.workoutReport)
-
+        data.fetchWorkouts()
+        data.fetchReportFromServer(userId: view.getUserID())
+        // fetch reports from server, extract them and populate the realm
+        data.fetchReportFromServerCompletion = { result in
+            print("Report Fetched from Server", result)
+        }
         NotificationCenter.default.addObserver(self, selector: #selector(showOfflineDeviceUI(notification:)), name: NSNotification.Name.connectivityStatus, object: nil)
         
     }
@@ -46,12 +54,14 @@ final class HomeViewController: UIViewController {
         setNeedsStatusBarAppearanceUpdate()
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .darkContent
-    }
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        return .darkContent
+//    }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        logViewModel.extractWorkoutName()
     }
     
     @objc func showOfflineDeviceUI(notification: Notification) {
@@ -70,6 +80,17 @@ final class HomeViewController: UIViewController {
         menu.presentationStyle = .menuSlideIn
         present(menu, animated: true, completion: nil)
     }
+    @objc func showCalenderView(_ sender: DecaButton) {
+        let menu = SideMenuNavigationController(rootViewController: CalenderViewController())
+        menu.alwaysAnimate = true
+        menu.menuWidth = view.bounds.width*0.95
+        menu.presentationStyle = .menuSlideIn
+        menu.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(hamburgerTapped))
+        present(menu, animated: true, completion: nil)
+    }
+    @objc func hamburgerTapped() {
+        
+    }
     var mainTitleLabel: DecaLabel = {
         let label = DecaLabel()
         label.configure(with: DecaLabelViewModel(
@@ -79,24 +100,14 @@ final class HomeViewController: UIViewController {
     }()
     
 }
+
 extension HomeViewController: FocusAreaViewDelegate {
-    
-    func showDialog() {
-        
+
+    func showDialog(workoutId: String) {
         Alert.showDialog(self, title: "Continue Workout?",
-                         message: Constants.FocusAreaDialogMsg, firstAction: "Restart",
-                         secondAction: "Resume") { [weak self] output in
-            
-            if output {
-                // restart
-                print(output)
-                // clear this workout report from cache
-                
-            } else {
-                // resume
-            }
-        }
-        
+                         message: Constants.FocusAreaDialogMsg,
+                         firstAction: "Restart",
+                         secondAction: "Resume")
     }
     
     func didDisplayFitConfigScreen(_ screen: FitConfigViewController, image: UIImage?, title: String, workoutId: String) {
@@ -112,7 +123,7 @@ extension HomeViewController: FocusAreaViewDelegate {
         let menuBarItem = CustomNavView()
         
         menuBarItem.navProfileImageBtn.addTarget(self, action: #selector(showProfile), for: .touchUpInside)
-        menuBarItem.navbarRightCalender.addTarget(self, action: #selector(showProfile), for: .touchUpInside)
+        menuBarItem.navbarRightCalender.addTarget(self, action: #selector(showCalenderView), for: .touchUpInside)
         navbar.addSubview(menuBarItem)
         
         menuBarItem.topAnchor.constraint(equalTo: navbar.topAnchor, constant: -10).isActive = true
@@ -124,8 +135,16 @@ extension HomeViewController: FocusAreaViewDelegate {
         navigationController?.navigationBar.addSubview(navbar)
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.backgroundColor = .green
         navigationController?.navigationBar.shouldRemoveShadow(true)
         navigationController?.navigationBar.barStyle = .default
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
     }
     func setupSubviews() {
         [mainTitleLabel, todayView, focusAreaView].forEach { view.addSubview($0)}

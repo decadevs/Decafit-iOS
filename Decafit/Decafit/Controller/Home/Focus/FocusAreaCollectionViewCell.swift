@@ -45,8 +45,8 @@ class FocusAreaCollectionViewCell: UICollectionViewCell {
     
    lazy var startedBtn: DecaButton = {
         let btn = DecaButton()
-        btn.configure(with: DecaButtonViewModel(title: Constants.workoutStartedText, font: decaFont(size: 7, font: .poppinsRegular), backgroundColor: .systemRed, titleColor: .white, image: nil, borderWidth: nil, cornerRadius: 5, borderColor: nil, contentEdgeInsets: UIEdgeInsets(top: 2, left: 7, bottom: 2, right: 7), isEnabled: false, tarmic: false))
-        btn.isHidden = true
+        btn.configure(with: DecaButtonViewModel(title: Constants.workoutStartedText, font: decaFont(size: 7, font: .poppinsRegular), backgroundColor: .systemRed, titleColor: .white, image: nil, borderWidth: nil, cornerRadius: 5, borderColor: nil, contentEdgeInsets: UIEdgeInsets(top: 4, left: 7, bottom: 4, right: 7), isEnabled: false, tarmic: false))
+        btn.isHidden = true 
         return btn
     }()
     
@@ -66,8 +66,7 @@ class FocusAreaCollectionViewCell: UICollectionViewCell {
     }()
     override func prepareForReuse() {
         super.prepareForReuse()
-        startedBtn.setTitle("", for: .normal)
-        startedBtn.backgroundColor = .clear
+        startedBtn.isHidden = true 
     }
     func setupViews() {
         [workoutImage, workoutTitle, focusDurationLabel, startedBtn].forEach { contentView.addSubview($0)}

@@ -88,17 +88,6 @@ final class DataManager {
             }
         })
     }
-    func fetchExercisesFromCache(workoutId: String) {
-        let query = WorkoutListQuery()
-        readCachedQuery(query: query, completion: {[weak self] data in
-            let workouts = data.workouts.compactMap({ $0 })
-            let workout = workouts.filter({ $0.id == workoutId })
-            if let exercises = workout[0].exercises?.compactMap({ $0 }) {
-                self?.exerciseCompletion?(exercises)
-            }
-            
-        })
-    }
     func getExerciseList(workoutId: String) {
         fetchWorkouts()
         self.fetchWorkoutsCompletion = { [weak self] graphQLResult in
@@ -132,7 +121,6 @@ final class DataManager {
             do {
                 try transaction.update(query: query, { (data: inout GetWorkoutReportQuery.Data) in
                     data.reportWorkout?.workouts? = workouts
-//                    print("After updating cache", data.reportWorkout?.workouts)
                 })
                 
             } catch let err {
@@ -153,36 +141,8 @@ final class DataManager {
                 print("Failure! Error: \(error)")
             case .success(let graphQLResult):
                 print("Report Created Successfully: ")
-                print(graphQLResult)
             }
         }
-    }
-    
-    public func updateReport(userId: String, workout: ReportWorkoutInput) {
-        let input = ReportCreateInput(userId: userId, workouts: workout)
-        
-        apolloSQ.perform(
-            mutation: ReportUpdateMutation(input: input)) { result in
-            switch result {
-            case .failure(let error):
-                print("Errors", error.localizedDescription)
-                return
-            case .success(let graphQLResult):
-                if let output = graphQLResult.data {
-                    print(output)
-                }
-                if let errors = graphQLResult.errors {
-                    print(graphQLResult)
-                    let message = errors
-                        .map { $0.localizedDescription }
-                        .joined(separator: "\n")
-                    print(message)
-                    return
-                }
-                
-            }
-        }
-        
     }
     
 }

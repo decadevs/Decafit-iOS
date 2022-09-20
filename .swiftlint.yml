@@ -1,7 +1,9 @@
 disabled_rules:
 - trailing_whitespace
 - line_length
+- force_try
 excluded:
+- Pods/ 
 - Pods
 - API.swift
 - Decafit/API.swift

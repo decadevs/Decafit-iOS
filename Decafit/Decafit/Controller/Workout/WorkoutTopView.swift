@@ -6,6 +6,7 @@ class WorkoutTopView: UIView {
                             font: decaFont(size: 24, font: .poppinsBold),
                             textColor: .white, numberOfLines: 1,
                             text: "10 Workouts", kerning: 1.0))
+        label.backgroundColor = DecaColor.black.color
         return label
     }()
     lazy var timeLabel: UILabel = {
@@ -14,6 +15,7 @@ class WorkoutTopView: UIView {
                                                  textColor: .white, numberOfLines: 1,
                                                  text: "Third", kerning: 0.5))
         label.attributedText = label.setAttributedText(image: "clock", textAfterIcon: " 24 min")
+        label.backgroundColor = .black
         return label
     }()
     lazy var calorieLabel: UILabel = {
@@ -22,13 +24,14 @@ class WorkoutTopView: UIView {
                                                  textColor: .white, numberOfLines: 1,
                                                  text: "Fourth", kerning: 0.5))
         label.attributedText = label.setAttributedText(image: "flame.fill", textAfterIcon: " 240 Kcal")
+        label.backgroundColor = .black
         return label
     }()
     lazy var topImage: UIImageView = {
         let image = UIImageView(image: UIImage(named: Constants.weightImg))
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
-        image.addoverlay(color: DecaColor.purple.color)
+        image.addoverlay(color: DecaColor.purple.color, alpha: 0.6)
         return image
     }()
     let workoutTopviewBackButton: DecaButton = {
@@ -43,7 +46,7 @@ class WorkoutTopView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .green
+//        addoverlay(color: DecaColor.purple.color, alpha: 0.7)
         initialize()
     }
     required init?(coder: NSCoder) {

@@ -1,10 +1,4 @@
 import UIKit
-protocol ExerciseCellDelegate: AnyObject {
-    func gotoNextExercise(pauseTime: TimeInterval)
-    func clickNavBackButton()
-    func updatePauseTime(pauseTime: TimeInterval, resumeTapped: Bool)
-    func startExercise()
-}
 class ExerciseCell: UICollectionViewCell {
     static let identifier = Constants.exerciseCellId
     weak var exerciseCellDelegate: ExerciseCellDelegate?
@@ -27,9 +21,6 @@ class ExerciseCell: UICollectionViewCell {
         
         timer = DecaTimer(timeLabel: exerciseView.timerLabel, timeLeft: timeLeft)
         exerciseView.timerLabel.text = timer?.timeLeft.time
-//        exerciseView.progressCircle.setProgress(duration: timer?.timeLeft ?? 20 )
-//        timer?.startTimer()
-    
 
     }
     required init?(coder: NSCoder) {
@@ -40,16 +31,19 @@ class ExerciseCell: UICollectionViewCell {
         exerciseView.timerViewBackButton.addTarget(
             self, action: #selector(clickNavBackButton),
             for: .touchUpInside)
-        exerciseView.nextWorkoutButton.addTarget(
+        exerciseView.nextExerciseButton.addTarget(
             self, action: #selector(gotoNextExercise),
             for: .touchUpInside)
         exerciseView.pauseResumeButton.addTarget(
             self, action: #selector(pauseButtonTapped),
             for: .touchUpInside)
     }
+    
     // MARK: - Delegates
     func configure(with model: WorkoutListQuery.Data.Workout.Exercise) {
         exerciseView.exerciseName.text = model.title
+        exerciseView.repsProgressTag.setTitle("1 Of 4 Reps", for: .normal)
+        exerciseView.nextExerciseButton.setTitle(exerciseView.nextExerciseBtnTitle, for: .normal)
         exerciseView.topImageView.kf.setImage(with: URL(string: model.image), placeholder: UIImage(named: "back"), options: nil, completionHandler: nil)
     }
     @objc func clickNavBackButton() {
@@ -58,11 +52,12 @@ class ExerciseCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        
     }
 }
 extension ExerciseCell {
     @objc func gotoNextExercise(_ sender: UIButton) {
-        exerciseCellDelegate?.gotoNextExercise(pauseTime: pauseTime)
+        exerciseCellDelegate?.gotoNextExercise(pauseTime: timer?.timeLeft ?? 1.5)
     }
     @objc func pauseButtonTapped(_ sender: UIButton) {
         if sender.tag == Tags.stepcell {
@@ -74,7 +69,7 @@ extension ExerciseCell {
     }
     func resumeTimer(timer: DecaTimer) {
         if exerciseView.pauseResumeButton.currentTitle == Constants.start {
-            exerciseView.progressCircle.setProgress(duration: timer.timeLeft ?? 20 )
+            exerciseView.progressCircle.setProgress(duration: timer.timeLeft )
             
             exerciseView.progressCircle.resumeAnimation()
             timer.startTimer()
@@ -86,11 +81,12 @@ extension ExerciseCell {
             exerciseView.pauseResumeButton.setTitle(Constants.pause, for: .normal)
             exerciseView.pauseResumeButton.setImage(
                UIImage(systemName: Constants.pauseImg), for: .normal)
-//            exerciseView.nextWorkoutButton.setTitle(Constants.repeatWorkout, for: .normal)
 
         } else {
             pauseTimer(timer: timer)
+
         }
+        
 
     }
     func pauseTimer(timer: DecaTimer) {

@@ -76,12 +76,16 @@ enum Constants {
     static let overlayIdentifier = "overlay"
     static let removeShadow = "hidesShadow"
     
-    static let exerciseTimerButtonText = "Next Workout"
+    static let nextWorkout = "Next Workout"
+    static let nextExercise = "Next Exercise"
     static let completeText = "complete"
     static let incompleteText = "incomplete"
     static let continueWorkout = "Continue Workout"
     static let repeatWorkout = "Repeat Workout"
+    static let repeatExercise = "Repeat Exercise"
     static let endWorkout = "End Workout"
+    static let startWorkout = "Start Workout"
+    static let workoutComplete = "Workout Complete"
 
     static let resume = " Resume"
     static let pause = " Pause"
@@ -90,4 +94,5 @@ enum Constants {
     static let urlStr = "https://decagon-decafit-api.herokuapp.com/decafit"
     static let workoutStartedText = "in progress"
     static let FocusAreaDialogMsg =  "You are yet to complete this workout. What would you like to do?"
+    static let calenderCellId = "calenderCellId"
 }

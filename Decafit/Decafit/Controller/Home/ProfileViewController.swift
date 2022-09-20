@@ -8,26 +8,26 @@
 import UIKit
 import KeychainSwift
 import Apollo
-protocol ProfileViewControllerDelegate: AnyObject {
-    func didTapLogout()
-}
+
 class ProfileViewController: UIViewController {
     weak var delegate: ProfileViewControllerDelegate?
     let keychain = KeychainSwift()
+    let auth = AuthManager.shared
+    let apolloSQ = Network.shared.apolloSQLite
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Profile"
         view.backgroundColor = .white
-        logoutBtn.frame = CGRect(x: 10, y: 100, width: 280, height: 50)
+        logoutBtn.frame = CGRect(x: 10, y: view.bounds.height-100, width: 280, height: 50)
         view.addSubview(logoutBtn)
         logoutBtn.addTarget(self, action: #selector(logoutTapped), for: .touchUpInside)
     }
     
     @objc func logoutTapped() {
         delegate?.didTapLogout()
-        keychain.delete(AuthManager.loginKeychainKey)
-//        Network.shared.apolloSQLite.clearCache()
+        auth.signOut()
+        apolloSQ.clearCache()
         view.layoutIfNeeded()
         view.setNeedsDisplay()
         let screen = LoginViewController.getViewController()

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions
                         launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         NetworkMonitor.shared.startMonitoring()
+//        try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
         return true
     }
     // MARK: UISceneSession Lifecycle
