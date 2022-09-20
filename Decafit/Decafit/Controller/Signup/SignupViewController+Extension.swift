@@ -6,7 +6,8 @@ extension SignupViewController: AuthManagerDelegate {
                         message: message)
     }
     @objc func toggleLogin() {
-        toggleAuthScreens(orangeSignInLink)
+//        toggleAuthScreens(orangeSignInLink)
+        self.dismiss(animated: true, completion: nil)
     }
     @objc func handleUserRegistration() {
         guard let fullName = fullNameTextField.text,
@@ -41,7 +42,7 @@ extension SignupViewController {
         let parentStack: DecaStack = {
             let stackView = DecaStack(arrangedSubviews:
                                         [signupTopImageView, textViewStack, signUpButton,
-                                         lineStack, socialStack, redirectToSigninStack])
+                                         lineStack, appleSigninButton, redirectToSigninStack])
             stackView.configure(with: DecaStackViewModel(
                                     axis: .vertical, alignment: .center,
                                     spacing: 10, distribution: .fill))
@@ -70,7 +71,10 @@ extension SignupViewController {
             signUpButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             createPlanLabel.leadingAnchor.constraint(equalTo: signupTopImageView.leadingAnchor, constant: 30),
             createPlanLabel.trailingAnchor.constraint(equalTo: signupTopImageView.trailingAnchor, constant: -15),
-            createPlanLabel.bottomAnchor.constraint(equalTo: signupTopImageView.bottomAnchor, constant: -30)
+            createPlanLabel.bottomAnchor.constraint(equalTo: signupTopImageView.bottomAnchor, constant: -30),
+            
+            appleSigninButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75),
+            appleSigninButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }

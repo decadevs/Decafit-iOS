@@ -1,32 +1,69 @@
 PODS:
+  - Apollo (0.53.0):
+    - Apollo/Core (= 0.53.0)
+  - Apollo/Core (0.53.0)
+  - Apollo/SQLite (0.53.0):
+    - Apollo/Core
+    - SQLite.swift (~> 0.13.1)
+  - FSCalendar (2.8.4)
+  - JTAppleCalendar (7.1.8)
   - KeychainSwift (20.0.0)
   - Kingfisher (7.3.1)
+  - Realm (10.28.7):
+    - Realm/Headers (= 10.28.7)
+  - Realm/Headers (10.28.7)
+  - RealmSwift (10.28.7):
+    - Realm (= 10.28.7)
+  - SideMenu (6.5.0)
+  - SQLite.swift (0.13.3):
+    - SQLite.swift/standard (= 0.13.3)
+  - SQLite.swift/standard (0.13.3)
   - SVProgressHUD (2.2.5)
   - SwiftLint (0.47.1)
   - SwiftySound (1.2.0)
 
 DEPENDENCIES:
+  - Apollo
+  - Apollo/SQLite
+  - FSCalendar
+  - JTAppleCalendar (~> 7.1)
   - KeychainSwift (~> 20.0)
   - Kingfisher (~> 7.0)
+  - RealmSwift (~> 10)
+  - SideMenu (~> 6.0)
   - SVProgressHUD
   - SwiftLint
   - SwiftySound
 
 SPEC REPOS:
   trunk:
+    - Apollo
+    - FSCalendar
+    - JTAppleCalendar
     - KeychainSwift
     - Kingfisher
+    - Realm
+    - RealmSwift
+    - SideMenu
+    - SQLite.swift
     - SVProgressHUD
     - SwiftLint
     - SwiftySound
 
 SPEC CHECKSUMS:
+  Apollo: 204819ea82022fbc59ad05056820df867f19bd02
+  FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
+  JTAppleCalendar: b7fb40852f5f319fe55c8ec3861f1de0edc99cc8
   KeychainSwift: 0ce6a4d13f7228054d1a71bb1b500448fb2ab837
   Kingfisher: f411ab4902e733fc0c40522920fb5a236d7a7334
+  Realm: d1d5ad078b9c1d22f99f7f7f2e692b548b518f24
+  RealmSwift: 7c38e0acca7d3df9cc60d79c073ef68245351d0e
+  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
+  SQLite.swift: 903bfa3bc9ab06345fdfbb578e34f47cfcf417da
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
   SwiftySound: 9eb28bb14edb601b40027e44319e0ef8383f88bf
 
-PODFILE CHECKSUM: 17527bc76beb03c20f591f9b8e41710c69c30488
+PODFILE CHECKSUM: 657e966664e0547c3f0a7e0d9fae309578d55370
 
 COCOAPODS: 1.11.3

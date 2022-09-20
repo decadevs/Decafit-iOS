@@ -16,6 +16,7 @@ enum Constants {
     static let signIn = "Sign In"
     static let signUp = "Sign up"
     static let next = "Next"
+    static let logout = "Log Out"
 
     static let run = "Run"
     static let close = "Close"
@@ -75,20 +76,23 @@ enum Constants {
     static let overlayIdentifier = "overlay"
     static let removeShadow = "hidesShadow"
     
-    static let exerciseTimerButtonText = "Next Workout"
+    static let nextWorkout = "Next Workout"
+    static let nextExercise = "Next Exercise"
     static let completeText = "complete"
     static let incompleteText = "incomplete"
     static let continueWorkout = "Continue Workout"
+    static let repeatWorkout = "Repeat Workout"
+    static let repeatExercise = "Repeat Exercise"
+    static let endWorkout = "End Workout"
+    static let startWorkout = "Start Workout"
+    static let workoutComplete = "Workout Complete"
+
     static let resume = " Resume"
     static let pause = " Pause"
-    static let loremText = modalText()
+    static let start = "  Start"
+
     static let urlStr = "https://decagon-decafit-api.herokuapp.com/decafit"
     static let workoutStartedText = "in progress"
-}
-func modalText() -> String {
-    let text1 = "Lorem ipsum dolor sit amet, consetetur elitr, sed diam nonumy eirmod tempor invidunt labore etLorem ipsum dolor sit amet, consetetur elitr, sed diam nonumy eirmod tempor"
-    let text2 = "dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, sea takimata sanctus est Lorem ipsum dolor "
-    let text3 = "Lorem ipsum dolor sit amet, consetetur elitr, sed diam nonumy eirmod tempor invidunt labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo"
-    let text = text1 + text2 + text3
-    return text
+    static let FocusAreaDialogMsg =  "You are yet to complete this workout. What would you like to do?"
+    static let calenderCellId = "calenderCellId"
 }

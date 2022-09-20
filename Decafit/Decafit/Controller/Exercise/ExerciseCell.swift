@@ -1,18 +1,15 @@
 import UIKit
-protocol ExerciseCellDelegate: AnyObject {
-    func gotoNextExercise(pauseTime: TimeInterval)
-    func clickNavBackButton()
-    func updatePauseTime(pauseTime: TimeInterval, resumeTapped: Bool)
-    func startExercise()
-}
 class ExerciseCell: UICollectionViewCell {
     static let identifier = Constants.exerciseCellId
     weak var exerciseCellDelegate: ExerciseCellDelegate?
     let defaults = UserDefaults.standard
     let dataman = DataManager.shared
+    let viewModel = ExerciseViewModel()
     
     var timer: DecaTimer?
     var resumeTapped = false
+    var pauseTapped = false
+
     var pauseTime: TimeInterval = 0
     // MARK: - Initializers
     override init(frame: CGRect) {
@@ -25,10 +22,9 @@ class ExerciseCell: UICollectionViewCell {
         
         timer = DecaTimer(timeLabel: exerciseView.timerLabel, timeLeft: timeLeft)
         exerciseView.timerLabel.text = timer?.timeLeft.time
-        exerciseView.progressCircle.setProgress(duration: timer?.timeLeft ?? 20 )
-        timer?.startTimer()
-    
-        exerciseCellDelegate?.startExercise()
+        
+        defaults.set(viewModel.currentWorkoutReport.reps, forKey: UserDefaultKeys.repsTracker)
+        defaults.set(viewModel.currentWorkoutReport.sets, forKey: UserDefaultKeys.setsTracker)
 
     }
     required init?(coder: NSCoder) {
@@ -39,16 +35,19 @@ class ExerciseCell: UICollectionViewCell {
         exerciseView.timerViewBackButton.addTarget(
             self, action: #selector(clickNavBackButton),
             for: .touchUpInside)
-        exerciseView.nextWorkoutButton.addTarget(
+        exerciseView.nextExerciseButton.addTarget(
             self, action: #selector(gotoNextExercise),
             for: .touchUpInside)
         exerciseView.pauseResumeButton.addTarget(
             self, action: #selector(pauseButtonTapped),
             for: .touchUpInside)
     }
+    
     // MARK: - Delegates
     func configure(with model: WorkoutListQuery.Data.Workout.Exercise) {
         exerciseView.exerciseName.text = model.title
+        exerciseView.repsProgressTag.setTitle(viewModel.repsProgressTagTitle, for: .normal)
+        exerciseView.nextExerciseButton.setTitle(viewModel.nextExerciseBtnTitle, for: .normal)
         exerciseView.topImageView.kf.setImage(with: URL(string: model.image), placeholder: UIImage(named: "back"), options: nil, completionHandler: nil)
     }
     @objc func clickNavBackButton() {
@@ -57,19 +56,43 @@ class ExerciseCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        exerciseView.nextExerciseButton.setTitle(nil, for: .normal)
     }
 }
 extension ExerciseCell {
     @objc func gotoNextExercise(_ sender: UIButton) {
-        exerciseCellDelegate?.gotoNextExercise(pauseTime: pauseTime)
+        exerciseCellDelegate?.gotoNextExercise(pauseTime: timer?.timeLeft ?? 1.5)
     }
     @objc func pauseButtonTapped(_ sender: UIButton) {
         if sender.tag == Tags.stepcell {
             let timer = exerciseView.timer
-            pauseTimer(timer: timer!)
+            resumeTimer(timer: timer!)
         } else {
-            pauseTimer(timer: self.timer!)
+            resumeTimer(timer: self.timer!)
         }
+    }
+    func resumeTimer(timer: DecaTimer) {
+//        if exerciseView.pauseResumeButton.currentTitle == Constants.start {
+        if exerciseView.isFirstTimerClick {
+            exerciseView.isFirstTimerClick = false
+            exerciseView.progressCircle.startAnimation(duration: timer.timeLeft)
+            
+            timer.startTimer()
+
+            exerciseCellDelegate?.startExercise()
+            
+            timer.isTimerRunning = true
+            
+            exerciseView.pauseResumeButton.setTitle(Constants.pause, for: .normal)
+            exerciseView.pauseResumeButton.setImage(
+               UIImage(systemName: Constants.pauseImg), for: .normal)
+
+        } else {
+            pauseTimer(timer: timer)
+
+        }
+        
+
     }
     func pauseTimer(timer: DecaTimer) {
         if resumeTapped == false {

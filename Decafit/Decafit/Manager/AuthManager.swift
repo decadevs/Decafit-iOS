@@ -1,9 +1,6 @@
 import Foundation
 import KeychainSwift
 
-protocol AuthManagerDelegate: AnyObject {
-    func didShowAlert(title: String, message: String)
-}
 final class AuthManager {
     static let shared = AuthManager()
     static let loginKeychainKey = Constants.loginText
@@ -43,20 +40,18 @@ final class AuthManager {
             
         }
     }
-    
-    public func login(user: LoginInput) {
-        let user = LoginInput(email: user.email, password: user.password)
+
+    public func login(email: String, password: String) {
+        let user = LoginInput(email: email, password: password)
         Network.shared.apollo.perform(mutation: LoginMutation(user: user)) { [weak self] result in
             HUD.hide()
           switch result {
           case .failure(let error):
-            HUD.hide()
             self?.delegate?.didShowAlert(title: Constants.networkError,
                                    message: error.localizedDescription)
             return
           case .success(let graphQLResult):
             if let data = graphQLResult.data?.userLogin {
-                HUD.hide()
                 guard let token = data.token else { return }
                 self?.keychain.set(String(describing: token), forKey: AuthManager.loginKeychainKey)
                 self?.keychain.set(data.id, forKey: Constants.userID)

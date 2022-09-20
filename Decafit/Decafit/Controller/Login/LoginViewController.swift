@@ -6,12 +6,18 @@
 //
 
 import UIKit
+import AuthenticationServices
+import KeychainSwift
+
 final class LoginViewController: UIViewController {
     let auth = AuthManager.shared
     static var shared: LoginViewController?
     static func getViewController() -> LoginViewController {
         return shared ?? LoginViewController()
     }
+    let defaults = UserDefaults.standard
+    let keychain = KeychainSwift()
+    
     var textFields: [UITextField] {
         return [emailTextField, passwordTextField]
     }
@@ -37,6 +43,7 @@ final class LoginViewController: UIViewController {
     }()
     lazy var socialStack: DecaStack = {
         let stackview = DecaStack(arrangedSubviews: socialButtons)
+
         stackview.configure(with: DecaStackViewModel(
                                 axis: .horizontal, alignment: .center,
                                 spacing: 40, distribution: .fillEqually))
@@ -63,6 +70,7 @@ final class LoginViewController: UIViewController {
         stackview.addArrangedSubview(line2)
        return stackview
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -70,6 +78,66 @@ final class LoginViewController: UIViewController {
         setupKeyboardDismissRecognizer()
         setUpSubviews()
         addButtonTarget()
-        auth.delegate = self 
+        auth.delegate = self
+        appleSigninButton.addTarget(self, action: #selector(didTapAppleSignin), for: .touchUpInside)
+        appleSigninButton.translatesAutoresizingMaskIntoConstraints = false
+        appleSigninButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapAppleButton(_:))))
+        appleSigninButton.isUserInteractionEnabled = true
+
     }
+    @objc func tapAppleButton(_ sender: UITapGestureRecognizer) {
+        didTapAppleSignin()
+    }
+    // replace social stack with the apple button
+    let appleSigninButton = ASAuthorizationAppleIDButton()
+    @objc func didTapAppleSignin() {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+    }
+}
+extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+    
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        
+        switch authorization.credential {
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+            let userIdentifier = appleIDCredential.user
+            let fullName = appleIDCredential.fullName
+            let email = appleIDCredential.email
+            let token = appleIDCredential.identityToken
+            let asp = ASPasswordCredential()
+            let password = asp.password
+            
+            print("User id is \(userIdentifier) \n Full Name is \(String(describing: fullName)) \n Email id is \(String(describing: email)), \n Token is \(String(describing: token)), \n Password is \(password)")
+            
+            keychain.set(String(describing: token), forKey: AuthManager.loginKeychainKey)
+            keychain.set(userIdentifier, forKey: Constants.userID)
+            
+            let home = homeVC
+            view.window?.rootViewController = home
+//        case let passwordCredential as ASPasswordCredential:
+//            // Sign in using an existing iCloud Keychain credential.
+//            let username = passwordCredential.user
+//            let password = passwordCredential.password
+//
+//            print("username \(username)   password \(password)") // use this information to verify the account from server and resume normal app flow
+        default:
+            break
+            
+        }
+        
+    }
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print("Login with apple failed!")
+    }
+
 }

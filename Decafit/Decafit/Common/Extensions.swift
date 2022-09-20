@@ -7,6 +7,9 @@
 
 import UIKit
 import KeychainSwift
+var defaults = UserDefaults.standard
+let realmDb = StorageManager.shared
+
 extension TimeInterval {
     var time: String {
         return String(format: "%02d:%02d", Int(self/60),
@@ -16,6 +19,26 @@ extension TimeInterval {
 extension Int {
     var degreesToRadians: CGFloat {
         return CGFloat(self) * .pi / 180
+    }
+    var repsTracker: Int {
+        return defaults.integer(forKey: UserDefaultKeys.repsTracker)
+    }
+    var setsTracker: Int {
+        return defaults.integer(forKey: UserDefaultKeys.setsTracker)
+    }
+
+}
+
+extension Double {
+    func round(to places: Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
+    var repsTracker: Double {
+        return defaults.double(forKey: UserDefaultKeys.repsTracker)
+    }
+    var setsTracker: Double {
+        return defaults.double(forKey: UserDefaultKeys.setsTracker)
     }
 }
 extension UINavigationBar {
@@ -72,6 +95,13 @@ extension UIView {
         }
         return key
     }
+    var inputTimeAsInterval: String {
+        let timeLeft = TimeInterval(defaults.double(forKey: UserDefaultKeys.time))
+        let endTime = Date().addingTimeInterval(timeLeft)
+        let time = endTime.timeIntervalSinceNow.time
+        
+        return time
+    }
 }
 extension UIViewController {
     func toggleAuthScreens(_ sender: UIButton) {
@@ -84,6 +114,10 @@ extension UIViewController {
         screen.modalTransitionStyle = .flipHorizontal
         screen.modalPresentationStyle = .fullScreen
         present(screen, animated: true)
+    }
+    var homeVC: UIViewController {
+        let home = UINavigationController(rootViewController: HomeViewController())
+        return home
     }
     
 }
@@ -104,4 +138,3 @@ extension FileManager {
         return self.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("apollo_cache.sqlite")
     }
 }
-

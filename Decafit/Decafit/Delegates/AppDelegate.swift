@@ -6,11 +6,11 @@
 //
 
 import UIKit
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-//    private var isFirstLaunch: Bool = true
 
     static var standard: AppDelegate {
         // swiftlint:disable:next force_cast
@@ -19,10 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions
                         launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        if isFirstLaunch {
-//            DataManager.shared.fetchWorkouts()
-//            isFirstLaunch = false
-//        }
+        NetworkMonitor.shared.startMonitoring()
+//        try! FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
         return true
     }
     // MARK: UISceneSession Lifecycle
